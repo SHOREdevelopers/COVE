@@ -17,6 +17,7 @@ dependencies[] = colorbox_node
 dependencies[] = comment
 dependencies[] = contact
 dependencies[] = contact_forms
+dependencies[] = content_taxonomy
 dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = custom_breadcrumbs

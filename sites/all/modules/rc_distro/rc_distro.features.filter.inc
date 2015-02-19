@@ -8,12 +8,12 @@
  * Implements hook_filter_default_formats().
  */
 function rc_distro_filter_default_formats() {
-  $formats = array();
-
+$formats = array();
+ 
   // Exported format: Filtered HTML.
   $formats[1] = array(
     'format' => 1,
-    'name' => 'Filtered HTML',
+    'name' => 'Filtered HTML OLD',
     'cache' => 1,
     'status' => 1,
     'weight' => -1,
@@ -46,8 +46,8 @@ function rc_distro_filter_default_formats() {
       ),
     ),
   );
-
-  // Exported format: Full HTML.
+  
+   // Exported format: Full HTML.
   $formats[2] = array(
     'format' => 2,
     'name' => 'Full HTML',
@@ -140,6 +140,5 @@ function rc_distro_filter_default_formats() {
       ),
     ),
   );
-
   return $formats;
 }
