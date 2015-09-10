@@ -1,0 +1,11 @@
+name = Annotation
+description = Provides storage and retrieval of annotations
+package = Annotation Functionality
+core = 7.x
+
+files[] = plugins/annotator/StoreAnnotatorPlugin.class.inc
+
+dependencies[] = ctools
+dependencies[] = entityreference
+dependencies[] = link
+dependencies[] = annotator
