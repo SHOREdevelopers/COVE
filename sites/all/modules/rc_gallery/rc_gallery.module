@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RC Gallery feature.
+ */
+
+include_once 'rc_gallery.features.inc';

@@ -33,15 +33,26 @@ Annotator.Plugin.RichText = (function(_super) {
 	RichText.prototype.options = {
 		tinymce:{
 			selector: "li.annotator-item textarea",
-			plugins: "media, jbimages",
-			menubar: false,
+			skin: "o2k7",
+        	skin_variant: "black",
+			plugins: "media",
+			/*menubar: false,*/
+			/*toolbar: 'bold, italic, underline, strikethrough | alignleft, aligncenter, alignright, alignjustify | image, media | link, unlink',*/
 			theme: 'advanced',
-			theme_advanced_disable: 'bold, italic, underline, strikethrough, justifyleft, justifycenter, justifyright, justifyfull, bullist, numlist, outdent, indent, cut, copy, hr, styleselect, formatselect, fontselect, fontsizeselect, sup, sub, forecolor, backcolor, anchor, cleanup, help, seperator, charmap, visualaid, hr, undo, redo, code',
-			theme_advanced_buttons1_add: "media,jbimages",
-			editor_selector: 'mceAdvanced',
+			theme_advanced_layout_manager : "SimpleLayout",
+			/*theme_advanced_disable: 'cut, copy, styleselect, formatselect, fontsizeselect hr, code',*/
+			theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,image, media",
+        theme_advanced_buttons2 : "link, unlink",
+        theme_advanced_buttons3 : "hr",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true,
+			/*theme_advanced_buttons1_add: "media",*/
+			/*editor_selector: 'mceAdvanced',*/
 			toolbar_items_size: 'small',
 			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
-    	toolbar: "link advimage media jbimages",
+    	/*toolbar: "advimage media",*/
 		}
 	};
 
