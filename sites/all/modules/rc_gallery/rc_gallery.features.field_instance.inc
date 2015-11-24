@@ -10,6 +10,105 @@
 function rc_gallery_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-collection-field_description'
+  $field_instances['node-collection-field_description'] = array(
+    'bundle' => 'collection',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The Description of the Collection',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_description',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-collection-field_images_in_this_collection'
+  $field_instances['node-collection-field_images_in_this_collection'] = array(
+    'bundle' => 'collection',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_images_in_this_collection',
+    'label' => 'Images in this Collection',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-galler_exhibit-field_credits'
   $field_instances['node-galler_exhibit-field_credits'] = array(
     'bundle' => 'galler_exhibit',
@@ -3747,6 +3846,7 @@ function rc_gallery_field_default_field_instances() {
   t('Image Added Date');
   t('Image Date');
   t('Images in Exhibit');
+  t('Images in this Collection');
   t('Item Description');
   t('Latitude/Longitude');
   t('Location');
@@ -3780,6 +3880,7 @@ function rc_gallery_field_default_field_instances() {
   t('Takes the value of the "Creator" field when the creator is the editor of the related primary work');
   t('Takes the value of the "creator" field if the artist is a painter');
   t('Texts associated with the item.');
+  t('The Description of the Collection');
   t('The Exhibit to which this image/description belongs');
   t('The context surrounding the printing of the item, if applicable.');
   t('The description of any marks on the object put there after production.');
