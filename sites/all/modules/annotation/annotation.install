@@ -112,7 +112,12 @@ function _annotation_install_fields() {
   return array(
     'text' => array(
       'field_name' => 'text',
-      'type' => 'text_long'
+      'type' => 'text_long',
+      'settings' => array(
+          'text_processing' => 1,
+          'format' => 'filtered_html', // <<--- Set this value to allow filtered HTML
+          'user_register_form' => FALSE,
+        ),
     ),
     'quote' => array(
       'field_name' => 'quote',
@@ -193,7 +198,7 @@ function _annotation_install_instances() {
       'field_name' => 'text',
       'label' => t('Annotation Text'),
       'description' => t('The annotation text'),
-      'required' => FALSE
+      'required' => FALSE,
     ),
     'quote' => array(
       'field_name' => 'quote',
