@@ -114,7 +114,7 @@ function _annotation_install_fields() {
       'field_name' => 'text',
       'type' => 'text_long',
       'settings' => array(
-          'text_processing' => 1,
+          'text_processing' => 0,
           'format' => 'filtered_html', // <<--- Set this value to allow filtered HTML
           'user_register_form' => FALSE,
         ),
