@@ -65,7 +65,7 @@ function annotation_node_type_insert($content_type) {
 
     // Create all our fields for the Annotation node type
     foreach (_annotation_install_fields() as $field) {
-      $field['locked'] = TRUE;
+      $field['locked'] = FALSE;
       field_create_field($field);
     }
     // Create instances for each field
