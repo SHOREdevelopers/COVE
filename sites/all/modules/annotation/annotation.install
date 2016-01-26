@@ -16,7 +16,7 @@ function annotation_node_info() {
       'base' => 'node_content',
       'description' => t('An annotation of a piece of content.'),
       'has_title' => FALSE,
-      'locked' => TRUE,
+      'locked' => FALSE,
       'comment' => array('status' => 1),
     )
   );
@@ -113,9 +113,10 @@ function _annotation_install_fields() {
     'text' => array(
       'field_name' => 'text',
       'type' => 'text_long',
+      'widget' => array('type' => 'text_textarea'),
       'settings' => array(
-          'text_processing' => 1,
-          'format' => 'filtered_html', // <<--- Set this value to allow filtered HTML
+          'text_processing' => 1, // Allow text processing
+          'format' => 'filter_html', // <<--- Set this value to allow filtered HTML
           'user_register_form' => FALSE,
         ),
     ),
