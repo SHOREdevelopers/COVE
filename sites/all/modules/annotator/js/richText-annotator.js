@@ -34,7 +34,7 @@ Annotator.Plugin.RichText = (function(_super) {
 		tinymce:{
 			selector: "li.annotator-item textarea",
 			skin: "o2k7",
-        	skin_variant: "black",
+        	skin_variant: "silver",
 			plugins: "media",
 			/*menubar: false,*/
 			/*toolbar: 'bold, italic, underline, strikethrough | alignleft, aligncenter, alignright, alignjustify | image, media | link, unlink',*/
