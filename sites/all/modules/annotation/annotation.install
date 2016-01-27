@@ -116,7 +116,7 @@ function _annotation_install_fields() {
       'widget' => array('type' => 'text_textarea'),
       'settings' => array(
           'text_processing' => 1, // Allow text processing
-          'format' => 'filter_html', // <<--- Set this value to allow filtered HTML
+          'format' => 'full_html', // <<--- Set this value to allow Full HTML
           'user_register_form' => FALSE,
         ),
     ),

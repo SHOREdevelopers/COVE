@@ -211,6 +211,7 @@ function annotation_api_create() {
     $annotation = annotation_drupal_format($entity);
     $annotation->comment = 2; // enable comments
     $annotation = node_submit($annotation);
+    $annotation->text[$annotation->language][0]['format'] = 'full_html'; // Save field 'text' with full_html format for use with Rich Text
     node_save($annotation);
     $annotation->id = $annotation->nid; // set ID for Annotator
     // Send response
