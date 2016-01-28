@@ -31,29 +31,17 @@ Annotator.Plugin.RichText = (function(_super) {
 
 	//Default tinymce configuration
 	RichText.prototype.options = {
+	 editor_enabled: true,
 		tinymce:{
 			selector: "li.annotator-item textarea",
-			skin: "o2k7",
-        	skin_variant: "silver",
-			plugins: "media,advimage,table,inlinepopups,",
-			/*menubar: false,*/
-			/*toolbar: 'bold, italic, underline, strikethrough | alignleft, aligncenter, alignright, alignjustify | image, media | link, unlink',*/
-			theme: 'advanced',
-			/*theme_advanced_layout_manager : "SimpleLayout",*/
-			/*theme_advanced_disable: 'cut, copy, styleselect, formatselect, fontsizeselect hr, code',*/
-			theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,image, media",
-        theme_advanced_buttons2 : "link, unlink",
-        theme_advanced_buttons3 : "hr",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-			/*theme_advanced_buttons1_add: "media",*/
-			/*editor_selector: 'mceAdvanced',*/
+			//auto_focus: "annotator-field-0",
+			plugins: "media image insertdatetime link code",
+			menubar: false,
 			toolbar_items_size: 'small',
-			extended_valid_elements : "img[!src|border:0|alt|title|width|height|style]a[name|href|target|title|onclick]",
-    	/*toolbar: "advimage media",*/
+			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
+    		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media rubric | code ",
 		}
+		
 	};
 
 	function RichText(element,options) {
@@ -63,6 +51,7 @@ Annotator.Plugin.RichText = (function(_super) {
 
 
 	RichText.prototype.pluginInit = function() {
+		console.log("RichText-pluginInit");
 		var annotator = this.annotator,
 			editor = this.annotator.editor;
 		//Check that annotator is working
@@ -83,22 +72,22 @@ Annotator.Plugin.RichText = (function(_super) {
 
 
 		annotator.subscribe("annotationEditorShown", function(){
-			$(annotator.editor.element).find('.mceEditor')[0].style.display='block';
-			$(annotator.editor.element).find('.mceEditor').css('z-index',3000000000);
+			$(annotator.editor.element).find('.mce-tinymce')[0].style.display='block';
+			$(annotator.editor.element).find('.mce-container').css('z-index',3000000000);
 			annotator.editor.checkOrientation();
 		});
 		annotator.subscribe("annotationEditorHidden", function(){
-			$(annotator.editor.element).find('.mceEditor')[0].style.display='none';
+			$(annotator.editor.element).find('.mce-tinymce')[0].style.display='none';
 		});
 
 		//set listener for tinymce;
 		this.options.tinymce.setup = function(ed) {
-			ed.onChange.add(function(e) {
+			ed.on('change', function(e) {
 				//set the modification in the textarea of annotator
 				$(editor.element).find('textarea')[0].value = tinymce.activeEditor.getContent();
 			});
-			ed.onInit.add(function(ed){
-				$('.mceEditor').css('z-index','3090000000000000000');
+			ed.on('Init', function(ed){
+				$('.mce-container').css('z-index','3090000000000000000');
 			});
 		};
 		tinymce.init(this.options.tinymce);
@@ -109,6 +98,7 @@ Annotator.Plugin.RichText = (function(_super) {
 		tinymce.activeEditor.setContent(text);
 		$(field).remove(); //this is the auto create field by annotator and it is not necessary
 	}
+	
 
 	RichText.prototype.updateViewer = function(field, annotation) {
 		var textDiv = $(field.parentNode).find('div:first-of-type')[0];
