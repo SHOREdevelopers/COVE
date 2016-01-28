@@ -35,11 +35,11 @@ Annotator.Plugin.RichText = (function(_super) {
 			selector: "li.annotator-item textarea",
 			skin: "o2k7",
         	skin_variant: "silver",
-			plugins: "media",
+			plugins: "media,advimage,table,inlinepopups,",
 			/*menubar: false,*/
 			/*toolbar: 'bold, italic, underline, strikethrough | alignleft, aligncenter, alignright, alignjustify | image, media | link, unlink',*/
 			theme: 'advanced',
-			theme_advanced_layout_manager : "SimpleLayout",
+			/*theme_advanced_layout_manager : "SimpleLayout",*/
 			/*theme_advanced_disable: 'cut, copy, styleselect, formatselect, fontsizeselect hr, code',*/
 			theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,image, media",
         theme_advanced_buttons2 : "link, unlink",
@@ -51,7 +51,7 @@ Annotator.Plugin.RichText = (function(_super) {
 			/*theme_advanced_buttons1_add: "media",*/
 			/*editor_selector: 'mceAdvanced',*/
 			toolbar_items_size: 'small',
-			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
+			extended_valid_elements : "img[!src|border:0|alt|title|width|height|style]a[name|href|target|title|onclick]",
     	/*toolbar: "advimage media",*/
 		}
 	};
