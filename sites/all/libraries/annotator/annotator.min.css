@@ -398,9 +398,16 @@ display: none !important;
 
 .annotator-invert-y .annotator-resize
 {
-	top: auto;
+	/*top: auto;
 	bottom: 0;
-	background-position: 2px -165px;
+	background-position: 2px -165px;*/
+	display:none; /* Dave R: With Richtext enabled, there appear to be 2 resize options. We want the one that resizes the tinymce form  */
+}
+
+/* Dave R: Fixes conflice with theme css */
+.annotator-adder button:hover {
+    background: 0;
+    border: 0;
 }
 
 .annotator-invert-y.annotator-invert-x .annotator-resize { background-position: 0 -180px; }

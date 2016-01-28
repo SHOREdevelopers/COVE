@@ -40,6 +40,7 @@ Annotator.Plugin.RichText = (function(_super) {
 			toolbar_items_size: 'small',
 			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
     		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media rubric | code ",
+    		resize: "both",
 		}
 		
 	};
