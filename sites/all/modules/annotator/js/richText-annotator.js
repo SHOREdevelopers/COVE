@@ -35,12 +35,29 @@ Annotator.Plugin.RichText = (function(_super) {
 		tinymce:{
 			selector: "li.annotator-item textarea",
 			//auto_focus: "annotator-field-0",
-			plugins: "media image insertdatetime link code",
+			plugins: "media image imagetools insertdatetime link code jbimages preview table contextmenu template",
 			menubar: false,
 			toolbar_items_size: 'small',
 			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
-    		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media rubric | code ",
+    		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table| link image jbimages media | code preview",
+    		contextmenu: "link inserttable | cell row column deletetable",
     		resize: "both",
+    		relative_urls: false,
+    		image_advtab: true,
+    		plugin_preview_width: 310,
+    		plugin_preview_height: 450,
+    		media_filter_html: false,
+    		media_alt_source: false,
+   style_formats: [
+  {title: 'Image Left', selector: 'img', styles: {
+    'float' : 'left',
+    'margin': '0 7px 0 0px'
+  }},
+  {title: 'Image Right', selector: 'img', styles: {
+    'float' : 'right',
+    'margin': '0 0px 0 7px'
+  }}
+]
 		}
 		
 	};

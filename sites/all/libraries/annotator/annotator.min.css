@@ -410,6 +410,11 @@ display: none !important;
     border: 0;
 }
 
+.mce-container button:hover {
+    background: 0;
+    border: 0;
+}
+
 .annotator-invert-y.annotator-invert-x .annotator-resize { background-position: 0 -180px; }
 
 .annotator-notice
