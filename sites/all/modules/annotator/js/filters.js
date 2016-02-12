@@ -534,13 +534,13 @@
       this.i = $(select.interface);
       this.Controller = Controller;
       this.Model = Model;
-      this.i.append('<h2>Annotation Filters</h2>');
+      this.i.append('<h2>Filter Annotations</h2>');
       this.drawPager(this.Model.get('index'), this.Model.get('total'));
       this.i.append("<div id='" + select.button["default"] + "'></div>");
       this.drawButton(select.button["default"], 'none', 'user');
       this.drawButton(select.button["default"], 'mine', 'user');
       this.drawButton(select.button["default"], 'all', 'user');
-      this.drawCheckbox('highlights', 'Show Highlights');
+      //this.drawCheckbox('highlights', 'Show Highlights');
       _ref = this.Model.getFilterValues();
       for (filter in _ref) {
         values = _ref[filter];
@@ -548,7 +548,7 @@
       }
       this.i.append("<div id='" + select.button.reset + "'></div>");
       this.drawButton(select.button.reset, 'reset', 'reset');
-      this.i.append("<div id='" + select.filters.active + "'>Active Filters</div>");
+      this.i.append("<div id='" + select.filters.active + "'>Currently Active Filters</div>");
     };
 
     View.prototype.update = function() {};
@@ -615,13 +615,13 @@
       this.i.append($("<i id='prev' class='" + p["default"] + " " + p.arrow + " " + p.prev + "'/>")).on("click", 'i#prev', this.Controller.pagerClick);
       this.i.append($("<i id='next' class='" + p["default"] + " " + p.arrow + " " + p.next + "'/>")).on("click", 'i#next', this.Controller.pagerClick);
       this.i.append($("<i id='last' class='" + p["default"] + " " + p.arrow + " " + p.last + "'/>")).on("click", 'i#last', this.Controller.pagerClick);
-      this.i.append($("<span id='" + p.count + "' class='" + p["default"] + "'>").text(first + ' of ' + last));
+      //this.i.append($("<span id='" + p.count + "' class='" + p["default"] + "'>").text(first + ' of ' + last));
       $('.' + p["default"]).wrapAll("<div id='" + p.wrapper + "'></div>");
       $('.' + p.arrow).wrapAll("<div id='" + p.controls + "'></div>");
     };
 
     View.prototype.drawPagerCount = function() {
-      return $('#' + select.pager.count).text(this.Model.get('index') + ' of ' + this.Model.get('total'));
+      //return $('#' + select.pager.count).text(this.Model.get('total') + ' annotations on this page');
     };
 
     View.prototype.drawFilter = function(id, value) {

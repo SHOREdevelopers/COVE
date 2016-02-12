@@ -1,200 +1,190 @@
 section.region-sidebar-second {
-
-}
-
-section.region-sidebar-second {
-    position: relative;
-    font-size: 12px;
-    border: 1px solid rgb(200, 200, 200);
-    --moz-border-radius: 5px;
-    --webkit-border-radius: 5px;
-    border-radius: 5px;
-    padding: 2px;
-}
-
-
-section.region-sidebar-second div#block-block-1 {
-  position: fixed;
-}
-
-@media (max-width: 959px) {
-  #annotation-filters {
-    width: 20%;
-  }
-  #af-pager-controls {
-    font-size: xx-large;
-  }
-  i.af-pager {
-    padding-right: 10% !important;
-  }
-}
-
-@media (min-width: 960px) and (max-width: 1099px) {
-  #annotation-filters {
-    width: 15%;
-  }
-  #af-pager-controls {
-    font-size: large;
-  }
-  i.af-pager {
-  }
-}
-
-@media (max-height: 768px) {
-  #annotation-filters {
-    top: 20%;
-  }
-}
-
-@media (min-width: 1100px) {
-  #annotation-filters {
-    width: 13%;
-  }
+     background-color: white;
+     border: 1px solid whitesmoke;
+     margin-left: -20px ! important;
+     padding: 10px 17px 10px 20px;
+     width: 100% ! important;
+     margin-top: -55px;
 }
 
 section.region-sidebar-second h2 {
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+     margin-bottom: 5px;
+     margin-top: 5px;
+     text-align: center;
 }
 
 section.region-sidebar-second input[type="checkbox"] {
-  margin: 10% 5% 10% 20%;
+     margin: 0% 5% 0% 10%;
 }
 
 #af-active {
-  text-align: center;
+     text-align: center;
 }
 
 .region-sidebar-second div#block-block-1 {
-  background-color: transparent;
-  border: none;
+     background-color: transparent;
+     border: medium none;
 }
 
 .af-title {
-  margin-left: 50px;
-  font-weight: bold;
+     font-weight: bold;
+     margin-left: 50px;
 }
 
 .af-button {
-  cursor: pointer;
-  display: inline-block;
-  color: black;
-  padding: 0px;
-  margin: 0px 6px 15px 6px;
-  text-align: center;
-  font-variant: small-caps;
-  width: 25%;
-  background-repeat: repeat-x;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  background-color: #92a6c4;
-  background-image: linear-gradient(to bottom, #92a6c4, #39404a);
-  color: #FFFFFF;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  border-image: none;
-  border-radius: 4px 4px 4px 4px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
-  margin-bottom: 0;
-  text-align: center;
-  vertical-align: middle;
-  font-weight: normal;
-  font-size: 14px;
-  margin-right: 5px;
+     -moz-border-bottom-colors: none;
+     -moz-border-left-colors: none;
+     -moz-border-right-colors: none;
+     -moz-border-top-colors: none;
+     background-color: #92a6c4;
+     background-image: linear-gradient(to bottom, #92a6c4, #39404a);
+     background-repeat: repeat-x;
+     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+     border-image: none;
+     border-radius: 4px;
+     border-style: solid;
+     border-width: 1px;
+     color: #ffffff;
+     cursor: pointer;
+     display: inline-block;
+     margin: 0px 0px 0px 18px;
+     padding: 0px;
+     text-align: center;
+     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+     vertical-align: middle;
+     width: 25%;
 }
 
 .af-button:hover {
-  background-color: #39404a;
+     background-color: #39404a;
 }
 
 .af-button-active:hover {
-  background-color: #88b551;
-  color: #FFFFFF;
-  background-position: 0 -15px;
-  text-decoration: none;
-  transition: background-position 0.1s linear 0s;
+     background-color: #88b551;
+     background-position: 0px -15px;
+     color: #ffffff;
+     text-decoration: none;
+     transition: background-position 0.1s linear 0s;
 }
 
 .af-button-active {
-  background-color: #c4df2c;
-  background-image: linear-gradient(to bottom, #c4df2c, #88b551);
+     background-color: #c4df2c;
+     background-image: linear-gradient(to bottom, #c4df2c, #88b551);
 }
 
 #af-button-reset {
-  width: 90%;
-  margin-bottom: 5%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 5px;
+     width: 90%;
 }
 
 .af-annotation-hide {
-  background-color: transparent !important;
+     background-color: rgba(0, 0, 0, 0) ! important;
 }
 
 #af-button-user {
+    
 }
 
 .af-filter-active {
-  display: block;
-  text-transform: capitalize;
-  width: 100%;
-  padding-left: 10%;
-  cursor: pointer;
+     cursor: pointer;
+     display: block;
+     padding-left: 10%;
+     text-transform: capitalize;
+     width: 100%;
 }
 
 .af-wrapper {
-  white-space: nowrap;
-  width: 100%;
+     white-space: nowrap;
+     width: 100%;
 }
 
 #af-filter-active {
-  text-align: center;
-  font-weight: bold;
-  font-size: 12pt;
+     font-size: 12pt;
+     font-weight: bold;
+     text-align: center;
 }
 
 label.af-autocomplete-label {
-  display: inline-block !important;
-  text-align: right;
-  width: 35%;
-  padding-right: 5px;
-  font-weight: normal;
-  font-size: 9pt;
+     display: inline-block ! important;
+     font-size: 9pt;
+     font-weight: normal;
+     margin-left: -75px;
+     padding-right: 5px;
+     text-align: right;
+     width: 45%;
 }
 
-label.af-autocomplete-label:first-letter {
-  text-transform: capitalize;
+label.af-autocomplete-label::first-letter {
+     text-transform: capitalize;
 }
 
 input.af-autocomplete.ui-autocomplete-input {
-  display: inline-block;
-  width: 60%;
+     display: inline-block;
+     width: 60%;
 }
 
 #af-pager-wrapper {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 100%;
+  padding-bottom: 5px;
+}
+
+#af-pager-controls{
+     display: none ! important;
 }
 
 #af-pager-controls {
-  padding-left: 20px;
-  width: 100%;
+     padding-left: 20px;
+     width: 100%;
 }
 
 #af-pager-count {
-  text-align: center;
-  display: block;
+     display: block;
+     text-align: center;
 }
 
 i.af-pager {
-  cursor: pointer;
-  margin-right: 20%;
+     cursor: pointer;
+     margin-right: 20%;
+}
+
+.views-row .node-annotation .field-name-category {
+     border-left: medium none;
+     display: inline;
+     font-style: normal;
+     margin-left: 0em;
+     padding: 0em;
+}
+
+.views-row .node-annotation .field-name-category a {
+     color: #000000;
+}
+
+.views-row .node-annotation .field-name-category ul {
+     margin-left: 0px ! important;
+}
+
+.views-row .node-annotation {
+     margin: 0px;
+}
+
+.views-row .node-annotation .field-name-text {
+     margin-bottom: -30px ! important;
+}
+
+.views-row .node-annotation .field-name-quote .field-item {
+     font-style: italic;
+}
+
+.views-row .node-annotation .field-name-quote .field-item::before {
+     content: "\"";
+}
+
+.views-row .node-annotation .field-name-quote .field-item::after {
+     content: "\"";
 }
