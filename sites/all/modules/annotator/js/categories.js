@@ -114,8 +114,8 @@
     Categories.prototype.saveCategory = function(event, annotation) {
       annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
       if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
-        window.alert('You did not choose a category, so the default has been chosen.');
-        annotation.category = this.options.category[0];
+        window.alert('You did not choose an annotation category, so the default has been chosen.');
+        annotation.category = this.options.category[3]; //Amanda: 3 is the "interpretative" category on COVE; change as needed for other sites
       }
       if ((annotation.category == null) || !annotation.text) {
         annotation.category = this.options.emptyCategory;
