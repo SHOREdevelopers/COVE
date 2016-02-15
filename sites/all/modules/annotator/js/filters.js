@@ -548,7 +548,7 @@
       }
       this.i.append("<div id='" + select.button.reset + "'></div>");
       this.drawButton(select.button.reset, 'reset', 'reset');
-      this.i.append("<div id='" + select.filters.active + "'>Selected Filters</div>");
+      this.i.append("<div id='" + select.filters.active + "'>Selected Filters:</div>");
     };
 
     View.prototype.update = function() {};

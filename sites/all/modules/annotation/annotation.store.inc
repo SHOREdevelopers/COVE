@@ -149,7 +149,7 @@ function annotation_drupal_format($entity, $update = FALSE) {
         'target_id' => (int) $node->nid,
         'target_type' => 'node'
     );
-    $annotation->title = 'permalink'; // Amanda: changed, but only changes for future annotations saved
+    $annotation->title = 'edit annotation'; // Amanda: changed, but only changes for future annotations saved
   }
   else {
     $annotation = node_load($entity->id);
