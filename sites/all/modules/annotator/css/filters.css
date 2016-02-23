@@ -80,9 +80,11 @@ section.region-sidebar-second input[type="checkbox"] {
      width: 90%;
 }
 
+/* Amanda: removed because this was hiding highlights from anonymous users.
 .af-annotation-hide {
      background-color: rgba(0, 0, 0, 0) ! important;
 }
+*/
 
 #af-button-user {
     
