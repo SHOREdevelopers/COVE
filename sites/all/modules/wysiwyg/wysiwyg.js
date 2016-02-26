@@ -495,8 +495,8 @@ function updateInternalState(settings, context) {
           return getFormatInfo(this.activeFormat);
         }
         // 'activeFormat' and 'enabled' added below.
-      }
-    };
+      };
+    }
     for (var format in trigger) {
       if (format.indexOf('format') != 0 || fieldInfo.formats[format]) {
         continue;
