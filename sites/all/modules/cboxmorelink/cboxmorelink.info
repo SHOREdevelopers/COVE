@@ -1,5 +1,0 @@
-name = Colorbox More Link
-description = When trimming views fields and using a read more link, this tiny module opens the full node in a Colorbox
-core = 7.x
-package = Views
-dependencies[] = views

@@ -37,10 +37,10 @@
         }
         // Load Drupal plugins.
         for (var plugin in Drupal.settings.wysiwyg.plugins[format].drupal) {
-          Drupal.wysiwyg.editor.instance.tinymce.addPlugin(plugin, Drupal.settings.wysiwyg.plugins[format].drupal[plugin], Drupal.settings.wysiwyg.plugins.drupal[lugin])
+          Drupal.wysiwyg.editor.instance.tinymce.addPlugin(plugin, Drupal.settings.wysiwyg.plugins[format].drupal[plugin], Drupal.settings.wysiwyg.plugins.drupal[plugin]);
         }
       }
-    }
+   }
   };
 
   /**

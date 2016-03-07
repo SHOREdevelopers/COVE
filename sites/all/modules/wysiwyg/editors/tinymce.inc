@@ -41,11 +41,6 @@ function wysiwyg_tinymce_editor() {
     ),
     'proxy plugin settings callback' => '_wysiwyg_tinymce_proxy_plugin_settings',
     'versions' => array(
-      '2.1' => array(
-        'js files' => array('tinymce-2.js'),
-        'css files' => array('tinymce-2.css'),
-        'download url' => 'http://sourceforge.net/project/showfiles.php?group_id=103281&package_id=111430&release_id=557383',
-      ),
       // @todo Starting from 3.3, tiny_mce.js may support JS aggregation.
       '3.1' => array(
         'js files' => array('tinymce-3.js'),
@@ -77,8 +72,7 @@ function wysiwyg_tinymce_editor() {
         'libraries' => array(
           'min' => array(
             'title' => 'Minified',
-            // TODO
-            'files' => array('tinymce.js'),
+            'files' => array('tinymce.min.js'),
           ),
         ),
       ),
@@ -99,8 +93,7 @@ function wysiwyg_tinymce_editor() {
 function wysiwyg_tinymce_version($editor) {
   $script = $editor['library path'] . '/tiny_mce.js';
   if (!file_exists($script)) {
-    // todo
-    $script = $editor['library path'] . '/js/tinymce/tinymce.js';
+    $script = $editor['library path'] . '/js/tinymce/tinymce.min.js';
     if (!file_exists($script)) {
       return;
     }
@@ -130,19 +123,26 @@ function wysiwyg_tinymce_version($editor) {
  *   theme name.
  */
 function wysiwyg_tinymce_themes($editor, $profile) {
+  /*
   $themes = array();
   $dir = $editor['library path'] . '/themes/';
   if (is_dir($dir) && $dh = opendir($dir)) {
     while (($file = readdir($dh)) !== FALSE) {
       if (!in_array($file, array('.', '..', 'CVS', '.svn')) && is_dir($dir . $file)) {
-        // Witti: removed the $file key to return a plain array
-        $themes[] = $file;
+        $themes[$file] = $file;
       }
     }
     closedir($dh);
     asort($themes);
   }
   return $themes;
+  */
+  if (version_compare($editor['installed version'], '4', '>=')) {
+    return array('modern');
+  }
+  else {
+    return array('advanced', 'simple');
+  }
 }
 
 /**
@@ -156,21 +156,12 @@ function wysiwyg_tinymce_settings_form(&$form, &$form_state) {
   $settings = $profile->settings;
   $default_settings = array(
     'convert_fonts_to_spans' => TRUE,
-    'paste_auto_cleanup_on_paste' => TRUE,
-    'theme_advanced_styles' => '',
-    'theme_advanced_statusbar_location' => 'bottom',
-    'preformatted' => FALSE,
-    'remove_linebreaks' => TRUE,
-    'theme_advanced_resizing' => TRUE,
-    'theme_advanced_toolbar_align' => 'left',
-    'theme_advanced_toolbar_location' => 'top',
     'verify_html' => TRUE,
   );
 
   if (version_compare($version, '3.3', '>=')) {
     $default_settings['style_formats'] = '';
   }
-
   if (version_compare($version, '4', '<')) {
     $default_settings += array(
       'apply_source_formatting' => FALSE,
@@ -192,23 +183,12 @@ function wysiwyg_tinymce_settings_form(&$form, &$form_state) {
     );
   }
 
-  // Witti:
-  $settings += $default_settings;
-
   $form['output']['verify_html'] = array(
     '#type' => 'checkbox',
     '#title' => t('Verify HTML'),
     '#default_value' => $settings['verify_html'],
     '#return_value' => 1,
     '#description' => t('If enabled, potentially malicious code like <code>&lt;HEAD&gt;</code> tags will be removed from HTML contents.') . ' ' . t('Uses the <a href="@url">@setting</a> setting internally.', array('@setting' => 'verify_html', '@url' => url('http://www.tinymce.com/wiki.php/Configuration3x:preformatted'))),
-  );
-
-  $form['output']['preformatted'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Preformatted'),
-    '#default_value' => $settings['preformatted'],
-    '#return_value' => 1,
-    '#description' => t('If enabled, the editor will insert TAB characters on tab and preserve other whitespace characters just like a PRE element in HTML does.') . ' ' . t('Uses the <a href="@url">@setting</a> setting internally.', array('@setting' => 'preformatted', '@url' => url('http://www.tinymce.com/wiki.php/Configuration3x:preformatted'))),
   );
 
   $form['output']['convert_fonts_to_spans'] = array(
@@ -244,7 +224,7 @@ function wysiwyg_tinymce_settings_form(&$form, &$form_state) {
       '#options' => array('none' => t('Hide'), 'top' => t('Top'), 'bottom' => t('Bottom')),
       '#description' => t('Where to display the path to HTML elements (i.e. <code>body > table > tr > td</code>).') . ' ' . t('Uses the <a href="@url">@setting</a> setting internally.', array('@setting' => 'theme_advanced_statusbar_location', '@url' => url('http://www.tinymce.com/wiki.php/Configuration3x:theme_advanced_statusbar_location'))),
     );
- 
+
     $form['appearance']['theme_advanced_resizing'] = array(
       '#type' => 'checkbox',
       '#title' => t('Enable resizing button'),
@@ -327,7 +307,6 @@ function wysiwyg_tinymce_settings_form(&$form, &$form_state) {
       '#description' => t('Enable the advanced tab in the image dialog.'),
     );
   }
-
 
   $form['paste'] = array(
     '#type' => 'fieldset',
@@ -507,7 +486,6 @@ function wysiwyg_tinymce_settings($editor, $config, $theme) {
   if (!empty($config['style_formats'])) {
     $settings['style_formats'] = json_decode($config['style_formats']);
   }
-
   if (!empty($config['theme_advanced_styles'])) {
     $settings['theme_advanced_styles'] = implode(';', array_filter(explode("\n", str_replace("\r", '', $config['theme_advanced_styles']))));
   }
@@ -718,7 +696,7 @@ function _wysiwyg_tinymce_proxy_plugin_settings($editor, $profile, $plugins) {
 function _wysiwyg_tinymce_plugins($editor) {
   $plugins = array(
     'default' => array(
-      'path' => $editor['library path'] . '/themes/modern',
+      'path' => $editor['library path'] . '/themes/advanced',
       'buttons' => array(
         'bold' => t('Bold'), 'italic' => t('Italic'), 'underline' => t('Underline'),
         'strikethrough' => t('Strikethrough'),
@@ -955,7 +933,6 @@ function _wysiwyg_tinymce_plugins($editor) {
       ),
     );
   }
-
   if (version_compare($editor['installed version'], '4', '>=')) {
      $removed_plugins = $editor['removed plugins'];
     foreach ($removed_plugins as $plugin) {
@@ -1009,7 +986,7 @@ function _wysiwyg_tinymce_plugins($editor) {
     );
     $plugins['link'] = array(
       'path' => $editor['library path'] . '/plugins/link',
-      'buttons' => array('link' => t('Insert link'), 'unlink' => t('Remove ink')),
+      'buttons' => array('link' => t('Insert link'), 'unlink' => t('Remove link')),
       'url' => 'http://www.tinymce.com/wiki.php/Plugin:link',
       'internal' => TRUE,
       'load' => TRUE,
@@ -1041,7 +1018,7 @@ function _wysiwyg_tinymce_plugins($editor) {
       'selectall' => t('Select All'),
     );
   }
-
+  
   return $plugins;
 }
 
@@ -1078,3 +1055,4 @@ function _wysiwyg_tinymce_3_to_4_plugin_remap($plugin, $button) {
       return array($plugin, $button);
   }
 }
+
