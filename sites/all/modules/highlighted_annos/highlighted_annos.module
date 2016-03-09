@@ -44,12 +44,12 @@ function highlighted_annos_views_query_alter(&$view, &$query) {
 /**
  * Implements hook_views_pre_build() to fix .submit redirecting to another page
  */
-/*function highlighted_annos_views_pre_build(&$view) {
+function highlighted_annos_views_pre_build(&$view) {
   if ($view->name == 'annosidebar') {
     // Set the override path to the current page. This will redirect the back view to the current page when submitted in case AJAX fails.
     $view->override_path = $_GET['q'];
   }
-}*/
+}
 
 // Include JS file in module folder
 function highlighted_annos_theme() {
