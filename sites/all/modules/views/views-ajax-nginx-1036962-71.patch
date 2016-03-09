@@ -1,0 +1,13 @@
+diff --git a/includes/ajax.inc b/includes/ajax.inc
+index cd63360..8b882d9 100644
+--- a/includes/ajax.inc
++++ b/includes/ajax.inc
+@@ -53,7 +53,7 @@ function views_ajax() {
+       // Overwrite the destination.
+       // @see drupal_get_destination()
+       $origin_destination = $path;
+-      $query = drupal_http_build_query($_REQUEST);
++      $query = drupal_http_build_query(drupal_get_query_parameters());
+       if ($query != '') {
+         $origin_destination .= '?' . $query;
+       }
