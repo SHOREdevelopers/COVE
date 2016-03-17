@@ -110,3 +110,5 @@ function sky_process_region(&$vars) {
     $vars['inner_prefix'] = '<h2 class="menu-toggle"><a href="#">' . t('Menu') . '</a></h2>';
   }
 }
+
+drupal_add_js('/sites/all/themes/sky/openannosidebar.js');

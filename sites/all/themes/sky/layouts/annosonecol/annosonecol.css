@@ -1,0 +1,136 @@
+
+.panel-1col {
+/*  overflow: hidden;  */
+}
+
+.panel-2col .panel-col-first .inside {
+  margin: 0;
+}
+
+
+.panel-1col .panel-col {
+  width: 100%;
+}
+
+#panels-edit-display .panel-pane,
+#panels-edit-display .helperclass {
+  margin: .5em;
+}
+
+.panel-2col .panel-separator {
+  margin: 0 0 1em 0;
+}
+
+.right-float {
+float:right;
+width:33.333333%
+}
+.primary-content{
+	float:left;
+    position: relative;
+    width: 66.666666%;
+    transform: translate3d(0,0,0); /* no shifting of DIV to start */
+    transition: transform 0.5s; /* transition the transform property over 0.5s*/
+}
+
+.anno-container { /* Full screen nav for annotations */
+        width: 370px;
+    height: 100%;
+    top:0;
+    right: 0;
+    z-index: 100;
+    visibility: hidden;
+    position: fixed;
+    transform: translate3d(370px,0,0);
+    box-sizing: border-box;
+    background: rgba(128,128,128,0.5);
+    display: block;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.5s,visibility 0s 0.5s;
+    padding-left: 2px;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+/* Make room for the admin menu */
+.logged-in .anno-container {
+top: 30px;
+}
+
+input[type="checkbox"]#togglebox {
+    /* checkbox used to toggle menu state */
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden; /* hide checkbox, instead relying on labels to toggle it */
+}
+ 
+label#navtoggler{ /* Main label icon to toggle menu state */
+    z-index: 9;
+    /* top: 0; */
+    right: 15px;
+    position: fixed;
+    font-size: 8px;
+    width: 4em;
+    height: 2.5em;
+    top: 40px;
+    /* left: 0; */
+    text-indent: -2000px;
+    border: 0.6em solid white;
+    border-width: 0.6em 0;
+    cursor: pointer;
+    color: white;
+}
+ 
+label#navtoggler::before{
+    /* inner strip inside label */
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0.6em;
+    top: 50%;
+    margin-top: -0.3em;
+    left: 0;
+    background: white; /* stripe background color. Change to match border color of parent label above */
+    }
+    
+    input[type="checkbox"]#togglebox:checked ~ div.primary-content{
+   /* margin-left: 10px;  add some breathing room between menu and contentarea */
+    /*transform: translate3d(-370px,0,0);  shift contentarea 250px to the right */
+}
+ 
+input[type="checkbox"]#togglebox:checked ~ div.anno-container { /* nav state when corresponding checkbox is checked */
+    transform: translate3d(0,0,0); /* shift contentarea 250px to the right */
+    visibility: visible; /* this is for browsers that don't support CSS3 translate3d in showing the menu */
+    transition-delay: 0s; /* No delay for applying "visibility:visible" property when menu is going from "closed" to "open" */
+}
+
+.anno-container label#closex{ /* Large x close button inside nav */
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    text-indent: 2000px;
+    z-index: 10;
+    top: 5px;
+    left: 5px;
+}
+ 
+.anno-container label#closex::before, div label#closex::after{ /* render large cross inside close button */
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #586475;
+    top: 50%;
+    margin-top: -1px;
+    transform: rotate(-45deg);
+}
+ 
+.anno-container label#closex::after{ /* render large cross inside close button */
+    transform: rotate(-135deg);
+}

@@ -446,4 +446,5 @@ version = "7.x-3.0"
 core = "7.x"
 project = "sky"
 datestamp = "1395577162"
-
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+plugins[panels][layouts] = layouts
