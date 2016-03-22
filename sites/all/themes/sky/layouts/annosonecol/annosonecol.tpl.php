@@ -16,7 +16,7 @@
   <div class="panel-panel panel-col">
     <div>
     <input type="checkbox" id="togglebox"/>
-    <label for="togglebox" id="navtoggler">Annotations</label>
+    <label for="togglebox" id="navtoggler">‡</label>
     <div class="panel-2row-row clearfix anno-container">
     	<label for="togglebox" id="closex">Close</label>
     	<?php print $content['annos']; ?>

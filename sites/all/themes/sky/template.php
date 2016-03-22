@@ -111,4 +111,4 @@ function sky_process_region(&$vars) {
   }
 }
 
-drupal_add_js('/sites/all/themes/sky/openannosidebar.js');
+drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
