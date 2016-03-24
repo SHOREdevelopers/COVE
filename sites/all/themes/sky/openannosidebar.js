@@ -1,7 +1,7 @@
  // Wait for the page to load first
-        window.onload = function() {
+        window.addEventListener('click', function() {
         
-	var $lba= document.querySelectorAll('[id^="annotation-"]');
+	var $lba= document.querySelectorAll('.annotator-hl');
 	function selectAnnos() {
 		expandoffcanvasmenu('open'); return false;
         }
@@ -10,7 +10,7 @@
 	for(var i=0; i<$lba.length; i++) {
    		$lba[i].onclick = selectAnnos;
 		}
-    }
+   
 
 // Extra function to control menu state from anywhere on your page/ inside your script
 function expandoffcanvasmenu(action){ //param: 'open', 'close', or empty to toggle menu state
@@ -18,3 +18,4 @@ function expandoffcanvasmenu(action){ //param: 'open', 'close', or empty to togg
     var newstate = (action == 'open')? true : (action == 'close')? false : !togglebox.checked
     togglebox.checked = newstate
 }
+ });
