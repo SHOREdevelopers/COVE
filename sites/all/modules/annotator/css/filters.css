@@ -86,7 +86,7 @@ section.region-sidebar-second input[type="checkbox"] {
 }
 */
 
-/* Temporary partial fix to show highlighting for anon users. Filtering will not work correctly, however, because "af-annotation-hide is being added to all annotation hightlight spans for anon users.*/*/
+/* Temporary partial fix to show highlighting for anon users. Filtering will not work correctly, however, because "af-annotation-hide is being added to all annotation hightlight spans for anon users.
 .not-logged-in .af-annotation-hide {
 background-color: rgba(22,147,165,.2);
 }
@@ -95,6 +95,7 @@ background-color: rgba(22,147,165,.2);
 .logged-in .af-annotation-hide {
     background: transparent !important;
 }
+*/
 
 #af-button-user {
     
