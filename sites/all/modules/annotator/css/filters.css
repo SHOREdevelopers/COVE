@@ -188,3 +188,16 @@ i.af-pager {
 .views-row .node-annotation .field-name-quote .field-item::after {
      content: "\"";
 }
+
+/* DR: Overwriting the label of the filter input fields */
+
+label.af-autocomplete-label[for=tags]::before {
+    content: "Tags";
+}
+
+label.af-autocomplete-label[for=category]::before {
+    content: "Category";
+}
+label.af-autocomplete-label[for=user]::before {
+    content: "Annotator";
+}

@@ -161,9 +161,9 @@
         this.View.eraseAllFilters();
         this.View.checkboxCheck('highlights');
         this.View.checkboxEnable('highlights');
-        this.Model.filterAnnotations('user', this.Model.get('currentUser'));
-        this.View.drawFilter('user', this.Model.get('currentUser'));
-        type = select.button.mine;
+        //this.Model.filterAnnotations('user', this.Model.get('currentUser'));
+        //this.View.drawFilter('user', this.Model.get('currentUser'));
+        type = select.button.all;
       }
       this.View.drawActiveButton(type);
       this.View.drawAnnotations();
@@ -614,7 +614,7 @@
     View.prototype.drawAutocomplete = function(id, values) {
       var html,
         _this = this;
-      html = "<div class='" + select.autocomplete["default"] + "'><label class='" + select.autocomplete.label + "' for='" + id + "'>" + id + ": </label><input name='" + id + "' class='" + select.autocomplete["default"] + " " + select.autocomplete["default"] + "-" + id + "' /></div>";
+      html = "<div class='" + select.autocomplete["default"] + "'><label class='" + select.autocomplete.label + "' for='" + id + "'>" + '' + ": </label><input name='" + id + "' class='" + select.autocomplete["default"] + " " + select.autocomplete["default"] + "-" + id + "' /></div>";
       this.i.append(html);
       $("input[name=" + id + "]").autocomplete({
         source: values,
