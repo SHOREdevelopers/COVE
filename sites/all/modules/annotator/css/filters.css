@@ -90,12 +90,12 @@ section.region-sidebar-second input[type="checkbox"] {
 .not-logged-in .af-annotation-hide {
 background-color: rgba(22,147,165,.2);
 }
-
+*/
 
 .logged-in .af-annotation-hide {
     background: transparent !important;
 }
-*/
+
 
 #af-button-user {
     

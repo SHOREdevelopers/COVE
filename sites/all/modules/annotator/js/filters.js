@@ -8,7 +8,11 @@
   $ = jQuery;
 
   select = {
-    'interface': 'section.region-sidebar-second',
+    'interface': {
+      'setup': 'section.region-sidebar-second',
+      'wrapper': 'annotation-filters-wrapper',
+      'filters': 'annotation-filters'
+    },
     'annotation': 'annotation-',
     'hide': 'af-annotation-hide',
     'filters': {
@@ -105,16 +109,15 @@
         _ref = annotation.highlights;
         for (_j = 0, _len2 = _ref.length; _j < _len2; _j++) {
           highlight = _ref[_j];
-          $(highlight).first().attr('id', select.annotation + annotation.id);
           $(highlight).addClass(select.annotation + annotation.id);
         }
       }
       if (this.scrollToID != null) {
         this.View.scrollTo(this.Model.annotation(this.scrollToID));
       } else {
-        this.Model.filterAnnotations('user', this.Model.get('currentUser'));
-        this.View.drawFilter('user', this.Model.get('currentUser'));
-        this.View.drawActiveButton(select.button.mine);
+        //this.Model.filterAnnotations('user', this.Model.get('currentUser'));
+        //this.View.drawFilter('user', this.Model.get('currentUser'));
+        this.View.drawActiveButton(select.button.all);
       }
       return this.View.drawAnnotations();
     };
@@ -143,14 +146,16 @@
       this.Model.removeFilter('user');
       this.Model.removeFilter('none');
       if (type === select.button.mine) {
+        this.View.eraseFilter('user');
         this.Model.filterAnnotations('user', this.Model.get('currentUser'));
         this.View.drawFilter('user', this.Model.get('currentUser'));
       } else if (type === select.button.all) {
-        this.View.eraseFilter('user', this.Model.get('currentUser'));
+        this.View.eraseFilter('user');
       } else if (type === select.button.none) {
         this.Model.removeAllFilters();
         this.Model.filterAnnotations('none', 'none');
         this.View.eraseAllFilters();
+        this.View.drawFilter('user', 'None');
       } else if (type === select.button.reset) {
         this.Model.removeAllFilters();
         this.View.eraseAllFilters();
@@ -204,6 +209,7 @@
           index = total;
       }
       this.Model.set('index', index);
+      $(document).trigger('annotation-filters-paged', this.Model.annotation());
       this.View.drawPagerCount();
       return this.View.scrollTo(this.Model.annotation());
     };
@@ -267,7 +273,11 @@
                     _results3 = [];
                     for (_j = 0, _len2 = _ref.length; _j < _len2; _j++) {
                       tag = _ref[_j];
-                      _results3.push(this.addFilterValue(filter, tag));
+                      if (tag != null) {
+                        _results3.push(this.addFilterValue(filter, tag));
+                      } else {
+                        _results3.push(void 0);
+                      }
                     }
                     return _results3;
                   }).call(this));
@@ -529,12 +539,18 @@
     }
 
     View.prototype.setup = function(Controller, Model) {
-      var filter, values, _ref;
+      var filter, title, values, _ref;
       this.viewer = new Annotator.Viewer();
-      this.i = $(select.interface);
+      $(select.interface.setup).append("<div id='" + select.interface.wrapper + "'><div id='" + select.interface.filters + "'></div></div>");
+      this.i = $('#' + select.interface.wrapper);
       this.Controller = Controller;
       this.Model = Model;
-      this.i.append('<h2>Filter Annotations</h2>');
+      this.i.addClass('hidden');
+      title = $('<h2>Show Annotations</h2>');
+      title.click((function() {
+        return this.i.toggleClass('hidden');
+      }).bind(this));
+      this.i.append(title);
       this.drawPager(this.Model.get('index'), this.Model.get('total'));
       this.i.append("<div id='" + select.button["default"] + "'></div>");
       this.drawButton(select.button["default"], 'none', 'user');
@@ -548,7 +564,7 @@
       }
       this.i.append("<div id='" + select.button.reset + "'></div>");
       this.drawButton(select.button.reset, 'reset', 'reset');
-      this.i.append("<div id='" + select.filters.active + "'>Selected Filters:</div>");
+      this.i.append("<div id='" + select.filters.active + "'>Selected Filters</div>");
     };
 
     View.prototype.update = function() {};
@@ -590,7 +606,7 @@
     View.prototype.drawCheckbox = function(id, value) {
       var classes;
       classes = [select.checkbox["default"], select.checkbox[id]].join(' ');
-      return $(select.interface).append($("<input type='checkbox' name='" + id + "' checked>", {
+      return $('#' + select.interface.wrapper).append($("<input type='checkbox' name='" + id + "' checked>", {
         name: id
       }).on("click", this.Controller.checkboxToggle)).append("<span id='" + id + "' class='" + classes + "'>" + value + "</span>");
     };
@@ -615,13 +631,13 @@
       this.i.append($("<i id='prev' class='" + p["default"] + " " + p.arrow + " " + p.prev + "'/>")).on("click", 'i#prev', this.Controller.pagerClick);
       this.i.append($("<i id='next' class='" + p["default"] + " " + p.arrow + " " + p.next + "'/>")).on("click", 'i#next', this.Controller.pagerClick);
       this.i.append($("<i id='last' class='" + p["default"] + " " + p.arrow + " " + p.last + "'/>")).on("click", 'i#last', this.Controller.pagerClick);
-      //this.i.append($("<span id='" + p.count + "' class='" + p["default"] + "'>").text(first + ' of ' + last));
+      this.i.append($("<span id='" + p.count + "' class='" + p["default"] + "'>").text(first + ' of ' + last));
       $('.' + p["default"]).wrapAll("<div id='" + p.wrapper + "'></div>");
       $('.' + p.arrow).wrapAll("<div id='" + p.controls + "'></div>");
     };
 
     View.prototype.drawPagerCount = function() {
-      //return $('#' + select.pager.count).text(this.Model.get('total') + ' annotations on this page');
+      return $('#' + select.pager.count).text(this.Model.get('index') + ' of ' + this.Model.get('total'));
     };
 
     View.prototype.drawFilter = function(id, value) {
@@ -640,30 +656,32 @@
     };
 
     View.prototype.eraseFilter = function(id, value) {
-      $('#' + id + '.' + select.filters.active + ("[data-value='" + value + "'")).remove();
+      if (value != null) {
+        $('#' + id + '.' + select.filters.active + '[data-value="' + value + '"]').remove();
+      } else {
+        $('#' + id + '.' + select.filters.active).remove();
+      }
       if (id === 'user') {
         return $('.' + select.button.active + '.' + select.button.user).removeClass(select.button.active);
       }
     };
 
     View.prototype.showAnnotations = function(ids) {
-      var id, _i, _len, _results;
-      _results = [];
+      var id, _i, _len;
       for (_i = 0, _len = ids.length; _i < _len; _i++) {
         id = ids[_i];
-        _results.push($('.' + select.annotation + id).removeClass(select.hide));
+        $('.' + select.annotation + id).removeClass(select.hide);
       }
-      return _results;
+      return $(document).trigger('annotation-filters-changed');
     };
 
     View.prototype.hideAnnotations = function(ids) {
-      var id, _i, _len, _results;
-      _results = [];
+      var id, _i, _len;
       for (_i = 0, _len = ids.length; _i < _len; _i++) {
         id = ids[_i];
-        _results.push($('.' + select.annotation + id).addClass(select.hide));
+        $('.' + select.annotation + id).addClass(select.hide);
       }
-      return _results;
+      return $(document).trigger('annotation-filters-changed');
     };
 
     View.prototype.drawAnnotations = function() {
@@ -697,6 +715,7 @@
     View.prototype.scrollTo = function(annotation) {
       var highlight;
       if (!annotation) return;
+      $(document).trigger('annotation-filters-paged', annotation);
       highlight = $(annotation.highlights[0]);
       $("html, body").animate({
         scrollTop: highlight.offset().top - 500

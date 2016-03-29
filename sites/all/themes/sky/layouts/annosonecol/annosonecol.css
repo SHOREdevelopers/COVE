@@ -29,8 +29,8 @@ width:33.333333%
 	float:left;
     position: relative;
     width: 66.666666%;
-    transform: translate3d(0,0,0); /* no shifting of DIV to start */
-    transition: transform 0.5s; /* transition the transform property over 0.5s*/
+    /*transform: translate3d(0,0,0);*/ /* no shifting of DIV to start */
+    /*transition: transform 0.5s;*/ /* transition the transform property over 0.5s*/
 }
 
 .anno-container { /* Full screen nav for annotations */
@@ -41,7 +41,7 @@ width:33.333333%
     z-index: 100;
     visibility: hidden;
     position: fixed;
-    transform: translate3d(370px,0,0);
+    /*transform: translate3d(370px,0,0);*/
     box-sizing: border-box;
     background: rgba(128,128,128,0.5);
     display: block;
@@ -49,7 +49,7 @@ width:33.333333%
     -webkit-overflow-scrolling: touch;
     transition: transform 0.5s,visibility 0s 0.5s;
     padding-left: 2px;
-   /* -webkit-transform: translate3d(0,0,0);*/
+   -webkit-transform: translate3d(0,0,0);
 }
 
 /* Make room for the admin menu */
@@ -102,6 +102,7 @@ label#navtoggler::before{
  
 input[type="checkbox"]#togglebox:checked ~ div.anno-container { /* nav state when corresponding checkbox is checked */
     transform: translate3d(0,0,0); /* shift contentarea 250px to the right */
+    -webkit-transform: translate3d(0,0,0);
     visibility: visible; /* this is for browsers that don't support CSS3 translate3d in showing the menu */
     transition-delay: 0s; /* No delay for applying "visibility:visible" property when menu is going from "closed" to "open" */
 }
