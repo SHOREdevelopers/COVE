@@ -35,11 +35,11 @@ Annotator.Plugin.RichText = (function(_super) {
 		tinymce:{
 			selector: "li.annotator-item textarea",
 			//auto_focus: "annotator-field-0",
-			plugins: "media image imagetools insertdatetime link code jbimages preview table contextmenu template",
+			plugins: "media image imagetools insertdatetime link code jbimages preview table contextmenu template charmap",
 			menubar: false,
 			toolbar_items_size: 'small',
 			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
-    		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table| link image jbimages media | code preview",
+    		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table| link image jbimages media | charmap code preview",
     		contextmenu: "link inserttable | cell row column deletetable",
     		resize: "both",
     		relative_urls: false,
