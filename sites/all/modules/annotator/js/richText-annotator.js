@@ -48,6 +48,7 @@ Annotator.Plugin.RichText = (function(_super) {
     		plugin_preview_height: 450,
     		media_filter_html: false,
     		media_alt_source: false,
+			invalid_styles: 'color font-family mso-fareast-font-family mso-bidi-font-family',
    style_formats: [
   {title: 'Image Left', selector: 'img', styles: {
     'float' : 'left',
