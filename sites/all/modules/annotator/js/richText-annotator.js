@@ -35,7 +35,7 @@ Annotator.Plugin.RichText = (function(_super) {
 		tinymce:{
 			selector: "li.annotator-item textarea",
 			//auto_focus: "annotator-field-0",
-			plugins: "media image imagetools insertdatetime link code jbimages preview table contextmenu template charmap",
+			plugins: "media image imagetools insertdatetime link code jbimages preview table contextmenu template charmap paste",
 			menubar: false,
 			toolbar_items_size: 'small',
 			extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
