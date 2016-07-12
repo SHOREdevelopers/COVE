@@ -1,0 +1,111 @@
+.sf-menu.sf-style-cove {
+  float: left;
+  margin-bottom: 1em;
+  padding: 0;
+}
+.sf-menu.sf-style-cove.sf-navbar {
+  width: 100%;
+}
+.sf-menu.sf-style-cove ul {
+  padding-left: 0;
+}
+.sf-menu.sf-style-cove a {
+  color: white;
+  font-weight: bold;
+  padding: 0.75em 1em;
+text-transform: uppercase;
+}
+.sf-menu.sf-style-cove a.sf-with-ul {
+  padding-right: 2.25em;
+}
+.sf-menu.sf-style-cove.rtl a.sf-with-ul {
+  padding-left: 2.25em;
+  padding-right: 1em;
+}
+.sf-menu.sf-style-cove.sf-navbar a {
+  border: 0;
+}
+.sf-menu.sf-style-cove span.sf-description {
+  color: white;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  margin: 5px 0 0 5px;
+  padding: 0;
+}
+.sf-menu.sf-style-cove li,
+.sf-menu.sf-style-cove.sf-navbar {
+  background: #7a7066;
+}
+.sf-menu.sf-style-cove li li {
+  background: #7a7066;
+}
+.sf-menu.sf-style-cove li li li {
+  background: #7a7066;
+}
+.sf-menu.sf-style-cove li:hover,
+.sf-menu.sf-style-cove li.sfHover,
+.sf-menu.sf-style-cove li.active a,
+.sf-menu.sf-style-cove a:focus,
+.sf-menu.sf-style-cove a:hover,
+.sf-menu.sf-style-cove a:active,
+.sf-menu.sf-style-cove.sf-navbar li li {
+  background: #279eb2;
+  color: #ffffff;
+}
+
+.sf-menu.sf-style-cove a.active {
+    background-color: #279eb2;
+}
+.sf-menu.sf-style-cove.sf-navbar li ul {
+  background-color: #52250f;
+}
+.sf-menu.sf-style-cove.sf-navbar li ul li ul {
+  background-color: transparent;
+}
+.sf-menu.sf-style-cove ul.sf-megamenu li.sf-megamenu-wrapper ol,
+.sf-menu.sf-style-cove ul.sf-megamenu li.sf-megamenu-wrapper ol li {
+  margin: 0;
+  padding: 0;
+}
+.sf-menu.sf-style-cove ul.sf-megamenu li.sf-megamenu-wrapper a.menuparent {
+  font-weight: bold;
+}
+.sf-menu.sf-style-cove ul.sf-megamenu li.sf-megamenu-wrapper ol li.sf-megamenu-column {
+  display: inline;
+  float: left;
+  width: 12em;
+}
+.sf-menu.sf-style-cove.rtl ul.sf-megamenu li.sf-megamenu-wrapper ol li.sf-megamenu-column {
+  float: right;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-1 ul.sf-megamenu {
+  width: 12em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-2 ul.sf-megamenu {
+  width: 24em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-3 ul.sf-megamenu {
+  width: 36em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-4 ul.sf-megamenu {
+  width: 48em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-5 ul.sf-megamenu {
+  width: 60em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-6 ul.sf-megamenu {
+  width: 72em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-7 ul.sf-megamenu {
+  width: 84em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-8 ul.sf-megamenu {
+  width: 96em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-9 ul.sf-megamenu {
+  width: 108em;
+}
+.sf-menu.sf-style-cove li.sf-parent-children-10 ul.sf-megamenu {
+  width: 120em;
+}
