@@ -35,7 +35,7 @@ dpm($view); //verifies exposed_raw_input is in format 66,67
       $query->where[1]['conditions'][1] = array(
         'field' => 'node.nid',
         'value' => $nids,
-        'operator' => ‘=’,  // Views UI is set to "is equal to"
+        'operator' => 'IN',  // Views UI is set to "is equal to"
       );
     }
   }
