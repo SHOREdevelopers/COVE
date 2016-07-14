@@ -38,7 +38,7 @@ width:33.333333%
     height: 100%;
     top:0;
     right: 0;
-    z-index: 100;
+    z-index: 500;
     visibility: hidden;
     position: fixed;
     /*transform: translate3d(370px,0,0);*/
