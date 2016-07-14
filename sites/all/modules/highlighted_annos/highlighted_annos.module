@@ -26,7 +26,7 @@ function highlighted_annos_form_views_exposed_form_alter(&$form, &$form_state, $
 }
 
 function highlighted_annos_views_query_alter(&$view, &$query) {
-//dpm($view); //verifies exposed_raw_input is in format 66,67
+dpm($view); //verifies exposed_raw_input is in format 66,67
   if ($view->current_display == 'annosidebar' && $view->exposed_raw_input['nid_1']) {
     // grab the value from our filter and convert it into an array
     $nids = explode(',',$view->exposed_raw_input['nid_1']);
@@ -35,7 +35,7 @@ function highlighted_annos_views_query_alter(&$view, &$query) {
       $query->where[1]['conditions'][1] = array(
         'field' => 'node.nid',
         'value' => $nids,
-        'operator' => ‘IN’,  // Views UI is set to "is equal to"
+        'operator' => ‘=’,  // Views UI is set to "is equal to"
       );
     }
   }
