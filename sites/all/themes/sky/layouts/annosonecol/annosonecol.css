@@ -38,7 +38,7 @@ width:33.333333%
     height: 100%;
     top:0;
     right: 0;
-    z-index: 500;
+    z-index: 100;
     visibility: hidden;
     position: fixed;
     /*transform: translate3d(370px,0,0);*/
@@ -105,6 +105,7 @@ input[type="checkbox"]#togglebox:checked ~ div.anno-container { /* nav state whe
     -webkit-transform: translate3d(0,0,0);
     visibility: visible; /* this is for browsers that don't support CSS3 translate3d in showing the menu */
     transition-delay: 0s; /* No delay for applying "visibility:visible" property when menu is going from "closed" to "open" */
+    z-index:500;
 }
 
 .anno-container label#closex{ /* Large x close button inside nav */
