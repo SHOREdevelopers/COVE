@@ -1,0 +1,35 @@
+diff --git a/addanother.module b/addanother.module
+index f293ce7..ae577d1 100644
+--- a/addanother.module
++++ b/addanother.module
+@@ -163,6 +163,12 @@ function addanother_form_node_type_form_alter(&$form, &$form_state) {
+       '#default_value' => variable_get('addanother_tab_edit_' . $form['#node_type']->type, variable_get('addanother_default_tab_edit', TRUE)),
+       '#description' => t('Enable this checkbox if you want to also show a "Add another" tab on node edit pages of this type. This option does nothing if the Add Another tab is disabled.'),
+     );
++    $form['addanother_display']['addanother_keep_query'] = array(
++      '#type' => 'checkbox',
++      '#title' => t('Keep URL query params'),
++      '#default_value' => variable_get('addanother_keep_query_' . $form['#node_type']->type, FALSE),
++      '#description' => t('Enable this checkbox if you want to keep the query parameters while using the "Save and add another" button. Useful if you already have a destination set.'),
++    );
+   }
+ }
+ 
+@@ -199,7 +205,16 @@ function addanother_node_form_submit($form, &$form_state) {
+     _addanother_quelch_message($node);
+     theme('addanother_button_message', array('nid' => $node->nid));
+ 
+-    $form_state['redirect'] = _addanother_node_add_path($node);
++    $node_type = $form['type']['#value'];
++    
++    if (variable_get('addanother_keep_query_' . $node_type, FALSE)) {
++      $form['actions']['submit']['#submit'][] = 'addanother_node_form_message_submit';
++      $_GET['destination'] = url(_addanother_node_add_path($node), array('query' => $_GET));
++    } 
++    else {
++      unset($_GET['destination']);
++      $form_state['redirect'] = _addanother_node_add_path($node);
++    }
+   }
+ }
+ 

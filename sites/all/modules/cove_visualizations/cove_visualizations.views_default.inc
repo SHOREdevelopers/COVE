@@ -181,7 +181,6 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'chart';
   $handler->display->display_options['style_options']['type'] = 'line';
-  $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '60';
   $handler->display->display_options['style_options']['label_field'] = 'created';
   $handler->display->display_options['style_options']['data_fields'] = array(
     'nid' => 'nid',
@@ -191,6 +190,7 @@ function cove_visualizations_views_default_views() {
     'created' => '#2f7ed8',
     'nid' => '#0d233a',
   );
+  $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '60';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -339,8 +339,6 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'chart';
   $handler->display->display_options['style_options']['type'] = 'column';
-  $handler->display->display_options['style_options']['legend_position'] = '';
-  $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '60';
   $handler->display->display_options['style_options']['label_field'] = 'category';
   $handler->display->display_options['style_options']['data_fields'] = array(
     'nid' => 'nid',
@@ -350,6 +348,8 @@ function cove_visualizations_views_default_views() {
     'nid' => '#0d233a',
     'category' => '#0d233a',
   );
+  $handler->display->display_options['style_options']['legend_position'] = '';
+  $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '60';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['annotation_reference_target_id']['id'] = 'annotation_reference_target_id';
   $handler->display->display_options['relationships']['annotation_reference_target_id']['table'] = 'field_data_annotation_reference';
@@ -861,14 +861,9 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'timelinejs';
-  $handler->display->display_options['style_options']['timeline_theme']['height'] = '700';
-  $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_index_banner';
-  $handler->display->display_options['style_options']['timeline_fields']['date'] = 'field_original_publication_date';
-  $handler->display->display_options['style_options']['timeline_fields']['bodytext'] = 'body';
-  $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
   $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = '1';
-  $handler->display->display_options['style_options']['timeline_config']['font'] = 'PTSerif-PTSans';
-  $handler->display->display_options['style_options']['timeline_config']['debug'] = '1';
+  $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_index_banner';
+  $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';

@@ -4,4 +4,4 @@
  * Views template to output TimelineJS wrapper markup.
  */
 ?>
-<div id="<?php print $timelinejs_id ?>" class="timelinejs"></div>
+<div<?php print $div_attributes; ?>></div>

@@ -60,9 +60,10 @@ function cove_visualizations_default_page_manager_pages() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 1,
-          1 => 'main-row',
-          2 => 2,
+          0 => 3,
+          1 => 1,
+          2 => 'main-row',
+          3 => 2,
         ),
         'parent' => 'canvas',
       ),
@@ -141,6 +142,25 @@ function cove_visualizations_default_page_manager_pages() {
         'class' => 'bottom',
         'hide_empty' => 0,
       ),
+      3 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'main_',
+        ),
+        'parent' => 'main',
+        'class' => 'page-header',
+        'hide_empty' => 0,
+      ),
+      'main_' => array(
+        'type' => 'region',
+        'title' => 'Main',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '3',
+        'class' => '',
+        'hide_empty' => 0,
+      ),
     ),
   );
   $display->panel_settings = array(
@@ -151,6 +171,7 @@ function cove_visualizations_default_page_manager_pages() {
       'top_right' => NULL,
       'mid_right' => NULL,
       'bottom' => NULL,
+      'main_' => NULL,
     ),
   );
   $display->cache = array();
@@ -298,6 +319,69 @@ function cove_visualizations_default_page_manager_pages() {
     $pane->uuid = '4d504eaa-14e3-4db5-9887-43cb837eb09f';
     $display->content['new-4d504eaa-14e3-4db5-9887-43cb837eb09f'] = $pane;
     $display->panels['center'][0] = 'new-4d504eaa-14e3-4db5-9887-43cb837eb09f';
+    $pane = new stdClass();
+    $pane->pid = 'new-330aa26a-9c6a-4b85-b2c5-60de1556c605';
+    $pane->panel = 'main_';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => 'The Annotation Dashboard offers visualizations of the annotation work happening at the COVE.',
+      'format' => 'unfiltered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'descbig',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '330aa26a-9c6a-4b85-b2c5-60de1556c605';
+    $display->content['new-330aa26a-9c6a-4b85-b2c5-60de1556c605'] = $pane;
+    $display->panels['main_'][0] = 'new-330aa26a-9c6a-4b85-b2c5-60de1556c605';
+    $pane = new stdClass();
+    $pane->pid = 'new-899a461c-aa65-45f0-9359-ade1d6be5e49';
+    $pane->panel = 'main_';
+    $pane->type = 'views';
+    $pane->subtype = 'annotation_counter';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block',
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '899a461c-aa65-45f0-9359-ade1d6be5e49';
+    $display->content['new-899a461c-aa65-45f0-9359-ade1d6be5e49'] = $pane;
+    $display->panels['main_'][1] = 'new-899a461c-aa65-45f0-9359-ade1d6be5e49';
     $pane = new stdClass();
     $pane->pid = 'new-3e7b4e60-3234-4f07-aec5-4ab160ff32ec';
     $pane->panel = 'mid_right';

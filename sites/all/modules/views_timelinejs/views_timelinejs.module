@@ -15,203 +15,248 @@ function views_timelinejs_views_api() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements hook_library().
  */
-function views_timelinejs_theme() {
-  $base = array('file' => 'theme/views_timelinejs.theme.inc');
-  return array(
-    'views_timelinejs_nodata' => $base + array(),
-    'views_timelinejs_link_to_entity' => $base + array(
-      'arguments' => array(
-        'uri' => NULL,
-        'link_text' => NULL,
-      ),
-    ),
-  );
-}
-
-/**
- * Implements hook_libraries_info().
- */
-function views_timelinejs_libraries_info() {
+function views_timelinejs_library() {
+  global $base_url;
   $libraries = array();
 
-  $libraries['timeline'] = array(
-    'name' => 'timeline',
-    'vendor url' => 'http://timeline.verite.co',
-    'download url' => 'http://timeline.verite.co',
-    'version arguments' => array(
-      'file' => 'build/js/timeline.js',
-      'pattern' => '/TimelineJS - ver. ([\d.]+)/i',
-      'lines' => 5,
-    ),
-    'files' => array(
-      'js' => array(
-        'build/js/storyjs-embed.js',
+  $libraries['timelinejs.cdn'] = array(
+    'title' => 'TimelineJS CDN',
+    'website' => 'https://timeline.knightlab.com',
+    'version' => '3.3.15',
+    'js' => array(
+      'timeline.js' => array(
+        'data' => 'https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js',
+        'type' => 'external',
+        'group' => JS_LIBRARY,
       ),
-      'css' => array(
-        'build/css/timeline.css',
+    ),
+    'css' => array(
+      'timeline.css' => array(
+        'data' => 'https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css',
+        'type' => 'external',
+        'group' => 200,
       ),
     ),
   );
+  $libraries['timelinejs.local'] = array(
+    'title' => 'TimelineJS',
+    'website' => 'https://timeline.knightlab.com',
+    'version' => '3.3.15',
+    'js' => array(
+      'timeline.js' => array(
+        'data' => $base_url . '/sites/all/libraries/TimelineJS3/compiled/js/timeline.js',
+        'type' => 'external',
+        'group' => JS_LIBRARY,
+      ),
+    ),
+    'css' => array(
+      'timeline.css' => array(
+        'data' => $base_url . '/sites/all/libraries/TimelineJS3/compiled/css/timeline.css',
+        'type' => 'external',
+        'group' => 200,
+      ),
+    ),
+  );
+
+  // Create a library for each TimelineJS3 alternate font set.
+  foreach (array_keys(_views_timelinejs_list_font_sets()) as $set) {
+    $libraries['timelinejs.' . $set . '.cdn'] = array(
+      'title' => 'TimelineJS CDN ' . $set,
+      'website' => 'https://timeline.knightlab.com',
+      'version' => '3.3.15',
+      'css' => array(
+        'font.' . $set . '.css' => array(
+          'data' => 'https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.' . $set . '.css',
+          'type' => 'external',
+          'group' => 201,
+        ),
+      ),
+    );
+    $libraries['timelinejs.' . $set . '.local'] = array(
+      'title' => 'TimelineJS ' . $set,
+      'website' => 'https://timeline.knightlab.com',
+      'version' => '3.3.15',
+      'css' => array(
+        'font.' . $set . '.css' => array(
+          'data' => $base_url . '/sites/all/libraries/TimelineJS3/compiled/css/fonts/font.' . $set . '.css',
+          'type' => 'external',
+          'group' => 201,
+        ),
+      ),
+    );
+  }
 
   return $libraries;
 }
 
 /**
- * Implements hook_ctools_plugin_directory().
+ * Returns an array of font set options that are supported by TimelineJS3.
  *
- * Plugin integration for date sources, image sources and timeline themes.
+ * @return array
+ *   An array of font set names, keyed by the name section of the set's CSS
+ *   filename, i.e. 'font.set-name.css'.
  */
-function views_timelinejs_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'views_timelinejs') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-/**
- * Implements hook_ctools_plugin_type().
- */
-function views_timelinejs_ctools_plugin_type() {
+function _views_timelinejs_list_font_sets() {
   return array(
-    'date_sources' => array(),
-    'text_sources' => array(),
-    'media_sources' => array(),
-    'tag_sources' => array(),
+    'abril-droidsans' => 'Abril Fatface & Droid Sans',
+    'amatic-andika' => 'Amatic & Andika',
+    'bevan-pontanosans' => 'Bevan & Pontano Sans',
+    'bitter-raleway' => 'Bitter & Raleway',
+    'clicker-garamond' => 'Clicker & Garamond',
+    'dancing-ledger' => 'Dancing & Ledger',
+    'default' => 'Default',
+    'fjalla-average' => 'Fjalla & Average',
+    'georgia-helvetica' => 'Georgia & Helvetica',
+    'knightlab' => 'Knight Lab',
+    'lustria-lato' => 'Lustria Lato',
+    'medula-lato' => 'Medula One & Lato',
+    'oldstandard' => 'Old Standard',
+    'opensans-gentiumbook' => 'Open Sans & Gentium Book Basic',
+    'playfair-faunaone' => 'Playfair & Fauna One',
+    'playfair' => 'Playfair SC & Playfair',
+    'pt' => 'PT Sans / PT Serif / PT Sans Narrow',
+    'roboto-megrim' => 'Roboto Slab & Megrim',
+    'rufina-sintony' => 'Rufina & Sintony',
+    'ubuntu' => 'Ubuntu',
+    'unicaone-vollkorn' => 'Unica One & Vollkorn',
   );
 }
 
 /**
- * Returns the date conversion callback function name of a plugin.
+ * Returns an array of language options that are supported by TimelineJS3.
+ *
+ * @return array
+ *   An array of language names, keyed by language code.
  */
-function views_timelinejs_get_callback($handler_name, $field_type, $plugin_type) {
-  ctools_include('plugins');
-  $plugins = ctools_get_plugins('views_timelinejs', $plugin_type);
-  foreach ($plugins as $plugin) {
-    if ($plugin['handler_name'] == $handler_name && $plugin['field_type'] == $field_type) {
-      return ctools_plugin_get_function($plugin, 'callback');
-    }
-  }
+function _views_timelinejs_list_languages() {
+  return array(
+    'af' => t('Afrikaans'),
+    'ar' => t('Arabic'),
+    'hy' => t('Armenian'),
+    'eu' => t('Basque'),
+    'be' => t('Belarusian'),
+    'bg' => t('Bulgarian'),
+    'ca' => t('Catalan'),
+    'zh-cn' => t('Chinese'),
+    'hr' => t('Croatian / Hrvatski'),
+    'cz' => t('Czech'),
+    'da' => t('Danish'),
+    'nl' => t('Dutch'),
+    'en' => t('English'),
+    'en-24hr' => t('English (24-hour time)'),
+    'en-week' => t('English (display weeks)'),
+    'eo' => t('Esperanto'),
+    'et' => t('Estonian'),
+    'fo' => t('Faroese'),
+    'fa' => t('Farsi'),
+    'fi' => t('Finnish'),
+    'fr' => t('French'),
+    'fy' => t('Frisian'),
+    'gl' => t('Galician'),
+    'ka' => t('Georgian'),
+    'de' => t('German / Deutsch'),
+    'el' => t('Greek'),
+    'he' => t('Hebrew'),
+    'hi' => t('Hindi'),
+    'hu' => t('Hungarian'),
+    'is' => t('Icelandic'),
+    'id' => t('Indonesian'),
+    'ga' => t('Irish'),
+    'it' => t('Italian'),
+    'ja' => t('Japanese'),
+    'ko' => t('Korean'),
+    'lv' => t('Latvian'),
+    'lt' => t('Lithuanian'),
+    'lb' => t('Luxembourgish'),
+    'ms' => t('Malay'),
+    'ne' => t('Nepali'),
+    'no' => t('Norwegian'),
+    'pl' => t('Polish'),
+    'pt' => t('Portuguese'),
+    'pt-br' => t('Portuguese (Brazilian)'),
+    'ro' => t('Romanian'),
+    'rm' => t('Romansh'),
+    'ru' => t('Russian'),
+    'sr-cy' => t('Serbian - Cyrillic'),
+    'sr' => t('Serbian - Latin'),
+    'si' => t('Sinhalese'),
+    'sk' => t('Slovak'),
+    'sl' => t('Slovenian'),
+    'es' => t('Spanish'),
+    'sv' => t('Swedish'),
+    'tl' => t('Tagalog'),
+    'ta' => t('Tamil'),
+    'zh-tw' => t('Taiwanese'),
+    'te' => t('Telugu'),
+    'th' => t('Thai'),
+    'tr' => t('Turkish'),
+    'uk' => t('Ukrainian'),
+    'ur' => t('Urdu'),
+  );
 }
 
 /**
- * Returns the currently logged-in user's timezone.
+ * Returns an array of Drupal language codes mapped to TimelineJS codes.
  *
- * @return string
- *   The name of the currently logged-in user's timezone.
+ * @return array
+ *   An array of language codes supported by TimelineJS, keyed by the equivalent
+ *   Drupal language code.
  */
-function views_timelinejs_get_timezone() {
-  global $user;
-  if (variable_get('configurable_timezones', 1) && $user->uid && drupal_strlen($user->timezone)) {
-    return $user->timezone;
-  }
-  else {
-    return variable_get('date_default_timezone', NULL);
-  }
+function _views_timelinejs_language_map() {
+  return array(
+    'cs' => 'cz',
+    'nb' => 'no',
+    'nn' => 'no',
+    'pt-pt' => 'pt',
+    'zh-hans' => 'zh-cn',
+    'zh-hant' => 'zh-cn',
+  );
 }
 
 /**
- * Converts a given time and date into CSV format with Drupals timezone.
- *
- * @param string $value
- *   The date to be converted.
- * @param string $date_format
- *   The format of the date.
- * @param string $timezone
- *   The timezone of the date.
- * @param string $db_timezone
- *   The Drupal timezone.
- *
- * @return string
- *   CSV formatted date.
+ * Implements hook_menu().
  */
-function views_timelinejs_convert_to_csv($value, $date_format, $timezone, $db_timezone, $granularity) {
-  // To avoid errors, if value is empty set it to unix epoch.
-  if (empty($value)) {
-    return "FALSE";
-  }
+function views_timelinejs_menu() {
+  $items['admin/config/development/views_timelinejs'] = array(
+    'title' => 'Views TimelineJS',
+    'description' => 'Configure settings related to the TimelineJS library.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('views_timelinejs_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
 
-  $timezone = new DateTimezone($timezone);
-  $db_timezone = new DateTimezone($db_timezone);
-  switch ($date_format) {
-    case 'datestamp':
-    case 'timestamp':
-      $date = new DateObject();
-      $date->setTimezone($db_timezone);
-      $date->setTimestamp($value);
-      break;
-
-    default:
-      $date = new DateObject($value, $db_timezone);
-      break;
-  }
-
-  $format = array();
-
-  if (empty($granularity)) {
-    $format = array('Y,m,d,H,i');
-  }
-  else {
-    if (is_string($granularity['year']) && $granularity['year'] == 'year') {
-      $format[] = 'Y';
-    }
-    if (is_string($granularity['month']) && $granularity['month'] == 'month') {
-      $format[] = 'm';
-    }
-    if (is_string($granularity['day']) && $granularity['day'] == 'day') {
-      $format[] = 'd';
-    }
-    if (is_string($granularity['hour']) && $granularity['hour'] == 'hour') {
-      $format[] = 'H';
-    }
-    if (is_string($granularity['minute']) && $granularity['minute'] == 'minute') {
-      $format[] = 'i';
-    }
-    if (is_string($granularity['second']) && $granularity['second'] == 'second') {
-      $format[] = 's';
-    }
-  }
-
-  $format = implode(',', $format);
-  $date->setTimezone($timezone);
-  return $date->format($format);
+  return $items;
 }
 
 /**
- * Converts a given time and date into timestamp with Drupals timezone.
+ * Admin settings menu callback.
  *
- * @param string $value
- *   The date to be converted.
- * @param string $date_format
- *   The format of the date.
- * @param string $timezone
- *   The timezone of the date.
- * @param string $db_timezone
- *   The Drupal timezone.
- *
- * @return string
- *   Timestamp.
+ * @see views_timelinejs_menu()
  */
-function views_timelinejs_convert_to_timestamp($value, $date_format, $timezone, $db_timezone) {
-  // To avoid errors, if value is empty set it to unix epoch.
-  if (empty($value)) {
-    return "FALSE";
-  }
+function views_timelinejs_settings_form() {
+  $form['views_timelinejs_library'] = array(
+    '#type' => 'radios',
+    '#title' => t('TimelineJS library location'),
+    '#description' => t('If serving the files from a local path, the library MUST be located in sites/all/libraries/TimelineJS3.  See the module README file for more information.'),
+    '#options' => array(
+      'cdn' => t('NU Knight Lab CDN'),
+      'local' => t('Local path (sites/all/libraries)'),
+    ),
+    '#default_value' => variable_get('views_timelinejs_library', 'cdn'),
+  );
 
-  $timezone = new DateTimezone($timezone);
-  $db_timezone = new DateTimezone($db_timezone);
-  switch ($date_format) {
-    case 'datestamp':
-    case 'timestamp':
-      $date = new DateTime();
-      $date->setTimezone($db_timezone);
-      $date->setTimestamp($value);
-      break;
+  return system_settings_form($form);
+}
 
-    default:
-      $date = new DateTime($value, $db_timezone);
-      break;
+/**
+ * Implements hook_help().
+ */
+function views_timelinejs_help($path, $arg) {
+  switch ($path) {
+    // Help for the settings form.
+    case 'admin/config/development/views_timelinejs':
+      return '<p>' . t('Configure how the Views TimelineJS plugin behaves on the site. Select whether to use a CDN or serve the library locally.') . '</p>';
   }
-  $date->setTimezone($timezone);
-  return $date->format('U');
 }

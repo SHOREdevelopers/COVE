@@ -1,217 +1,106 @@
 <?php
-/**
- * @file
- * Views Style.
- */
 
 /**
- * Unformatted style plugin.
+ * Style plugin to render items as TimelineJS3 slides.
+ *
+ * @ingroup views_style_plugins
  */
 class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
 
   /**
-   * Define option defaults.
+   * The row index of the slide at which the timeline should first be rendered.
+   */
+  protected $start_slide_index;
+
+  /**
+   * {@inheritdoc}
    */
   function option_definition() {
     $options = parent::option_definition();
 
-    $options['timeline_theme'] = array(
+    $options['timeline_config'] = array(
       'contains' => array(
-        'width' => array(
-          'default' => '100',
-        ),
-        'width_unit' => array(
-          'default' => '1',
-        ),
-        'height' => array(
-          'default' => '500',
-        ),
-        'height_unit' => array(
-          'default' => '0',
-        ),
+        'width' => array('default' => '100%'),
+        'height' => array('default' => '40em'),
+        'hash_bookmark' => array('default' => ''),
+        'start_at_end' => array('default' => ''),
+        'scale_factor' => array('default' => '2'),
+        'language' => array('default' => ''),
+      ),
+    );
+    $options['additional_config'] = array(
+      'contains' => array(
+        'font' => array('default' => ''),
+        'start_at_current' => array('default' => ''),
       ),
     );
     $options['timeline_fields'] = array(
       'contains' => array(
-        'caption' => array(
-          'default' => '0',
-        ),
-        'credit' => array(
-          'default' => '0',
-        ),
-        'media' => array(
-          'default' => '0',
-        ),
-        'tag' => array(
-          'default' => '0',
-        ),
-        'date' => array(
-          'default' => '0',
-        ),
-        'bodytext' => array(
-          'default' => '0',
-        ),
-        'headline' => array(
-          'default' => '0',
-        ),
-      ),
-    );
-    $options['timeline_config'] = array(
-      'contains' => array(
-        'hash_bookmark' => array(
-          'default' => '0',
-        ),
-        'start_at_end' => array(
-          'default' => '0',
-        ),
-        'start_at_current' => array(
-          'default' => '0',
-        ),
-        'start_zoom_adjust' => array(
-          'default' => '0',
-        ),
-        'maptype' => array(
-          'default' => 'toner',
-        ),
-        'gmap_key' => array(
-          'default' => '',
-        ),
-        'language' => array(
-          'default' => '',
-        ),
-        'font' => array(
-          'default' => '',
-        ),
-        'debug' => array(
-          'default' => '0',
-        ),
+        'caption' => array('default' => ''),
+        'credit' => array('default' => ''),
+        'media' => array('default' => ''),
+        'group' => array('default' => ''),
+        'start_date' => array('default' => ''),
+        'end_date' => array('default' => ''),
+        'display_date' => array('default' => ''),
+        'text' => array('default' => ''),
+        'headline' => array('default' => ''),
+        'background' => array('default' => ''),
+        'type' => array('default' => ''),
+        'unique_id' => array('default' => ''),
       ),
     );
     return $options;
   }
 
   /**
-   * Define options form.
+   * {@inheritdoc}
    */
   function options_form(&$form, &$form_state) {
-    $handlers = $this->display->handler->get_handlers('field');
-    if (empty($handlers)) {
-      $form['error_markup'] = array(
-        '#prefix' => '<div class="error messages">',
-        '#markup' => t('You need at least one field before you can configure TimelineJS.'),
-        '#suffix' => '</div>',
-      );
-      return;
-    }
+    $initial_labels = array('' => t('- None -'));
+    $view_fields_labels = $this->display->handler->get_field_labels();
+    $view_fields_labels = array_merge($initial_labels, $view_fields_labels);
 
-    $media_fields = array('0' => t('None'));
-    $date_fields = array('0' => t('None'));
-    $text_fields = array('0' => t('None'));
-    $tag_fields = array('0' => t('None'));
-
-    // Load all date_source plugins.
-    ctools_include('plugins');
-    $date_sources = ctools_get_plugins('views_timelinejs', 'date_sources');
-    $media_sources = ctools_get_plugins('views_timelinejs', 'media_sources');
-    $tag_sources = ctools_get_plugins('views_timelinejs', 'tag_sources');
-
-    // Go through all the field handlers to check support.
-    foreach ($handlers as $field => $handler) {
-      // Get a nice name for the field.
-      $field_names[$field] = $handler->ui_name();
-      if ($label = $handler->label()) {
-        $field_names[$field] .= ' ("' . $label . '")';
-      }
-
-      if (isset($handler->definition['field_name'])) {
-        $field_name = $handler->definition['field_name'];
-        $field_info = field_info_field($field_name);
-      }
-
-      // Use any views field as a text source.
-      $text_fields[$field] = $field_names[$field];
-
-      // Check if field is supported as a date source.
-      foreach ($date_sources as $source) {
-        if (get_class($handler) == $source['handler_name']) {
-          if ($field_info['type'] == $source['field_type'] || $field == 'created' || $field == 'changed') {
-            $date_fields[$field] = $field_names[$field];
-          }
-        }
-      }
-
-      // Check if field is a supported media source.
-      foreach ($media_sources as $source) {
-        if (get_class($handler) == $source['handler_name']) {
-          if (isset($field_info['type']) && $field_info['type'] == $source['field_type']) {
-            $media_fields[$field] = $field_names[$field];
-          }
-        }
-      }
-
-      // Check if field is a supported tag source.
-      foreach ($tag_sources as $source) {
-        if (get_class($handler) == $source['handler_name']) {
-          if (isset($field_info['type']) && $field_info['type'] == $source['field_type']) {
-            $tag_fields[$field] = $field_names[$field];
-          }
-        }
-      }
-    }
-
-    // Timeline general configuration.
+    // Timeline general configuration.  Values within this fieldset will be
+    // passed directly to the TimelineJS settings object.  As a result, form
+    // element keys should be given the same ID as TimelineJS settings, e.g.
+    // $form['timeline_config']['id_of_timelinejs_option'].  See the list of
+    // options at https://timeline.knightlab.com/docs/options.html.
     $form['timeline_config'] = array(
       '#type' => 'fieldset',
-      '#title' => t('General configuration'),
-      '#description' => t('Settings for how the Timeline will behave.'),
+      '#title' => t('TimelineJS Options'),
+      '#description' => t('Each of these settings maps directly to one of the TimelineJS presentation options.  See the <a href="@options-doc">options documentation page</a> for additional information.', array('@options-doc' => 'https://timeline.knightlab.com/docs/options.html')),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
+    $form['timeline_config']['width'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Width of the timeline'),
+      '#description' => t('The width of the timeline, e.g. "100%" or "650px".'),
+      '#default_value' => $this->options['timeline_config']['width'],
+      '#size' => 10,
+      '#maxlength' => 10,
+    );
+    $form['timeline_config']['height'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Height of the timeline'),
+      '#description' => t('The height of the timeline, e.g. "40em" or "650px".  Percent values are not recommended for the height.'),
+      '#default_value' => $this->options['timeline_config']['height'],
+      '#size' => 10,
+      '#maxlength' => 10,
+    );
     $form['timeline_config']['hash_bookmark'] = array(
-      '#type' => 'select',
-      '#title' => 'Hash Bookmarks',
+      '#type' => 'checkbox',
+      '#title' => t('Add hash bookmarks'),
       '#description' => t('On each slide, a # will be added to the end of the url in the url bar. These urls are bookmarkable, so you can share or return to the same place in the timeline later.'),
-      '#options' => array(
-        '0' => t('No'),
-        '1' => t('Yes'),
-      ),
+      '#return_value' => TRUE,
       '#default_value' => $this->options['timeline_config']['hash_bookmark'],
     );
-    $form['timeline_config']['start_at_end'] = array(
+    $form['timeline_config']['scale_factor'] = array(
       '#type' => 'select',
-      '#title' => 'Start at the end',
-      '#description' => t('The most recent event will be shown first.'),
+      '#title' => t('Scale factor'),
+      '#description' => t('How many screen widths wide the timeline should be at first presentation.'),
       '#options' => array(
-        '0' => t('No'),
-        '1' => t('Yes'),
-      ),
-      '#default_value' => $this->options['timeline_config']['start_at_end'],
-    );
-    $form['timeline_config']['start_at_current'] = array(
-      '#type' => 'select',
-      '#title' => 'Start at Current',
-      '#description' => t('The slide closest to current time.'),
-      '#options' => array(
-        '0' => t('No'),
-        '1' => t('Yes'),
-      ),
-      '#default_value' => $this->options['timeline_config']['start_at_current'],
-    );
-    $form['timeline_config']['start_zoom_adjust'] = array(
-      '#type' => 'select',
-      '#title' => 'Zoom Level',
-      '#description' => t('Set the default zoom level.'),
-      '#options' => array(
-        '-9' => t('-9'),
-        '-8' => t('-8'),
-        '-7' => t('-7'),
-        '-6' => t('-6'),
-        '-5' => t('-5'),
-        '-4' => t('-4'),
-        '-3' => t('-3'),
-        '-2' => t('-2'),
-        '-1' => t('-1'),
-        '0' => t('0'),
         '1' => t('1'),
         '2' => t('2'),
         '3' => t('3'),
@@ -222,487 +111,543 @@ class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
         '8' => t('8'),
         '9' => t('9'),
       ),
-      '#default_value' => $this->options['timeline_config']['start_zoom_adjust'],
+      '#default_value' => $this->options['timeline_config']['scale_factor'],
     );
-    $form['timeline_config']['maptype'] = array(
-      '#type' => 'select',
-      '#title' => 'Map Type',
-      '#description' => t('Select the type of map.'),
-      '#options' => array(
-        '0' => t('None'),
-        'Stamen Maps' => array(
-          'toner' => t('Toner'),
-          'toner-lines' => t('Toner Lines'),
-          'toner-labels' => t('Toner Labels'),
-          'watercolor' => t('Watercolor'),
-          'sterrain' => t('Terrain')
-        ),
-        'Google Maps' => array(
-          'ROADMAP' => t('Roadmap'),
-          'TERRAIN' => t('Terrain'),
-          'HYBRID' => t('Hybrid'),
-          'SATELLITE' => t('Satellite')
-        )
-      ),
-      '#default_value' => $this->options['timeline_config']['maptype']
-    );
-    $form['timeline_config']['gmap_key'] = array(
-      '#type' => 'textfield',
-      '#title' => 'GMAP API Key',
-      '#description' => t('Due to recent changes to the Google Maps API, you need a <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">API Key</a> in order to use custom map types.'),
-      '#default_value' => $this->options['timeline_config']['gmap_key'],
-      '#states' => array(
-        'invisible' => array(
-          'select[name="style_options[timeline_config][maptype]"]' => array('value' => '0'),
-        ),
-      ),
+    $form['timeline_config']['start_at_end'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Start at the end'),
+      '#description' => t('Loads the timeline on the last slide.'),
+      '#return_value' => TRUE,
+      '#default_value' => $this->options['timeline_config']['start_at_end'],
     );
     $form['timeline_config']['language'] = array(
-      '#type' => 'textfield',
-      '#size' => 5,
-      '#title' => 'Language',
-      '#description' => t('The language <a href="https://github.com/NUKnightLab/TimelineJS#language">code</a>. Leave blank for the site language.'),
+      '#type' => 'select',
+      '#title' => t('Language'),
+      '#description' => t("By default, the timeline will be displayed in the site's current language if it is supported by TimelineJS. Selecting a language in this setting will force the timeline to always be displayed in the chosen language."),
+      '#options' => array_merge($initial_labels, _views_timelinejs_list_languages()),
       '#default_value' => $this->options['timeline_config']['language'],
     );
-    $form['timeline_config']['font'] = array(
-      '#type' => 'select',
-      '#title' => 'Font',
-      '#description' => t('This setting will only have an effect if the selected font is available to the site (ie @font-face).'),
-      '#options' => array(
-        '' => t('Default'),
-        'AbrilFatface-Average' => 'AbrilFatface-Average',
-        'Arvo-PTSans' => 'Arvo-PTSans',
-        'Bevan-PotanoSans' => 'Bevan-PotanoSans',
-        'BreeSerif-OpenSans' => 'BreeSerif-OpenSans',
-        'DroidSerif-DroidSans' => 'DroidSerif-DroidSans',
-        'Georgia-Helvetica' => 'Georgia-Helvetica',
-        'Lekton-Molengo' => 'Lekton-Molengo',
-        'Merriweather-NewsCycle' => 'Merriweather-NewsCycle',
-        'NewsCycle-Merriweather' => 'NewsCycle-Merriweather',
-        'NixieOne-Ledger' => 'NixieOne-Ledger',
-        'Pacifico-Arimo' => 'Pacifico-Arimo',
-        'PlayfairDisplay-Muli' => 'PlayfairDisplay-Muli',
-        'PoiretOne-Molengo' => 'PoiretOne-Molengo',
-        'PTSerif-PTSans' => 'PTSerif-PTSans',
-        'PT' => 'PT',
-        'Rancho-Gudea' => 'Rancho-Gudea',
-        'SansitaOne-Kameron' => 'SansitaOne-Kameron',
-      ),
-      '#default_value' => $this->options['timeline_config']['font'],
+
+    // Timeline additional configuration.
+    $form['additional_config'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Additional Options'),
+      '#description' => t('These settings include extra options to control the TimelineJS presentation or options unique to this plugin.'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
     );
-    $form['timeline_config']['debug'] = array(
+    $form['additional_config']['font'] = array(
       '#type' => 'select',
-      '#title' => 'Debug to Console',
-      '#description' => t('Log events to the javascript console.'),
-      '#options' => array(
-        '0' => t('No'),
-        '1' => t('Yes'),
-      ),
-      '#default_value' => $this->options['timeline_config']['debug'],
+      '#title' => t('Font set'),
+      '#description' => t('TimelineJS3 offers several pre-selected font sets.  If a set is selected its CSS file will be downloaded from the CDN.'),
+      '#options' => array_merge($initial_labels, _views_timelinejs_list_font_sets()),
+      '#default_value' => $this->options['additional_config']['font'],
+    );
+    $form['additional_config']['start_at_current'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Start at Current'),
+      '#description' => t('Loads the timeline on the slide closest to the current time.  Overrides the "Start at the End" setting.'),
+      '#return_value' => TRUE,
+      '#default_value' => $this->options['additional_config']['start_at_current'],
     );
 
     // Field mapping.
     $form['timeline_fields'] = array(
       '#type' => 'fieldset',
       '#title' => t('Field mappings'),
-      '#description' => t('Fields used to construct the timeline events.'),
+      '#description' => t('Map your Views data fields to TimelineJS slide object properties.'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
     $form['timeline_fields']['headline'] = array(
       '#type' => 'select',
-      '#options' => $text_fields,
+      '#options' => $view_fields_labels,
       '#title' => t('Headline'),
       '#required' => TRUE,
-      '#description' => t('Plain text; a high level summary.'),
+      '#description' => t('The selected field may contain any text, including HTML markup.'),
       '#default_value' => $this->options['timeline_fields']['headline'],
     );
-    $form['timeline_fields']['bodytext'] = array(
+    $form['timeline_fields']['text'] = array(
       '#type' => 'select',
-      '#options' => $text_fields,
+      '#options' => $view_fields_labels,
       '#title' => t('Body text'),
-      '#description' => t('Plain text; a paragraph or two of optional details.'),
-      '#default_value' => $this->options['timeline_fields']['bodytext'],
+      '#description' => t('The selected field may contain any text, including HTML markup.'),
+      '#default_value' => $this->options['timeline_fields']['text'],
     );
-    $form['timeline_fields']['date'] = array(
+    $form['timeline_fields']['start_date'] = array(
       '#type' => 'select',
-      '#options' => $date_fields,
-      '#title' => t('Start and End date'),
+      '#options' => $view_fields_labels,
+      '#title' => t('Start date'),
       '#required' => TRUE,
-      '#description' => t('Required start and optional end of an event; can be a date field or timestamp.'),
-      '#default_value' => $this->options['timeline_fields']['date'],
+      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.', array('@php-manual' => 'http://php.net/manual/en/datetime.formats.php')),
+      '#default_value' => $this->options['timeline_fields']['start_date'],
+    );
+    $form['timeline_fields']['end_date'] = array(
+      '#type' => 'select',
+      '#options' => $view_fields_labels,
+      '#title' => t('End date'),
+      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.', array('@php-manual' => 'http://php.net/manual/en/datetime.formats.php')),
+      '#default_value' => $this->options['timeline_fields']['end_date'],
+    );
+    $form['timeline_fields']['display_date'] = array(
+      '#type' => 'select',
+      '#options' => $view_fields_labels,
+      '#title' => t('Display date'),
+      '#description' => t('The selected field should contain a string.  TimelineJS will display this value instead of the values of the start and end date fields.'),
+      '#default_value' => $this->options['timeline_fields']['display_date'],
+    );
+    $form['timeline_fields']['background'] = array(
+      '#type' => 'select',
+      '#options' => $view_fields_labels,
+      '#title' => t('Background image'),
+      '#description' => t('The selected field should contain a raw URL to an image.  Special handling is included for Image fields because they have no raw URL formatter.'),
+      '#default_value' => $this->options['timeline_fields']['background'],
     );
     $form['timeline_fields']['media'] = array(
       '#type' => 'select',
-      '#options' => $media_fields,
-      '#title' => t('Media URL'),
-      '#description' => t('Drupal core image fields and link fields are supported; must contain a raw URL to an image or video.'),
+      '#options' => $view_fields_labels,
+      '#title' => t('Media'),
+      '#description' => t('The selected field should contain a raw URL to a media resource, an HTML blockquote, or an HTML iframe.  See the <a href="@media-documentation">media types documentation</a> for a list of supported types.  Special handling is included for Image fields because they have no raw URL formatter.', array('@media-documentation' => 'https://timeline.knightlab.com/docs/media-types.html')),
       '#default_value' => $this->options['timeline_fields']['media'],
     );
     $form['timeline_fields']['credit'] = array(
       '#type' => 'select',
       '#title' => t('Media Credit'),
-      '#description' => t('Byline naming the author or attributing the source.'),
-      '#options' => $text_fields,
+      '#description' => t('The selected field may contain any text, including HTML markup.'),
+      '#options' => $view_fields_labels,
       '#default_value' => $this->options['timeline_fields']['credit'],
     );
     $form['timeline_fields']['caption'] = array(
       '#type' => 'select',
       '#title' => t('Media Caption'),
-      '#description' => t('Brief explanation of the media content.'),
-      '#options' => $text_fields,
+      '#description' => t('The selected field may contain any text, including HTML markup.'),
+      '#options' => $view_fields_labels,
       '#default_value' => $this->options['timeline_fields']['caption'],
     );
-    $form['timeline_fields']['tag'] = array(
+    $form['timeline_fields']['group'] = array(
       '#type' => 'select',
-      '#options' => $tag_fields,
-      '#title' => t('Tag'),
-      '#description' => t('Content tagging; maximum of 6 tags.'),
-      '#default_value' => $this->options['timeline_fields']['tag'],
+      '#options' => $view_fields_labels,
+      '#title' => t('Group'),
+      '#description' => t('The selected field may contain any text. If present, TimelineJS will organize events with the same value for group to be in the same row or adjacent rows, separate from events in other groups. The common value for the group will be shown as a label at the left edge of the navigation.'),
+      '#default_value' => $this->options['timeline_fields']['group'],
     );
-
-    // Timeline display configuration.
-    $units = array(0 => 'px', 1 => '%');
-    $form['timeline_theme'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Display configuration'),
-      '#description' => t('Settings for how the Timeline will look.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
+    $form['timeline_fields']['type'] = array(
+      '#type' => 'select',
+      '#options' => $view_fields_labels,
+      '#title' => t('Type'),
+      '#description' => t('Determines the type of timeline entity that is rendered: event, title slide, or era.  This plugin recognizes a limited set of string values to determine the type.  "title" or "timeline_title_slide" will cause a views data row to be rendered as a TimelineJS title slide.  Only one title slide can be created per timeline.  Additional title slides will overwrite previous slides.  "era" or "timeline_era" rows will be rendered as TimelineJS eras.  By default, a row with an empty value or any other input will be rendered as a regular event slide.'),
+      '#default_value' => $this->options['timeline_fields']['type'],
     );
-    $form['timeline_theme']['width'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Width of the timeline',
-      '#description' => t('The width of the timeline.'),
-      '#default_value' => $this->options['timeline_theme']['width'],
-    );
-    $form['timeline_theme']['width_unit'] = array(
-      '#type' => 'radios',
-      '#title' => t('Units for the width'),
-      '#description' => t('Choose which units will be used to define the width of the timeline.'),
-      '#default_value' => $this->options['timeline_theme']['width_unit'],
-      '#options' => $units,
-    );
-    $form['timeline_theme']['height'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Height of the timeline',
-      '#description' => t('The height of the timeline.'),
-      '#default_value' => $this->options['timeline_theme']['height'],
-    );
-    $form['timeline_theme']['height_unit'] = array(
-      '#type' => 'radios',
-      '#title' => t('Units for the height'),
-      '#description' => t('Choose which units will be used to define the height of the timeline.'),
-      '#default_value' => $this->options['timeline_theme']['height_unit'],
-      '#options' => $units,
+    $form['timeline_fields']['unique_id'] = array(
+      '#type' => 'select',
+      '#options' => $view_fields_labels,
+      '#title' => t('Unique ID'),
+      '#description' => t('The selected field should contain a string value which is unique among all slides in your timeline, e.g. a node ID. If not specified, TimelineJS will construct an ID based on the headline, but if you later edit your headline, the ID will change. Unique IDs are used when the hash_bookmark option is used.'),
+      '#default_value' => $this->options['timeline_fields']['unique_id'],
     );
   }
 
   /**
-   * Render the display.
+   * {@inheritdoc}
+   */
+  function validate() {
+    $errors = parent::validate();
+
+    // Validate that fields have been assigned to the required options.
+    foreach (array('start_date', 'headline') as $required_option) {
+      if (empty($this->options['timeline_fields'][$required_option])) {
+        $errors[] = t('The TimelineJS plugin requires specifying which views fields to use for the event slides.');
+        break;
+      }
+    }
+    return $errors;
+  }
+
+  /**
+   * {@inheritdoc}
    */
   function render() {
+    $timeline = new Timeline();
 
-    // Determine if required fields are mapped.
-    $required_mappings = array(
-      'date',
-      'headline',
-    );
+    // Render the fields.  If it isn't done now then the row_index will be unset
+    // the first time that get_field() is called, resulting in an undefined
+    // property exception.
+    $this->render_fields($this->view->result);
 
-    $has_required_mappings = TRUE;
-    foreach ($required_mappings as $field_name) {
-      if (!$this->getDefinedUsage($field_name)) {
-        $has_required_mappings = FALSE;
+    // Render slide arrays from the views data.
+    foreach ($this->view->result as $row_index => $row) {
+      $this->view->row_index = $row_index;
+
+      // Determine the type of timeline entity to build.
+      $type = 'event';
+      if ($this->options['timeline_fields']['type']) {
+        $type = $this->get_field($row_index, $this->options['timeline_fields']['type']);
+      }
+      switch ($type) {
+        case 'title':
+        case 'timeline_title_slide':
+          $slide = $this->build_title_slide();
+          // Ensure the slide was built.
+          if (!empty($slide)) {
+            $timeline->setTitleSlide($slide);
+          }
+          break;
+        case 'era':
+        case 'timeline_era':
+          $era = $this->build_era();
+          // Ensure the era was built.
+          if (!empty($era)) {
+            $timeline->addEra($era);
+          }
+          break;
+        default:
+          $slide = $this->build_slide();
+          // Ensure the slide was built.
+          if (!empty($slide)) {
+            $timeline->addEvent($slide);
+          }
       }
     }
+    unset($this->view->row_index);
 
-    // Render if there's enough mapped fields.
-    if ($has_required_mappings) {
-      $field_mapping = array(
-        'startDate' => 'date',
-        'endDate' => 'date',
-        'headline' => 'headline',
-        'text' => 'bodytext',
-        'media' => 'media',
-        'caption' => 'caption',
-        'credit' => 'credit',
-        'tag' => 'tag',
-      );
-      $rows = array();
-
-      // Render fields to trigger rewriting and other field processing.
-      $this->view->style_plugin->render_fields($this->view->result);
-
-      if ($this->view->style_options['timeline_config']['start_at_current']) {
-        // Gives you a timestamp of the date
-        $date_check = strtotime('now');
-        // Holds the difference of the closest date
-        $difference = NULL;
-        // Holds the index in the array
-        $start_at_current = NULL;
-      }
-
-      // Build a TimelineJS friendly array from the views data.
-      $this->view->row_index = 0;
-      foreach ($this->view->result as $count => $row) {
-
-        $data = array();
-        $data['asset'] = array();
-        $this->view->row_index = $count;
-
-        // Build the data we need.
-        foreach ($field_mapping as $target_field => $source_field) {
-          $tmp = $this->getDefinedUsage($source_field);
-
-          // Don't render fields that haven't been mapped.
-          if (!isset($this->view->field[$tmp['fieldname']])) {
-            continue;
-          }
-
-          // Headline - can use any view field, uses views rendering.
-          if ($target_field == 'headline') {
-            $headline_field = $this->view->style_options['timeline_fields']['headline'];
-            $rows[$count][$target_field] = decode_entities($this->view->field[$headline_field]->theme($row));
-          }
-
-          // Body - can use any view field, uses views rendering.
-          if ($target_field == 'text') {
-            $body_field = $this->view->style_options['timeline_fields']['bodytext'];
-            $rows[$count][$target_field] = decode_entities($this->view->field[$body_field]->theme($row));
-          }
-
-          // Tag.
-          if ($target_field == 'tag') {
-            $value = '';
-            // Check if if a tag exists.
-            if (isset($this->view->field[$tmp['fieldname']])) {
-              $value = $this->view->field[$tmp['fieldname']]->get_value($row);
-              if (is_array($value)) {
-                $value = array_shift($value);
-              }
-
-              if ($conversion_callback = views_timelinejs_get_callback($tmp['handler'], $tmp['field_type'], 'tag_sources')) {
-                $value = call_user_func($conversion_callback, $value, array(
-                  'field' => $tmp,
-                ));
-              }
-            }
-            $rows[$count][$target_field] = check_plain($value);
-          }
-
-          // Start and End date.
-          if (in_array($target_field, array('startDate', 'endDate'))) {
-            $date = array();
-            // Load field data.
-            $value = $this->view->field[$tmp['fieldname']]->get_value($row);
-            // If it's a date field, we have an array.
-            if (is_array($value)) {
-              $value = array_shift($value);
-            }
-
-            // Make sure created and changed fields work as date sources.
-            if ($tmp['fieldname'] == 'created' || $tmp['fieldname'] == 'changed') {
-              $tmp['field_type'] = 'date';
-            }
-
-            if ($conversion_callback = views_timelinejs_get_callback($tmp['handler'], $tmp['field_type'], 'date_sources')) {
-              $date['formatted'] = call_user_func($conversion_callback, $value, 'csv', array('field' => $tmp));
-              $date['timestamp'] = call_user_func($conversion_callback, $value, 'timestamp', array('field' => $tmp));
-            }
-
-            if (isset($date) && $date) {
-              if (is_array($date['formatted'])) {
-                if ($target_field == 'startDate') {
-                  if ($date['formatted']['value'] != "FALSE") {
-                    if ($this->view->style_options['timeline_config']['start_at_current']) {
-                      // abs to get the absolute difference
-                      $diff = abs($date['timestamp']['value'] - $date_check);
-
-                      // If the difference is smaller than the absolute difference of the last date we need to update our values here
-                      if ($difference == NULL || $diff < $difference) {
-                        $difference = $diff;
-                        $start_at_current = $count;
-                      }
-                    }
-
-                    $rows[$count][$target_field] = check_plain($date['formatted']['value']);
-                  }
-                  else {
-                    drupal_set_message(t("Could not format date for field %field in node @nid. It won't be shown in timeline.", array('@nid' => $row->nid, '%field' => $tmp['fieldname'])), 'error');
-                  }
-                }
-                elseif (($target_field == 'endDate') && isset($date['formatted']['value2'])) {
-                  if ($date['formatted']['value'] != "FALSE") {
-                    $rows[$count][$target_field] = check_plain($date['formatted']['value2']);
-                  }
-                  else {
-                    drupal_set_message(t("Could not format date for field %field in node @nid. It won't be shown in timeline.", array('@nid' => $row->nid, '%field' => $tmp['fieldname'])), 'error');
-                  }
-                }
-              }
-              else {
-                $rows[$count][$target_field] = check_plain($date['formatted']);
-              }
-            }
-          }
-
-          // Media URL.
-          if ($target_field == 'media' && isset($row->_field_data[$this->view->field[$tmp['fieldname']]->field_alias])) {
-            $value = $this->view->field[$tmp['fieldname']]->get_value($row);
-            if (empty($value) && !empty($this->view->field[$tmp['fieldname']]->options['empty'])) {
-              $token = $this->view->field[$tmp['fieldname']]->options['empty'];
-              $token = substr($token, 0, strpos($token, ']'));
-              $token = str_replace(array('[', ']'), '', $token);
-
-              // We've got to replace the $tmp information for proper handling.
-              $tmp['fieldname'] = $token;
-              $tmp['field_type'] = $this->view->field[$token]->field_info['type'];
-              $tmp['handler'] = $this->view->field[$token]->definition['handler'];
-              $tmp['alias'] = $this->view->field[$token]->field_alias;
-
-              $value = $this->view->field[$token]->get_value($row);
-            }
-            if (is_array($value)) {
-              $value = array_shift($value);
-              // Allow for imagefield image style selection.
-              if ($this->view->field[$tmp['fieldname']]->options['settings']['image_style']) {
-                $value['uri'] = image_style_url($this->view->field[$tmp['fieldname']]->options['settings']['image_style'], $value['uri']);
-              }
-            }
-            if ($conversion_callback = views_timelinejs_get_callback($tmp['handler'], $tmp['field_type'], 'media_sources')) {
-              $media['formatted'] = call_user_func($conversion_callback, $value, array('field' => $tmp));
-            }
-
-            if ($media['formatted']) {
-              $rows[$count]['asset'][$target_field] = check_plain($media['formatted']);
-              $rows[$count]['asset']['thumbnail'] = check_plain($media['formatted']);
-            }
-          }
-
-          // Media Caption, Media Credit - both plain text.
-          if (in_array($target_field, array('caption', 'credit'))) {
-            if ($tmp['handler'] != NULL) {
-              $v_text = $this->view->field[$tmp['fieldname']]->get_value($row);
-              if (is_array($v_text)) {
-                $v_text = array_shift($v_text);
-              }
-              if (!is_string($v_text)) {
-                $v_text = $v_text['value'];
-              }
-              if ($v_text) {
-                $rows[$count]['asset'][$target_field] = check_plain($v_text);
-              }
-            }
-          }
-        }
-      }
-      unset($this->view->row_index);
-
-      // Allow other modules to alter timeline rows before rendering by
-      // implementing hook_views_timelinejs_rows_alter().
-      drupal_alter('views_timelinejs_rows', $rows, clone $this->view);
-
-      // Prepare data array that TimelineJS understands.
-      $data = array(
-        'timeline' => array(
-          'headline' => 'Title',
-          'type' => 'default',
-          'date' => $rows,
-        ),
-      );
-      if ($this->view->style_options['timeline_config']['start_at_current']) {
-        $data['timeline']['start_at_current'] = $start_at_current;
-      }
-    }
-    // Does not have required mapping.
-    else {
-      // Populate a fake timeline with instructions.
-      $date = new DateTime();
-      $data = array(
-        'timeline' => array(
-          'headline' => t('Insufficient field mapping'),
-          'type' => 'default',
-          'date' => array(
-            array(
-              'headline' => t('Please configure the field mapping by going to Format: TimelineJS - Settings.'),
-              'startDate' => $date->format('Y,m,d,H,i'),
-            ),
-          ),
-        ),
-      );
+    // Skip theming if the view is being edited or previewed.
+    if ($this->view->editing) {
+      return '<pre>' . print_r($timeline->buildArray(), 1) . '</pre>';
     }
 
-    // Allow other modules to alter timeline data before rendering by
-    // implementing hook_views_timelinejs_data_alter().
-    drupal_alter('views_timelinejs_data', $data, clone $this->view);
+    // Prepare the options array.
+    $this->prepare_timeline_options();
 
-    // Skip rendering if view is being edited or previewed.
-    if (!$this->view->editing) {
-      return theme('views_timelinejs', array(
-        'view' => $this->view,
-        'options' => $this->options,
-        'rows' => $data,
-      ));
+    return theme('views_timelinejs', array(
+      'view' => $this->view,
+      'timeline_options' => $this->options['timeline_config'],
+      'timeline_font' => $this->options['additional_config']['font'],
+      'rows' => $timeline->buildArray(),
+    ));
+  }
+
+  /**
+   * Builds a timeline slide from the current views data row.
+   *
+   * @return TimelineSlideInterface|NULL
+   *   A slide object or NULL if the start date could not be parsed.
+   */
+  protected function build_slide() {
+    $start_date = $this->build_date($this->options['timeline_fields']['start_date']);
+    // Return NULL if the slide has no start date.
+    if (empty($start_date)) {
+      return NULL;
     }
-    else {
-      return '<pre>' . print_r($data, 1) . '</pre>';
+    $end_date = $this->build_date($this->options['timeline_fields']['end_date']);
+    $text = $this->build_text();
+    $slide = new TimelineSlide($start_date, $end_date, $text);
+
+    // Check to see if this slide should be the start slide.
+    $this->check_start_slide($start_date);
+
+    $slide->setDisplayDate($this->build_display_date());
+
+    $slide->setGroup($this->build_group());
+
+    $slide->setBackground($this->build_background());
+
+    $media = $this->build_media();
+    if (!empty($media)) {
+      $slide->setMedia($media);
+    }
+
+    $slide->setUniqueId($this->build_unique_id());
+
+    return $slide;
+  }
+
+  /**
+   * Builds a timeline title slide from the current views data row.
+   *
+   * @return TimelineSlideInterface
+   *   A slide object.
+   */
+  protected function build_title_slide() {
+    $text = $this->build_text();
+    $slide = new TimelineTitleSlide($text);
+
+    $slide->setBackground($this->build_background());
+
+    $media = $this->build_media();
+    if (!empty($media)) {
+      $slide->setMedia($media);
+    }
+
+    $slide->setUniqueId($this->build_unique_id());
+
+    return $slide;
+  }
+
+  /**
+   * Builds a timeline era from the current views data row.
+   *
+   * @return TimelineEra|NULL
+   *   An era object or NULL if the start or end date could not be parsed.
+   */
+  protected function build_era() {
+    $start_date = $this->build_date($this->options['timeline_fields']['start_date']);
+    // Return NULL if the era has no start date.
+    if (empty($start_date)) {
+      return NULL;
+    }
+    $end_date = $this->build_date($this->options['timeline_fields']['end_date']);
+    // Return NULL if the era has no end date.
+    if (empty($end_date)) {
+      return NULL;
+    }
+    $text = $this->build_text();
+    return new TimelineEra($start_date, $end_date, $text);
+  }
+
+  /**
+   * Builds a timeline date from the current data row.
+   *
+   * @param string $field
+   *   The machine name of the date field.
+   *
+   * @return TimelineDate|NULL
+   *   A date object or NULL if the start date could not be parsed.
+   */
+  protected function build_date($field) {
+    try {
+      // Strip HTML tags from dates so users don't run into problems like Date
+      // fields wrapping their output with metadata.
+      $date_string = strip_tags($this->get_field($this->view->row_index, $field));
+      $date = new TimelineDate($date_string);
+    }
+    catch (Exception $e) {
+      // Return NULL if the field didn't contain a parseable date string.
+      views_debug('The date "@date" does not conform to a <a href="@php-manual">PHP supported date and time format</a>.', array('@date' => $date_string, '@php-manual' => 'http://php.net/manual/en/datetime.formats.php'));
+      return NULL;
+    }
+    return $date;
+  }
+
+  /**
+   * Builds a timeline display date from the current data row.
+   *
+   * @return string
+   *   A string which contains the text to be displayed instead of the start
+   *   and end dates of a slide.
+   */
+  protected function build_display_date() {
+    $display_date = '';
+    if ($this->options['timeline_fields']['display_date']) {
+      $display_date = $this->get_field($this->view->row_index, $this->options['timeline_fields']['display_date']);
+    }
+    return $display_date;
+  }
+
+  /**
+   * Builds timeline text from the current data row.
+   *
+   * @return TimelineText
+   *   A text object.
+   */
+  protected function build_text() {
+    $headline = '';
+    if ($this->options['timeline_fields']['headline']) {
+      $headline = $this->get_field($this->view->row_index, $this->options['timeline_fields']['headline']);
+    }
+
+    $text = '';
+    if ($this->options['timeline_fields']['text']) {
+      $text = $this->get_field($this->view->row_index, $this->options['timeline_fields']['text']);
+    }
+    return new TimelineText($headline, $text);
+  }
+
+  /**
+   * Builds a timeline group from the current data row.
+   *
+   * @return string
+   *   The group name.
+   */
+  protected function build_group() {
+    $group = '';
+    if ($this->options['timeline_fields']['group']) {
+      $group = $this->get_field($this->view->row_index, $this->options['timeline_fields']['group']);
+    }
+    return $group;
+  }
+
+  /**
+   * Builds a timeline background from the current data row.
+   *
+   * @return TimelineBackground
+   *   A background object.
+   */
+  protected function build_background() {
+    $url = '';
+    if ($this->options['timeline_fields']['background']) {
+      $url = $this->get_field($this->view->row_index, $this->options['timeline_fields']['background']);
+
+      // Special handling because core Image fields have no raw URL formatter.
+      // Check to see if we don't have a raw URL.
+      if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        // Attempt to extract a URL from an img or anchor tag in the string.
+        $url = $this->extract_url($url);
+      }
+    }
+    return new TimelineBackground($url);
+  }
+
+  /**
+   * Builds timeline media from the current data row.
+   *
+   * @return TimelineMedia|NULL
+   *   A media object or NULL if the URL is empty.
+   */
+  protected function build_media() {
+    $url = '';
+    if ($this->options['timeline_fields']['media']) {
+      $url = $this->get_field($this->view->row_index, $this->options['timeline_fields']['media']);
+
+      // Special handling because core Image fields have no raw URL formatter.
+      // Check to see if we don't have a raw URL.
+      if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        // Attempt to extract a URL from an img or anchor tag in the string.
+        $url = $this->extract_url($url);
+      }
+    }
+    // Return NULL if the URL is empty.
+    if (empty($url)) {
+      return NULL;
+    }
+
+    $media = new TimelineMedia($url);
+    $media->setThumbnail($url);
+    if ($this->options['timeline_fields']['caption']) {
+      $media->setCaption($this->get_field($this->view->row_index, $this->options['timeline_fields']['caption']));
+    }
+    if ($this->options['timeline_fields']['credit']) {
+      $media->setCredit($this->get_field($this->view->row_index, $this->options['timeline_fields']['credit']));
+    }
+    return $media;
+  }
+
+  /**
+   * Builds a timeline unique id from the current data row.
+   *
+   * @return string
+   *   A unique ID for a slide.
+   */
+  protected function build_unique_id() {
+    $unique_id = '';
+    if ($this->options['timeline_fields']['unique_id']) {
+      $unique_id = $this->get_field($this->view->row_index, $this->options['timeline_fields']['unique_id']);
+    }
+    return $unique_id;
+  }
+
+  /**
+   * Checks a slide date to see if it should be displayed first in the timeline.
+   *
+   * @param DateTime $date
+   *   A date from a TimelineJS slide.
+   */
+  protected function check_start_slide(DateTime $date) {
+    static $smallest_difference;
+    if (!isset($smallest_difference)) {
+      $smallest_difference = NULL;
+    }
+
+    $timestamp = $date->getTimestamp();
+    // Return if the date was prior to the UNIX Epoch.
+    if ($timestamp === FALSE) {
+      return;
+    }
+
+    // Calculate the absolute difference between the current time and the date.
+    $difference = abs(time() - $timestamp);
+
+    // Update the start slide index if this date is closer to the current time.
+    if ($smallest_difference == NULL || $difference < $smallest_difference) {
+      $smallest_difference = $difference;
+      $this->start_slide_index = $this->view->row_index;
     }
   }
 
   /**
-   * Helper function to determine alias, handler, and fieldname of a given type.
+   * Searches a string for HTML attributes that contain URLs and returns them.
    *
-   * @param string $type
-   *   The type to be parsed.
+   * This will search a string which is presumed to contain HTML for anchor or
+   * image tags.  It will return the href or src attribute of the first one it
+   * finds.
    *
-   * @return array|boolean
-   *   An array containing the keys/values for: alias, handler, fieldname,
-   *   field_type, date_format, and tz_handling.
+   * This is basically special handling for core Image fields.  There is no
+   * built-in field formatter for outputting a raw URL from an image.  This
+   * method allows image fields to "just work" as sources for TimelineJS media
+   * and background image URLs.  Anchor tag handling was added for people who
+   * forget to output link fields as plain text URLs.
+   *
+   * @param string $html
+   *   A string that contains HTML.
+   *
+   * @return string
+   *   A URL if one was found in the input string, the original string if not.
    */
-  protected function getDefinedUsage($type) {
-    // If it's not mapped at all, don't do anything.
-    if (!isset($this->view->style_options['timeline_fields'])) {
-      return FALSE;
-    }
+  protected function extract_url($html) {
+    if (!empty($html)) {
+      $document = new DOMDocument();
+      $document->loadHTML($html);
 
-    if ($fields = $this->view->style_options['timeline_fields']) {
-      $fieldname = '';
-      if (isset($fields[$type])) {
-        $fieldname = $fields[$type];
-      }
-      elseif (isset($fields['advanced'][$type])) {
-        $fieldname = $fields['advanced'][$type];
-      }
-      if (isset($fieldname) && $fieldname != '0') {
-        $field_information = array(
-          'alias' => $this->view->field[$fieldname]->field_alias,
-          'handler' => $this->view->field[$fieldname]->definition['handler'],
-          'fieldname' => $fieldname,
-        );
+      // Check for anchor tags.
+      $anchor_tags = $document->getElementsByTagName('a');
+      if ($anchor_tags->length) {
+        return $anchor_tags->item(0)->getAttribute('href');
       }
 
-      if (!empty($this->view->field[$fieldname]->field_info)) {
-        $field_information['field_type'] = $this->view->field[$fieldname]->field_info['type'];
-        $field_information['date_format'] = $field_information['field_type'];
-
-        // If we're dealing with a date-field, get tz_handling and granularity as well.
-        if (isset($this->view->field[$fieldname]->field_info['settings']['tz_handling'])) {
-          $field_information['tz_handling'] = $this->view->field[$fieldname]->field_info['settings']['tz_handling'];
-        }
-        if (isset($this->view->field[$fieldname]->field_info['settings']['granularity'])) {
-          $field_information['granularity'] = $this->view->field[$fieldname]->field_info['settings']['granularity'];
-        }
-      }
-
-      if (!empty($field_information)) {
-        return $field_information;
-      }
-      else {
-        return FALSE;
+      // Check for image tags.
+      $image_tags = $document->getElementsByTagName('img');
+      if ($image_tags->length) {
+        return $image_tags->item(0)->getAttribute('src');
       }
     }
-    else {
-      return FALSE;
+    return $html;
+  }
+
+  /**
+   * Processes timeline options before theming.
+   */
+  protected function prepare_timeline_options() {
+    // Set the language option to the site's default if it is empty.
+    if (empty($this->options['timeline_config']['language'])) {
+      $this->prepare_language_option();
+    }
+
+    // If the custom start_at_current option is set, then set the timeline's
+    // start_at_slide option to the start_slide_index and override the
+    // start_at_end option.
+    if ($this->options['additional_config']['start_at_current']) {
+      $this->options['timeline_config']['start_at_slide'] = $this->start_slide_index;
+      $this->options['timeline_config']['start_at_end'] = FALSE;
     }
   }
+
+  /**
+   * Sets the timeline language option to the site's current language.
+   */
+  protected function prepare_language_option() {
+    global $language;
+    $supported_languages = _views_timelinejs_list_languages();
+    $language_map = _views_timelinejs_language_map();
+
+    // Check for the site's current language in the list of languages that are
+    // supported by TimelineJS.
+    if (isset($supported_languages[$language->language])) {
+      $this->options['timeline_config']['language'] = $language->language;
+    }
+    // Check for the site's current language in the list of language codes
+    // that are different in Drupal than they are in TimelineJS.
+    elseif (isset($language_map[$language->language])) {
+      $this->options['timeline_config']['language'] = $language_map[$language->language];
+    }
+  }
+
 }
