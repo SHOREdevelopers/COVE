@@ -64,6 +64,9 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_event_date',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'timestamp' => array(
         0 => 'timestamp',

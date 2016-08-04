@@ -36,10 +36,10 @@ function cove_chronologies_timelines_node_info() {
     'chronology_entry' => array(
       'name' => t('Chronology Entry'),
       'base' => 'node_content',
-      'description' => t('All chronological events should go here. For use with timelines and sortable table-based chronologies.'),
+      'description' => t('Content type for Thelwall Chronology'),
       'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
+      'title_label' => t('Headline'),
+      'help' => t('Now that you\'ve created a chronology, create a series of entries to populate your chronology. To create many  items at once, use the "Save and add another" button below. '),
     ),
   );
   drupal_alter('node_info', $items);

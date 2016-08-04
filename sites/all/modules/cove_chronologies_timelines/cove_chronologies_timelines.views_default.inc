@@ -1335,10 +1335,12 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Messages */
-  $handler->display->display_options['header']['messages']['id'] = 'messages';
-  $handler->display->display_options['header']['messages']['table'] = 'views';
-  $handler->display->display_options['header']['messages']['field'] = 'messages';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = 'Remember, you can create additional chronologies <a href="/node/add/chronology">here</a>.';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';

@@ -26,7 +26,9 @@ function cove_chronologies_timelines_default_rules_configuration() {
           }
         }
       ],
-      "DO" : [ { "redirect" : { "url" : [ "node:field-parent-chronology:url" ] } } ]
+      "DO" : [
+        { "redirect" : { "url" : [ "node:field-parent-chronology:url" ], "force" : "0" } }
+      ]
     }
   }');
   $items['rules_chron_notice_'] = entity_import('rules_config', '{ "rules_chron_notice_" : {

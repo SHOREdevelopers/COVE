@@ -360,7 +360,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
           'und' => array(
             '_remove' => '',
             'check_approximate' => 'If the date is uncertain, check this box. It will be shown to users with "circa."',
-            'components' => '<strong>A year is required here</strong>. If exact months or days are unknown, use the "estimates" drop-downs to narrow down the date as much as possible--or just leave them blank. Entering just a year in this field is valid, but it may not be very useful. ',
+            'components' => '',
             'txt_long' => 'If the date is uncertain and that is not captured by the "estimates" options above, provide a more detailed description here. on of date',
             'txt_short' => 'If the date is uncertain and that is not captured by the "estimates" options above, provide a more detailed description here. ',
           ),
@@ -379,7 +379,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'tz_handling' => 'none',
       ),
       'type' => 'partial_date',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -429,7 +429,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -488,7 +488,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 

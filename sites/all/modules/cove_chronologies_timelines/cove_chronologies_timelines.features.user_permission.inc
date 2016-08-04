@@ -97,7 +97,6 @@ function cove_chronologies_timelines_user_default_permissions() {
     'name' => 'edit any chronology content',
     'roles' => array(
       'administrator' => 'administrator',
-      'annotator' => 'annotator',
       'manager' => 'manager',
       'section editor' => 'section editor',
     ),
@@ -109,7 +108,6 @@ function cove_chronologies_timelines_user_default_permissions() {
     'name' => 'edit any chronology_entry content',
     'roles' => array(
       'administrator' => 'administrator',
-      'annotator' => 'annotator',
       'manager' => 'manager',
       'section editor' => 'section editor',
     ),
