@@ -384,8 +384,6 @@ Drupal.overlay.isAdminLink = function (url) {
 /**
  * Determine whether a link is external to the site.
  *
- * Deprecated. Use Drupal.urlIsLocal() instead.
- *
  * @param url
  *   The URL to be tested.
  *
@@ -393,12 +391,6 @@ Drupal.overlay.isAdminLink = function (url) {
  *   TRUE if the URL is external to the site, FALSE otherwise.
  */
 Drupal.overlay.isExternalLink = function (url) {
-
-  // Drupal.urlIsLocal() was added in Drupal 7.39.
-  if (typeof Drupal.urlIsLocal === 'function') {
-    return !Drupal.urlIsLocal(url);
-  }
-
   var re = RegExp('^((f|ht)tps?:)?//(?!' + window.location.host + ')');
   return re.test(url);
 };

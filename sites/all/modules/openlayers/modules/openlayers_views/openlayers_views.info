@@ -1,21 +1,26 @@
-name = Openlayers Views
-description = Openlayers module for Views
+name = OpenLayers Views
+description = Provides OpenLayers Views plugins.
 core = 7.x
-package = "Openlayers"
-
-dependencies[] = views
+package = OpenLayers
 dependencies[] = openlayers
+dependencies[] = views
 dependencies[] = geophp
-
-files[] = views/openlayers_views_plugin_style_source_vector.inc
+; Core files
+files[] = openlayers_views.module
+files[] = views/openlayers_views.views.inc
+files[] = views/openlayers_views_style_map.inc
+files[] = views/openlayers_views_style_data.inc
+files[] = views/openlayers_views_style_data_image.inc
 files[] = views/openlayers_views_plugin_display_openlayers.inc
-files[] = views/openlayers_views_plugin_map_views.inc
+files[] = views/openlayers_views_plugin_row_point.inc
+files[] = views/openlayers_views_plugin_row_bounding_box.inc
+files[] = views/openlayers_views_plugin_row_geometry.inc
+files[] = plugins/layer_types/openlayers_views_vector.inc
+files[] = plugins/layer_types/openlayers_views_image.inc
 
-registry_autoload[] = PSR-4
-
-; Information added by Drupal.org packaging script on 2016-07-13
-version = "7.x-3.1+74-dev"
+; Information added by Drupal.org packaging script on 2014-10-17
+version = "7.x-2.0-beta11"
 core = "7.x"
 project = "openlayers"
-datestamp = "1468387441"
+datestamp = "1413561926"
 
