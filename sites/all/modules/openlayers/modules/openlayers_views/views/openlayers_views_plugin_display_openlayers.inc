@@ -1,42 +1,67 @@
 <?php
-
 /**
  * @file
- * Display plugin for OpenLayers Data
+ * Display plugin for Openlayers Data
  *
  * @ingroup openlayers
  */
 
+/**
+ * Class openlayers_views_plugin_display_openlayers.
+ */
 class openlayers_views_plugin_display_openlayers extends views_plugin_display {
-  function uses_breadcrumb() { return FALSE; }
-  function get_style_type() { return 'openlayers'; }
+  /**
+   * {@inheritdoc}
+   */
+  public function uses_breadcrumb() {
+    return FALSE;
+  }
 
   /**
-   * OpenLayers data features are used directly in the map object.
+   * {@inheritdoc}
    */
-  function execute() {
+  public function get_style_type() {
+    return 'openlayers';
+  }
+
+  /**
+   * Openlayers data features are used directly in the map object.
+   */
+  public function execute() {
     return $this->view->render();
   }
 
-  function preview() {
+  /**
+   * {@inheritdoc}
+   */
+  public function preview() {
     return '<pre>' . check_plain($this->view->render()) . '</pre>';
   }
 
-  function render() {
+  /**
+   * {@inheritdoc}
+   */
+  public function render() {
     return $this->view->style_plugin->render($this->view->result);
   }
 
-  function option_definition() {
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
     $options = parent::option_definition();
     $options['title']['translatable'] = 0;
     $options['displays'] = array('default' => array());
-    $options['style_plugin']['default'] = 'openlayers_data';
+    $options['style_plugin']['default'] = 'openlayers_source_vector';
     $options['row_plugin']['default'] = 'fields';
     $options['defaults']['default']['row_plugin'] = FALSE;
     return $options;
   }
 
-  function options_summary(&$categories, &$options) {
+  /**
+   * {@inheritdoc}
+   */
+  public function options_summary(&$categories, &$options) {
     parent::options_summary($categories, $options);
     unset($options['header']);
     unset($options['footer']);
@@ -44,4 +69,5 @@ class openlayers_views_plugin_display_openlayers extends views_plugin_display {
     unset($options['exposed_block']);
     unset($options['analyze-theme']);
   }
+
 }
