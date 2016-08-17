@@ -1,15 +1,16 @@
-name = "OpenLayers UI"
-description = "Provides a user interface to manage OpenLayers maps."
+name = "Openlayers UI"
+description = "Provides a user interface to manage Openlayers maps."
 core = "7.x"
-package = "OpenLayers"
+package = "Openlayers"
 dependencies[] = "openlayers"
 
 configure = admin/structure/openlayers
-files[] = openlayers_ui.module
 
-; Information added by Drupal.org packaging script on 2014-10-17
-version = "7.x-2.0-beta11"
+registry_autoload[] = PSR-4
+
+; Information added by Drupal.org packaging script on 2016-07-13
+version = "7.x-3.1+74-dev"
 core = "7.x"
 project = "openlayers"
-datestamp = "1413561926"
+datestamp = "1468387441"
 
