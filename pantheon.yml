@@ -1,0 +1,7 @@
+---
+api_version: 1
+
+# PHP Version: 
+# https://pantheon.io/docs/pantheon-yml#php-version
+# Set site's PHP version to 7.0
+php_version: 5.6
