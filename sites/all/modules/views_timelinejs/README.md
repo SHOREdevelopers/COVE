@@ -61,10 +61,11 @@ Using the Plugin
    you want to strip tags from the body text, use the "Rewrite results" ->
    "Strip HTML tags" option in that field's settings.
 4. Click the Settings link in the Format section.  Edit the general
-   configuration of the timeline display.  Then add field mappings.  If you do
-   not select a field mapping for all the required elements, you will get errors
-   on the view.  See the section on "Configuring the Plugin" for more
-   information.
+   configuration of the timeline display.  Then add field mappings.  Start dates
+   are required by event slides and eras.  End dates are also required by eras.
+   If these mappings are not configured or if the fields do not contain dates in
+   a valid format, then the slides or eras will not be added to the timeline.
+   See the section on "Configuring the Plugin" for more information.
 5. Click "Save" in the view to complete the configuration. The preview display
    on the Views edit interface shows the data used by TimelineJS.  To see the
    TimelineJS display, access the view page that was just created.
@@ -94,6 +95,10 @@ you could use.
   conforming to a [PHP supported date and time format]
   (http://php.net/manual/en/datetime.formats.php).
 
+  Start dates are required by event slides and eras.  If this mapping is not
+  configured or if the field does not output dates in a valid format, then the
+  slides or eras will not be added to the timeline.
+
   The field should contain a single date, which means if you use a Date field
   then you need to configure it to only output the Start date value.  If you
   want to display end dates, then you will have to add the field a second time.
@@ -101,6 +106,10 @@ you could use.
   value.
 
 * End date - See the Start date mapping above.
+
+  End dates are required by eras.  If this mapping is not configured or if the
+  field does not output dates in a valid format, then the eras will not be added
+  to the timeline.
 
 * Display date - The selected field should contain a string.  TimelineJS will
   display this value instead of the values of the start and end date fields.
@@ -126,6 +135,10 @@ you could use.
   Of course, Link fields or Text fields will work for this mapping, along with
   any other field that can output a string containing a raw URL to an image.
 
+* Background color - The selected field should contain a string representing a
+  CSS color, in hexadecimal (e.g. #0f9bd1) or a valid [CSS color keyword]
+  (https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+
 * Media - The selected field should contain a raw URL to a media resource, an
   HTML blockquote, or an HTML iframe.  See the [media types documentation]
   (https://timeline.knightlab.com/docs/media-types.html) for a list of supported
@@ -140,6 +153,11 @@ you could use.
   markup.
 
 * Media credit - The selected field may contain any text, including HTML markup.
+
+* Media thumbnail - The selected field should contain a raw URL for an image to
+  use in the timenav marker for this event. If omitted, Timeline will use an
+  icon based on the type of media.  Special handling is included for Image
+  fields because they have no raw URL formatter.
 
 * Group - The selected field may contain any text.
 
@@ -245,28 +263,53 @@ Cons:
 
 ### Separate Link, Image, and Text fields
 Using multiple fields is possible if you properly configure your view.  You have
-to set up your fields so that if one field is empty, it will fall back to the
-output of another field.  You do this by editing the No Results Behavior of a
-field in Views.
+to set up your fields so that if one field is empty, it will fall back to
+the output of another field, in successive order.  You do this by editing the No
+Results Behavior of a field in Views.
 
-For example, if you know that you will only need to embed images and supported
-media, add an Image field and a Link field to your entity.  Add the link field
-to your view, then the image field.  The order is important!  Change the No
-Results Behavior of the image field, pasting the Replacement Pattern for the
-link field, e.g. ```[field_timeline_media_url]```, into the No Results Text and
-uncheck "Hide rewriting if empty."  If the image field is empty, it will fall
-back to outputting the URL that is given by the link field.
+For example, if you know that you will only need to embed supported media and
+images, follow these steps:
 
-You can do the same thing with a Link, Image, and Text field in order to support
-all possible media, but it will require you to download and enable the Image URL
-Formatter module.  If you try to override an empty field with the output from an
-Image field, then the Image field's HTML will not be embeddable by the timeline.
-Image URL Formatter will give you a raw URL that will work just like a raw URL
-from a Link field.  Replacing an empty field with the output from a Text field
-won't work for the exact same reason.  The HTML entities will be escaped and
-won't be embeddable.  So once again, the order of the fields is important.  In
-this configuration the Link and Image fields can be placed in either order, but
-the Text field must be added last.
+1. Add a Link field and Image field to your slide entity.
+2. When you create your view, add those fields.  Place the Link field above the
+   Image field in the field list.  The order is important!
+3. Change the No Results Behavior of the image field, pasting the Replacement
+   Pattern for the link field, e.g. ```[field_timeline_media_url]```, into the
+   No Results Text.
+4. In the Format settings, change the Media field mapping to map to your Image
+   field.
+
+With this configuration if the image field is empty, it will fall back to
+outputting the URL that is given by the link field.
+
+Why was the order of the fields important?  The reason is that Views will
+escape HTML entities in fields that are used as replacement patterns.  If any
+replacement field outputs HTML, then TimelineJS will not be able to render the
+media.  Getting around this problem is the tricky part of setting up the view.
+You can only have one media field that outputs HTML; other fields used as
+replacement values must output a raw URL.  That one HTML field must be placed
+below the other media fields in the list.  The last field is the one that gets
+mapped in the Format settings.
+
+Here is another example with a Link, Image, and Text field in order to support
+all possible media, including ```<blockquote>```.  Because there are two fields
+that will output HTML you will have to do some extra configuration.
+
+1. Download an enable the [Image URL Formatter]
+(https://www.drupal.org/project/image_url_formatter) module.  It will allow you
+to output your Image field as a raw URL.
+2. Add a Link field, an Image field, and a Text field to your slide entity.
+3. Add your new fields to the view.  The Link and Image field can go in any
+   order, but the Text field must be placed below them in the list because it is
+   the one field that will output HTML.
+4. Edit the Image field's settings.  Change the Formatter to Image URL.
+5. Assuming the Link field is first in the field list, paste its replacement
+   pattern, e.g. ```[field_timeline_media_url]```, into the Image field's No
+   Results Text.
+6. Paste the Image field's replacement pattern, e.g.
+   ```[field_timeline_media_image]``` into the Text field's No Results Text.
+7. In the Format settings, change the Media field mapping to map to your Text
+   field.
 
 Pros:
 * Discrete data fields for images and links, including whatever benefits they

@@ -1,16 +1,18 @@
 name = "Similar By Terms"
 description = "Use Views to show similar content based on taxonomy terms"
 core = 7.x
-dependencies[] = "views"
+dependencies[] = taxonomy
+dependencies[] = views
+
 package = "Views"
 files[] = similarterms.test
 files[] = views/similarterms_handler_argument_node_nid.inc
 files[] = views/similarterms_handler_field_similar.inc
 files[] = views/similarterms_handler_sort_similar.inc
 
-; Information added by drupal.org packaging script on 2012-11-14
-version = "7.x-2.3"
+; Information added by Drupal.org packaging script on 2016-07-30
+version = "7.x-2.6"
 core = "7.x"
 project = "similarterms"
-datestamp = "1352857399"
+datestamp = "1469915640"
 

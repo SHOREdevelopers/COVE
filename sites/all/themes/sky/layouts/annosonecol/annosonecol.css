@@ -136,3 +136,4 @@ input[type="checkbox"]#togglebox:checked ~ div.anno-container { /* nav state whe
 .anno-container label#closex::after{ /* render large cross inside close button */
     transform: rotate(-135deg);
 }
+ No newline at end of file

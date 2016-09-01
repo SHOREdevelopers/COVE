@@ -9,7 +9,7 @@ function sky_preprocess_html(&$vars) {
   $theme_name = $theme_key;
 
   // Add a class for the active color scheme
-  if (module_exists('color')) {
+  if (module_exists('color') && function_exists('get_color_scheme_name')) {
     $class = check_plain(get_color_scheme_name($theme_name));
     $vars['classes_array'][] = 'color-scheme-' . drupal_html_class($class);
   }
@@ -51,7 +51,7 @@ function sky_preprocess_page(&$vars) {
   if ($vars['page']['footer'] || $vars['page']['four_first']|| $vars['page']['four_second'] || $vars['page']['four_third'] || $vars['page']['four_fourth']) {
     $vars['classes_array'][] = 'with-footer';
   }
- }
+}
 
 /**
  * Override or insert variables into the page template.
@@ -110,7 +110,7 @@ function sky_process_region(&$vars) {
     $vars['inner_prefix'] = '<h2 class="menu-toggle"><a href="#">' . t('Menu') . '</a></h2>';
   }
 }
-  
+
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
 drupal_add_js('/sites/all/themes/sky/link-to-highlight.js', array('type' => 'file', 'scope' => 'footer'));

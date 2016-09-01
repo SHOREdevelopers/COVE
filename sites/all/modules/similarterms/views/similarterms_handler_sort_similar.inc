@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handler which sorts the by the similarity.
  *

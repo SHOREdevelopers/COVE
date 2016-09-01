@@ -19,6 +19,13 @@ class TimelineDate extends DateTime implements TimelineDateInterface {
       throw new Exception('Empty date strings are not allowed.');
     }
 
+    // Check for date strings that only include a year value.
+    if (is_numeric($date_string)) {
+      // Append '-01-01' to year-only values.  By specifying a month and day
+      // before the value is parsed, year-only values can be used as input.
+      $date_string .= '-01-01';
+    }
+
     parent::__construct($date_string, $timezone);
   }
 

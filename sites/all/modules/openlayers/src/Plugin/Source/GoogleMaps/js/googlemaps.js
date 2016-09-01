@@ -26,7 +26,10 @@ Drupal.openlayers.pluginManager.register({
     });
 
     data.map.getView().setCenter(data.map.getView().getCenter());
+    data.map.getView().dispatchEvent('change:center');
+
     data.map.getView().setZoom(data.map.getView().getZoom());
+    data.map.getView().dispatchEvent('change:resolution');
 
     data.map.on('change:size', function() {
       google.maps.event.trigger(gmap, 'resize');

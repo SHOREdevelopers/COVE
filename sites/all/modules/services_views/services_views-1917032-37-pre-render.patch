@@ -1,0 +1,55 @@
+diff --git a/includes/views/views_plugin_display_services.inc b/includes/views/views_plugin_display_services.inc
+index 89e248b..f24bb6b 100644
+--- a/includes/views/views_plugin_display_services.inc
++++ b/includes/views/views_plugin_display_services.inc
+@@ -41,6 +41,10 @@ class views_plugin_display_services extends views_plugin_display {
+     // Execute a view.
+     $this->view->execute();
+ 
++    foreach ($this->view->field as $field) {
++      $field->pre_render($this->view->result);
++    }
++      
+     // Render the fields.
+     $this->view->style_plugin->render_fields($this->view->result);
+
+diff --git a/services_views.resource.inc b/services_views.resource.inc
+index eb9fbb4..228443b 100755
+--- a/services_views.resource.inc
++++ b/services_views.resource.inc
+@@ -70,7 +70,13 @@ function services_views_retrieve($view_name, $display_id = 'default', $args = ar
+     }
+     elseif ($row_plugin == 'fields') {
+       $items = array();
+-      foreach ($view->result as $row) {
++
++      // Pre-render and field values.
++      foreach ($view->field as $field) {
++        $field->pre_render($view->result);
++      }
++
++      foreach ($view->result as $row_index => $row) {
+         $item = new stdClass();
+         foreach ($view->field as $field_id => $field) {
+           if (!empty($field->options['label'])) {
+@@ -82,6 +88,7 @@ function services_views_retrieve($view_name, $display_id = 'default', $args = ar
+           else {
+             $field_label = $field_id;
+           }
++          $field->view->row_index = $row_index;
+           $item->$field_label = $field->theme($row);
+         }
+         $items[] = $item;
+@@ -171,6 +178,12 @@ function services_views_execute_view($view_info, $view = NULL, $display_id = NUL
+           }
+         }
+ 
++        // Check html_strip property.
++        if ($field->options['alter']['strip_tags'] == 1) {
++          // Strip the tags which aren't allowed.
++          $obj[$idx] = strip_tags($obj[$idx], $field->options['alter']['preserve_tags']);
++        }
++
+         // Check cardinality of the field.
+         if ($field->field_info['cardinality'] == 1 && count($obj) == 1) {
+           $obj = $obj[$idx];

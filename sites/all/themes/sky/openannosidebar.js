@@ -37,4 +37,3 @@ function expandoffcanvasmenu(action){ //param: 'open', 'close', or empty to togg
     var newstate = (action == 'open')? true : (action == 'close')? false : !togglebox.checked
     togglebox.checked = newstate
 }
- 

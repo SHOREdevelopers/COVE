@@ -25,3 +25,4 @@ $(document).mouseup(function (e) {
         $elem.tooltip("close");
     }
 });
+ No newline at end of file
