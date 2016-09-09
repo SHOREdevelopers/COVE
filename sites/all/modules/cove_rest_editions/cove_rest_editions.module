@@ -1,0 +1,47 @@
+<?php
+
+//TODO backend for configure taxonomy ref fields
+
+/**
+ * Implements hook_services_request_postprocess_alter().
+ */
+function cove_rest_editions_services_request_postprocess_alter($controller, $args, &$result) {
+  
+  if(isset($result->nid) && $result->type='editions_page'){
+        unset($result->print_html_display);//remove unneccessary fields
+        //$result->first_name = 'Ryan';//add a new field
+    }
+    
+  if ($controller['callback'] === '_node_resource_retrieve') {
+    $fieldnames = array();
+    //your fieldnames here
+    $fieldnames = array(field_nines_discipline_s_,field_nines_genre_s_,field_nines_type_s_);
+    foreach ($result as $key => $value) {
+      foreach($fieldnames as $fieldnames_key => $fieldnames_value) {
+	$current_field_name = $fieldnames_value;
+	
+	if ($key == $fieldnames_value) {
+	  $keywords = $value;
+	  foreach ($keywords['und'] as $key_term => $value_term) {
+	    $termname = taxonomy_term_load($value_term['tid']);
+	    
+	    //dynamically
+	    if(!isset($add_to_array)) {
+	    $add_to_array = array();
+	    }
+	    $add_to_array[$key]['und'][$key_term]['value'] = $termname->name;
+   	    $add_to_array[$key]['und'][$key_term]['tid'] = $termname->tid;
+	  }
+	}
+      } 
+    }
+    
+    foreach ($add_to_array as $add_to_array_key => $add_to_array_value) {
+      foreach($result as $key2 => $value2) {
+	if($key2 == $add_to_array_key) {
+	 $result->$key2 =  $add_to_array_value; 
+	}
+      }
+    }
+  }
+}
