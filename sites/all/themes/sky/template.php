@@ -4,6 +4,7 @@
 /**
  * Override or insert variables into the html template.
  */
+ 
 function sky_preprocess_html(&$vars) {
   global $theme_key;
   $theme_name = $theme_key;
@@ -32,6 +33,8 @@ function sky_preprocess_html(&$vars) {
   foreach ($settings_array as $setting) {
     $vars['classes_array'][] = at_get_setting($setting);
   }
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', array('type' => 'external'));
 }
 
 /**
@@ -115,3 +118,4 @@ function sky_process_region(&$vars) {
 drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
 drupal_add_js('/sites/all/themes/sky/link-to-highlight.js', array('type' => 'file', 'scope' => 'footer'));
 drupal_add_js('/sites/all/themes/sky/more-colorbox.js');
+drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external'));
