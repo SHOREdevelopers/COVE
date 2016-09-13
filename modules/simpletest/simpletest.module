@@ -374,10 +374,7 @@ function simpletest_test_get_all() {
           // If this test class requires a non-existing module, skip it.
           if (!empty($info['dependencies'])) {
             foreach ($info['dependencies'] as $module) {
-              // Pass FALSE as fourth argument so no error gets created for
-              // the missing file.
-              $found_module = drupal_get_filename('module', $module, NULL, FALSE);
-              if (!$found_module) {
+              if (!drupal_get_filename('module', $module)) {
                 continue 2;
               }
             }

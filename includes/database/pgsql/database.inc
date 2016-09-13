@@ -216,14 +216,6 @@ class DatabaseConnection_pgsql extends DatabaseConnection {
 
     return $id;
   }
-
-  public function utf8mb4IsActive() {
-    return TRUE;
-  }
-
-  public function utf8mb4IsSupported() {
-    return TRUE;
-  }
 }
 
 /**

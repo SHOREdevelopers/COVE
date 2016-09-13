@@ -4,4 +4,3 @@ package = Testing
 version = VERSION
 core = 7.x
 hidden = TRUE
-dependencies[] = blog

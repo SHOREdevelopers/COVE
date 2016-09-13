@@ -28,12 +28,6 @@ class DatabaseConnection_mysql extends DatabaseConnection {
 
     $this->connectionOptions = $connection_options;
 
-    $charset = 'utf8';
-    // Check if the charset is overridden to utf8mb4 in settings.php.
-    if ($this->utf8mb4IsActive()) {
-      $charset = 'utf8mb4';
-    }
-
     // The DSN should use either a socket or a host/port.
     if (isset($connection_options['unix_socket'])) {
       $dsn = 'mysql:unix_socket=' . $connection_options['unix_socket'];
@@ -45,7 +39,7 @@ class DatabaseConnection_mysql extends DatabaseConnection {
     // Character set is added to dsn to ensure PDO uses the proper character
     // set when escaping. This has security implications. See
     // https://www.drupal.org/node/1201452 for further discussion.
-    $dsn .= ';charset=' . $charset;
+    $dsn .= ';charset=utf8';
     $dsn .= ';dbname=' . $connection_options['database'];
     // Allow PDO options to be overridden.
     $connection_options += array(
@@ -69,10 +63,10 @@ class DatabaseConnection_mysql extends DatabaseConnection {
     // certain one has been set; otherwise, MySQL defaults to 'utf8_general_ci'
     // for UTF-8.
     if (!empty($connection_options['collation'])) {
-      $this->exec('SET NAMES ' . $charset . ' COLLATE ' . $connection_options['collation']);
+      $this->exec('SET NAMES utf8 COLLATE ' . $connection_options['collation']);
     }
     else {
-      $this->exec('SET NAMES ' . $charset);
+      $this->exec('SET NAMES utf8');
     }
 
     // Set MySQL init_commands if not already defined.  Default Drupal's MySQL
@@ -211,42 +205,6 @@ class DatabaseConnection_mysql extends DatabaseConnection {
         }
       }
     }
-  }
-
-  public function utf8mb4IsConfigurable() {
-    return TRUE;
-  }
-
-  public function utf8mb4IsActive() {
-    return isset($this->connectionOptions['charset']) && $this->connectionOptions['charset'] === 'utf8mb4';
-  }
-
-  public function utf8mb4IsSupported() {
-    // Ensure that the MySQL driver supports utf8mb4 encoding.
-    $version = $this->getAttribute(PDO::ATTR_CLIENT_VERSION);
-    if (strpos($version, 'mysqlnd') !== FALSE) {
-      // The mysqlnd driver supports utf8mb4 starting at version 5.0.9.
-      $version = preg_replace('/^\D+([\d.]+).*/', '$1', $version);
-      if (version_compare($version, '5.0.9', '<')) {
-        return FALSE;
-      }
-    }
-    else {
-      // The libmysqlclient driver supports utf8mb4 starting at version 5.5.3.
-      if (version_compare($version, '5.5.3', '<')) {
-        return FALSE;
-      }
-    }
-
-    // Ensure that the MySQL server supports large prefixes and utf8mb4.
-    try {
-      $this->query("CREATE TABLE {drupal_utf8mb4_test} (id VARCHAR(255), PRIMARY KEY(id(255))) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci ROW_FORMAT=DYNAMIC");
-    }
-    catch (Exception $e) {
-      return FALSE;
-    }
-    $this->query("DROP TABLE {drupal_utf8mb4_test}");
-    return TRUE;
   }
 }
 

@@ -41,10 +41,6 @@ class views_plugin_display_services extends views_plugin_display {
     // Execute a view.
     $this->view->execute();
 
-    foreach ($this->view->field as $field) {
-      $field->pre_render($this->view->result);
-    }
-      
     // Render the fields.
     $this->view->style_plugin->render_fields($this->view->result);
 

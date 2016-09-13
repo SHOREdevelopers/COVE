@@ -8,16 +8,12 @@ define('SIMPLETEST_SCRIPT_COLOR_PASS', 32); // Green.
 define('SIMPLETEST_SCRIPT_COLOR_FAIL', 31); // Red.
 define('SIMPLETEST_SCRIPT_COLOR_EXCEPTION', 33); // Brown.
 
-define('SIMPLETEST_SCRIPT_EXIT_SUCCESS', 0);
-define('SIMPLETEST_SCRIPT_EXIT_FAILURE', 1);
-define('SIMPLETEST_SCRIPT_EXIT_EXCEPTION', 2);
-
 // Set defaults and get overrides.
 list($args, $count) = simpletest_script_parse_args();
 
 if ($args['help'] || $count == 0) {
   simpletest_script_help();
-  exit(($count == 0) ? SIMPLETEST_SCRIPT_EXIT_FAILURE : SIMPLETEST_SCRIPT_EXIT_SUCCESS);
+  exit;
 }
 
 if ($args['execute-test']) {
@@ -34,7 +30,7 @@ else {
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 if (!module_exists('simpletest')) {
   simpletest_script_print_error("The simpletest module must be enabled before this script can run.");
-  exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+  exit;
 }
 
 if ($args['clean']) {
@@ -47,7 +43,7 @@ if ($args['clean']) {
   foreach ($messages as $text) {
     echo " - " . $text . "\n";
   }
-  exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
+  exit;
 }
 
 // Load SimpleTest files.
@@ -68,7 +64,7 @@ if ($args['list']) {
       echo " - " . $info['name'] . ' (' . $class . ')' . "\n";
     }
   }
-  exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
+  exit;
 }
 
 $test_list = simpletest_script_get_test_list();
@@ -82,7 +78,7 @@ simpletest_script_reporter_init();
 $test_id = db_insert('simpletest_test_id')->useDefaults(array('test_id'))->execute();
 
 // Execute tests.
-$status = simpletest_script_execute_batch($test_id, simpletest_script_get_test_list());
+simpletest_script_execute_batch($test_id, simpletest_script_get_test_list());
 
 // Retrieve the last database prefix used for testing and the last test class
 // that was run from. Use the information to read the lgo file in case any
@@ -104,7 +100,7 @@ if ($args['xml']) {
 simpletest_clean_results_table($test_id);
 
 // Test complete, exit.
-exit($status);
+exit;
 
 /**
  * Print help text.
@@ -145,8 +141,6 @@ All arguments are long options.
 
   --file      Run tests identified by specific file names, instead of group names.
               Specify the path and the extension (i.e. 'modules/user/user.test').
-
-  --directory Run all tests found within the specified file directory.
 
   --xml       <path>
 
@@ -196,7 +190,6 @@ function simpletest_script_parse_args() {
     'all' => FALSE,
     'class' => FALSE,
     'file' => FALSE,
-    'directory' => '',
     'color' => FALSE,
     'verbose' => FALSE,
     'test_names' => array(),
@@ -229,7 +222,7 @@ function simpletest_script_parse_args() {
       else {
         // Argument not found in list.
         simpletest_script_print_error("Unknown argument '$arg'.");
-        exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+        exit;
       }
     }
     else {
@@ -242,7 +235,7 @@ function simpletest_script_parse_args() {
   // Validate the concurrency argument
   if (!is_numeric($args['concurrency']) || $args['concurrency'] <= 0) {
     simpletest_script_print_error("--concurrency must be a strictly positive integer.");
-    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+    exit;
   }
 
   return array($args, $count);
@@ -272,7 +265,7 @@ function simpletest_script_init($server_software) {
   else {
     simpletest_script_print_error('Unable to automatically determine the path to the PHP interpreter. Supply the --php command line argument.');
     simpletest_script_help();
-    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+    exit();
   }
 
   // Get URL from arguments.
@@ -317,8 +310,6 @@ function simpletest_script_init($server_software) {
 function simpletest_script_execute_batch($test_id, $test_classes) {
   global $args;
 
-  $total_status = SIMPLETEST_SCRIPT_EXIT_SUCCESS;
-
   // Multi-process execution.
   $children = array();
   while (!empty($test_classes) || !empty($children)) {
@@ -334,7 +325,7 @@ function simpletest_script_execute_batch($test_id, $test_classes) {
 
       if (!is_resource($process)) {
         echo "Unable to fork test process. Aborting.\n";
-        exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+        exit;
       }
 
       // Register our new child.
@@ -354,22 +345,13 @@ function simpletest_script_execute_batch($test_id, $test_classes) {
       if (empty($status['running'])) {
         // The child exited, unregister it.
         proc_close($child['process']);
-        if ($status['exitcode'] == SIMPLETEST_SCRIPT_EXIT_FAILURE) {
-          if ($status['exitcode'] > $total_status) {
-            $total_status = $status['exitcode'];
-          }
-        }
-        elseif ($status['exitcode']) {
-          $total_status = $status['exitcode'];
+        if ($status['exitcode']) {
           echo 'FATAL ' . $test_class . ': test runner returned a non-zero error code (' . $status['exitcode'] . ').' . "\n";
         }
-
-        // Remove this child.
         unset($children[$cid]);
       }
     }
   }
-  return $total_status;
 }
 
 /**
@@ -392,14 +374,11 @@ function simpletest_script_run_one_test($test_id, $test_class) {
     simpletest_script_print($info['name'] . ' ' . _simpletest_format_summary_line($test->results) . "\n", simpletest_script_color_code($status));
 
     // Finished, kill this runner.
-    if ($had_fails || $had_exceptions) {
-      exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
-    }
-    exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
+    exit(0);
   }
   catch (Exception $e) {
     echo (string) $e;
-    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+    exit(1);
   }
 }
 
@@ -453,7 +432,7 @@ function simpletest_script_get_test_list() {
           }
           simpletest_script_print_error('Test class not found: ' . $test_class);
           simpletest_script_print_alternatives($test_class, $all_classes, 6);
-          exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+          exit(1);
         }
       }
     }
@@ -472,51 +451,6 @@ function simpletest_script_get_test_list() {
         }
       }
     }
-    elseif ($args['directory']) {
-      // Extract test case class names from specified directory.
-      // Find all tests in the PSR-X structure; Drupal\$extension\Tests\*.php
-      // Since we do not want to hard-code too many structural file/directory
-      // assumptions about PSR-0/4 files and directories, we check for the
-      // minimal conditions only; i.e., a '*.php' file that has '/Tests/' in
-      // its path.
-      // Ignore anything from third party vendors, and ignore template files used in tests.
-      // And any api.php files.
-      $ignore = array('nomask' => '/vendor|\.tpl\.php|\.api\.php/');
-      $files = array();
-      if ($args['directory'][0] === '/') {
-        $directory = $args['directory'];
-      }
-      else {
-        $directory = DRUPAL_ROOT . "/" . $args['directory'];
-      }
-      $file_list = file_scan_directory($directory, '/\.php|\.test$/', $ignore);
-      foreach ($file_list as $file) {
-        // '/Tests/' can be contained anywhere in the file's path (there can be
-        // sub-directories below /Tests), but must be contained literally.
-        // Case-insensitive to match all Simpletest and PHPUnit tests:
-        //   ./lib/Drupal/foo/Tests/Bar/Baz.php
-        //   ./foo/src/Tests/Bar/Baz.php
-        //   ./foo/tests/Drupal/foo/Tests/FooTest.php
-        //   ./foo/tests/src/FooTest.php
-        // $file->filename doesn't give us a directory, so we use $file->uri
-        // Strip the drupal root directory and trailing slash off the URI
-        $filename = substr($file->uri, strlen(DRUPAL_ROOT)+1);
-        if (stripos($filename, '/Tests/')) {
-          $files[drupal_realpath($filename)] = 1;
-        } else if (stripos($filename, '.test')){
-          $files[drupal_realpath($filename)] = 1;
-        }
-      }
-
-      // Check for valid class names.
-      foreach ($all_tests as $class_name) {
-        $refclass = new ReflectionClass($class_name);
-        $classfile = $refclass->getFileName();
-        if (isset($files[$classfile])) {
-          $test_list[] = $class_name;
-        }
-      }
-    }
     else {
       // Check for valid group names and get all valid classes in group.
       foreach ($args['test_names'] as $group_name) {
@@ -526,7 +460,7 @@ function simpletest_script_get_test_list() {
         else {
           simpletest_script_print_error('Test group not found: ' . $group_name);
           simpletest_script_print_alternatives($group_name, array_keys($groups));
-          exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+          exit(1);
         }
       }
     }
@@ -534,7 +468,7 @@ function simpletest_script_get_test_list() {
 
   if (empty($test_list)) {
     simpletest_script_print_error('No valid tests were specified.');
-    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+    exit;
   }
   return $test_list;
 }

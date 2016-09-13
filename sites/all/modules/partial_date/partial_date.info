@@ -5,11 +5,11 @@ core = 7.x
 dependencies[] = date
 
 files[] = includes/partial_date.views.year_period_handler.inc
-; Feeds
-files[] = mappings/partial_date.inc
+
 
 ; Information added by drupal.org packaging script on 2012-07-18
 version = "7.x-1.0-beta1"
 core = "7.x"
 project = "partial_date"
 datestamp = "1342599117"
+

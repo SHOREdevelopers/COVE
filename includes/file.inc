@@ -2026,7 +2026,7 @@ function file_download() {
  *
  * @see file_transfer()
  * @see file_download_access()
- * @see hook_file_download()
+ * @see hook_file_downlaod()
  */
 function file_download_headers($uri) {
   // Let other modules provide headers and control access to the file.
