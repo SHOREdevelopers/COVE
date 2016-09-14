@@ -727,7 +727,7 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: User: Name */
+  /* Field: COUNT(User: Name) */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -842,10 +842,10 @@ function cove_visualizations_views_default_views() {
 
   $view = new view();
   $view->name = 'timeline';
-  $view->description = '';
+  $view->description = 'Showing all editions on a timeline';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Timeline';
+  $view->human_name = 'Editions Timeline';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -858,11 +858,17 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'timelinejs';
-  $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = '1';
+  $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = TRUE;
+  $handler->display->display_options['style_options']['timeline_config']['start_at_end'] = 0;
+  $handler->display->display_options['style_options']['additional_config']['start_at_current'] = 0;
   $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_index_banner';
+  $handler->display->display_options['style_options']['timeline_fields']['start_date'] = 'field_original_publication_date';
+  $handler->display->display_options['style_options']['timeline_fields']['end_date'] = 'field_original_publication_date';
+  $handler->display->display_options['style_options']['timeline_fields']['display_date'] = 'field_original_publication_date_1';
+  $handler->display->display_options['style_options']['timeline_fields']['text'] = 'body';
   $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -875,31 +881,40 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['created']['alter']['text'] = '[created]';
+  $handler->display->display_options['fields']['created']['date_format'] = 'long';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Original publication date */
   $handler->display->display_options['fields']['field_original_publication_date']['id'] = 'field_original_publication_date';
   $handler->display->display_options['fields']['field_original_publication_date']['table'] = 'field_data_field_original_publication_date';
   $handler->display->display_options['fields']['field_original_publication_date']['field'] = 'field_original_publication_date';
   $handler->display->display_options['fields']['field_original_publication_date']['label'] = '';
+  $handler->display->display_options['fields']['field_original_publication_date']['alter']['text'] = '[field_original_publication_date-value]';
   $handler->display->display_options['fields']['field_original_publication_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_original_publication_date']['type'] = 'date_plain';
   $handler->display->display_options['fields']['field_original_publication_date']['settings'] = array(
     'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
+    'fromto' => 'value',
+    'multiple_number' => '1',
     'multiple_from' => '',
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
+  $handler->display->display_options['fields']['field_original_publication_date']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_original_publication_date']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_original_publication_date']['separator'] = '';
   /* Field: Content: Index Banner */
   $handler->display->display_options['fields']['field_index_banner']['id'] = 'field_index_banner';
   $handler->display->display_options['fields']['field_index_banner']['table'] = 'field_data_field_index_banner';
   $handler->display->display_options['fields']['field_index_banner']['field'] = 'field_index_banner';
   $handler->display->display_options['fields']['field_index_banner']['label'] = '';
+  $handler->display->display_options['fields']['field_index_banner']['alter']['text'] = '[field_index_banner]';
   $handler->display->display_options['fields']['field_index_banner']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_index_banner']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_index_banner']['settings'] = array(
     'image_style' => 'index_banner',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
@@ -914,11 +929,20 @@ function cove_visualizations_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: Content: Original publication date */
+  $handler->display->display_options['fields']['field_original_publication_date_1']['id'] = 'field_original_publication_date_1';
+  $handler->display->display_options['fields']['field_original_publication_date_1']['table'] = 'field_data_field_original_publication_date';
+  $handler->display->display_options['fields']['field_original_publication_date_1']['field'] = 'field_original_publication_date';
+  $handler->display->display_options['fields']['field_original_publication_date_1']['label'] = 'Original publication date (for display)';
+  $handler->display->display_options['fields']['field_original_publication_date_1']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_original_publication_date_1']['delta_offset'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -937,6 +961,58 @@ function cove_visualizations_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'editions/timeline';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'created' => 'created',
+    'field_original_publication_date' => 'field_original_publication_date',
+    'field_index_banner' => 'field_index_banner',
+    'body' => 'body',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_original_publication_date' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_index_banner' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'body' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'edition/timeline/table';
   $export['timeline'] = $view;
 
   return $export;

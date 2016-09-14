@@ -41,6 +41,10 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['style_options']['timeline_fields']['text'] = 'field_event2';
   $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
   $handler->display->display_options['style_options']['timeline_fields']['unique_id'] = 'nid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['id'] = 'field_assoc_places_target_id';
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['table'] = 'field_data_field_assoc_places';
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['field'] = 'field_assoc_places_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -309,17 +313,29 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Geocode */
+  $handler->display->display_options['fields']['field_geocode']['id'] = 'field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['table'] = 'field_data_field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['field'] = 'field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['relationship'] = 'field_assoc_places_target_id';
+  $handler->display->display_options['fields']['field_geocode']['label'] = 'Associated Place';
+  $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
+  $handler->display->display_options['fields']['field_geocode']['type'] = 'openlayers_geofield';
+  $handler->display->display_options['fields']['field_geocode']['settings'] = array(
+    'map_layer_preset' => 'openlayers_geofield_map_geofield_formatter:openlayers_geofield_layer_formatter',
+    'data' => 'full',
+  );
   /* Field: Content: Event Description */
   $handler->display->display_options['fields']['field_event2']['id'] = 'field_event2';
   $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
   $handler->display->display_options['fields']['field_event2']['field'] = 'field_event2';
   $handler->display->display_options['fields']['field_event2']['label'] = 'Event';
-  $handler->display->display_options['fields']['field_event2']['alter']['text'] = '[field_event_date_2]
-[field_event2]';
+  $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['text'] = '[field_event2]
+[field_geocode]';
   /* Field: Content: Event date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
@@ -1301,6 +1317,27 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['sorts']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['sorts']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['sorts']['field_event_date']['field'] = 'field_event_date';
+
+  /* Display: Timeline pane small */
+  $handler = $view->new_display('panel_pane', 'Timeline pane small', 'panel_pane_3');
+  $handler->display->display_options['display_description'] = 'Smaller one for use in other Views, such as the Course Dashboard';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'timelinejs';
+  $handler->display->display_options['style_options']['timeline_config']['height'] = '30em';
+  $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = TRUE;
+  $handler->display->display_options['style_options']['timeline_config']['start_at_end'] = 0;
+  $handler->display->display_options['style_options']['additional_config']['start_at_current'] = 0;
+  $handler->display->display_options['style_options']['timeline_fields']['caption'] = 'field_image_1';
+  $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_image';
+  $handler->display->display_options['style_options']['timeline_fields']['start_date'] = 'field_event_date';
+  $handler->display->display_options['style_options']['timeline_fields']['end_date'] = 'field_event_date';
+  $handler->display->display_options['style_options']['timeline_fields']['display_date'] = 'field_event_date_1';
+  $handler->display->display_options['style_options']['timeline_fields']['text'] = 'field_event2';
+  $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
+  $handler->display->display_options['style_options']['timeline_fields']['unique_id'] = 'nid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['custom_timeline'] = $view;
 
   $view = new view();

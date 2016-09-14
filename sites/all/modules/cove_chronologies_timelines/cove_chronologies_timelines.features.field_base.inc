@@ -10,7 +10,7 @@
 function cove_chronologies_timelines_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -36,7 +36,45 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_event2'
+  // Exported field_base: 'field_assoc_places'.
+  $field_bases['field_assoc_places'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_assoc_places',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'views',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_1',
+          'view_name' => 'associated_place_autocomplete',
+        ),
+      ),
+      'sync' => '',
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_event2'.
   $field_bases['field_event2'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -57,7 +95,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_event_date'
+  // Exported field_base: 'field_event_date'.
   $field_bases['field_event_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -146,7 +184,37 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'partial_date_range',
   );
 
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_event_source'.
+  $field_bases['field_event_source'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_event_source',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'event_source',
+          'parent' => 0,
+        ),
+      ),
+      'options_list_callback' => 'content_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -171,7 +239,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_items_in_this_chronology'
+  // Exported field_base: 'field_items_in_this_chronology'.
   $field_bases['field_items_in_this_chronology'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -210,13 +278,16 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_parent_chronology'
+  // Exported field_base: 'field_parent_chronology'.
   $field_bases['field_parent_chronology'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_parent_chronology',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -246,7 +317,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_resource_index'
+  // Exported field_base: 'field_resource_index'.
   $field_bases['field_resource_index'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -288,6 +359,51 @@ function cove_chronologies_timelines_field_default_field_bases() {
       'sync' => '',
       'target_type' => 'node',
     ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'og_group_ref'.
+  $field_bases['og_group_ref'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'og_group_ref',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'og',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'og_behavior' => array(
+            'status' => TRUE,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'membership_type' => 'og_membership_type_default',
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'course' => 'course',
+        ),
+      ),
+      'handler_submit' => 'Change handler',
+      'sync' => '',
+      'target_type' => 'node',
+    ),
+    'target_type' => 'node',
     'translatable' => 0,
     'type' => 'entityreference',
   );

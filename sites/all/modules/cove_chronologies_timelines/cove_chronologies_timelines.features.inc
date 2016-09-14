@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function cove_chronologies_timelines_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
@@ -36,7 +39,7 @@ function cove_chronologies_timelines_node_info() {
     'chronology_entry' => array(
       'name' => t('Chronology Entry'),
       'base' => 'node_content',
-      'description' => t('Content type for Thelwall Chronology'),
+      'description' => t('Stories individual entries (rows) in a chronology or timeline. '),
       'has_title' => '1',
       'title_label' => t('Headline'),
       'help' => t('Now that you\'ve created a chronology, create a series of entries to populate your chronology. To create many  items at once, use the "Save and add another" button below. '),
