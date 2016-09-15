@@ -355,6 +355,262 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'node_view__panel_context_c30434d9-71a1-4d7d-b5ab-0f02888b8532';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = 7;
+  $handler->conf = array(
+    'title' => 'Chronological event',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => '',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'chronology_entry' => 'chronology_entry',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'two_66_33';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'two_66_33_top' => NULL,
+      'two_66_33_first' => NULL,
+      'two_66_33_second' => NULL,
+      'two_66_33_bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%node:title';
+  $display->uuid = 'e4dd4d60-b50f-42be-827d-544e859d9e3f';
+  $display->storage_type = 'unknown';
+  $display->storage_id = '';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-e380e634-9b29-4f40-bd7a-e3d719a1acd4';
+  $pane->panel = 'two_66_33_first';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_image';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'colorbox',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(
+      'colorbox_node_style' => 'gallery_small',
+      'colorbox_node_style_first' => '',
+      'colorbox_image_style' => '',
+      'colorbox_gallery' => 'post',
+      'colorbox_gallery_custom' => '',
+      'colorbox_caption' => 'auto',
+      'colorbox_caption_custom' => '',
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'leftFloat',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'e380e634-9b29-4f40-bd7a-e3d719a1acd4';
+  $display->content['new-e380e634-9b29-4f40-bd7a-e3d719a1acd4'] = $pane;
+  $display->panels['two_66_33_first'][0] = 'new-e380e634-9b29-4f40-bd7a-e3d719a1acd4';
+  $pane = new stdClass();
+  $pane->pid = 'new-8a0d8122-4952-4c13-b1b5-eb15d369e7e5';
+  $pane->panel = 'two_66_33_first';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_event2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'text_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '8a0d8122-4952-4c13-b1b5-eb15d369e7e5';
+  $display->content['new-8a0d8122-4952-4c13-b1b5-eb15d369e7e5'] = $pane;
+  $display->panels['two_66_33_first'][1] = 'new-8a0d8122-4952-4c13-b1b5-eb15d369e7e5';
+  $pane = new stdClass();
+  $pane->pid = 'new-e80d9431-9ebb-493c-be7e-ba5d4eb1aa2b';
+  $pane->panel = 'two_66_33_first';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'map_per_event-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'e80d9431-9ebb-493c-be7e-ba5d4eb1aa2b';
+  $display->content['new-e80d9431-9ebb-493c-be7e-ba5d4eb1aa2b'] = $pane;
+  $display->panels['two_66_33_first'][2] = 'new-e80d9431-9ebb-493c-be7e-ba5d4eb1aa2b';
+  $pane = new stdClass();
+  $pane->pid = 'new-ce3e242c-adcb-4949-adf1-1cb52e8e8cd9';
+  $pane->panel = 'two_66_33_second';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Event Date',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<div style="display:inline-block; vertical-align:middle;" class="leftFloat"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="46px" height="46px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<path d="M160,256H96v-64h64V256z M288,192h-64v64h64V192z M416,192h-64v64h64V192z M160,288H96v64h64V288z M288,288h-64v64h64V288z   M416,288h-64v64h64V288z M160,384H96v64h64V384z M288,384h-64v64h64V384z M128,96c17.672,0,32-14.313,32-32V32  c0-17.688-14.328-32-32-32S96,14.313,96,32v32C96,81.688,110.328,96,128,96z M512,64v448H0V64h80c0,26.469,21.531,48,48,48  s48-21.531,48-48h160c0,26.469,21.531,48,48,48s48-21.531,48-48H512z M480,160H32v320h448V160z M384,96c17.688,0,32-14.313,32-32V32  c0-17.688-14.313-32-32-32s-32,14.313-32,32v32C352,81.688,366.313,96,384,96z"></path>
+</svg></div>
+<div class="field">
+<h2 class="field-label">Event date:</h2>
+<div class="field-items"><div class="field-item even">%node:field_event_date</div></div>
+</div>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'side-meta',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'ce3e242c-adcb-4949-adf1-1cb52e8e8cd9';
+  $display->content['new-ce3e242c-adcb-4949-adf1-1cb52e8e8cd9'] = $pane;
+  $display->panels['two_66_33_second'][0] = 'new-ce3e242c-adcb-4949-adf1-1cb52e8e8cd9';
+  $pane = new stdClass();
+  $pane->pid = 'new-adb4c8f6-7799-4e6c-8371-a5cffad2886d';
+  $pane->panel = 'two_66_33_second';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_parent_chronology';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'above',
+    'formatter' => 'entityreference_label',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(
+      'link' => 1,
+      'colorbox_node_link' => 0,
+      'colorbox_node_classes' => '',
+      'colorbox_node_width' => '600',
+      'colorbox_node_height' => '600',
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'side-meta',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'adb4c8f6-7799-4e6c-8371-a5cffad2886d';
+  $display->content['new-adb4c8f6-7799-4e6c-8371-a5cffad2886d'] = $pane;
+  $display->panels['two_66_33_second'][1] = 'new-adb4c8f6-7799-4e6c-8371-a5cffad2886d';
+  $pane = new stdClass();
+  $pane->pid = 'new-b5a58f7b-c0f8-4a39-b24c-3601ef58b366';
+  $pane->panel = 'two_66_33_second';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_event_source';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'above',
+    'formatter' => 'taxonomy_term_reference_link',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => 'Source:',
+    'override_title_heading' => 'div',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'side-meta',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'b5a58f7b-c0f8-4a39-b24c-3601ef58b366';
+  $display->content['new-b5a58f7b-c0f8-4a39-b24c-3601ef58b366'] = $pane;
+  $display->panels['two_66_33_second'][2] = 'new-b5a58f7b-c0f8-4a39-b24c-3601ef58b366';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['node_view__panel_context_c30434d9-71a1-4d7d-b5ab-0f02888b8532'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'node_view__panel_context_daeef62f-9ca5-477a-b879-2ee5892dc11b';
   $handler->task = 'node_view';
   $handler->subtask = '';
