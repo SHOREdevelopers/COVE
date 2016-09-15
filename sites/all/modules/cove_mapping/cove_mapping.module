@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the COVE Mapping feature.
+ */
+
+include_once 'cove_mapping.features.inc';
