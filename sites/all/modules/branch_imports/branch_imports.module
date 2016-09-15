@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the BRANCH imports feature.
+ */
+
+include_once 'branch_imports.features.inc';
