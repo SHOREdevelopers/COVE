@@ -57,10 +57,10 @@ function cove_mapping_field_default_field_instances() {
   // Exported field_instance: 'node-map-field_places_in_this_map'.
   $field_instances['node-map-field_places_in_this_map'] = array(
     'bundle' => 'map',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
-    'description' => 'Shows the individual places that have been added to this Map. ',
+    'description' => 'Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -104,14 +104,17 @@ function cove_mapping_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_place_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 2,
     ),
   );
@@ -276,10 +279,10 @@ function cove_mapping_field_default_field_instances() {
   // Exported field_instance: 'node-place-field_assoc_events'.
   $field_instances['node-place-field_assoc_events'] = array(
     'bundle' => 'place',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'You can associated events in our database with a place. To do so, use the autocomplete field to find content. If a place does not already exist in the database, you can create one <a href="/node/add/place">here</a>. Once saved, your newly created place will be available here. ',
+    'description' => 'You can associated events in our database with a place. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created place will be available in the list. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -315,14 +318,17 @@ function cove_mapping_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 120,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_event_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 11,
     ),
   );
@@ -437,55 +443,6 @@ function cove_mapping_field_default_field_instances() {
       ),
       'type' => 'openlayers_geofield',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-place-field_latitude_longitude'.
-  $field_instances['node-place-field_latitude_longitude'] = array(
-    'bundle' => 'place',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Legacy field.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_latitude_longitude',
-    'label' => 'Latitude/Longitude',
-    'required' => 0,
-    'settings' => array(
-      'local_solr' => array(
-        'enabled' => FALSE,
-        'lat_field' => 'lat',
-        'lng_field' => 'lng',
-      ),
-      'solrspatial' => array(
-        'enabled' => 0,
-        'lat_field' => '',
-        'latlng_field' => '',
-        'lng_field' => '',
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'geofield',
-      'settings' => array(
-        'html5_geolocation' => 0,
-      ),
-      'type' => 'geofield_latlon',
-      'weight' => 5,
     ),
   );
 
@@ -668,15 +625,13 @@ function cove_mapping_field_default_field_instances() {
   t('Body');
   t('Geocode');
   t('Groups audience');
+  t('Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ');
   t('If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
-  t('Latitude/Longitude');
-  t('Legacy field.');
   t('Parent Map');
   t('Parent Resource');
   t('Places in this Map');
   t('Select the parent map of which this place is a part. This should happen automatically!');
-  t('Shows the individual places that have been added to this Map. ');
-  t('You can associated events in our database with a place. To do so, use the autocomplete field to find content. If a place does not already exist in the database, you can create one <a href="/node/add/place">here</a>. Once saved, your newly created place will be available here. ');
+  t('You can associated events in our database with a place. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created place will be available in the list. ');
 
   return $field_instances;
 }

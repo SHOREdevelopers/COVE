@@ -43,10 +43,10 @@ function cove_mapping_node_info() {
     'map' => array(
       'name' => t('Map'),
       'base' => 'node_content',
-      'description' => t('Provide basic information about your map. Give it a title and a description so that folks can understand the scope and purpose of the map. You\'ll add places to your map in a second step. '),
+      'description' => t('Parent to "Place" content type. Allows grouping of places into discrete maps.'),
       'has_title' => '1',
       'title_label' => t('Map name'),
-      'help' => '',
+      'help' => t('Provide basic information about your map. Give it a title and a description so that folks can understand its scope and purpose. As a first step in populating your map, you can use the "Associated Places" selector below to add places that already exist in the database. You\'ll add your own places to your map in a second step, after you save. '),
     ),
     'place' => array(
       'name' => t('Place'),
