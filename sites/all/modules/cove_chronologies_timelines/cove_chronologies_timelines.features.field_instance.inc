@@ -61,7 +61,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
     'default_value' => array(),
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
-    'description' => 'Shows the individual Chronology entries that have been added to this Chronology. ',
+    'description' => 'Here, you can add already-existing events relevant to your Timeline. To do so, click the "Add items" button below. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -105,14 +105,17 @@ function cove_chronologies_timelines_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_event_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 5,
     ),
   );
@@ -247,10 +250,10 @@ function cove_chronologies_timelines_field_default_field_instances() {
   // Exported field_instance: 'node-chronology_entry-field_assoc_places'.
   $field_instances['node-chronology_entry-field_assoc_places'] = array(
     'bundle' => 'chronology_entry',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'You can associated places in our database with an event. To do so, use the autocomplete field to find content.',
+    'description' => 'You can associated places in our database with an event. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created event will be available in the list. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -286,14 +289,17 @@ function cove_chronologies_timelines_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 100,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_place_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 11,
     ),
   );
@@ -634,7 +640,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_parent_chronology',
     'label' => 'Parent Chronology',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -642,7 +648,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
           'action_on_edit' => 0,
           'fallback' => 'none',
           'providers' => array(
-            'og_context' => FALSE,
+            'og_context' => 0,
             'url' => 1,
           ),
           'skip_perm' => 'administer permissions',
@@ -729,6 +735,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('Event Source');
   t('Event date');
   t('Groups audience');
+  t('Here, you can add already-existing events relevant to your Timeline. To do so, click the "Add items" button below. ');
   t('Here, you can add an image that is in some way illustrative of an event; for example, a title page for a book publication, a portrait of a person involved in an event, or a depiction of a historical event. This is not required but highly encouraged. See below for basic size requirements, and keep in mind that the image will be resized to fit the timeline format. ');
   t('If this chronology is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Image');
@@ -737,8 +744,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('Parent Resource');
   t('Provide a short description of your chronology');
   t('Select the parent chronology of which this entry is a part. This should happen automatically!');
-  t('Shows the individual Chronology entries that have been added to this Chronology. ');
-  t('You can associated places in our database with an event. To do so, use the autocomplete field to find content.');
+  t('You can associated places in our database with an event. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created event will be available in the list. ');
 
   return $field_instances;
 }

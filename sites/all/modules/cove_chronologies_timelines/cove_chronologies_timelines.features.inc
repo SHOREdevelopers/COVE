@@ -31,10 +31,10 @@ function cove_chronologies_timelines_node_info() {
     'chronology' => array(
       'name' => t('Chronology'),
       'base' => 'node_content',
-      'description' => t('Parent to chronology entries. Allows grouping of chronological entries into discrete chronologies.'),
+      'description' => t('Parent to "Chronology entry" content type. Allows grouping of chronological entries into discrete chronologies.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => t('Provide basic information about your chronology. Give it a title and a description so that folks can understand the scope and purpose of the chronology. You\'ll add entries to your chronology in a second step. '),
+      'help' => t('Provide basic information about your timeline. Give it a title and a description so that folks can understand its scope and purpose. As a first step in populating your timeline, you can use the "Associated Events" selector below to add events that already exist in the database. You\'ll add your own entries to your chronology in a second step, after you save. '),
     ),
     'chronology_entry' => array(
       'name' => t('Chronology Entry'),

@@ -45,6 +45,7 @@ function cove_chronologies_timelines_user_default_permissions() {
     'name' => 'create field_items_in_this_chronology',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
       'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',
@@ -147,6 +148,7 @@ function cove_chronologies_timelines_user_default_permissions() {
     'name' => 'edit own field_items_in_this_chronology',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
       'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',

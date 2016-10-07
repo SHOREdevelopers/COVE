@@ -1069,6 +1069,7 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['field_geocode']['field'] = 'field_geocode';
   $handler->display->display_options['fields']['field_geocode']['relationship'] = 'field_assoc_places_target_id';
   $handler->display->display_options['fields']['field_geocode']['label'] = 'Associated Place';
+  $handler->display->display_options['fields']['field_geocode']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
   $handler->display->display_options['fields']['field_geocode']['type'] = 'openlayers_geofield';
   $handler->display->display_options['fields']['field_geocode']['settings'] = array(
