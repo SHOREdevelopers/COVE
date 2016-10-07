@@ -35,6 +35,7 @@ function sky_preprocess_html(&$vars) {
   }
   drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
   drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', array('type' => 'external'));
+  drupal_add_css('/sites/all/themes/sky/modal.css');
 }
 
 /**
