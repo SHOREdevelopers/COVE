@@ -1,5 +1,5 @@
 name = COVE Editions
-description = Fields and other stuff for COVE editions 
+description = Fields and other stuff for COVE editions
 core = 7.x
 package = Features
 version = 7.x-1.0-beta1

@@ -211,7 +211,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_doc_owner',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -229,9 +229,7 @@ function cove_editions_field_default_field_bases() {
           ),
         ),
         'sort' => array(
-          'direction' => 'ASC',
-          'property' => 'name',
-          'type' => 'property',
+          'type' => 'none',
         ),
         'target_bundles' => array(),
       ),

@@ -1928,14 +1928,11 @@ function cove_editions_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'options_select',
       'weight' => 15,
     ),
   );
