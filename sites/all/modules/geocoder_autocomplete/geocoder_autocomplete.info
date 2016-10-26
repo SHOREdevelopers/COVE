@@ -1,0 +1,10 @@
+name = Geocoder Autocomplete
+description = Provides a text field widget with autocomplete via the Google Geocoding API.
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2016-06-28
+version = "7.x-1.1"
+core = "7.x"
+project = "geocoder_autocomplete"
+datestamp = "1467108954"
+
