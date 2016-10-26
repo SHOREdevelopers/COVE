@@ -82,7 +82,7 @@ function cove_mapping_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => '',
+        'class' => 'widget-map-region',
         'hide_empty' => 0,
       ),
       1 => array(
