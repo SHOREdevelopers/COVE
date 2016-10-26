@@ -433,16 +433,96 @@ function cove_mapping_field_default_field_instances() {
       'settings' => array(
         'allow_edit' => 1,
         'data_storage' => 'single',
+        'delta_handling' => 'default',
         'feature_types' => array(
           'path' => 0,
           'point' => 'point',
           'polygon' => 0,
         ),
+        'geocoder_field' => 'field_place_search',
+        'geocoder_handler' => 'bing',
+        'handler_settings' => array(
+          'google' => array(
+            'all_results' => 0,
+            'biasing' => array(
+              'bounds' => '',
+              'components' => '',
+              'region' => '',
+            ),
+            'geometry_type' => 'point',
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
+        ),
         'openlayers_map' => 'openlayers_geofield_map_geofield_widget',
         'showInputField' => 1,
+        'use_geocoder' => 1,
       ),
       'type' => 'openlayers_geofield',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-place-field_geocoder'.
+  $field_instances['node-place-field_geocoder'] = array(
+    'bundle' => 'place',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'type' => 'geofield_wkt',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_geocoder',
+    'label' => 'Geocoder',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geocoder',
+      'settings' => array(
+        'delta_handling' => 'default',
+        'geocoder_field' => 'field_place_search',
+        'geocoder_handler' => 'openstreetmap_nominatim',
+        'handler_settings' => array(
+          'google' => array(
+            'all_results' => 0,
+            'biasing' => array(
+              'bounds' => '',
+              'components' => '',
+              'region' => '',
+            ),
+            'geometry_type' => 'point',
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
+        ),
+      ),
+      'type' => 'geocoder',
+      'weight' => 5,
     ),
   );
 
@@ -502,6 +582,46 @@ function cove_mapping_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-place-field_place_search'.
+  $field_instances['node-place-field_place_search'] = array(
+    'bundle' => 'place',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_place_search',
+    'label' => 'Place Search',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -624,11 +744,13 @@ function cove_mapping_field_default_field_instances() {
   t('Associated Place Anchor Tag');
   t('Body');
   t('Geocode');
+  t('Geocoder');
   t('Groups audience');
   t('Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ');
   t('If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Parent Map');
   t('Parent Resource');
+  t('Place Search');
   t('Places in this Map');
   t('Select the parent map of which this place is a part. This should happen automatically!');
   t('You can associated events in our database with a place. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created place will be available in the list. ');
