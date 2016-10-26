@@ -440,7 +440,7 @@ function cove_mapping_field_default_field_instances() {
           'polygon' => 0,
         ),
         'geocoder_field' => 'field_place_search',
-        'geocoder_handler' => 'bing',
+        'geocoder_handler' => 'openstreetmap_nominatim',
         'handler_settings' => array(
           'google' => array(
             'all_results' => 0,
@@ -458,7 +458,7 @@ function cove_mapping_field_default_field_instances() {
             ),
           ),
         ),
-        'openlayers_map' => 'openlayers_geofield_map_geofield_widget',
+        'openlayers_map' => 'cove_openlayers_geofield_map_geofield_widget',
         'showInputField' => 1,
         'use_geocoder' => 1,
       ),
@@ -588,7 +588,7 @@ function cove_mapping_field_default_field_instances() {
   // Exported field_instance: 'node-place-field_place_search'.
   $field_instances['node-place-field_place_search'] = array(
     'bundle' => 'place',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -616,11 +616,11 @@ function cove_mapping_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'text',
+      'module' => 'geocoder_autocomplete',
       'settings' => array(
         'size' => 60,
       ),
-      'type' => 'text_textfield',
+      'type' => 'geocoder_autocomplete',
       'weight' => 4,
     ),
   );
