@@ -23,7 +23,7 @@
   stylesheets[all][] = css/navigation.css
   stylesheets[all][] = color/colors.css
   stylesheets[all][] = css/sky.settings.style.css
-  stylesheets[all][] = modal.css
+  ; stylesheets[all][] = modal.css
   stylesheets[print][] = css/print.css
 
   ; Internet Explorer Stylesheets

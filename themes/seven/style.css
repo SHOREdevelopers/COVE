@@ -988,3 +988,48 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+/* The openlayers layer switcher as a CSS dropdown */
+
+.layerswitcher {
+    top: 80px !important;
+    padding: 3px 7px !important;
+}
+
+.layerswitcher .item-list {
+    position: relative;
+    display: inline-block;
+}
+
+ul#clone-of-openlayers-examples-control-simple-layer-switcher-items {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: rgba(91,134,172,0.5);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    color: #020202;
+}
+
+.openlayers-map .item-list:hover ul#clone-of-openlayers-examples-control-simple-layer-switcher-items {
+    display: block;
+}
+
+/* Lining up the place search box and the button to find it on a map. */
+input#edit-field-geocode-und-0-use-geocoder {
+    float: right;
+    display: inline-block;
+    margin-top: 28px;
+    margin-right: 30%;
+}
+
+div#edit-field-place-search {
+   margin-top: -20px;
+    display: inline-block;
+}
+
+input#edit-field-place-search-und-0-value {
+    height: 25px;
+    font-size: 16px;
+}
