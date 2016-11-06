@@ -35,6 +35,7 @@ function sky_preprocess_html(&$vars) {
   }
   drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
   drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', array('type' => 'external'));
+  drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css', array('type' => 'external'));
   //drupal_add_css('/sites/all/themes/sky/modal.css');
 }
 
@@ -117,6 +118,10 @@ function sky_process_region(&$vars) {
 
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
-drupal_add_js('/sites/all/themes/sky/link-to-highlight.js', array('type' => 'file', 'scope' => 'footer'));
-drupal_add_js('/sites/all/themes/sky/more-colorbox.js');
-drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external'));
+drupal_add_js('/sites/all/themes/sky/filter.js', array('type' => 'file', 'scope' => 'footer'));
+//drupal_add_js('/sites/all/themes/sky/link-to-highlight.js', array('type' => 'file', 'scope' => 'footer'));
+//drupal_add_js('/sites/all/themes/sky/more-colorbox.js');
+//drupal_add_js('https://code.jquery.com/jquery-3.1.0.slim.min.js', array('type' => 'external', 'scope' => 'footer'));
+//drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external', 'scope' => 'footer'));
+//drupal_add_js('https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js', array('type' => 'external', 'scope' => 'footer'));
+//drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js', array('type' => 'external', 'scope' => 'footer'));

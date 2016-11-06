@@ -34,16 +34,16 @@ width:33.333333%
 }
 
 .anno-container { /* Full screen nav for annotations */
-        width: 370px;
+        width: 435px;
     height: 100%;
     top:0;
     right: 0;
-    z-index: 100;
+    z-index: 500;
     visibility: hidden;
     position: fixed;
     /*transform: translate3d(370px,0,0);*/
     box-sizing: border-box;
-    background: rgba(128,128,128,0.5);
+    background: white;
     display: block;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
@@ -65,35 +65,22 @@ input[type="checkbox"]#togglebox {
     visibility: hidden; /* hide checkbox, instead relying on labels to toggle it */
 }
  
-label#navtoggler{ /* Main label icon to toggle menu state */
-    z-index: 9;
-    /* top: 0; */
-    right: 15px;
-    position: fixed;
-    font-size: 8px;
-    width: 4em;
-    height: 2.5em;
+
+label#navtoggler {
+    z-index: 499;
     top: 40px;
+    right: 20px;
+    position: fixed;
+    font-size: 35px;
+    /* width: 4em; */
+    /* height: 5em; */
     /* left: 0; */
-    text-indent: -2000px;
-    border: 0.6em solid white;
-    border-width: 0.6em 0;
+    /* text-indent: -2000px; */
+    /* border: 0.6em solid white; */
+    /* border-width: 0.6em 0; */
     cursor: pointer;
     color: white;
 }
- 
-label#navtoggler::before{
-    /* inner strip inside label */
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 0.6em;
-    top: 50%;
-    margin-top: -0.3em;
-    left: 0;
-    background: white; /* stripe background color. Change to match border color of parent label above */
-    }
     
     input[type="checkbox"]#togglebox:checked ~ div.primary-content{
    /* margin-left: 10px;  add some breathing room between menu and contentarea */
@@ -136,4 +123,3 @@ input[type="checkbox"]#togglebox:checked ~ div.anno-container { /* nav state whe
 .anno-container label#closex::after{ /* render large cross inside close button */
     transform: rotate(-135deg);
 }
- No newline at end of file
