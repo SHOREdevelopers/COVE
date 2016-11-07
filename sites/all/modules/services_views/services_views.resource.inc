@@ -147,7 +147,7 @@ function services_views_execute_view($view_info, $view = NULL, $display_id = NUL
         // Move key if we have an entity property and the target_key was changed via label
         if ($entity_property) {
           unset($output[$index]->$f_key);
-          $output[$index]->$target_key = $field->theme($row); // @todo: Do not render twice; use view->execute_display and consolidate functions
+          $output[$index]->$target_key = htmlspecialchars_decode($field->theme($row), ENT_QUOTES); // @todo: Do not render twice; use view->execute_display and consolidate functions
           continue;
         }
 
