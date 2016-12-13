@@ -440,6 +440,54 @@ print print_insert_link();  print print_mail_insert_link();
   $pane->uuid = '46065dab-362e-45a6-92b3-3e753f72d819';
   $display->content['new-46065dab-362e-45a6-92b3-3e753f72d819'] = $pane;
   $display->panels['rightfloat'][0] = 'new-46065dab-362e-45a6-92b3-3e753f72d819';
+  $pane = new stdClass();
+  $pane->pid = 'new-c764ca06-d493-473b-b2f5-e8d9d482d01e';
+  $pane->panel = 'rightfloat';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_cove_studio_uri';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 3,
+            1 => 7,
+            2 => 9,
+            3 => 8,
+            4 => 10,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+    'logic' => 'or',
+  );
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'c764ca06-d493-473b-b2f5-e8d9d482d01e';
+  $display->content['new-c764ca06-d493-473b-b2f5-e8d9d482d01e'] = $pane;
+  $display->panels['rightfloat'][1] = 'new-c764ca06-d493-473b-b2f5-e8d9d482d01e';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

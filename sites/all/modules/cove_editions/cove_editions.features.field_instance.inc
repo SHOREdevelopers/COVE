@@ -1886,6 +1886,63 @@ function cove_editions_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-editions_page-field_cove_studio_uri'.
+  $field_instances['node-editions_page-field_cove_studio_uri'] = array(
+    'bundle' => 'editions_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The URI of the analagous document at COVE Studio',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_cove_studio_uri',
+    'label' => 'COVE Studio URI',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => 'nofollow',
+        'target' => '_blank',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 0,
+      'rel_remove' => 'default',
+      'title' => 'value',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => 'View Document in COVE Studio',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-editions_page-field_doc_owner'.
   $field_instances['node-editions_page-field_doc_owner'] = array(
     'bundle' => 'editions_page',
@@ -3999,6 +4056,7 @@ function cove_editions_field_default_field_instances() {
   t('Authored by (Secondary)');
   t('Banner for interior pages of this resource, for branding purposes');
   t('Body');
+  t('COVE Studio URI');
   t('City');
   t('Continent');
   t('Country');
@@ -4043,6 +4101,7 @@ function cove_editions_field_default_field_instances() {
   t('Tags sourced from OpenCalais about Country.');
   t('Tags sourced from OpenCalais about Province Or State.');
   t('The Banner, 2000px x 400px, that appears on the Table of Contents Page, i.e. here.');
+  t('The URI of the analagous document at COVE Studio');
   t('This field id import-driven, and shouldn\'t have any hand-entered tags.');
   t('This field is import-driven, and shouldn\'t have any hand-entered tags.');
   t('This is a special date handler that can contain "fuzzy" dates and with varying granularities, i.e. when the exact date of a publication is unknown or when a date can only be narrowed down to a year. ');
