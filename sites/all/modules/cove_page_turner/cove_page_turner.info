@@ -1,0 +1,13 @@
+name = COVE Page Turner
+description = Some configuration for the Page Turner
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+dependencies[] = features
+dependencies[] = flag
+dependencies[] = page_turner
+dependencies[] = page_turner_bookmarks
+features[features_api][] = api:2
+features[user_permission][] = administer page_turner
+features[user_permission][] = flag page_turner_bookmark
+features[user_permission][] = unflag page_turner_bookmark

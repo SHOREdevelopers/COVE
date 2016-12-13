@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Install the Page Turner module.
+ *
+ * Mike Widner <mikewidner@stanford.edu>
+ **/
+
+
+/**
+ * Implements hook_uninstall()
+ */
+function page_turner_uninstall() {
+  // Let's be nice and *actually* uninstall
+  variable_del('page_turner_minlength');
+  variable_del('page_turner_pagelength');
+  variable_del('page_turner_breaks');
+  variable_del('page_turner_node_types');
+  field_delete_field('field_page_turner_active');
+}
+
+/**
+ * Change order in which Page Turner module loads
+ */
+function page_turner_update_7101() {
+	// This module needs to fire before the Annotator Histogram plugin loads
+	// So, let's change our module weight
+	db_update('system')
+		->fields(array('weight' => -100))
+		->condition('name', 'page_turner', '=')
+		->execute();
+}
