@@ -177,7 +177,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   // Exported field_instance: 'node-chronology-og_group_ref'.
   $field_instances['node-chronology-og_group_ref'] = array(
     'bundle' => 'chronology',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => '',
@@ -523,7 +523,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
     'bundle' => 'chronology_entry',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Optionally, you may add a source for your chronology entry here. Just provide a label that identifies where the entry came from. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -740,6 +740,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('If this chronology is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Image');
   t('Items in this chronology');
+  t('Optionally, you may add a source for your chronology entry here. Just provide a label that identifies where the entry came from. ');
   t('Parent Chronology');
   t('Parent Resource');
   t('Provide a short description of your chronology');

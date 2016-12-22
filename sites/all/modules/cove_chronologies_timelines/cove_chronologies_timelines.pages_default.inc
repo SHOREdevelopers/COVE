@@ -46,8 +46,74 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'two_66_33';
-  $display->layout_settings = array();
+  $display->layout = 'flexible';
+  $display->layout_settings = array(
+    'items' => array(
+      'canvas' => array(
+        'type' => 'row',
+        'contains' => 'column',
+        'children' => array(
+          0 => 'main',
+          1 => 1,
+        ),
+        'parent' => NULL,
+      ),
+      'main' => array(
+        'type' => 'column',
+        'width' => '69.97466627691708',
+        'width_type' => '%',
+        'children' => array(
+          0 => 'main-row',
+        ),
+        'parent' => 'canvas',
+      ),
+      'main-row' => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'center',
+        ),
+        'parent' => 'main',
+      ),
+      'center' => array(
+        'type' => 'region',
+        'title' => 'Center',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'main-row',
+      ),
+      1 => array(
+        'type' => 'column',
+        'width' => '30.025333723082923',
+        'width_type' => '%',
+        'parent' => 'canvas',
+        'children' => array(
+          0 => 2,
+        ),
+        'class' => '',
+        'hide_empty' => 0,
+      ),
+      2 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'right',
+        ),
+        'parent' => '1',
+        'class' => '',
+        'hide_empty' => 0,
+      ),
+      'right' => array(
+        'type' => 'region',
+        'title' => 'Right',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '2',
+        'class' => '',
+        'hide_empty' => 0,
+      ),
+    ),
+  );
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
@@ -60,6 +126,8 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
       'two_66_33_first' => NULL,
       'two_66_33_second' => NULL,
       'two_66_33_bottom' => NULL,
+      'center' => NULL,
+      'right' => NULL,
     ),
   );
   $display->cache = array();
@@ -70,56 +138,8 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
-  $pane->pid = 'new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
-  $pane->panel = 'two_66_33_bottom';
-  $pane->type = 'form';
-  $pane->subtype = 'form';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'context' => 'argument_node_edit_1',
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $pane->uuid = 'b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
-  $display->content['new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99'] = $pane;
-  $display->panels['two_66_33_bottom'][0] = 'new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
-  $pane = new stdClass();
-  $pane->pid = 'new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
-  $pane->panel = 'two_66_33_bottom';
-  $pane->type = 'node_form_buttons';
-  $pane->subtype = 'node_form_buttons';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'context' => 'argument_node_edit_1',
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = '534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
-  $display->content['new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96'] = $pane;
-  $display->panels['two_66_33_bottom'][1] = 'new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
-  $pane = new stdClass();
   $pane->pid = 'new-9feacf53-9173-4532-9b5c-c9827cae3120';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'node_form_title';
   $pane->subtype = 'node_form_title';
   $pane->shown = TRUE;
@@ -140,10 +160,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->locks = array();
   $pane->uuid = '9feacf53-9173-4532-9b5c-c9827cae3120';
   $display->content['new-9feacf53-9173-4532-9b5c-c9827cae3120'] = $pane;
-  $display->panels['two_66_33_first'][0] = 'new-9feacf53-9173-4532-9b5c-c9827cae3120';
+  $display->panels['center'][0] = 'new-9feacf53-9173-4532-9b5c-c9827cae3120';
   $pane = new stdClass();
   $pane->pid = 'new-c0680183-e0a4-49b4-bb2b-db375e4358d5';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'form';
   $pane->subtype = 'form';
   $pane->shown = FALSE;
@@ -164,10 +184,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->locks = array();
   $pane->uuid = 'c0680183-e0a4-49b4-bb2b-db375e4358d5';
   $display->content['new-c0680183-e0a4-49b4-bb2b-db375e4358d5'] = $pane;
-  $display->panels['two_66_33_first'][1] = 'new-c0680183-e0a4-49b4-bb2b-db375e4358d5';
+  $display->panels['center'][1] = 'new-c0680183-e0a4-49b4-bb2b-db375e4358d5';
   $pane = new stdClass();
   $pane->pid = 'new-11eeb20d-2d50-4c20-a37d-b7fe87c11575';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'entity_form_field';
   $pane->subtype = 'node:field_event2';
   $pane->shown = TRUE;
@@ -190,10 +210,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->locks = array();
   $pane->uuid = '11eeb20d-2d50-4c20-a37d-b7fe87c11575';
   $display->content['new-11eeb20d-2d50-4c20-a37d-b7fe87c11575'] = $pane;
-  $display->panels['two_66_33_first'][2] = 'new-11eeb20d-2d50-4c20-a37d-b7fe87c11575';
+  $display->panels['center'][2] = 'new-11eeb20d-2d50-4c20-a37d-b7fe87c11575';
   $pane = new stdClass();
   $pane->pid = 'new-7356157a-3d77-4211-831e-1bfa9ca14c19';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'entity_form_field';
   $pane->subtype = 'node:field_image';
   $pane->shown = TRUE;
@@ -216,10 +236,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->locks = array();
   $pane->uuid = '7356157a-3d77-4211-831e-1bfa9ca14c19';
   $display->content['new-7356157a-3d77-4211-831e-1bfa9ca14c19'] = $pane;
-  $display->panels['two_66_33_first'][3] = 'new-7356157a-3d77-4211-831e-1bfa9ca14c19';
+  $display->panels['center'][3] = 'new-7356157a-3d77-4211-831e-1bfa9ca14c19';
   $pane = new stdClass();
   $pane->pid = 'new-738071e8-e31c-47cf-ae82-8228ff50131e';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'entity_form_field';
   $pane->subtype = 'node:field_parent_chronology';
   $pane->shown = TRUE;
@@ -242,36 +262,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->locks = array();
   $pane->uuid = '738071e8-e31c-47cf-ae82-8228ff50131e';
   $display->content['new-738071e8-e31c-47cf-ae82-8228ff50131e'] = $pane;
-  $display->panels['two_66_33_first'][4] = 'new-738071e8-e31c-47cf-ae82-8228ff50131e';
-  $pane = new stdClass();
-  $pane->pid = 'new-d371d161-765f-46ce-90f4-e666606f7759';
-  $pane->panel = 'two_66_33_first';
-  $pane->type = 'entity_form_field';
-  $pane->subtype = 'node:field_event_source';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'label' => '',
-    'formatter' => '',
-    'context' => 'argument_node_edit_1',
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 5;
-  $pane->locks = array();
-  $pane->uuid = 'd371d161-765f-46ce-90f4-e666606f7759';
-  $display->content['new-d371d161-765f-46ce-90f4-e666606f7759'] = $pane;
-  $display->panels['two_66_33_first'][5] = 'new-d371d161-765f-46ce-90f4-e666606f7759';
+  $display->panels['center'][4] = 'new-738071e8-e31c-47cf-ae82-8228ff50131e';
   $pane = new stdClass();
   $pane->pid = 'new-e9a3c682-ff82-4a81-b00c-24866762c870';
-  $pane->panel = 'two_66_33_first';
+  $pane->panel = 'center';
   $pane->type = 'entity_form_field';
   $pane->subtype = 'node:field_assoc_places';
   $pane->shown = TRUE;
@@ -290,16 +284,16 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = 'e9a3c682-ff82-4a81-b00c-24866762c870';
   $display->content['new-e9a3c682-ff82-4a81-b00c-24866762c870'] = $pane;
-  $display->panels['two_66_33_first'][6] = 'new-e9a3c682-ff82-4a81-b00c-24866762c870';
+  $display->panels['center'][5] = 'new-e9a3c682-ff82-4a81-b00c-24866762c870';
   $pane = new stdClass();
-  $pane->pid = 'new-e3a9c0c0-a540-4f12-bed9-e0da147be34e';
-  $pane->panel = 'two_66_33_second';
+  $pane->pid = 'new-d371d161-765f-46ce-90f4-e666606f7759';
+  $pane->panel = 'center';
   $pane->type = 'entity_form_field';
-  $pane->subtype = 'node:field_event_date';
+  $pane->subtype = 'node:field_event_source';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -316,14 +310,62 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 6;
   $pane->locks = array();
-  $pane->uuid = 'e3a9c0c0-a540-4f12-bed9-e0da147be34e';
-  $display->content['new-e3a9c0c0-a540-4f12-bed9-e0da147be34e'] = $pane;
-  $display->panels['two_66_33_second'][0] = 'new-e3a9c0c0-a540-4f12-bed9-e0da147be34e';
+  $pane->uuid = 'd371d161-765f-46ce-90f4-e666606f7759';
+  $display->content['new-d371d161-765f-46ce-90f4-e666606f7759'] = $pane;
+  $display->panels['center'][6] = 'new-d371d161-765f-46ce-90f4-e666606f7759';
+  $pane = new stdClass();
+  $pane->pid = 'new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
+  $pane->panel = 'center';
+  $pane->type = 'form';
+  $pane->subtype = 'form';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'context' => 'argument_node_edit_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 7;
+  $pane->locks = array();
+  $pane->uuid = 'b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
+  $display->content['new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99'] = $pane;
+  $display->panels['center'][7] = 'new-b246e5b8-c662-46f7-8bf6-c0ee17ab6b99';
+  $pane = new stdClass();
+  $pane->pid = 'new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
+  $pane->panel = 'center';
+  $pane->type = 'node_form_buttons';
+  $pane->subtype = 'node_form_buttons';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'context' => 'argument_node_edit_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 8;
+  $pane->locks = array();
+  $pane->uuid = '534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
+  $display->content['new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96'] = $pane;
+  $display->panels['center'][8] = 'new-534b27ce-0c38-43c7-90a4-3c52c7ddaa96';
   $pane = new stdClass();
   $pane->pid = 'new-8faae890-bc0d-4bc1-b0f2-ec010ef6a839';
-  $pane->panel = 'two_66_33_second';
+  $pane->panel = 'right';
   $pane->type = 'entity_form_field';
   $pane->subtype = 'node:group_date';
   $pane->shown = TRUE;
@@ -342,11 +384,37 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 0;
   $pane->locks = array();
   $pane->uuid = '8faae890-bc0d-4bc1-b0f2-ec010ef6a839';
   $display->content['new-8faae890-bc0d-4bc1-b0f2-ec010ef6a839'] = $pane;
-  $display->panels['two_66_33_second'][1] = 'new-8faae890-bc0d-4bc1-b0f2-ec010ef6a839';
+  $display->panels['right'][0] = 'new-8faae890-bc0d-4bc1-b0f2-ec010ef6a839';
+  $pane = new stdClass();
+  $pane->pid = 'new-e3a9c0c0-a540-4f12-bed9-e0da147be34e';
+  $pane->panel = 'right';
+  $pane->type = 'entity_form_field';
+  $pane->subtype = 'node:field_event_date';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => '',
+    'formatter' => '',
+    'context' => 'argument_node_edit_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'e3a9c0c0-a540-4f12-bed9-e0da147be34e';
+  $display->content['new-e3a9c0c0-a540-4f12-bed9-e0da147be34e'] = $pane;
+  $display->panels['right'][1] = 'new-e3a9c0c0-a540-4f12-bed9-e0da147be34e';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

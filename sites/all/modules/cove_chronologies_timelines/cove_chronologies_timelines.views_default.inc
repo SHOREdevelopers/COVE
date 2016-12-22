@@ -387,7 +387,7 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['filters']['field_event_source_tid']['table'] = 'field_data_field_event_source';
   $handler->display->display_options['filters']['field_event_source_tid']['field'] = 'field_event_source_tid';
   $handler->display->display_options['filters']['field_event_source_tid']['value'] = array(
-    0 => '155',
+    0 => '156',
   );
   $handler->display->display_options['filters']['field_event_source_tid']['vocabulary'] = 'event_source';
   /* Filter criterion: Global: Combine fields filter */

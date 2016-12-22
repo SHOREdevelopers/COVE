@@ -24,9 +24,11 @@ function cove_chronologies_timelines_user_default_permissions() {
     'name' => 'create chronology content',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'annotator' => 'annotator',
       'author' => 'author',
-      'blog author' => 'blog author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
@@ -35,7 +37,12 @@ function cove_chronologies_timelines_user_default_permissions() {
   $permissions['create chronology_entry content'] = array(
     'name' => 'create chronology_entry content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
@@ -79,7 +86,12 @@ function cove_chronologies_timelines_user_default_permissions() {
   $permissions['delete own chronology content'] = array(
     'name' => 'delete own chronology content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
@@ -88,7 +100,12 @@ function cove_chronologies_timelines_user_default_permissions() {
   $permissions['delete own chronology_entry content'] = array(
     'name' => 'delete own chronology_entry content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
@@ -129,7 +146,12 @@ function cove_chronologies_timelines_user_default_permissions() {
   $permissions['edit own chronology content'] = array(
     'name' => 'edit own chronology content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
@@ -138,7 +160,12 @@ function cove_chronologies_timelines_user_default_permissions() {
   $permissions['edit own chronology_entry content'] = array(
     'name' => 'edit own chronology_entry content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'node',
   );
