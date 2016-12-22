@@ -50,6 +50,57 @@ function cove_groups_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-group_access'.
+  $field_instances['node-course-group_access'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_access',
+    'label' => 'Group visibility',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'options_onoff',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'options_onoff',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 43,
+    ),
+    'widget_type' => 'options_select',
+  );
+
   // Exported field_instance: 'node-course-group_group'.
   $field_instances['node-course-group_group'] = array(
     'bundle' => 'course',
@@ -176,6 +227,7 @@ function cove_groups_field_default_field_instances() {
   t('Determine if this is an OG group.');
   t('Enter a short description of your course here. ');
   t('Group');
+  t('Group visibility');
   t('Groups audience');
 
   return $field_instances;
