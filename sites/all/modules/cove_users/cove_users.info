@@ -7,6 +7,7 @@ dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = my_annotations
+features[views_view][] = my_chronologies
 features[views_view][] = my_documents
 features[views_view][] = my_maps
 features_exclude[dependencies][ctools] = ctools
