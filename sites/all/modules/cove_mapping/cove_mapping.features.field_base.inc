@@ -57,7 +57,7 @@ function cove_mapping_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_associated_place_anchor_ta',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -77,11 +77,9 @@ function cove_mapping_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(
-          'place_anchors' => 'place_anchors',
-        ),
+        'target_bundles' => array(),
       ),
-      'sync' => 'field_associated_place',
+      'sync' => '',
       'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,

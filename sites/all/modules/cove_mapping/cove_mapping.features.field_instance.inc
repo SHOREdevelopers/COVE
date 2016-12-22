@@ -526,6 +526,55 @@ function cove_mapping_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-place-field_latitude_longitude'.
+  $field_instances['node-place-field_latitude_longitude'] = array(
+    'bundle' => 'place',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Legacy field. Do not use. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_latitude_longitude',
+    'label' => 'Latitude/Longitude',
+    'required' => 0,
+    'settings' => array(
+      'local_solr' => array(
+        'enabled' => FALSE,
+        'lat_field' => 'lat',
+        'lng_field' => 'lng',
+      ),
+      'solrspatial' => array(
+        'enabled' => 0,
+        'lat_field' => '',
+        'latlng_field' => '',
+        'lng_field' => '',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geofield',
+      'settings' => array(
+        'html5_geolocation' => 0,
+      ),
+      'type' => 'geofield_latlon',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-place-field_parent_map'.
   $field_instances['node-place-field_parent_map'] = array(
     'bundle' => 'place',
@@ -748,6 +797,8 @@ function cove_mapping_field_default_field_instances() {
   t('Groups audience');
   t('Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ');
   t('If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
+  t('Latitude/Longitude');
+  t('Legacy field. Do not use. ');
   t('Parent Map');
   t('Parent Resource');
   t('Place Search');
