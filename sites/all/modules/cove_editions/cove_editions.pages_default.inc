@@ -327,7 +327,7 @@ print print_insert_link();  print print_mail_insert_link();
     'formatter_settings' => array(),
     'context' => 'argument_entity_id:node_1',
     'override_title' => 1,
-    'override_title_text' => '%node:title',
+    'override_title_text' => '',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
