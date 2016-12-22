@@ -1349,6 +1349,11 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'place' => 'place',
   );
+  /* Filter criterion: Content: Associated Events (field_assoc_events) */
+  $handler->display->display_options['filters']['field_assoc_events_target_id']['id'] = 'field_assoc_events_target_id';
+  $handler->display->display_options['filters']['field_assoc_events_target_id']['table'] = 'field_data_field_assoc_events';
+  $handler->display->display_options['filters']['field_assoc_events_target_id']['field'] = 'field_assoc_events_target_id';
+  $handler->display->display_options['filters']['field_assoc_events_target_id']['operator'] = 'not empty';
 
   /* Display: Timeline pane */
   $handler = $view->new_display('panel_pane', 'Timeline pane', 'panel_pane_1');
