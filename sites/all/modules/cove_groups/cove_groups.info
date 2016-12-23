@@ -70,5 +70,6 @@ features[og_features_permission][] = node:course:update own map content
 features[og_features_permission][] = node:course:update own place content
 features[og_features_permission][] = node:course:update own small_group content
 features[og_features_role][] = node:course:student
+features[page_manager_handlers][] = node_view__panel_context_62a7ab27-21c0-45b0-8bf0-414839225262
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][page_manager] = page_manager

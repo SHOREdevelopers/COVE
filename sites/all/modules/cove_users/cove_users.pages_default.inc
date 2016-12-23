@@ -164,7 +164,7 @@ function cove_users_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'title',
-    'formatter' => 'taxonomy_term_reference_rss_category',
+    'formatter' => 'taxonomy_term_reference_plain',
     'delta_limit' => 0,
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
