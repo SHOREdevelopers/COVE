@@ -57,6 +57,7 @@ features[node][] = chronology_entry
 features[page_manager_handlers][] = node_edit__panel_context_655863e0-1fc1-4931-af43-994388cf7228
 features[page_manager_handlers][] = node_view__panel_context_c30434d9-71a1-4d7d-b5ab-0f02888b8532
 features[page_manager_handlers][] = node_view__panel_context_daeef62f-9ca5-477a-b879-2ee5892dc11b
+features[rules_config][] = rules_chron_entry_link_notice_cloned_
 features[rules_config][] = rules_chron_entry_save_redirect
 features[rules_config][] = rules_chron_notice_
 features[taxonomy][] = event_source
