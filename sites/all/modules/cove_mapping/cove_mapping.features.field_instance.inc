@@ -415,7 +415,7 @@ function cove_mapping_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Use the controls at the bottom center of the map to add or remove map points. The layer selector at the top left can be used to toggle the historical map layer on and off. If you already know the latitude and longitude coordinates of the place you want to map, add them in the "Data" section immediately above, according to the following syntax: "POINT(longitude latitude)". For example, London, UK would be "POINT (-0.1277583 51.5073509)". ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -454,7 +454,7 @@ function cove_mapping_field_default_field_instances() {
           'polygon' => 0,
         ),
         'geocoder_field' => 'field_place_search',
-        'geocoder_handler' => 'openstreetmap_nominatim',
+        'geocoder_handler' => 'google',
         'handler_settings' => array(
           'google' => array(
             'all_results' => 0,
@@ -516,7 +516,7 @@ function cove_mapping_field_default_field_instances() {
       'settings' => array(
         'delta_handling' => 'default',
         'geocoder_field' => 'field_place_search',
-        'geocoder_handler' => 'openstreetmap_nominatim',
+        'geocoder_handler' => 'google',
         'handler_settings' => array(
           'google' => array(
             'all_results' => 0,
@@ -651,9 +651,9 @@ function cove_mapping_field_default_field_instances() {
   // Exported field_instance: 'node-place-field_place_search'.
   $field_instances['node-place-field_place_search'] = array(
     'bundle' => 'place',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Optionally, type the name of a location, then click the "Find" button to automatically geocode a location or drill down into the map. This leverages the Google Geocoding API and works best with modern municipalities.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -680,9 +680,7 @@ function cove_mapping_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'geocoder_autocomplete',
-      'settings' => array(
-        'size' => 60,
-      ),
+      'settings' => array(),
       'type' => 'geocoder_autocomplete',
       'weight' => 4,
     ),
@@ -813,11 +811,13 @@ function cove_mapping_field_default_field_instances() {
   t('If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Latitude/Longitude');
   t('Legacy field. Do not use. ');
+  t('Optionally, type the name of a location, then click the "Find" button to automatically geocode a location or drill down into the map. This leverages the Google Geocoding API and works best with modern municipalities.');
   t('Parent Map');
   t('Parent Resource');
   t('Place Search');
   t('Places in this Map');
   t('Select the parent map of which this place is a part. This should happen automatically!');
+  t('Use the controls at the bottom center of the map to add or remove map points. The layer selector at the top left can be used to toggle the historical map layer on and off. If you already know the latitude and longitude coordinates of the place you want to map, add them in the "Data" section immediately above, according to the following syntax: "POINT(longitude latitude)". For example, London, UK would be "POINT (-0.1277583 51.5073509)". ');
   t('You can associated events in our database with a place. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created place will be available in the list. ');
 
   return $field_instances;
