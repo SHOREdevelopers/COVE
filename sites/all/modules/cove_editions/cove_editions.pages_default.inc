@@ -312,6 +312,110 @@ print print_insert_link();  print print_mail_insert_link();
   $display->content['new-076efbe7-912c-4e9d-95c9-8d219d70d676'] = $pane;
   $display->panels['main'][4] = 'new-076efbe7-912c-4e9d-95c9-8d219d70d676';
   $pane = new stdClass();
+  $pane->pid = 'new-8ffafd96-f1fa-4fc1-8acc-42517259aede';
+  $pane->panel = 'main';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'anno startup',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<script src="/sites/all/themes/sky/lib/jquery-1.9.1.js"></script>
+    <script src="/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
+    <!-- Locale for language -->
+    <script src="/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
+    <!-- For show the annotation creation date -->
+   <!-- <script src="/sites/all/themes/sky/lib/jquery.dateFormat.js"></script> -->
+    <!-- File with the translations -->
+    <script src="/sites/all/themes/sky/locale/en/annotator.js"></script>
+    <!-- Scroll panel -->
+    <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
+<!-- For search plugin -->
+<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>
+   
+    <!-- anotator plug in -->
+    <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
+    <script src="/sites/all/themes/sky/src/categories.js"></script>
+<script src="/sites/all/themes/sky/src/search.js"></script>
+   <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
+    <script src="/sites/all/themes/sky/src/richEditor.js"></script>
+<script>
+                       jQuery(function ($) {
+ 	$.i18n.load(i18n_dict);
+ 	var annotator = $(\'.field-name-body\').annotator().annotator().data(\'annotator\');
+ 	var propietary = \'anon\';
+	 /*$(\'.field-name-body\').annotator().annotator({
+        readOnly: true
+    });*/
+ 	annotator.addPlugin(\'Permissions\', {
+ 		user: propietary,
+ 		permissions: {
+ 			"read": [propietary],
+ 			\'update\': [],
+ 			\'delete\': [],
+ 			\'admin\': []
+ 		},
+ 		showViewPermissionsCheckbox: false,
+ 		showEditPermissionsCheckbox: false
+ 	});
+ 	/*$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Filter\', {
+ 		filters: [
+{
+ 			label: \'Category\',
+ 			property: \'category\'
+ 		},
+{
+ 			label: \'Tag\',
+ 			property: \'tags\',
+ 			isFiltered: function (input, tags) {
+ 				if (input && tags && tags.length) {
+ 					var keywords = input.split(/\\s+/g);
+ 					for (var i = 0; i < keywords.length; i += 1) {
+ 						for (var j = 0; j < tags.length; j += 1) {
+ 							if (tags[j].indexOf(keywords[i]) !== -1) {
+ 								return true;
+ 							}
+ 						}
+ 					}
+ 				}
+ 				return false;
+ 			}
+ 		}]
+ 	});*/
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'RichEditor\');
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Categories\', {
+ 		Historical: \'annotator-hl-5\',
+ 		Textual: \'annotator-hl-6\',
+Cultural: \'annotator-hl-3\',
+ 		Interpretative: \'annotator-hl-4\',
+Linguistic: \'annotator-hl-7\'
+ 	});
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'AnnotatorViewer\');
+ 	//Annotation scroll
+ 	$(\'#anotacions-uoc-panel\').slimscroll({
+ 		height: \'100%\'
+ 	});
+//noinspection JSJQueryEfficiency
+        $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
+ });
+</script>',
+    'format' => 'unfiltered_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = '8ffafd96-f1fa-4fc1-8acc-42517259aede';
+  $display->content['new-8ffafd96-f1fa-4fc1-8acc-42517259aede'] = $pane;
+  $display->panels['main'][5] = 'new-8ffafd96-f1fa-4fc1-8acc-42517259aede';
+  $pane = new stdClass();
   $pane->pid = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $pane->panel = 'main';
   $pane->type = 'entity_field';
@@ -339,11 +443,11 @@ print print_insert_link();  print print_mail_insert_link();
     'css_class' => 'bodyFloat',
   );
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = '0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $display->content['new-0cc144bd-5628-4155-aaaa-4ad8b5230a22'] = $pane;
-  $display->panels['main'][5] = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
+  $display->panels['main'][6] = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $pane = new stdClass();
   $pane->pid = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $pane->panel = 'main';
@@ -374,11 +478,11 @@ print print_insert_link();  print print_mail_insert_link();
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 7;
   $pane->locks = array();
   $pane->uuid = 'e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $display->content['new-e8b33da1-c2b8-4d2c-863b-372d11a63b09'] = $pane;
-  $display->panels['main'][6] = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
+  $display->panels['main'][7] = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $pane = new stdClass();
   $pane->pid = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $pane->panel = 'main';
@@ -397,11 +501,11 @@ print print_insert_link();  print print_mail_insert_link();
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 8;
   $pane->locks = array();
   $pane->uuid = '29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $display->content['new-29c1bcc0-1035-4f58-8f33-4b4489d29338'] = $pane;
-  $display->panels['main'][7] = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
+  $display->panels['main'][8] = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $pane = new stdClass();
   $pane->pid = 'new-46065dab-362e-45a6-92b3-3e753f72d819';
   $pane->panel = 'rightfloat';

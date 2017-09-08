@@ -78,7 +78,7 @@ function cove_editions_default_panels_mini() {
     width: "300px",
   });
   var cf = $(\'#cat-filter\').select2({
-    data: filterLists[\'annotation_categories\'],
+    data: filterLists[\'category\'],
     placeholder: "Select one or more categories",
     theme: "classic",
     width: "300px",
@@ -147,6 +147,105 @@ function cove_editions_default_panels_mini() {
   $pane->uuid = 'e8baef06-00be-413b-a1ee-ef0c852fc34e';
   $display->content['new-e8baef06-00be-413b-a1ee-ef0c852fc34e'] = $pane;
   $display->panels['one_main'][0] = 'new-e8baef06-00be-413b-a1ee-ef0c852fc34e';
+  $pane = new stdClass();
+  $pane->pid = 'new-97ecba35-1080-4384-ac1d-8b47cb8fdf18';
+  $pane->panel = 'one_main';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'AnnotationViewer',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<script src="/sites/all/themes/sky/lib/jquery-1.9.1.js"></script>
+    <script src="/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
+    <!-- Locale for language -->
+    <script src="/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
+    <!-- For show the annotation creation date -->
+   <!-- <script src="/sites/all/themes/sky/lib/jquery.dateFormat.js"></script> -->
+    <!-- File with the translations -->
+    <script src="/sites/all/themes/sky/locale/en/annotator.js"></script>
+    <!-- Scroll panel -->
+    <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
+   
+    <!-- anotator plug in -->
+    <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
+    <script src="/sites/all/themes/sky/src/categories.js"></script>
+    <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
+    <script src="/sites/all/themes/sky/src/richEditor.js"></script>
+<script>
+                       jQuery(function ($) {
+ 	$.i18n.load(i18n_dict);
+ 	var annotator = $(\'.field-name-body\').annotator().annotator().data(\'annotator\');
+ 	var propietary = \'anon\';
+	 /*$(\'.field-name-body\').annotator().annotator({
+        readOnly: true
+    });*/
+ 	annotator.addPlugin(\'Permissions\', {
+ 		user: propietary,
+ 		permissions: {
+ 			"read": [propietary],
+ 			\'update\': [],
+ 			\'delete\': [],
+ 			\'admin\': []
+ 		},
+ 		showViewPermissionsCheckbox: false,
+ 		showEditPermissionsCheckbox: false
+ 	});
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Filter\', {
+ 		filters: [
+{
+ 			label: \'Category\',
+ 			property: \'category\'
+ 		},
+{
+ 			label: \'Tag\',
+ 			property: \'tags\',
+ 			isFiltered: function (input, tags) {
+ 				if (input && tags && tags.length) {
+ 					var keywords = input.split(/\\s+/g);
+ 					for (var i = 0; i < keywords.length; i += 1) {
+ 						for (var j = 0; j < tags.length; j += 1) {
+ 							if (tags[j].indexOf(keywords[i]) !== -1) {
+ 								return true;
+ 							}
+ 						}
+ 					}
+ 				}
+ 				return false;
+ 			}
+ 		}]
+ 	});
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'RichEditor\');
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Categories\', {
+ 		Historical: \'annotator-hl-historical\',
+ 		Textual: \'annotator-hl-textual\',
+Cultural: \'annotator-hl-cultural\',
+ 		Interpretative: \'annotator-hl-interpretative\',
+Linguistic: \'annotator-hl-linguistic\'
+ 	});
+ 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'AnnotatorViewer\');
+ 	//Annotation scroll
+ 	$(\'#anotacions-uoc-panel\').slimscroll({
+ 		height: \'100%\'
+ 	});
+ });
+</script>',
+    'format' => 'unfiltered_html',
+    'substitute' => TRUE,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '97ecba35-1080-4384-ac1d-8b47cb8fdf18';
+  $display->content['new-97ecba35-1080-4384-ac1d-8b47cb8fdf18'] = $pane;
+  $display->panels['one_main'][1] = 'new-97ecba35-1080-4384-ac1d-8b47cb8fdf18';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-e8baef06-00be-413b-a1ee-ef0c852fc34e';
   $mini->display = $display;
@@ -186,7 +285,7 @@ function cove_editions_default_panels_mini() {
   $pane->panel = 'one_main';
   $pane->type = 'custom';
   $pane->subtype = 'custom';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'admin_title' => 'Annotations',
