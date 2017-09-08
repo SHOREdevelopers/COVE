@@ -3,7 +3,7 @@
 html, body {
     background-image: url(/sites/default/files/adaptivetheme/sky_files/ocean.jpg);
     background-repeat: no-repeat;
-    /* background-size: contain; */
+    background-size: cover;
     background-color: #1b6c7a;
     background-attachment: fixed;
 }
@@ -1685,6 +1685,17 @@ span.tags-label {
 
 .annotator-hl-filtered {
     background-color: transparent;
+}
+/* removing the counter for now since not working*/
+span#count-anotations {
+    display: none;
+}
+/* Adjust color of view annotations label for toggle sidebar*/
+span.rotate {
+    color: #6689a1;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    /* font-size: 0.9em; */
 }
 
 .annotator-marginviewer-text div[class^="annotator-hl-"] span {

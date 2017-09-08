@@ -333,12 +333,15 @@ print print_insert_link();  print print_mail_insert_link();
     <!-- Scroll panel -->
     <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
 <!-- For search plugin -->
-<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>
+<!-- Old version packaged with plugin-->
+<!--<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
+<!-- new version for which plugin needs updating-->
+<!--<script src="https://unpkg.com/lunr/lunr.js"></script>-->
    
     <!-- anotator plug in -->
     <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
     <script src="/sites/all/themes/sky/src/categories.js"></script>
-<script src="/sites/all/themes/sky/src/search.js"></script>
+<!--<script src="/sites/all/themes/sky/src/search.js"></script>-->
    <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
     <script src="/sites/all/themes/sky/src/richEditor.js"></script>
 <script>
@@ -398,7 +401,7 @@ Linguistic: \'annotator-hl-7\'
  		height: \'100%\'
  	});
 //noinspection JSJQueryEfficiency
-        $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
+       // $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
  });
 </script>',
     'format' => 'unfiltered_html',
