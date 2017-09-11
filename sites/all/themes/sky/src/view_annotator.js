@@ -320,7 +320,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 				str += '<div class="annotator-hl-' + v + ' anotator_color_box"><span>' + v + '</span></div>'; // create html string and store it in str variable
 			});
 			var annotation_layer = '<div class="annotator-marginviewer-text">' + str;
-			annotation_layer += '<div class="anotador_text">' + textAnnotation + '</div></div><div class="annotator-marginviewer-quote">' + annotation.quote + '</div><div class="annotator-marginviewer-footer"><span class="' + class_label + '">' + annotation.user + '</span><span class="tags"><span class="tags-label">Tags: </span><span class="tags-list">' + annotation.tags + '</span></span></div>';
+			annotation_layer += '<div class="anotador_text">' + textAnnotation + '</div></div><div class="annotator-marginviewer-quote">' + annotation.quote + '</div><div class="annotator-marginviewer-footer"><span class="' + class_label + '">' + annotation.username + '</span><span class="tags"><span class="tags-label">Tags: </span><span class="tags-list">' + annotation.tags + '</span></span></div>';
 
 
 

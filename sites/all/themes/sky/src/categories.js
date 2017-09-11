@@ -131,7 +131,7 @@ $(".annotator-hl").append(str);
 				str += "annotator-hl-"+v+" "; // create html string and store it in str variable
 });
           $('ul.annotator-widget > li.annotator-item').prepend('<div class="'+str+'" style="border: 1px solid #b3b3b3;height:6px;margin:4px;padding:4px;"></div>');
-          $( "div.annotator-user" ).html( "<span class='"+class_label+"'>"+annotation.user+"</span>"+isShared);
+          $( "div.annotator-user" ).html( "<span class='"+class_label+"'>"+annotation.username+"</span>"+isShared);
           
         }
       }
