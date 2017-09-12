@@ -186,7 +186,7 @@ function cove_editions_default_page_manager_handlers() {
   $pane->panel = 'main';
   $pane->type = 'block';
   $pane->subtype = 'menu_block-1';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
@@ -334,14 +334,14 @@ print print_insert_link();  print print_mail_insert_link();
     <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
 <!-- For search plugin -->
 <!-- Old version packaged with plugin-->
-<!--<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
+<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>
 <!-- new version for which plugin needs updating-->
-<!--<script src="https://unpkg.com/lunr/lunr.js"></script>-->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.3/lunr.js" integrity="sha256-1oK7SgOogZ2/jDRzXKxpqqR5UysD0RfbPD4Gsi3rd04=" crossorigin="anonymous"></script> -->
    
     <!-- anotator plug in -->
     <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
     <script src="/sites/all/themes/sky/src/categories.js"></script>
-<!--<script src="/sites/all/themes/sky/src/search.js"></script>-->
+<script src="/sites/all/themes/sky/src/search.js"></script>
    <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
     <script src="/sites/all/themes/sky/src/richEditor.js"></script>
 <script>
@@ -401,7 +401,7 @@ Linguistic: \'annotator-hl-7\'
  		height: \'100%\'
  	});
 //noinspection JSJQueryEfficiency
-       // $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
+        $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
  });
 </script>',
     'format' => 'unfiltered_html',
@@ -595,6 +595,44 @@ Linguistic: \'annotator-hl-7\'
   $pane->uuid = 'c764ca06-d493-473b-b2f5-e8d9d482d01e';
   $display->content['new-c764ca06-d493-473b-b2f5-e8d9d482d01e'] = $pane;
   $display->panels['rightfloat'][1] = 'new-c764ca06-d493-473b-b2f5-e8d9d482d01e';
+  $pane = new stdClass();
+  $pane->pid = 'new-d8501d70-fa13-477e-ab5c-87c6623ff225';
+  $pane->panel = 'rightfloat';
+  $pane->type = 'views';
+  $pane->subtype = 'documents_in_this_edition_menu_';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'context' => array(
+      0 => '',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'd8501d70-fa13-477e-ab5c-87c6623ff225';
+  $display->content['new-d8501d70-fa13-477e-ab5c-87c6623ff225'] = $pane;
+  $display->panels['rightfloat'][2] = 'new-d8501d70-fa13-477e-ab5c-87c6623ff225';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -898,32 +936,13 @@ Linguistic: \'annotator-hl-7\'
   $display->content['new-165d551d-279a-452e-9002-df5025ef977c'] = $pane;
   $display->panels['icon_left'][0] = 'new-165d551d-279a-452e-9002-df5025ef977c';
   $pane = new stdClass();
-  $pane->pid = 'new-83e99947-1d3e-4054-be59-51da70a09d94';
+  $pane->pid = 'new-96aa8fc6-db12-4ad5-b559-7db86f2f09f6';
   $pane->panel = 'main_';
-  $pane->type = 'views';
-  $pane->subtype = 'documents_in_this_edition';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'documents_in_this_edition-panel_pane_2';
   $pane->shown = TRUE;
   $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'apparatus',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
+  $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
@@ -932,36 +951,17 @@ Linguistic: \'annotator-hl-7\'
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '83e99947-1d3e-4054-be59-51da70a09d94';
-  $display->content['new-83e99947-1d3e-4054-be59-51da70a09d94'] = $pane;
-  $display->panels['main_'][0] = 'new-83e99947-1d3e-4054-be59-51da70a09d94';
+  $pane->uuid = '96aa8fc6-db12-4ad5-b559-7db86f2f09f6';
+  $display->content['new-96aa8fc6-db12-4ad5-b559-7db86f2f09f6'] = $pane;
+  $display->panels['main_'][0] = 'new-96aa8fc6-db12-4ad5-b559-7db86f2f09f6';
   $pane = new stdClass();
-  $pane->pid = 'new-26fb4796-71f2-41c4-8667-285a81d63326';
+  $pane->pid = 'new-52e737b0-d2d4-468c-b527-de4d65752ce1';
   $pane->panel = 'main_';
-  $pane->type = 'views';
-  $pane->subtype = 'documents_in_this_edition';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'documents_in_this_edition-panel_pane_1';
   $pane->shown = TRUE;
   $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'primary',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
+  $pane->configuration = array();
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
@@ -970,9 +970,9 @@ Linguistic: \'annotator-hl-7\'
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
-  $pane->uuid = '26fb4796-71f2-41c4-8667-285a81d63326';
-  $display->content['new-26fb4796-71f2-41c4-8667-285a81d63326'] = $pane;
-  $display->panels['main_'][1] = 'new-26fb4796-71f2-41c4-8667-285a81d63326';
+  $pane->uuid = '52e737b0-d2d4-468c-b527-de4d65752ce1';
+  $display->content['new-52e737b0-d2d4-468c-b527-de4d65752ce1'] = $pane;
+  $display->panels['main_'][1] = 'new-52e737b0-d2d4-468c-b527-de4d65752ce1';
   $pane = new stdClass();
   $pane->pid = 'new-feeddda2-4210-43fc-bc86-f0f6c9f660b2';
   $pane->panel = 'main_';
