@@ -1793,6 +1793,9 @@ img.alignleft, img.alignright {
     display: none;
 } 
 
+.view-documents-in-this-edition-menu- h4 {
+    line-height: 0.2em;
+}
 .view-documents-in-this-edition a.active {
     color: #888888;
 }
@@ -1801,4 +1804,9 @@ img.alignleft, img.alignright {
 
 .field-name-body img {
     margin: 0px 10px 7px 10px;
+}
+
+section.panel-pane.pane-views.pane-documents-in-this-edition-menu.block {
+    border-left: 1px solid #dad9d7;
+    margin-left: 20px;
 }
