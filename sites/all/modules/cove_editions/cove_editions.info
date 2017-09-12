@@ -172,4 +172,5 @@ features[taxonomy][] = province_or_state
 features[taxonomy][] = region
 features[taxonomy][] = vocabulary_3
 features[views_view][] = documents_in_this_edition
+features[views_view][] = documents_in_this_edition_drag_
 features[views_view][] = documents_in_this_edition_menu_
