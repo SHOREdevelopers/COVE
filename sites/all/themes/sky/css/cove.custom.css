@@ -1792,3 +1792,7 @@ img.alignleft, img.alignright {
 .node-type-chronology-entry li.message-item:nth-child(2) {
     display: none;
 } 
+
+.view-documents-in-this-edition a.active {
+    color: #888888;
+}
