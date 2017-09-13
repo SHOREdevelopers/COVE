@@ -302,7 +302,7 @@ function cove_groups_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Course Activity',
+    'override_title_text' => 'Activity',
     'override_title_heading' => 'h1',
   );
   $pane->cache = array();

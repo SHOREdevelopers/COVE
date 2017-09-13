@@ -30,7 +30,7 @@ function cove_groups_node_info() {
       'base' => 'node_content',
       'description' => t('Content type for course-based groups'),
       'has_title' => '1',
-      'title_label' => t('Course name'),
+      'title_label' => t('Group name'),
       'help' => t('As an administrator, your fist step is to create a course. You can then add content and users.'),
     ),
   );

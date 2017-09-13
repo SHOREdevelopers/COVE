@@ -33,7 +33,7 @@ function cove_groups_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_course_description',
-    'label' => 'Course Description',
+    'label' => 'Description',
     'required' => 1,
     'settings' => array(
       'text_processing' => 1,
@@ -223,7 +223,7 @@ function cove_groups_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Course Description');
+  t('Description');
   t('Determine if this is an OG group.');
   t('Enter a short description of your course here. ');
   t('Group');
