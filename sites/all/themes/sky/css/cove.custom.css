@@ -1578,6 +1578,10 @@ div#annotation-viewer {
 }
 
 /** Overrides to annotation margin viewer**/
+/* Temporary turning of annotatin tooltips*/
+.annotator-outer.annotator-viewer {
+    display: none;
+}
 html {padding-top:0 !important;}
 
 .annotator-widget {
@@ -1805,3 +1809,5 @@ img.alignleft, img.alignright {
 .field-name-body img {
     margin: 0px 10px 7px 10px;
 }
+
+.view-documents-in-this-edition .view-header {text-align:right;}

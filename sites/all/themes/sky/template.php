@@ -118,7 +118,7 @@ function sky_process_region(&$vars) {
 
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 //drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
-drupal_add_js('/sites/all/themes/sky/lib/jquery-1.9.1.js', array('type' => 'file', 'scope' => 'footer'));
+//drupal_add_js('/sites/all/themes/sky/lib/jquery-1.9.1.js', array('type' => 'file', 'scope' => 'footer'));
     //drupal_add_js('/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js', array('type' => 'file', 'scope' => 'footer'));
     // Locale for language
     //drupal_add_js('/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js', array('type' => 'file', 'scope' => 'footer'));

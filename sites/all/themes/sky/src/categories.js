@@ -93,7 +93,7 @@ $(".annotator-hl").append(str);
 			$(annotation.highlights).attr('data-annotation_categories', annotation.category);
 			$(annotation.highlights).attr('data-tags', annotation.tags);
 			$(annotation.highlights).attr('data-username', annotation.username);
-          $(annotation.highlights).attr('id', annotation.id ); 
+          $(annotation.highlights).attr('id', 'hl' + annotation.id ); 
         }
         
       }
