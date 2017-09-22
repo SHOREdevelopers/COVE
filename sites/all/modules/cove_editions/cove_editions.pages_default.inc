@@ -323,6 +323,7 @@ print print_insert_link();  print print_mail_insert_link();
     'title' => '',
     'title_heading' => 'h2',
     'body' => '<script src="/sites/all/themes/sky/lib/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
     <!-- Locale for language -->
     <script src="/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
@@ -334,14 +335,14 @@ print print_insert_link();  print print_mail_insert_link();
     <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
 <!-- For search plugin -->
 <!-- Old version packaged with plugin-->
-<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>
+<!--<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
 <!-- new version for which plugin needs updating-->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.3/lunr.js" integrity="sha256-1oK7SgOogZ2/jDRzXKxpqqR5UysD0RfbPD4Gsi3rd04=" crossorigin="anonymous"></script> -->
    
     <!-- anotator plug in -->
     <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
     <script src="/sites/all/themes/sky/src/categories.js"></script>
-<script src="/sites/all/themes/sky/src/search.js"></script>
+<!--<script src="/sites/all/themes/sky/src/search.js"></script>-->
    <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
     <script src="/sites/all/themes/sky/src/richEditor.js"></script>
 <script>
@@ -401,7 +402,7 @@ Linguistic: \'annotator-hl-7\'
  		height: \'100%\'
  	});
 //noinspection JSJQueryEfficiency
-        $(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
+        //$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
  });
 </script>',
     'format' => 'unfiltered_html',
@@ -418,6 +419,52 @@ Linguistic: \'annotator-hl-7\'
   $pane->uuid = '8ffafd96-f1fa-4fc1-8acc-42517259aede';
   $display->content['new-8ffafd96-f1fa-4fc1-8acc-42517259aede'] = $pane;
   $display->panels['main'][5] = 'new-8ffafd96-f1fa-4fc1-8acc-42517259aede';
+  $pane = new stdClass();
+  $pane->pid = 'new-5b2b60e9-a1e1-488d-9f0e-d32685bb3836';
+  $pane->panel = 'main';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'anno Margin viewer startup',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<link rel="stylesheet" type="text/css" href="http://emory-lits-labs.github.io/annotator-marginalia/build/0.4.1/annotator.marginalia.min.css" />
+<script type="text/javascript" src="/sites/all/themes/sky/annotator-2.x/annotator.min.js"></script>
+	<script type="text/javascript" src="http://emory-lits-labs.github.io/annotator-marginalia/src/scripts/bootstrap.dropdown.js"></script>
+<script type="text/javascript" src="http://emory-lits-labs.github.io/annotator-marginalia/build/0.4.1/annotator.marginalia.min.js"></script>
+<script type="text/javascript">
+	var app = new annotator.App();
+app.include(annotator.ui.main);
+app.include(annotator.storage.http);
+app.include(annotatorMarginalia({
+        show_author: true,
+        viewer: annotatormeltdown.render,
+        renderExtensions: [
+            my_custom_field.renderExtension,
+        ],
+      }));
+app
+.start()
+.then(function () {
+     app.annotations.load();
+});
+	</script>',
+    'format' => 'unfiltered_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 6;
+  $pane->locks = array();
+  $pane->uuid = '5b2b60e9-a1e1-488d-9f0e-d32685bb3836';
+  $display->content['new-5b2b60e9-a1e1-488d-9f0e-d32685bb3836'] = $pane;
+  $display->panels['main'][6] = 'new-5b2b60e9-a1e1-488d-9f0e-d32685bb3836';
   $pane = new stdClass();
   $pane->pid = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $pane->panel = 'main';
@@ -446,11 +493,11 @@ Linguistic: \'annotator-hl-7\'
     'css_class' => 'bodyFloat',
   );
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 7;
   $pane->locks = array();
   $pane->uuid = '0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $display->content['new-0cc144bd-5628-4155-aaaa-4ad8b5230a22'] = $pane;
-  $display->panels['main'][6] = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
+  $display->panels['main'][7] = 'new-0cc144bd-5628-4155-aaaa-4ad8b5230a22';
   $pane = new stdClass();
   $pane->pid = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $pane->panel = 'main';
@@ -481,17 +528,17 @@ Linguistic: \'annotator-hl-7\'
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 8;
   $pane->locks = array();
   $pane->uuid = 'e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $display->content['new-e8b33da1-c2b8-4d2c-863b-372d11a63b09'] = $pane;
-  $display->panels['main'][7] = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
+  $display->panels['main'][8] = 'new-e8b33da1-c2b8-4d2c-863b-372d11a63b09';
   $pane = new stdClass();
   $pane->pid = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $pane->panel = 'main';
   $pane->type = 'panels_mini';
   $pane->subtype = 'annotation_filters';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 0,
@@ -504,11 +551,42 @@ Linguistic: \'annotator-hl-7\'
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 8;
+  $pane->position = 9;
   $pane->locks = array();
   $pane->uuid = '29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $display->content['new-29c1bcc0-1035-4f58-8f33-4b4489d29338'] = $pane;
-  $display->panels['main'][8] = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
+  $display->panels['main'][9] = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
+  $pane = new stdClass();
+  $pane->pid = 'new-2ad39954-70d8-4555-ba51-8bb4a46c17fa';
+  $pane->panel = 'main';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Marginalia markup',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<div class="in-page-controls"></div> <!--control container-->
+
+    <article class="content"> <!--outer_element-->
+      <section class="inner"> <!--inner_element-->
+      </section>
+    </article>',
+    'format' => 'unfiltered_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 10;
+  $pane->locks = array();
+  $pane->uuid = '2ad39954-70d8-4555-ba51-8bb4a46c17fa';
+  $display->content['new-2ad39954-70d8-4555-ba51-8bb4a46c17fa'] = $pane;
+  $display->panels['main'][10] = 'new-2ad39954-70d8-4555-ba51-8bb4a46c17fa';
   $pane = new stdClass();
   $pane->pid = 'new-46065dab-362e-45a6-92b3-3e753f72d819';
   $pane->panel = 'rightfloat';
