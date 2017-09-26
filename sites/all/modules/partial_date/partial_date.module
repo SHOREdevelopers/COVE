@@ -1303,13 +1303,15 @@ function partial_date_float(array $c) {
     if (!isset($c[$key]) || !strlen($c[$key])) {
       $c[$key] = 0;
     }
+    elseif ($key == 'day' && variable_get('partial_date_disable_day_timezone_adjustment', 0)) {
+      // No buffer is added to the day for timezone adjustments.
+    }
     elseif ($key != 'year' && $key != 'month') {
       // Increment hours, minutes and seconds to allow the module to distintish
       // between 0 meaning unset and 1 to 24/60 being the actual values.
       // Day is incremented to provide a buffer to add / remove the timezone.
       $c[$key] = $c[$key] + 1;
     }
-  }
 
   $date = abs($c['year'])
       . sprintf('%02s', $c['month'])  // 0 or 1-12
@@ -1318,6 +1320,7 @@ function partial_date_float(array $c) {
       . sprintf('%02s', $c['minute']) // 0 or 1-60
       . sprintf('%02s', $c['second']); // 0 or 1-60
   return ((float) ltrim($date, '0')) * ($c['year'] >= 0 ? 1.0 : -1.0);
+}
 }
 
 /**
