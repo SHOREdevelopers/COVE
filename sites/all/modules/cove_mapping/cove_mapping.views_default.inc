@@ -1612,40 +1612,76 @@ function cove_mapping_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_accordion';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'nothing',
-      'rendered' => 1,
-      'rendered_strip' => 0,
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_event_date_1' => 'field_event_date_1',
+    'title' => 'field_event2',
+    'field_event2' => 'field_event2',
+    'field_image' => 'field_image',
+    'field_image_1' => 'field_image_1',
+    'nid' => 'nid',
+    'edit_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_event_date_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event2' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_image_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['use-grouping-header'] = 1;
-  $handler->display->display_options['style_options']['collapsible'] = 1;
-  $handler->display->display_options['style_options']['row-start-open'] = 'none';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_event_date_1' => 'field_event_date_1',
-    'title' => 'title',
-  );
-  $handler->display->display_options['row_options']['separator'] = ' | ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Display as list';
-  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Event date */
   $handler->display->display_options['fields']['field_event_date_1']['id'] = 'field_event_date_1';
   $handler->display->display_options['fields']['field_event_date_1']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date_1']['field'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date_1']['relationship'] = 'field_assoc_events_target_id';
-  $handler->display->display_options['fields']['field_event_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date_1']['label'] = 'Date';
   $handler->display->display_options['fields']['field_event_date_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_event_date_1']['alter']['text'] = '[field_event_date_1] <span class="dateDesc">[field_event_date_1-txt_short]</span>';
   $handler->display->display_options['fields']['field_event_date_1']['element_label_colon'] = FALSE;
@@ -1736,7 +1772,7 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
@@ -1746,7 +1782,7 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
   $handler->display->display_options['fields']['field_event2']['field'] = 'field_event2';
   $handler->display->display_options['fields']['field_event2']['relationship'] = 'field_assoc_events_target_id';
-  $handler->display->display_options['fields']['field_event2']['label'] = '';
+  $handler->display->display_options['fields']['field_event2']['label'] = 'Event';
   $handler->display->display_options['fields']['field_event2']['alter']['text'] = '[field_event_date_2]
 [field_event2]';
   $handler->display->display_options['fields']['field_event2']['element_label_colon'] = FALSE;
@@ -1786,6 +1822,14 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'field_assoc_events_target_id';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Manage';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
