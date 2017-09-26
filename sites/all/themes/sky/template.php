@@ -115,7 +115,7 @@ function sky_process_region(&$vars) {
     $vars['inner_prefix'] = '<h2 class="menu-toggle"><a href="#">' . t('Menu') . '</a></h2>';
   }
 }
-
+// Most js loaded in page source but leaving here commented out possibly for later
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 //drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
 //drupal_add_js('/sites/all/themes/sky/lib/jquery-1.9.1.js', array('type' => 'file', 'scope' => 'footer'));
