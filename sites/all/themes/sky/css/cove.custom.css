@@ -1245,7 +1245,7 @@ div.view-custom-timeline td.views-field-field-event-date-1 a[title=''] {
   display:none;
 }
 
-div.view-custom-timeline td.views-field.views-field-field-event-date-1 {
+div.view-custom-timeline td.views-field.views-field-field-event-date-1, div.view-timeline-per-place td.views-field.views-field-field-event-date-1 {
     min-width: 100px;
 }
 
