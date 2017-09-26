@@ -140,7 +140,7 @@ function sky_process_region(&$vars) {
 //drupal_add_js('/sites/all/themes/sky/link-to-highlight.js', array('type' => 'file', 'scope' => 'footer'));
 //drupal_add_js('/sites/all/themes/sky/more-colorbox.js');
 //drupal_add_js('https://code.jquery.com/jquery-3.1.0.slim.min.js', array('type' => 'external', 'scope' => 'footer'));
-drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external', 'scope' => 'footer'));
+drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external', 'scope' => 'header'));
 //drupal_add_js('https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.js', array('type' => 'external', 'scope' => 'header'));

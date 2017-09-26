@@ -25,8 +25,8 @@
   stylesheets[all][] = css/sky.settings.style.css
   ; stylesheets[all][] = modal.css
   stylesheets[print][] = css/print.css
-  stylesheets[all][] = lib/annotator-full.1.2.9/annotator.min.css
-  stylesheets[all][] = src/css/style.css
+  stylesheets[all][] = ../../libraries/annotator_viewer/lib/annotator-full.1.2.9/annotator.min.css
+  stylesheets[all][] = ../../libraries/annotator_viewer/src/css/style.css
   stylesheets[all][] = css/cove.custom.css
 
   ; Internet Explorer Stylesheets

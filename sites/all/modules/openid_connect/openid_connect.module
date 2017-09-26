@@ -158,7 +158,7 @@ function openid_connect_block_info() {
  * Implements hook_block_view().
  */
 function openid_connect_block_view($delta = '') {
-  if ($delta == 'openid_connect_login' && user_is_anonymous()) {
+  if ($delta == 'openid_connect_login') {
     module_load_include('inc', 'openid_connect', 'includes/openid_connect.forms');
 
     return array(

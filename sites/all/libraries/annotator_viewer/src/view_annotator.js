@@ -39,9 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 		};
 
 	//constants
-	var IMAGE_DELETE = '/sites/all/themes/sky/src/img/icono_eliminar.png',
-		IMAGE_DELETE_OVER = '/sites/all/themes/sky/src/img/papelera_over.png',
-		SHARED_ICON = '/sites/all/themes/sky/src/img/shared-icon.png';
+	var IMAGE_DELETE = '/sites/all/libraries/annotator_viewer/src/img/icono_eliminar.png',
+		IMAGE_DELETE_OVER = '/sites/all/libraries/annotator_viewer/src/img/papelera_over.png',
+		SHARED_ICON = '/sites/all/libraries/annotator_viewer/src/img/shared-icon.png';
 
 	Annotator.Plugin.AnnotatorViewer = (function (_super) {
 		__extends(AnnotatorViewer, _super);
@@ -98,7 +98,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 				var targetid = "#sb" + parts[1];
 
 				// TODO: deal with the events in a more organized way (recompose them in functions)
-				$('div#annotations-panel').animate({
+				$('div#anotacions-uoc-panel').animate({
 					scrollTop: $(targetid).offset().top
 				}, 100, function () {
 					console.info("Scroll to: " + targetid);
@@ -412,7 +412,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 			})
 
 			.mouseover(function () {
-					$element = jQuery("span[id=" + annotation.id + "]");
+					var idpre = "sb";
+					$element = jQuery("span[id="+idpre + annotation.id + "]");
 					if ($element.length) {
 						$element.css({
 							"border-color": "#6689B4",
@@ -423,7 +424,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 					}
 				})
 				.mouseout(function () {
-					$element = jQuery("span[id=" + annotation.id + "]");
+				var idpre = "sb";
+					$element = jQuery("span[id="+idpre + annotation.id + "]");
 					if ($element.length) {
 						$element.css({
 							"border-width": "0px"
