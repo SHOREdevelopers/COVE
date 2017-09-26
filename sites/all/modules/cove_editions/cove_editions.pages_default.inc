@@ -322,29 +322,29 @@ print print_insert_link();  print print_mail_insert_link();
     'admin_title' => 'anno startup',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<script src="/sites/all/themes/sky/lib/jquery-1.9.1.js"></script>
+    'body' => '<script src="/sites/all/libraries/annotator_viewer/lib/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
     <!-- Locale for language -->
-    <script src="/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
     <!-- For show the annotation creation date -->
-   <!-- <script src="/sites/all/themes/sky/lib/jquery.dateFormat.js"></script> -->
+   <!-- <script src="/sites/all/libraries/annotator_viewer/lib/jquery.dateFormat.js"></script> -->
     <!-- File with the translations -->
-    <script src="/sites/all/themes/sky/locale/en/annotator.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/locale/en/annotator.js"></script>
     <!-- Scroll panel -->
-    <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
+ <script src="/sites/all/libraries/annotator_viewer/lib/jquery.slimscroll.js"></script> 
 <!-- For search plugin -->
 <!-- Old version packaged with plugin-->
-<!--<script src="/sites/all/themes/sky/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
+<!--<script src="/sites/all/libraries/annotator_viewer/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
 <!-- new version for which plugin needs updating-->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.3/lunr.js" integrity="sha256-1oK7SgOogZ2/jDRzXKxpqqR5UysD0RfbPD4Gsi3rd04=" crossorigin="anonymous"></script> -->
    
     <!-- anotator plug in -->
-    <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
-    <script src="/sites/all/themes/sky/src/categories.js"></script>
-<!--<script src="/sites/all/themes/sky/src/search.js"></script>-->
-   <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
-    <script src="/sites/all/themes/sky/src/richEditor.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/src/view_annotator.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/src/categories.js"></script>
+<!--<script src="/sites/all/libraries/annotator_viewer/src/search.js"></script>-->
+   <script src="/sites/all/libraries/annotator_viewer/lib/tinymce/tinymce.min.js"></script>
+    <script src="/sites/all/libraries/annotator_viewer/src/richEditor.js"></script>
 <script>
                        jQuery(function ($) {
  	$.i18n.load(i18n_dict);
@@ -399,7 +399,7 @@ Linguistic: \'annotator-hl-7\'
  	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'AnnotatorViewer\');
  	//Annotation scroll
  	$(\'#anotacions-uoc-panel\').slimscroll({
- 		height: \'100%\'
+ 		height: \'99%\'
  	});
 //noinspection JSJQueryEfficiency
         //$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
