@@ -26,6 +26,12 @@ class TimelineDate extends DateTime implements TimelineDateInterface {
       $date_string .= '-01-01';
     }
 
+    // Explicitly set timezone for versions of PHP prior to 5.3.6.
+    // @see https://bugs.php.net/bug.php?id=52063
+    if ((phpversion() < '5.3.6') && $timezone === NULL) {
+      $timezone = new DateTimeZone(date_default_timezone_get());
+    }
+
     parent::__construct($date_string, $timezone);
   }
 

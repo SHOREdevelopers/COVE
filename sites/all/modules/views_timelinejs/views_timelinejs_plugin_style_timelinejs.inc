@@ -108,6 +108,8 @@ class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
       '#title' => t('Scale factor'),
       '#description' => t('How many screen widths wide the timeline should be at first presentation.'),
       '#options' => array(
+        '0.25' => t('0.25'),
+        '0.5' => t('0.5'),
         '1' => t('1'),
         '2' => t('2'),
         '3' => t('3'),
@@ -226,14 +228,14 @@ class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
       '#options' => $view_fields_labels,
       '#title' => t('Start date'),
       '#required' => TRUE,
-      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.  Start dates are required by event slides and eras.  If this mapping is not configured or if the field does not output dates in a valid format, then the slides or eras will not be added to the timeline.', ['@php-manual' => 'http://php.net/manual/en/datetime.formats.php']),
+      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.  Start dates are required by event slides and eras.  If this mapping is not configured or if the field does not output dates in a valid format, then the slides or eras will not be added to the timeline.', array('@php-manual' => 'http://php.net/manual/en/datetime.formats.php')),
       '#default_value' => $this->options['timeline_fields']['start_date'],
     );
     $form['timeline_fields']['end_date'] = array(
       '#type' => 'select',
       '#options' => $view_fields_labels,
       '#title' => t('End date'),
-      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.  End dates are required by eras.  If this mapping is not configured or if the field does not output dates in a valid format, then the eras will not be added to the timeline.', ['@php-manual' => 'http://php.net/manual/en/datetime.formats.php']),
+      '#description' => t('The selected field should contain a string representing a date conforming to a <a href="@php-manual">PHP supported date and time format</a>.  End dates are required by eras.  If this mapping is not configured or if the field does not output dates in a valid format, then the eras will not be added to the timeline.', array('@php-manual' => 'http://php.net/manual/en/datetime.formats.php')),
       '#default_value' => $this->options['timeline_fields']['end_date'],
     );
     $form['timeline_fields']['display_date'] = array(
@@ -660,8 +662,19 @@ class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
    */
   protected function extract_url($html) {
     if (!empty($html)) {
+      // Disable libxml errors.
+      $previous_use_errors = libxml_use_internal_errors(TRUE);
+
       $document = new DOMDocument();
       $document->loadHTML($html);
+
+      // Handle XML errors.
+      foreach (libxml_get_errors() as $error) {
+        $this->handle_xml_errors($error, $html);
+      }
+
+      // Restore the previous error setting.
+      libxml_use_internal_errors($previous_use_errors);
 
       // Check for anchor tags.
       $anchor_tags = $document->getElementsByTagName('a');
@@ -676,6 +689,19 @@ class views_timelinejs_plugin_style_timelinejs extends views_plugin_style {
       }
     }
     return $html;
+  }
+
+  /**
+   * Sets Drupal messages to inform users of HTML parsing errors.
+   *
+   * @param \LibXMLError $error
+   *   Contains information about the XML parsing error.
+   * @param type $html
+   *   Contains the original HTML that was parsed.
+   */
+  protected function handle_xml_errors(\LibXMLError $error, $html) {
+    $message = t('A media field has an error in its HTML.<br>Error message: @message<br>Views result row: @row<br>HTML: <pre>@html</pre>', array('@message' => $error->message, '@row' => $this->view->row_index, '@html' => $html));
+    drupal_set_message($message, 'warning');
   }
 
   /**
