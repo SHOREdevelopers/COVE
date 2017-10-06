@@ -15,12 +15,12 @@
 <div class="panel-display panel-1col clearfix" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
   <div class="panel-panel panel-col">
     <div>
-    <input type="checkbox" id="togglebox"/>
-    <label for="togglebox" id="navtoggler"><!--<i class="glyphicon glyphicon-comment">--></i></label>
+    <!--<input type="checkbox" id="togglebox"/>
+    <label for="togglebox" id="navtoggler"><i class="glyphicon glyphicon-comment"></i></label>
     <div class="panel-2row-row clearfix anno-container">
     	<label for="togglebox" id="closex">Close</label>
     	<?php print $content['annos']; ?>
-    </div>
+    </div>-->
 	<div class="panel-2row-row clearfix primary-content"><?php print $content['main']; ?></div>
 	<div class="panel-2row-row clearfix right-float"><?php print $content['rightfloat']; ?></div>
     </div>
