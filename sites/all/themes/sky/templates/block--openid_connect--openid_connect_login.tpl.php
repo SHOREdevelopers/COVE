@@ -6,7 +6,7 @@
 <?php print render($title_suffix); ?>
 
 <div class="content"<?php print $content_attributes; ?>>
-<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar"> <div class="container"> <ul class="nav navbar-nav"> <li><a class="navbar-link" href="http://studio.covecollective.org/">COVE Studio <i class="fa fa-external-link-square"></i></a></li> <li class="active"> <a class="navbar-link" target="cove-editions" href="http://live-rc-distro.pantheonsite.io/">COVE Editions</a> </li> </ul> 
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar"> <div class="container"> <ul class="nav navbar-nav"> <li><a class="navbar-link" href="http://studio.covecollective.org/">COVE Studio <i class="fa fa-external-link-square"></i></a></li> <li class="active"> <a class="navbar-link" target="cove-editions" href="#">COVE Editions</a> </li> </ul> 
 <ul class="nav navbar-nav pull-right hidden-xs" id="globalnav"> <li>
    <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Log in
