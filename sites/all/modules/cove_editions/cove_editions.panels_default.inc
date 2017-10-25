@@ -64,7 +64,7 @@ function cove_editions_default_panels_mini() {
             </select>
           </div><!--/well -->
         <!--</div>-->
-  
+
       <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
       <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js"></script>
@@ -89,7 +89,7 @@ function cove_editions_default_panels_mini() {
     theme: "classic",
     width: "300px",
   });
-  tf.on("select2:select", function (e) { 
+  tf.on("select2:select", function (e) {
     annotations.attr("style", "background-color: transparent");
     $("span[data-tags~=\'" + e.params.data.id + "\']").removeAttr("style");
     console.log(e.params.data.id);
@@ -97,14 +97,14 @@ function cove_editions_default_panels_mini() {
   tf.on(\'select2:unselect\', function(e){
     annotations.removeAttr("style");
   });
-  cf.on("select2:select", function (e) { 
+  cf.on("select2:select", function (e) {
     annotations.attr("style", "background-color: transparent");
     $("span[data-annotation_categories~=\'" + e.params.data.id + "\']").removeAttr("style");
   });
   cf.on(\'select2:unselect\', function(e){
     annotations.removeAttr("style");
   });
-  uf.on("select2:select", function (e) { 
+  uf.on("select2:select", function (e) {
     annotations.attr("style", "background-color: transparent");
     $("span[data-user~=\'" + e.params.data.id + "\']").removeAttr("style");
   });
@@ -126,7 +126,7 @@ function cove_editions_default_panels_mini() {
     Mustache.parse(template, customTags);
     var rendered = Mustache.render(template, anno);
     $("#annotation-viewer").html(rendered);
-  
+
   });
 
   // TODO: Implement Next/Previous Annotation Buttons.
@@ -158,80 +158,7 @@ function cove_editions_default_panels_mini() {
     'admin_title' => 'AnnotationViewer',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<script src="/sites/all/themes/sky/lib/jquery-1.9.1.js"></script>
-    <script src="/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
-    <!-- Locale for language -->
-    <script src="/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
-    <!-- For show the annotation creation date -->
-   <!-- <script src="/sites/all/themes/sky/lib/jquery.dateFormat.js"></script> -->
-    <!-- File with the translations -->
-    <script src="/sites/all/themes/sky/locale/en/annotator.js"></script>
-    <!-- Scroll panel -->
-    <script src="/sites/all/themes/sky/lib/jquery.slimscroll.js"></script>
-   
-    <!-- anotator plug in -->
-    <script src="/sites/all/themes/sky/src/view_annotator.js"></script>
-    <script src="/sites/all/themes/sky/src/categories.js"></script>
-    <script src="/sites/all/themes/sky/lib/tinymce/tinymce.min.js"></script>
-    <script src="/sites/all/themes/sky/src/richEditor.js"></script>
-<script>
-                       jQuery(function ($) {
- 	$.i18n.load(i18n_dict);
- 	var annotator = $(\'.field-name-body\').annotator().annotator().data(\'annotator\');
- 	var propietary = \'anon\';
-	 /*$(\'.field-name-body\').annotator().annotator({
-        readOnly: true
-    });*/
- 	annotator.addPlugin(\'Permissions\', {
- 		user: propietary,
- 		permissions: {
- 			"read": [propietary],
- 			\'update\': [],
- 			\'delete\': [],
- 			\'admin\': []
- 		},
- 		showViewPermissionsCheckbox: false,
- 		showEditPermissionsCheckbox: false
- 	});
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Filter\', {
- 		filters: [
-{
- 			label: \'Category\',
- 			property: \'category\'
- 		},
-{
- 			label: \'Tag\',
- 			property: \'tags\',
- 			isFiltered: function (input, tags) {
- 				if (input && tags && tags.length) {
- 					var keywords = input.split(/\\s+/g);
- 					for (var i = 0; i < keywords.length; i += 1) {
- 						for (var j = 0; j < tags.length; j += 1) {
- 							if (tags[j].indexOf(keywords[i]) !== -1) {
- 								return true;
- 							}
- 						}
- 					}
- 				}
- 				return false;
- 			}
- 		}]
- 	});
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'RichEditor\');
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Categories\', {
- 		Historical: \'annotator-hl-historical\',
- 		Textual: \'annotator-hl-textual\',
-Cultural: \'annotator-hl-cultural\',
- 		Interpretative: \'annotator-hl-interpretative\',
-Linguistic: \'annotator-hl-linguistic\'
- 	});
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'AnnotatorViewer\');
- 	//Annotation scroll
- 	$(\'#anotacions-uoc-panel\').slimscroll({
- 		height: \'100%\'
- 	});
- });
-</script>',
+    'body' => '',
     'format' => 'unfiltered_html',
     'substitute' => TRUE,
   );
@@ -300,21 +227,21 @@ Linguistic: \'annotator-hl-linguistic\'
         <h2>Annotations</h2>
             <span class="anno-label">Quote:</span>
             <span id="quote[%uuid%]" class="sbquote details">&quot;[%quote%]&quot;</span>
-        
-        
+
+
             <div class="anno-label">Comment:</div>
             <div><span id="text[%uuid%]" class="sbtext details">[%&text%]</span></div>
-        
-        
+
+
             <div><span class="anno-label">Author:</span>
             <span id="info[%uuid%]" class="sbinfo details">[%username%]</span></div>
-        
+
             <div><span class="anno-label">Tags:</span>
             <span id="tags[%uuid%]" class="sbtags details">[%#tags%]<span class="label label-default">[%.%]</span>[%/tags%]</span></div>
-        
+
             <div><span class="anno-label">Categories:</span>
             <span id="categories[%uuid%]" class="sbcats details">[%#annotation_categories%]<span class="label label-default">[%.%]</span> [%/annotation_categories%]</span></span></div>
-        
+
     </div>
 </script>',
     'format' => 'unfiltered_html',

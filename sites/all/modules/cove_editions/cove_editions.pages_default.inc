@@ -322,89 +322,7 @@ print print_insert_link();  print print_mail_insert_link();
     'admin_title' => 'anno startup',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<script src="/sites/all/libraries/annotator_viewer/lib/jquery-1.9.1.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="/sites/all/libraries/annotator_viewer/lib/annotator-full.1.2.9/annotator-full.min.js"></script>
-    <!-- Locale for language -->
-    <script src="/sites/all/libraries/annotator_viewer/lib/jquery-i18n-master/jquery.i18n.min.js"></script>
-    <!-- For show the annotation creation date -->
-   <!-- <script src="/sites/all/libraries/annotator_viewer/lib/jquery.dateFormat.js"></script> -->
-    <!-- File with the translations -->
-    <script src="/sites/all/libraries/annotator_viewer/locale/en/annotator.js"></script>
-    <!-- Scroll panel -->
- <script src="/sites/all/libraries/annotator_viewer/lib/jquery.slimscroll.js"></script> 
-<!-- For search plugin -->
-<!-- Old version packaged with plugin-->
-<!--<script src="/sites/all/libraries/annotator_viewer/lib/lunr.js-0.5.7/lunr.min.js"></script>-->
-<!-- new version for which plugin needs updating-->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.3/lunr.js" integrity="sha256-1oK7SgOogZ2/jDRzXKxpqqR5UysD0RfbPD4Gsi3rd04=" crossorigin="anonymous"></script> -->
-   
-    <!-- anotator plug in -->
-    <script src="/sites/all/libraries/annotator_viewer/src/view_annotator.js"></script>
-    <script src="/sites/all/libraries/annotator_viewer/src/categories.js"></script>
-<!--<script src="/sites/all/libraries/annotator_viewer/src/search.js"></script>-->
-   <script src="/sites/all/libraries/annotator_viewer/lib/tinymce/tinymce.min.js"></script>
-    <script src="/sites/all/libraries/annotator_viewer/src/richEditor.js"></script>
-<script>
-                       jQuery(function ($) {
- 	$.i18n.load(i18n_dict);
- 	var annotator = $(\'.field-name-body\').annotator().annotator().data(\'annotator\');
- 	var propietary = \'anon\';
-	 /*$(\'.field-name-body\').annotator().annotator({
-        readOnly: true
-    });*/
- 	annotator.addPlugin(\'Permissions\', {
- 		user: propietary,
- 		permissions: {
- 			"read": [propietary],
- 			\'update\': [],
- 			\'delete\': [],
- 			\'admin\': []
- 		},
- 		showViewPermissionsCheckbox: false,
- 		showEditPermissionsCheckbox: false
- 	});
- 	/*$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Filter\', {
- 		filters: [
-{
- 			label: \'Category\',
- 			property: \'category\'
- 		},
-{
- 			label: \'Tag\',
- 			property: \'tags\',
- 			isFiltered: function (input, tags) {
- 				if (input && tags && tags.length) {
- 					var keywords = input.split(/\\s+/g);
- 					for (var i = 0; i < keywords.length; i += 1) {
- 						for (var j = 0; j < tags.length; j += 1) {
- 							if (tags[j].indexOf(keywords[i]) !== -1) {
- 								return true;
- 							}
- 						}
- 					}
- 				}
- 				return false;
- 			}
- 		}]
- 	});*/
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'RichEditor\');
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Categories\', {
- 		Historical: \'annotator-hl-5\',
- 		Textual: \'annotator-hl-6\',
-Cultural: \'annotator-hl-3\',
- 		Interpretative: \'annotator-hl-4\',
-Linguistic: \'annotator-hl-7\'
- 	});
- 	$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'AnnotatorViewer\');
- 	//Annotation scroll
- 	$(\'#anotacions-uoc-panel\').slimscroll({
- 		height: \'99%\'
- 	});
-//noinspection JSJQueryEfficiency
-        //$(\'.field-name-body\').annotator().annotator(\'addPlugin\', \'Search\');
- });
-</script>',
+    'body' => '',
     'format' => 'unfiltered_html',
     'substitute' => 1,
   );
@@ -430,27 +348,7 @@ Linguistic: \'annotator-hl-7\'
     'admin_title' => 'anno Margin viewer startup',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<link rel="stylesheet" type="text/css" href="http://emory-lits-labs.github.io/annotator-marginalia/build/0.4.1/annotator.marginalia.min.css" />
-<script type="text/javascript" src="/sites/all/themes/sky/annotator-2.x/annotator.min.js"></script>
-	<script type="text/javascript" src="http://emory-lits-labs.github.io/annotator-marginalia/src/scripts/bootstrap.dropdown.js"></script>
-<script type="text/javascript" src="http://emory-lits-labs.github.io/annotator-marginalia/build/0.4.1/annotator.marginalia.min.js"></script>
-<script type="text/javascript">
-	var app = new annotator.App();
-app.include(annotator.ui.main);
-app.include(annotator.storage.http);
-app.include(annotatorMarginalia({
-        show_author: true,
-        viewer: annotatormeltdown.render,
-        renderExtensions: [
-            my_custom_field.renderExtension,
-        ],
-      }));
-app
-.start()
-.then(function () {
-     app.annotations.load();
-});
-	</script>',
+    'body' => '',
     'format' => 'unfiltered_html',
     'substitute' => 1,
   );
