@@ -36,8 +36,8 @@ var _ref,
     };
 
 _index = lunr(function () { //Define document search
-    //this.field('title', {boost: 10})
-    this.field('body')
+    this.field('title', {boost: 10});
+    this.field('body');
     this.ref('id')
 });
 
@@ -78,20 +78,16 @@ Annotator.Plugin.Search = (function (_super) {
         //Adding search capabilities to the annotator Viewer
         if (typeof(this.annotator.plugins.AnnotatorViewer)!='undefined') {
          //Adding a input box for search
-            $('li.filter-panel').before('<input class="search" id="search" type="text" results/><input class="annotator-panel-reset" type="reset" id="annoReset" value="Reset" />');
+            $('li.filter-panel').before('<input class="search" id="search" type="text" results/><a class="annotator-panel-reset" href="#clear">Reset</a>');
             $('input#search').on('change',this.searchAnnotator);
         }
     };
 
     //Event triggered when reset the search text
     Search.prototype.onResetSearch = function(event) {
-		$("#annoReset").click(function(){
-			/* Single line Reset function executes on click of Reset Button */
-			$("#input#search")[0].reset();
-        
+        $('input#search').val("");
         this.resetSearch();
-    });
-	};
+    };
 
     Search.prototype.searchAnnotator = function () {
         var searchText = $('input#search').val().trim();

@@ -45,36 +45,34 @@ function RichEditor(element,options) {
 RichEditor.prototype.pluginInit = function() {
     if (!Annotator.supported()) {
         return;
-    }    
+    }
     //Controlling tinymc content text, we can get the rich from the tinymce
     tinymce.init(this.options.tinymce);
     this.annotator
       .subscribe("annotationCreated", function (annotation) {
           annotation.text = tinymce.activeEditor.getContent();
-  
+
       });
     this.annotator
       .subscribe("annotationEditorShown", function (annotation) {
-         var text = typeof annotation.annotation.text!='undefined'?annotation.annotation.text:'';         
+         var text = typeof annotation.annotation.text!='undefined'?annotation.annotation.text:'';
          tinymce.activeEditor.setContent(text);
-  
+
       });
 
     this.annotator
       .subscribe("annotationUpdated", function (annotation) {
          annotation.text = tinymce.activeEditor.getContent();
-  
-      });      
+
+      });
       this.annotator.viewer.addField({
         load: function (field, annotation) {
           EditorViewerTextField = $(field.parentElement).find('div:first-of-type');
           $(EditorViewerTextField).html(annotation.text);
-          
-          console.log(annotation.text);
         }
       })
 
-      
+
 }
 
 

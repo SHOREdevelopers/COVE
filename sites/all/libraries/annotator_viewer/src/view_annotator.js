@@ -67,6 +67,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 		};
 
 
+		// The annotation viewer
 		function AnnotatorViewer(element, options) {
 			this.onAnnotationCreated = __bind(this.onAnnotationCreated, this);
 			this.onAnnotationUpdated = __bind(this.onAnnotationUpdated, this);
@@ -79,35 +80,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 			AnnotatorViewer.__super__.constructor.apply(this, arguments);
 
+			// Add the annotations panel to the page by injecting it into the body
 			$("body").append(this.createAnnotationPanel());
 
-			/*$(".container-anotacions").toggle();
-			$("#annotations-panel").click(function (event) {
-				$(".container-anotacions").toggle("slide");
-			});*/
-			/*$(".annotator-hl").click(function (event) {
-							$(".container-anotacions").toggle();
-						});*/
-			$("ul#container-anotacions li").tooltip();
-			// Bind some events to links
-			$("span.annotator-hl").click(function (event) {
-				$("ul.container-anotacions li.annotator-marginviewer-element").removeClass('hover');
-				//$("li.annotator-marginviewer-element").tooltip('hide');
-				var str = this.id.toString();
-				var parts = str.match(/(hl)(.+)/).slice(1);
-				var targetid = "#sb" + parts[1];
+			// Hide it
+			$(".container-anotacions").hide();
+			//$(".annotations-list-uoc").hide();
 
-				// TODO: deal with the events in a more organized way (recompose them in functions)
-				$('div#anotacions-uoc-panel').animate({
-					scrollTop: $(targetid).offset().top
-				}, 100, function () {
-					console.info("Scroll to: " + targetid);
-					$(targetid).parent().addClass('hover');
-					$(targetid).trigger("click");
-					//$(targetid).tooltip('show'); // disappears after 1 sec?
+			// On click, toggle visibility
+			$("#annotations-panel").click(
+				function (event) {
+					$(".container-anotacions").toggle();
+					//$(".annotations-list-uoc").toggle();
+				}
+			);
+
+			// FIXME: What does this do?
+			$("ul#container-anotacions li").tooltip();
+
+		// Wait for annotation to load and bind some events to links
+		// FIXME: We might no longer need the delay
+		$( document ).ready(function() {
+			$(window).load(function() {
+
+				$(".annotator-hl").click(function (event) {
+
+					// Open the pane (if closed)
+					$(".container-anotacions").show();
+					//$(".annotations-list-uoc").show();
+
+					$("ul.container-anotacions li.annotator-marginviewer-element").removeClass('hover');
+					//$("li.annotator-marginviewer-element").tooltip('hide');
+
+					var targetid="#sb" + this.id.toString();
+					console.log("Scroll to: "+targetid);
+					$('div#anotacions-uoc-panel').animate(
+						{scrollTop: $(targetid).offset().top},
+						100,
+						// Completion callback
+						function () {
+							console.info("Finished scroll to: " + targetid);
+							$(targetid).parent().addClass('hover');
+							$(targetid).trigger("click");
+						}
+					);
 				});
 
-			});
+		 	});
+	 	});
 
 
 		};
@@ -175,7 +195,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 		//Textarea editor controller
 		AnnotatorViewer.prototype.textareaEditor = function (annotator_textArea, item) {
-			//First we have to get the text, if no, we will have an empty text area after replace the div 
+			//First we have to get the text, if no, we will have an empty text area after replace the div
 			if ($('li#sb' + item.id).find('textarea.panelTextArea').length == 0) {
 				var content = item.text;
 				var editableTextArea = $("<textarea id='textarea-" + item.id + "'' class='panelTextArea'>" + content + "</textarea>");
@@ -221,7 +241,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 				tinymce.activeEditor.setContent(current_annotation.text);
 			} else {
 				current_annotation.text = textarea.val();
-				//this.normalEditor(current_annotation,textarea);     
+				//this.normalEditor(current_annotation,textarea);
 			}
 			var anotation_reference = "sb" + current_annotation.id;
 			$('#' + anotation_reference).data('annotation', current_annotation);
@@ -328,7 +348,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 			$("span.tags-list").text(function (i, val) {
 				return val.replace(/,/g, ", ");
 			});
-			//Hide tags label if no tags 
+			//Hide tags label if no tags
 			$('span.tags-list').each(function () {
 				if ($(this).text().length == 0) {
 					$(this).parent().hide()

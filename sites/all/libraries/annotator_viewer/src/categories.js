@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
   Annotator.Plugin.Categories = (function(_super) {
     __extends(Categories, _super);
 
-    
+
     Categories.prototype.events = {
       'annotationsLoaded': 'onAnnotationsLoaded'
     };
@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
       this.setAnnotationCat = __bind(this.setAnnotationCat, this);
       this.updateField = __bind(this.updateField, this);
       this.onAnnotationUpdated = __bind(this.onAnnotationUpdated, this);
-      this.annotationCreated = __bind(this.annotationCreated, this);      
+      this.annotationCreated = __bind(this.annotationCreated, this);
       this.AnnotationSection = __bind(this.AnnotationSection, this);
       this.AnnotationCategory = __bind(this.AnnotationCategory, this);
       this.updateAnnotation = __bind(this.updateAnnotation, this);
@@ -49,24 +49,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
     }
 
 
-    Categories.prototype.pluginInit = function() {      
+    Categories.prototype.pluginInit = function() {
       if (!Annotator.supported()) {
         return;
       }
 
       //Call editor after submit.
-      this.annotator.subscribe("annotationEditorSubmit",this.AnnotationSection);      
+      this.annotator.subscribe("annotationEditorSubmit",this.AnnotationSection);
 
       //Call editor before show and write color checker
-      this.annotator.subscribe("annotationEditorShown",this.AnnotationCategory);     
+      this.annotator.subscribe("annotationEditorShown",this.AnnotationCategory);
 
       //Annotation creation
-      this.annotator.subscribe("annotationCreated",this.annotationCreated);    
+      this.annotator.subscribe("annotationCreated",this.annotationCreated);
 
       //Showing annotations
-      this.annotator.subscribe("annotationViewerShown",this.AnnotationViewer);   
+      this.annotator.subscribe("annotationViewerShown",this.AnnotationViewer);
 
-      this.annotator.subscribe("annotationUpdated ",this.updateAnnotation);  
+      this.annotator.subscribe("annotationUpdated ",this.updateAnnotation);
 
     };
 
@@ -75,64 +75,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
       var annotation;
       var _categories = this.options.categories; //Categories plug-in
 
-$(".annotator-hl").append(str);
       $('#count-anotations').text( annotations.length );
       if (annotations.length > 0) {
         for(i=0, len = annotations.length; i < len; i++) {
-          annotation = annotations[i];    
-          var category = '' + annotation.category;
-			var temp = category.split(",");
-			var str = '';
-			$.each(temp, function(i,v) { // loop through array
-				str += "annotator-hl-"+v+" "; // create html string and store it in str variable
-});
+          annotation = annotations[i];
+          var category = "annotator-hl-" + annotation.category;
           if (annotation.category in _categories) {
              category = _categories[annotation.category];
-           }           
-          $(annotation.highlights).addClass(str);  
-			$(annotation.highlights).attr('data-annotation_categories', annotation.category);
-			$(annotation.highlights).attr('data-tags', annotation.tags);
-			$(annotation.highlights).attr('data-username', annotation.username);
-          $(annotation.highlights).attr('id', 'hl' + annotation.id ); 
+           }
+          $(annotation.highlights).addClass(category);
+          $(annotation.highlights).attr('id', annotation.id );
         }
-        
+
       }
-      
+
     };
 
      //After loading annotations we want to change the annotation color and add the annotation id
-    Categories.prototype.updateAnnotation = function(annotation) {     
-      var category = this.options.categories[annotation.category]; 
-     
-      $(annotation.highlights).attr("class","annotator-hl " + category);   
-     
+    Categories.prototype.updateAnnotation = function(annotation) {
+      var category = this.options.categories[annotation.category];
+
+      $(annotation.highlights).attr("class","annotator-hl " + category);
+
     };
 
      //After loading annotations we want to change the annotation color and add the annotation id
     Categories.prototype.AnnotationViewer = function(viewer, annotations) {
       var annotation;
-      var isShared = ""; 
+      var isShared = "";
       var class_label="label";
-      
+
       if (annotations.length > 0) {
         for(i=0, len = annotations.length; i < len; i++) {
-          annotation = annotations[i]; 
-          
+          annotation = annotations[i];
+
           if (annotation.estat==1 || annotation.permissions.read.length===0 ) {
-            isShared = "<img src=\"/sites/all/libraries/annotator_viewer/src/img/shared-icon.png\" title=\""+ i18n_dict.share +"\" style=\"margin-left:5px\"/>"
+            //isShared = "<img src=\"../src/img/shared-icon.png\" title=\""+ i18n_dict.share +"\" style=\"margin-left:5px\"/>"
           }
           if (annotation.propietary==0) {
             class_label = "label-compartit";
           }
-			var category = '' + annotation.category;
-			var temp = category.split(",");
-			var str = '';
-			$.each(temp, function(i,v) { // loop through array
-				str += "annotator-hl-"+v+" "; // create html string and store it in str variable
-});
-          $('ul.annotator-widget > li.annotator-item').prepend('<div class="'+str+'" style="border: 1px solid #b3b3b3;height:6px;margin:4px;padding:4px;"></div>');
-          $( "div.annotator-user" ).html( "<span class='"+class_label+"'>"+annotation.username+"</span>"+isShared);
-          
+          $('ul.annotator-widget > li.annotator-item').prepend('<div class="'+annotation.category+'" style="border: 1px solid #b3b3b3;height:6px;margin:4px;padding:4px;"></div>');
+          $( "div.annotator-user" ).html( "<span class='"+class_label+"'>"+annotation.user+"</span>"+isShared);
+
         }
       }
     }
@@ -150,7 +135,7 @@ $(".annotator-hl").append(str);
       } else {
         console.log("Section not detected!!!")
       }
-      annotation.order = $('.annotator-hl-temporary').closest('div[id]').attr('id');       
+      annotation.order = $('.annotator-hl-temporary').closest('div[id]').attr('id');
       annotation.category = $('input:radio[name=categories-annotation]:checked').val();
 
     }
@@ -170,9 +155,9 @@ $(".annotator-hl").append(str);
           radio = radio + '<label for="annotator-field-'+i+'" style="vertical-align: middle;text-transform:capitalize;"><div class="'+_categories[cat]+' square" style="display:inline-block;height:15px;width:30px;margin-top:3px;margin-bottom:3px;margin-rigth:5px;vertical-align:middle"></div><span style="margin-left:5px">'+$.i18n._(cat)+'</span></label><br/>';
           i = i + 1;
           _radioGroup.append(radio);
-        } 
+        }
 
-      }   
+      }
       if (annotation.category) {
         $('#' + annotation.category).prop('checked',true);
       }
@@ -183,10 +168,10 @@ $(".annotator-hl").append(str);
      $( "span[id="+annotation.id+"]" ).attr('class','annotator-hl-'+annotation.category);
     };
 
-    
+
     Categories.prototype.annotationCreated = function(annotation) {
       var cat, h, highlights, _i, _len, _results;
-      
+
       $( "span[id="+annotation.id+"]" ).attr('id',annotation.id);
       cat = annotation.category;
       highlights = annotation.highlights;
@@ -213,11 +198,11 @@ $(".annotator-hl").append(str);
     Categories.prototype.updateViewer = function(field, annotation) {
       field = $(field);
       field.html('<span class="annotator-hl-' + annotation.category + '">' +$.i18n._(annotation.category).toUpperCase() + '</span>').addClass('annotator-hl-'+ annotation.category );
-     
+
     };
 
     return Categories;
 
   })(Annotator.Plugin);
 
-}(jQuery));
+}).call(this);

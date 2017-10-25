@@ -71,6 +71,45 @@ body {
   margin: 0 auto;
 }
 
+ .annotator-hl-errata {
+    background:  #ffcfbf;
+     cursor:pointer;
+}
+
+.annotator-hl-destacat {
+    background:  #dfffbf;
+     cursor:pointer;
+}
+
+.annotator-hl-subratllat {
+    background: rgba(255, 255, 10, 0.3);
+    text-decoration:underline;
+     cursor:pointer;
+}
+.errata {
+    background: #ffcfbf;
+    border: 1px solid #b3b3b3;
+    height:20px;
+}
+
+.destacat {
+    background: #dfffbf;
+    border: 1px solid #b3b3b3;
+    height:20px;
+}
+
+.hightlight {
+    background: #dfffbf;
+    border: 1px solid #b3b3b3;
+    height:20px;
+}
+
+.subratllat {
+    background: rgba(255, 255, 10, 0.3);
+    border: 1px solid #b3b3b3;
+    height:20px;
+}
+
 .caixa_color {
     float:left;
     width:20px;
@@ -87,9 +126,10 @@ body {
 .annotations-list-uoc {
     position: fixed;
     top: 5em;
-    right: 1em;
+    right: 0em;
     height:95%;
     z-index: 100;
+	box-shadow: -3px 14px 20px -1px rgba(0, 0, 0, 0.46);
 
 }
 
@@ -110,20 +150,20 @@ body {
     background-color: #666666;
     color: #FFFFFF;
     font-size: 11px;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .label-counter-alert {
     background-color: #B20000;
     color: #FFFFFF;
     font-size: 11px;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .label {
     padding: 1px 4px 2px;
     font-weight: bold;
-    line-height: 14px;    
+    line-height: 14px;
     vertical-align: baseline;
     white-space: nowrap;
     margin-top: 4px;
@@ -152,7 +192,7 @@ body {
         border: 1px solid #b3b3b3;
         margin: 0px;
         margin-bottom: 10px;
-        width: 400px;        
+        width: 227px;
         font-size: 12px;
         cursor:pointer;
 }
@@ -169,16 +209,16 @@ body {
         height: 26px;
         padding-right: 0.5em;
         padding-left: 0.5em;
-      
+
 }
 
-.annotator-marginviewer-footer {        
+.annotator-marginviewer-footer {
         background-color: #f5f5f5;
         height: 26px;
         padding-right: 0.5em;
         padding-left: 0.5em;
         padding-top: 0.3em;
-      
+
 }
 .annotator-marginviewer-highlighted>.annotator-marginviewer-header {
         background-color: #fbed20;
@@ -194,8 +234,8 @@ body {
     font-family: arial;
     font-size: 11px;
     line-height: 1.5em;
-  
-      
+
+
 }
 
 .panelTextArea {
@@ -216,7 +256,6 @@ body {
 
 .anotador_text {
     padding-left: 0.1em;
-    font-size:120%;
 }
 
 .annotator-marginviewer-highlighted>.annotator-marginviewer-text {
@@ -266,35 +305,35 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
     line-height:1.4em;
-     
+
 }
 h1, h2 {
     font-size:30px;
-     
+
 }
 h3 {
     font-size:24px;
-     
+
 }
 h4, h5 {
     font-size:18px;
-     
+
 }
 h6 {
     font-size:15px;
-     
+
 }
 ul {
     margin-left: 16px;
-        
+
 }
 ol {
     margin-left: 20px;
-     
+
 }
 dd {
     margin:0 0 12px 0;
-     
+
 }
 
 li ul
@@ -324,7 +363,7 @@ th {
     background: #b1b2b4;
 }
 .figure-dreta {
-    padding: 0px;    
+    padding: 0px;
     text-align:center;
 }
 .seccio_barra {
@@ -353,7 +392,7 @@ th {
 }
 .subtitle {
     font-size:24px;
-    font-weight:normal;    
+    font-weight:normal;
 }
 .audio-tag {
     padding-left: 20px;
@@ -386,7 +425,7 @@ th {
 
 .authors {
     padding:20px 0 0;
-     
+
 }
 /*
     Sections Adjustments
@@ -500,24 +539,24 @@ th {
     list-style: none;
     margin:0;
     font-weight:bold;
-     
+
 }
 .index-chapter ul ul {
     margin-left:25px;
     font-weight:normal;
-     
+
 }
 .index-chapter ul ul ul {
     margin-left:35px;
-     
+
 }
 .index-chapter ul li {
     margin:4px 0;
-     
+
 }
 .numeracio {
     margin-right:12px;
-     
+
 }
 .index-chapter .index-module {
     display:block;
@@ -566,16 +605,16 @@ th {
     font-size:13px;
     line-height:1.4em;
     margin:10px 0;
-     
+
 }
 .authors .author img {
     margin-bottom:10px;
-     
+
 }
 .authors .author p {
     font-size:11px;
     line-height:1.6em;
-     
+
 }
 
 .license-info {
@@ -591,7 +630,7 @@ th {
     font-size:11px;
     line-height:1.5em;
     margin:10px 0;
-     
+
 }
 aside .caption, .caption {
     margin-top:5px;
@@ -602,7 +641,7 @@ aside .caption, .caption {
     color:black;
 }
 .object {
-    text-align:center;    
+    text-align:center;
 }
 
 .tablecaption {
@@ -618,11 +657,11 @@ aside .caption, .caption {
     line-height:1.5em;
     text-decoration:none;
     text-align:center;
-    font-weight:bold;   
+    font-weight:bold;
 }
 
 .courier-new {
-    font-family:"Courier New";    
+    font-family:"Courier New";
 }
 /*
     Bibliolist
@@ -751,7 +790,7 @@ blockquote p {
  */
 .mediaobject {
     margin:20px 0;
-     
+
 }
 
 .figure {
@@ -813,7 +852,7 @@ span.rollover:hover {
     padding: 5px 0 0;
 }
 .imatge-beta {
-    vertical-align:top;    
+    vertical-align:top;
 }
 /*
     Tables
@@ -821,7 +860,7 @@ span.rollover:hover {
  */
 .table .row-fluid {
     padding: 3px 0;
-     
+
 }
 .table th, .table td {
     line-height: 1.5em;
@@ -962,7 +1001,7 @@ ol.oluoc .numeracio {
 }
 .uoctip.top {
     margin-top: -5px;
-     
+
 }
 .brand-active {
     font-family: Verdana,Arial,sans-serif;
@@ -1051,7 +1090,7 @@ ol.oluoc .numeracio {
 }
 aside {
     margin:20px 0;
-     
+
 }
 #container {
     padding-top:60px;
@@ -1066,18 +1105,18 @@ aside {
 }
 .navbar {
     position: relative;
-     
+
 }
 .navbar .navbar-inner {
     padding:0;
 }
 .navbar-inner .container {
     margin-top:0;
-     
+
 }
 .navbar .brand {
     padding-top: 17px;
-     margin-left:40px 
+     margin-left:40px
 }
 .navbar .nav {
     padding-right:0px;
@@ -1099,15 +1138,15 @@ aside {
     position: relative;
     float:left;
     width:100%;
-     
+
 }
 #top .nav-open-btn {
     display: block;
-     
+
 }
 #nav:target .nav-close-btn {
     display: block;
-     
+
 }
 #nav li {
     position: relative;
@@ -1116,7 +1155,7 @@ aside {
 }
 #nav li:last-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-     
+
 }
 #nav li a {
     padding: 0.85714em 20px;
@@ -1146,23 +1185,23 @@ aside {
 }
 .js-ready #nav {
     left: -70%;
-     
+
 }
 .js-ready #inner-wrap {
     left: 0;
-     
+
 }
 .js-nav #inner-wrap {
     left: 70%;
-     
+
 }
 .js-nav #nav-wrap {
     left: 70%;
-     
+
 }
 .js-nav #position-bar {
     left: 70%;
-     
+
 }
 .js-nav #nav-wrap, .js-nav .navbar {
     height:100%;
@@ -1882,4 +1921,3 @@ aside {
         border-radius: 0;
     }
 }
-
