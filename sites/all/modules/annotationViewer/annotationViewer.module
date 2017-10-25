@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function annotationViewer_block_info() {
+  $blocks = array();
+  $blocks['my_block'] = array(
+    'info' => t('Annotation: Sidebar Viewer'),
+  );
+  return $blocks;
+}
+/*
+function annotationViewer_block_view() {
+	//$block['title'] = t('TEST');
+	$block['content'] = '<div id="annotationViewer-block">';
+	$block['content'] .= 'this is a test';
+	$block['content'] .= '</div>';
+   return $block;
+}
+*/
