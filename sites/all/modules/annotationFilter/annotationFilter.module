@@ -1,0 +1,13 @@
+<?php
+/* We're not really using it, but Drupal needs the .module file to exist to show up in the UI */
+
+// Init, cram path into js var
+function annotationFilter_init() {
+	drupal_add_js(array('annotationFilter' => array('basepath' => drupal_get_path('module', 'annotationFilter'))), 'setting');
+}
+
+function annotationFilter_preprocess_page(&$vars) {
+  // FIXME: This should eventually be removed, in favor of Drupal Select2 module
+  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js', 'external');
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'external');
+}
