@@ -1,0 +1,55 @@
+/*
+annotationViewer_poem.css
+
+CSS specific to poem content
+
+IMPORTANT: If you want to change these you should NOT edit them here, instead
+make a copy of the block you want to change into your theme CSS and edit that.
+*/
+
+div.poem {
+	margin: auto;
+	padding: 0.5em;
+	line-height: 0;
+	counter-reset: line;
+}
+
+.poem div[class^="lineno"] {
+	line-height: 1.5rem;
+	position: relative;
+	left: 20px;
+	padding-left: 3em;
+}
+
+.poem .lineSeg1 {
+	line-height: 1.5rem;
+	position: relative;
+	left: 20px;
+	padding-left: 3em;
+}
+
+.poem .lineSeg2 {
+	line-height: 1.5rem;
+	position: relative;
+	left: 20px;
+	padding-left: 3em;
+}
+
+.poem div[class^="lineno"]:before {
+	counter-increment: line;
+	content: counter(line);
+	display: inline-block;
+	border-right: 1px solid #B9B9B9;
+	padding: 0 0.5em;
+	/* margin-right: .5em; */
+	color: #888;
+	left: -5ex;
+	position: absolute;
+	text-align: right;
+	width: 6ex;
+}
+
+.stanza {
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+}

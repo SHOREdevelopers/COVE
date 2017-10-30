@@ -1,0 +1,20 @@
+; annotationFilter
+;
+; This module is a drupal-ized filter for annotations
+; it requires annotationViewer (for JS and CSS dependencies)
+;
+; FIXME: Not a big fan of bootstrap. It's here because of the dropdowns, but we can handle that on our own?
+;
+core = "7.x"
+package = Performant
+name = "Annotation Filter"
+description = "Adds filters to annotations"
+dependencies[] = annotationViewer
+
+; JS Injector
+scripts[] = assets/js/annotationFilter.js
+
+; Include stylesheets
+; FIXME: Select2 should eventually be removed, in favor of Drupal Select2 module
+stylesheets[all][] = assets/css/select2.min.css
+stylesheets[all][] = assets/css/annotationFilter.css
