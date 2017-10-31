@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 	$(window).on("load", function() {
 
 		// Sanity check: if there are annotations on this page
-		if ($('body').find('.field-name-body').length !== 0) {
+		if (typeof annotations !== 'undefined') {
 			console.log('AnnotationViewer: Ok! Injecting sidebar.');
 
 			// Grab handle to annotator object (this is ugly)

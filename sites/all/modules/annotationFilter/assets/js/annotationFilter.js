@@ -13,7 +13,7 @@ Drupal.behaviors.annotationFilter = {
 
 
 				// If we find annotation on this page, begin
-				if ($('body').find('.field-name-body').length !== 0) {
+				if (typeof annotations !== 'undefined') {
 
 					console.log('AnnotationFilter: Ok! Injecting filters.');
 
