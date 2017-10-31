@@ -1,0 +1,35 @@
+; annotationViewer
+;
+; This module is a drupal-ized version of "Margin Viewer for Annotator"
+; https://github.com/albertjuhe/annotator_view.git
+;
+core = "7.x"
+package = Performant
+name = "Annotation Viewer"
+description = "Adds annotation viewer support"
+
+; Annotator core
+scripts[] = assets/js/annotator-full.min.js
+
+; English localization
+scripts[] = assets/js/jquery.i18n.min.js
+scripts[] = assets/js/localization_en.js
+
+; Slimscroll allows us to scroll with a thin scrollbar
+scripts[] = assets/js/jquery.slimscroll.js
+
+; Annotator plugins
+; FIXME: I don't think tinymce is necessary
+scripts[] = assets/js/categories.js
+scripts[] = assets/js/tinymce/tinymce.min.js
+scripts[] = assets/js/view_annotator.js
+
+; Initialize the annotation viewer
+scripts[] = assets/js/annotationViewer_init.js
+
+; Include stylesheets
+; FIXME: The stylesheets need cleanup
+; This stylesheet also contains a lot of junk that isn't necessary
+stylesheets[all][] = assets/css/annotationViewer.css
+stylesheets[all][] = assets/css/annotationViewer_poem.css
+stylesheets[all][] = assets/css/annotationViewer_highlights.css
