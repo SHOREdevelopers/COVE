@@ -17,7 +17,7 @@ Drupal.behaviors.annotationFilter = {
 
 					console.log('AnnotationFilter: Ok! Injecting filters.');
 
-					// Filter panel visible or not, injects next to title
+					// Toggle filter panel on/off, injects next to title
 					var filterButton = ' <a href="javascript:annotationFilter_toggleFilterPanel();"><span class="fa fa-filter" aria-hidden="true"></span></a>';
 					$('.field-name-body .block-title').append(filterButton);
 
@@ -30,8 +30,8 @@ Drupal.behaviors.annotationFilter = {
 					$('.field-name-body').append('<div id="annotationFilter_temp"></div>');
 					$("#annotationFilter_temp").load(htmlFile, function() {
 
-						// Hide the panel by default
-						$('#annotation-well').hide();
+						// Show the panel by default
+						$('#annotation-well').show();
 
 						// Append and remove placeholder`
 						$('.field-name-body').append($(this).html());
