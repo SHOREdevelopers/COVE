@@ -16,7 +16,12 @@ make a copy of the block you want to change into your theme CSS and edit that.
 	box-sizing: border-box;
 }
 
+.annotations-list-uoc{
 
+	z-index:1000 !important;
+
+
+}
 
 /* Temporary turning of annotatin tooltips*/
 .annotator-outer.annotator-viewer {
