@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 	$(window).on("load", function() {
 
 		// Sanity check: if there are annotations on this page
-		if ($('.field-name-body').find('.lineno').length !== 0) {
+		if (typeof annotations !== 'undefined') {
 			console.log('AnnotationViewer: Ok! Injecting sidebar.');
 
 			// Grab handle to annotator object (this is ugly)
@@ -16,36 +16,26 @@ jQuery(document).ready(function($) {
 			annotator.loadAnnotations(annotations);
 
 
+			// Permissions determine UI in annotation
+			var allowedUser = 'anon';
+			annotator.addPlugin('Permissions', {
+				user: allowedUser,
+				permissions: {
+					'read': [allowedUser],
+					'update': ['none'],
+					'delete': ['none'],
+					'admin': ['none']
+				},
+				showViewPermissionsCheckbox: false,
+				showEditPermissionsCheckbox: false
+			});
 
 
+			// Add the annotation sidebar plugin
+			annotator.addPlugin('AnnotatorViewer');
 
-
-
-				// Permissions determine UI in annotation
-				var allowedUser = 'anon';
-				annotator.addPlugin('Permissions', {
-					user: allowedUser,
-					permissions: {
-						'read': [allowedUser],
-						'update': ['none'],
-						'delete': ['none'],
-						'admin': ['none']
-					},
-					showViewPermissionsCheckbox: false,
-					showEditPermissionsCheckbox: false
-				});
-
-
-				// Add the annotation sidebar plugin
-				annotator.addPlugin('AnnotatorViewer');
-
-				// Include reference to self so it can apply click actions to page and refer to self
-				annotator.plugins.AnnotatorViewer.addToPage(annotator.plugins.AnnotatorViewer);
-
-/*
-				// Add rich editor (do we need this?)
-				annotator.addPlugin('RichEditor');
-			*/
+			// Include reference to self so it can apply click actions to page and refer to self
+			annotator.plugins.AnnotatorViewer.addToPage(annotator.plugins.AnnotatorViewer);
 
 			// Add Categories and define their classes
 			// This also (weirdly) is responsible for inserting the ids
@@ -57,8 +47,6 @@ jQuery(document).ready(function($) {
 				Interpretative: 'annotator-hl-4',
 				Linguistic: 'annotator-hl-7'
 			});
-
-
 
 
 			// Allow the annotation panel to be scrollable via slimscroll

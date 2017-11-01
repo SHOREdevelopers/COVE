@@ -15,15 +15,13 @@ scripts[] = assets/js/annotator-full.min.js
 scripts[] = assets/js/jquery.i18n.min.js
 scripts[] = assets/js/localization_en.js
 
-; Scroll panel
-; FIXME: this should be removed
+; Slimscroll allows us to scroll with a thin scrollbar
 scripts[] = assets/js/jquery.slimscroll.js
 
 ; Annotator plugins
-; FIXME: I don't think these are all necessary
+; FIXME: I don't think tinymce is necessary
 scripts[] = assets/js/categories.js
 scripts[] = assets/js/tinymce/tinymce.min.js
-scripts[] = assets/js/richEditor.js
 scripts[] = assets/js/view_annotator.js
 
 ; Initialize the annotation viewer
