@@ -21,7 +21,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Dates',
-    'weight' => '2',
+    'weight' => '6',
     'children' => array(
       0 => 'field_original_publication_date',
       1 => 'field_partial_publication_date',
@@ -92,10 +92,11 @@ function cove_editions_field_group_info() {
       'label' => 'Dates',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-dates field-group-fieldset',
-        'description' => '',
+        'description' => 'Enter a date below marking the original publication date of the document. If the exact date is unknown or there are other date-related considerations not covered by this section, please contact us and we\'ll assist you. ',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_dates|node|editions_page|form'] = $field_group;
@@ -175,11 +176,10 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '5',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_banner_image',
-      1 => 'field_index_banner',
-      2 => 'field_icon',
+      0 => 'field_index_banner',
+      1 => 'field_icon',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -205,17 +205,10 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy Keywords',
-    'weight' => '6',
+    'weight' => '9',
     'children' => array(
-      0 => 'opencalais_city_tags',
-      1 => 'opencalais_continent_tags',
-      2 => 'opencalais_country_tags',
-      3 => 'opencalais_naturalfeature_tags',
-      4 => 'opencalais_organization_tags',
-      5 => 'opencalais_person_tags',
-      6 => 'opencalais_provinceorstate_tags',
-      7 => 'opencalais_region_tags',
-      8 => 'taxonomy_vocabulary_3',
+      0 => 'opencalais_person_tags',
+      1 => 'taxonomy_vocabulary_3',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -280,25 +273,19 @@ function cove_editions_field_group_info() {
     'label' => 'Taxonomy Keywords',
     'weight' => '6',
     'children' => array(
-      0 => 'opencalais_city_tags',
-      1 => 'opencalais_continent_tags',
-      2 => 'opencalais_country_tags',
-      3 => 'opencalais_naturalfeature_tags',
-      4 => 'opencalais_organization_tags',
-      5 => 'opencalais_person_tags',
-      6 => 'opencalais_provinceorstate_tags',
-      7 => 'opencalais_region_tags',
-      8 => 'taxonomy_vocabulary_3',
+      0 => 'opencalais_person_tags',
+      1 => 'taxonomy_vocabulary_3',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Taxonomy Keywords',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-keywords field-group-fieldset',
-        'description' => '',
+        'description' => 'Below, you can provide tags for this document using a general free tagging category, "Tags", as well as a "Person" category designed specifically to target people referenced in the document. ',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_keywords|node|editions_page|form'] = $field_group;
@@ -314,7 +301,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'NINES Metadata',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(
       0 => 'field_nines_discipline_s_',
       1 => 'field_nines_genre_s_',
@@ -325,10 +312,11 @@ function cove_editions_field_group_info() {
       'label' => 'NINES Metadata',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'id' => '',
+        'classes' => 'group-nines field-group-fieldset',
         'description' => '',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'open',
     ),
   );
   $field_groups['group_nines|node|editions_index_page|form'] = $field_group;
@@ -404,7 +392,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'People',
-    'weight' => '3',
+    'weight' => '7',
     'children' => array(
       0 => 'field_edited_by',
       1 => 'field_main_author',
@@ -550,16 +538,17 @@ function cove_editions_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Site Structure',
+    'label' => 'Add to an Edition',
     'weight' => '1',
     'children' => array(
       0 => 'field_resource_index',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Site Structure',
+      'label' => 'Add to an Edition',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-structure field-group-fieldset',
         'description' => 'Before you get started creating content, we need to know a few things about this document so that we can place it properly within the site hierarchy. You or someone else should already have created a "Resource" under which this page should fall. Select that below in the "Parent Resource" drop-down. ',
       ),
@@ -570,6 +559,7 @@ function cove_editions_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add to an Edition');
   t('Dates');
   t('Images');
   t('Misc. helper fields');

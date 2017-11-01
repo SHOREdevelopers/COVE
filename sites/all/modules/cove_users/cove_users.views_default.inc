@@ -270,6 +270,12 @@ function cove_users_views_default_views() {
       'empty_column' => 1,
     ),
   );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="descbig">In this area, you\'ll find all the documents you own at COVE Editions. You can use the links below to edit metadata or add your documents to editions or groups.</div>';
+  $handler->display->display_options['header']['area']['format'] = 'unfiltered_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -303,6 +309,12 @@ function cove_users_views_default_views() {
   $handler->display->display_options['fields']['field_cove_studio_uri']['field'] = 'field_cove_studio_uri';
   $handler->display->display_options['fields']['field_cove_studio_uri']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cove_studio_uri']['click_sort_column'] = 'url';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Manage metadata';
+  $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

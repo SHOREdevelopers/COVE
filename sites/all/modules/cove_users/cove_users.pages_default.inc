@@ -42,14 +42,15 @@ function cove_users_default_page_manager_handlers() {
         'type' => 'row',
         'contains' => 'column',
         'children' => array(
-          0 => 1,
-          1 => 'main',
+          0 => 3,
+          1 => 1,
+          2 => 'main',
         ),
         'parent' => NULL,
       ),
       'main' => array(
         'type' => 'column',
-        'width' => '39.99165971643036',
+        'width' => '20.066573451913744',
         'width_type' => '%',
         'children' => array(
           0 => 'main-row',
@@ -75,7 +76,7 @@ function cove_users_default_page_manager_handlers() {
       ),
       1 => array(
         'type' => 'column',
-        'width' => '60.008340283569645',
+        'width' => '54.84627204618255',
         'width_type' => '%',
         'parent' => 'canvas',
         'children' => array(
@@ -103,6 +104,36 @@ function cove_users_default_page_manager_handlers() {
         'class' => '',
         'hide_empty' => 1,
       ),
+      3 => array(
+        'type' => 'column',
+        'width' => '25.087154501904084',
+        'width_type' => '%',
+        'parent' => 'canvas',
+        'children' => array(
+          0 => 4,
+        ),
+        'class' => '',
+        'hide_empty' => 0,
+      ),
+      4 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'user_left',
+        ),
+        'parent' => '3',
+        'class' => '',
+        'hide_empty' => 0,
+      ),
+      'user_left' => array(
+        'type' => 'region',
+        'title' => 'User Left',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '4',
+        'class' => '',
+        'hide_empty' => 0,
+      ),
     ),
   );
   $display->panel_settings = array(
@@ -110,6 +141,7 @@ function cove_users_default_page_manager_handlers() {
       'default' => NULL,
       'center' => NULL,
       'left' => NULL,
+      'user_left' => NULL,
     ),
   );
   $display->cache = array();
@@ -372,6 +404,42 @@ function cove_users_default_page_manager_handlers() {
   $pane->uuid = 'd401023d-1057-4ab0-82a4-d1c17236c1ba';
   $display->content['new-d401023d-1057-4ab0-82a4-d1c17236c1ba'] = $pane;
   $display->panels['left'][4] = 'new-d401023d-1057-4ab0-82a4-d1c17236c1ba';
+  $pane = new stdClass();
+  $pane->pid = 'new-a47a3879-0f5b-4cbd-b57c-b93d35be3ea7';
+  $pane->panel = 'user_left';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'COVE To do',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<h2 class="block-title">What can I do at The COVE?</h2>
+<ul style="list-style-type: none;">
+<li><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/book-icon.png" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/editions-index-page">Build Editions</a></li>
+</ul>
+<ul style="list-style-type: none;">
+<li style="margin-bottom: 5px;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/group-icon.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/course">Create Groups</a></li>
+</ul>
+<p style="font-size: 80%; margin-top: 0;"><em>For more information, please consult our <a href="/content/building-editions-and-working-groups-overview">documentation</a>.</em></p>',
+    'format' => 'unfiltered_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'nav_to-do',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'a47a3879-0f5b-4cbd-b57c-b93d35be3ea7';
+  $display->content['new-a47a3879-0f5b-4cbd-b57c-b93d35be3ea7'] = $pane;
+  $display->panels['user_left'][0] = 'new-a47a3879-0f5b-4cbd-b57c-b93d35be3ea7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

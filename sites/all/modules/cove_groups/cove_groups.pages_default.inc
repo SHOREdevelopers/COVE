@@ -473,7 +473,7 @@ function cove_groups_default_page_manager_handlers() {
   $pane->configuration = array(
     'admin_title' => 'Group to do',
     'title' => '',
-    'body' => '<h2 class="block-title" style="display: inline;">What can I do at The COVE?</h2>
+    'body' => '<h2 class="block-title" style="display: inline;">What can I do in COVE Groups?</h2>
 <ul style="display: inline;">
 <li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/form-icon-small.png" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/blog_entry">Write posts</a></li>
 <li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/timeline-icon-small.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/chronology?og_group_ref=%node:nid">Create timelines</a></li>
@@ -487,7 +487,10 @@ function cove_groups_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'nav_to-do',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();

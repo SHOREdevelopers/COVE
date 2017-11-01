@@ -15,7 +15,7 @@ function cove_editions_field_default_field_instances() {
     'bundle' => 'editions_index_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For Editions. A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.',
+    'description' => 'This text area should only be used for a brief description or abstract of the edition. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -51,17 +51,18 @@ function cove_editions_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Body',
+    'label' => 'Edition Description',
     'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
+        'rows' => 5,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -73,6 +74,7 @@ function cove_editions_field_default_field_instances() {
   $field_instances['node-editions_index_page-field_annotator'] = array(
     'bundle' => 'editions_index_page',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => 'Use the autocomplete form to add annotators to this resource',
     'display' => array(
@@ -101,6 +103,11 @@ function cove_editions_field_default_field_instances() {
     'label' => 'Annotator(s)',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -117,29 +124,27 @@ function cove_editions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-editions_index_page-field_banner_image'.
-  $field_instances['node-editions_index_page-field_banner_image'] = array(
+  // Exported field_instance:
+  // 'node-editions_index_page-field_documents_in_this_edition'.
+  $field_instances['node-editions_index_page-field_documents_in_this_edition'] = array(
     'bundle' => 'editions_index_page',
+    'default_value' => array(),
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'Banner for interior pages of this resource, for branding purposes',
+    'description' => '',
     'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -149,30 +154,31 @@ function cove_editions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_banner_image',
-    'label' => 'Interior Banner',
+    'field_name' => 'field_documents_in_this_edition',
+    'label' => 'Documents in this Edition',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 1,
-      'default_image' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'image_field_caption' => 0,
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 1,
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'add_documents_to_this_edition2|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'image_image',
-      'weight' => 47,
+      'type' => 'entityreference_view_widget',
+      'weight' => 2,
     ),
   );
 
@@ -247,7 +253,7 @@ function cove_editions_field_default_field_instances() {
   $field_instances['node-editions_index_page-field_icon'] = array(
     'bundle' => 'editions_index_page',
     'deleted' => 0,
-    'description' => 'Add a small 100px x 100px icon here. It is used as a thumbnail on landing pages.',
+    'description' => 'Add a small <strong>100px x 100px</strong> icon here. It is used as a thumbnail on landing pages.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -257,7 +263,7 @@ function cove_editions_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 20,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -297,7 +303,7 @@ function cove_editions_field_default_field_instances() {
   $field_instances['node-editions_index_page-field_index_banner'] = array(
     'bundle' => 'editions_index_page',
     'deleted' => 0,
-    'description' => 'The Banner, 2000px x 400px, that appears on the Table of Contents Page, i.e. here.',
+    'description' => 'The Banner, <strong>1200px x 600px</strong>, that appears on the Table of Contents Page, i.e. here.',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -338,8 +344,8 @@ function cove_editions_field_default_field_instances() {
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_resolution' => '1200x600',
+      'min_resolution' => '1200x600',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -416,102 +422,69 @@ function cove_editions_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-editions_index_page-field_maps_in_this_edition'.
+  $field_instances['node-editions_index_page-field_maps_in_this_edition'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_maps_in_this_edition',
+    'label' => 'Maps in this Edition',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'add_maps_to_this_edition|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-editions_index_page-field_nines_discipline_s_'.
   $field_instances['node-editions_index_page-field_nines_discipline_s_'] = array(
     'bundle' => 'editions_index_page',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => 'Applicable NINES disciplines for RDF output. Multiple values may be selected.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_nines_discipline_s_',
-    'label' => 'NINES Discipline(s)',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-      ),
-      'type' => 'options_select',
-      'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_index_page-field_nines_genre_s_'.
-  $field_instances['node-editions_index_page-field_nines_genre_s_'] = array(
-    'bundle' => 'editions_index_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Applicable NINES genres for RDF output. Multiple values may be selected.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_nines_genre_s_',
-    'label' => 'NINES Genre(s)',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-      ),
-      'type' => 'options_select',
-      'weight' => 42,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_index_page-field_nines_type_s_'.
-  $field_instances['node-editions_index_page-field_nines_type_s_'] = array(
-    'bundle' => 'editions_index_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Applicable NINES types for RDF output. Multiple values may be selected.',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -534,6 +507,96 @@ function cove_editions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'field_name' => 'field_nines_discipline_s_',
+    'label' => 'NINES Discipline(s)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_buttons',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-editions_index_page-field_nines_genre_s_'.
+  $field_instances['node-editions_index_page-field_nines_genre_s_'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'Applicable NINES genres for RDF output. Multiple values may be selected.',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_nines_genre_s_',
+    'label' => 'NINES Genre(s)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_buttons',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'node-editions_index_page-field_nines_type_s_'.
+  $field_instances['node-editions_index_page-field_nines_type_s_'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'Applicable NINES types for RDF output. Multiple values may be selected.',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
     'field_name' => 'field_nines_type_s_',
     'label' => 'NINES Type(s)',
     'required' => 1,
@@ -546,7 +609,7 @@ function cove_editions_field_default_field_instances() {
       'settings' => array(
         'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 44,
     ),
   );
@@ -556,7 +619,7 @@ function cove_editions_field_default_field_instances() {
   $field_instances['node-editions_index_page-field_original_publication_date'] = array(
     'bundle' => 'editions_index_page',
     'deleted' => 0,
-    'description' => 'Enter the date or dates a resource was originally published.',
+    'description' => 'Enter the date or dates a resource was originally published. Please include ONLY the year or a range of years. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -610,72 +673,12 @@ function cove_editions_field_default_field_instances() {
         'input_format' => 'm/d/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'none',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_index_page-field_parent_section'.
-  $field_instances['node-editions_index_page-field_parent_section'] = array(
-    'bundle' => 'editions_index_page',
-    'default_value' => array(
-      0 => array(
-        'target_id' => 31535,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_classes' => '',
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_parent_section',
-    'label' => 'Parent Section',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-      ),
-      'type' => 'options_select',
-      'weight' => 12,
     ),
   );
 
@@ -736,7 +739,7 @@ function cove_editions_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_partial_publication_date',
-    'label' => 'Original publication/creation date',
+    'label' => 'Original publication/creation date - FUZZY',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -813,7 +816,7 @@ function cove_editions_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 24,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1063,97 +1066,26 @@ function cove_editions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-editions_index_page-opencalais_city_tags'.
-  $field_instances['node-editions_index_page-opencalais_city_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 14,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_city_tags',
-    'label' => 'City',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'city',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'City',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance:
-  // 'node-editions_index_page-opencalais_continent_tags'.
-  $field_instances['node-editions_index_page-opencalais_continent_tags'] = array(
+  // 'node-editions_index_page-field_timelines_in_this_edition'.
+  $field_instances['node-editions_index_page-field_timelines_in_this_edition'] = array(
     'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 18,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1163,221 +1095,31 @@ function cove_editions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'opencalais_continent_tags',
-    'label' => 'Continent',
-    'required' => FALSE,
+    'field_name' => 'field_timelines_in_this_edition',
+    'label' => 'Timelines in this Edition',
+    'required' => 0,
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
         ),
       ),
-      'opencalais' => 'continent',
-      'threshold' => 0.15,
       'user_register_form' => FALSE,
     ),
-    'title' => 'Continent',
     'widget' => array(
-      'module' => 'taxonomy',
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'add_timelines_to_this_edition|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 17,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-editions_index_page-opencalais_country_tags'.
-  $field_instances['node-editions_index_page-opencalais_country_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_country_tags',
-    'label' => 'Country',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'country',
-      'threshold' => 0.16,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Country',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-editions_index_page-opencalais_naturalfeature_tags'.
-  $field_instances['node-editions_index_page-opencalais_naturalfeature_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 19,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_naturalfeature_tags',
-    'label' => 'NaturalFeature',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'natural_feature',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'NaturalFeature',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-editions_index_page-opencalais_organization_tags'.
-  $field_instances['node-editions_index_page-opencalais_organization_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_organization_tags',
-    'label' => 'Organization',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'organization',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Organization',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 22,
+      'type' => 'entityreference_view_widget',
+      'weight' => 3,
     ),
   );
 
@@ -1401,7 +1143,7 @@ function cove_editions_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1444,133 +1186,6 @@ function cove_editions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-editions_index_page-opencalais_provinceorstate_tags'.
-  $field_instances['node-editions_index_page-opencalais_provinceorstate_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 15,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_provinceorstate_tags',
-    'label' => 'ProvinceOrState',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'province_or_state',
-      'threshold' => 0.15,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'ProvinceOrState',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_index_page-opencalais_region_tags'.
-  $field_instances['node-editions_index_page-opencalais_region_tags'] = array(
-    'bundle' => 'editions_index_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 17,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_region_tags',
-    'label' => 'Region',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'region',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Region',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-editions_index_page-taxonomy_vocabulary_3'.
   $field_instances['node-editions_index_page-taxonomy_vocabulary_3'] = array(
     'bundle' => 'editions_index_page',
@@ -1589,7 +1204,7 @@ function cove_editions_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -2868,6 +2483,7 @@ function cove_editions_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => 'teiButton',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
@@ -2879,7 +2495,7 @@ function cove_editions_field_default_field_instances() {
       'enable_tokens' => 0,
       'rel_remove' => 'default',
       'title' => 'value',
-      'title_label_use_field_label' => FALSE,
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 255,
       'title_value' => 'XML : TEI',
       'url' => 0,
@@ -2892,292 +2508,6 @@ function cove_editions_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_page-opencalais_city_tags'.
-  $field_instances['node-editions_page-opencalais_city_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_city_tags',
-    'label' => 'City',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'city',
-      'threshold' => 0.15,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'City',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_page-opencalais_continent_tags'.
-  $field_instances['node-editions_page-opencalais_continent_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_continent_tags',
-    'label' => 'Continent',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'continent',
-      'threshold' => 0.15,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Continent',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_page-opencalais_country_tags'.
-  $field_instances['node-editions_page-opencalais_country_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_country_tags',
-    'label' => 'Country',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'country',
-      'threshold' => 0.15,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Country',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-editions_page-opencalais_naturalfeature_tags'.
-  $field_instances['node-editions_page-opencalais_naturalfeature_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_naturalfeature_tags',
-    'label' => 'NaturalFeature',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'natural_feature',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'NaturalFeature',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_page-opencalais_organization_tags'.
-  $field_instances['node-editions_page-opencalais_organization_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_organization_tags',
-    'label' => 'Organization',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'organization',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Organization',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
     ),
   );
 
@@ -3235,121 +2565,6 @@ function cove_editions_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-editions_page-opencalais_provinceorstate_tags'.
-  $field_instances['node-editions_page-opencalais_provinceorstate_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_provinceorstate_tags',
-    'label' => 'ProvinceOrState',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'province_or_state',
-      'threshold' => 0.15,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'ProvinceOrState',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-editions_page-opencalais_region_tags'.
-  $field_instances['node-editions_page-opencalais_region_tags'] = array(
-    'bundle' => 'editions_page',
-    'default_formatter' => 'taxonomy_term_reference_link',
-    'default_value' => NULL,
-    'default_widget' => 'options_select',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_region_tags',
-    'label' => 'Region',
-    'required' => FALSE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => '',
-          'parent' => 0,
-        ),
-      ),
-      'opencalais' => 'region',
-      'threshold' => 0.25,
-      'user_register_form' => FALSE,
-    ),
-    'title' => 'Region',
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
     ),
   );
 
@@ -4046,7 +3261,7 @@ function cove_editions_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A link to the XML:TEI file on the server.');
-  t('Add a small 100px x 100px icon here. It is used as a thumbnail on landing pages.');
+  t('Add a small <strong>100px x 100px</strong> icon here. It is used as a thumbnail on landing pages.');
   t('Annotator(s)');
   t('Applicable NINES disciplines for RDF output. Multiple values may be selected.');
   t('Applicable NINES genres for RDF output. Multiple values may be selected.');
@@ -4054,45 +3269,39 @@ function cove_editions_field_default_field_instances() {
   t('Author');
   t('Authored by (Primary)');
   t('Authored by (Secondary)');
-  t('Banner for interior pages of this resource, for branding purposes');
   t('Body');
   t('COVE Studio URI');
-  t('City');
-  t('Continent');
-  t('Country');
   t('Date published');
   t('Doc Owner');
+  t('Documents in this Edition');
+  t('Edition Description');
   t('Editor(s)');
   t('Enter a comma separated list of words');
-  t('Enter the date or dates a resource was originally published.');
+  t('Enter the date or dates a resource was originally published. Please include ONLY the year or a range of years. ');
   t('Enter the date this page is to be published (i.e. not created) on the site, specifying only Month and Year.');
   t('Enter the date this page is to be published (i.e. not created), specifying only Month and Year.');
   t('For Editions. A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.');
   t('Hidden field. All posts from COVE Studio are coming from admin, but POST requests are also sending along the UID of the user who should own the document. That is being stored here for processing via Rules. ');
   t('Icon');
   t('Index Banner');
-  t('Interior Banner');
+  t('Maps in this Edition');
   t('NINES Discipline(s)');
   t('NINES Genre(s)');
   t('NINES Type(s)');
-  t('NaturalFeature');
   t('OpenCalais Metadata: ContainedByCounty');
   t('OpenCalais Metadata: ContainedByState');
   t('OpenCalais Metadata: Latitude');
   t('OpenCalais Metadata: Longitude');
-  t('Organization');
   t('Original publication date');
   t('Original publication/creation date');
+  t('Original publication/creation date - FUZZY');
   t('Parent Resource');
-  t('Parent Section');
   t('People addressed on this page (tag)');
   t('People mentioned on this page (tag)');
   t('Person');
   t('Places mentioned on this page (tag)');
   t('Please, enter the synonyms which should be related to this term.');
   t('Postgraduate Researcher');
-  t('ProvinceOrState');
-  t('Region');
   t('Related Person');
   t('Resource Technical Editor');
   t('Synonyms');
@@ -4100,13 +3309,15 @@ function cove_editions_field_default_field_instances() {
   t('Tags sourced from OpenCalais about City.');
   t('Tags sourced from OpenCalais about Country.');
   t('Tags sourced from OpenCalais about Province Or State.');
-  t('The Banner, 2000px x 400px, that appears on the Table of Contents Page, i.e. here.');
+  t('The Banner, <strong>1200px x 600px</strong>, that appears on the Table of Contents Page, i.e. here.');
   t('The URI of the analagous document at COVE Studio');
   t('This field id import-driven, and shouldn\'t have any hand-entered tags.');
   t('This field is import-driven, and shouldn\'t have any hand-entered tags.');
   t('This is a special date handler that can contain "fuzzy" dates and with varying granularities, i.e. when the exact date of a publication is unknown or when a date can only be narrowed down to a year. ');
   t('This is a unique target, with the <idno type="edition"> element from the TEI. This allows us to use multiple feeds importers to target the same node. ');
   t('This is an auto-populated field for importing letters, you shouldn\'t enter values here manually');
+  t('This text area should only be used for a brief description or abstract of the edition. ');
+  t('Timelines in this Edition');
   t('Unique Target');
   t('Use the autocomplete form to add annotators to this resource');
   t('Use the autocomplete form to add any postgraduate researchers to this resource');

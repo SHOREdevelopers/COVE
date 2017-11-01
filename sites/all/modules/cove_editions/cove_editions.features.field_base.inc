@@ -59,6 +59,9 @@ function cove_editions_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_annotator',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -178,31 +181,6 @@ function cove_editions_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_banner_image'.
-  $field_bases['field_banner_image'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_banner_image',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'image',
-    'settings' => array(
-      'default_image' => 0,
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'image',
-  );
-
   // Exported field_base: 'field_cove_studio_uri'.
   $field_bases['field_cove_studio_uri'] = array(
     'active' => 1,
@@ -211,7 +189,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_cove_studio_uri',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(),
     'locked' => 0,
@@ -272,6 +250,45 @@ function cove_editions_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_documents_in_this_edition'.
+  $field_bases['field_documents_in_this_edition'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_documents_in_this_edition',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'editions_page' => 'editions_page',
+        ),
+      ),
+      'sync' => 'field_resource_index',
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_edited_by'.
   $field_bases['field_edited_by'] = array(
     'active' => 1,
@@ -323,6 +340,9 @@ function cove_editions_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_icon',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -400,6 +420,45 @@ function cove_editions_field_default_field_bases() {
       'handler_submit' => 'Change handler',
       'profile2_private' => FALSE,
       'sync' => 'field_authored_at_rc2',
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_maps_in_this_edition'.
+  $field_bases['field_maps_in_this_edition'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_maps_in_this_edition',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'map' => 'map',
+        ),
+      ),
+      'sync' => '',
       'target_type' => 'node',
     ),
     'translatable' => 0,
@@ -540,7 +599,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_partial_publication_date',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'timestamp' => array(
@@ -613,7 +672,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_people_addressed_on_this_p',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -639,7 +698,7 @@ function cove_editions_field_default_field_bases() {
           'person_anchors' => 'person_anchors',
         ),
       ),
-      'sync' => 'field_addressed_in',
+      'sync' => '',
       'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
@@ -654,7 +713,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_people_mentioned_on_this_p',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -680,7 +739,7 @@ function cove_editions_field_default_field_bases() {
           'person_anchors' => 'person_anchors',
         ),
       ),
-      'sync' => 'field_pages_that_mention_this_pe',
+      'sync' => '',
       'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
@@ -695,7 +754,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_places_mentioned_in_this_l',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -717,11 +776,9 @@ function cove_editions_field_default_field_bases() {
           'property' => 'name',
           'type' => 'property',
         ),
-        'target_bundles' => array(
-          'place_anchors' => 'place_anchors',
-        ),
+        'target_bundles' => array(),
       ),
-      'sync' => 'field_pages_that_mention_this_pl',
+      'sync' => '',
       'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
@@ -880,6 +937,45 @@ function cove_editions_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_timelines_in_this_edition'.
+  $field_bases['field_timelines_in_this_edition'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_timelines_in_this_edition',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'chronology' => 'chronology',
+        ),
+      ),
+      'sync' => '',
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_unique_target'.
   $field_bases['field_unique_target'] = array(
     'active' => 1,
@@ -888,7 +984,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_unique_target',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'format' => array(
@@ -912,7 +1008,7 @@ function cove_editions_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_xml_tei',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(),
     'locked' => 0,

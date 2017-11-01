@@ -27,6 +27,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
@@ -34,6 +35,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['row_options']['inline'] = array(
     'title' => 'title',
     'field_nines_genre_s_' => 'field_nines_genre_s_',
+    'edit_node_1' => 'edit_node_1',
   );
   $handler->display->display_options['row_options']['separator'] = ' | ';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
@@ -41,12 +43,12 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '[edit_node] ';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="rightFloat">[edit_node] </div>';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
-  /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['id'] = 'reverse_field_resource_index_node';
-  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['field'] = 'reverse_field_resource_index_node';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['id'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['table'] = 'field_data_field_documents_in_this_edition';
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['field'] = 'field_documents_in_this_edition_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -93,14 +95,15 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: NINES Genre(s) (field_nines_genre_s_) */
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['id'] = 'field_nines_genre_s__tid';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['field'] = 'field_nines_genre_s__tid';
-  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['value'] = array(
     6 => '6',
     8 => '8',
@@ -125,7 +128,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -138,7 +141,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['field_nines_genre_s_']['id'] = 'field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['field'] = 'field_nines_genre_s_';
-  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['field_nines_genre_s_']['label'] = '';
   $handler->display->display_options['fields']['field_nines_genre_s_']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_nines_genre_s_']['type'] = 'taxonomy_term_reference_plain';
@@ -156,8 +159,9 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['edit_node_1']['id'] = 'edit_node_1';
   $handler->display->display_options['fields']['edit_node_1']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node_1']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node_1']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['edit_node_1']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['edit_node_1']['label'] = '';
+  $handler->display->display_options['fields']['edit_node_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node_1']['text'] = 'Edit metadata';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -165,14 +169,14 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
 
   /* Display: Apparatus */
   $handler = $view->new_display('panel_pane', 'Apparatus', 'panel_pane_2');
@@ -181,7 +185,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -194,7 +198,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['field_nines_genre_s_']['id'] = 'field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['field'] = 'field_nines_genre_s_';
-  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['field_nines_genre_s_']['label'] = '';
   $handler->display->display_options['fields']['field_nines_genre_s_']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_nines_genre_s_']['type'] = 'taxonomy_term_reference_plain';
@@ -212,8 +216,9 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['edit_node_1']['id'] = 'edit_node_1';
   $handler->display->display_options['fields']['edit_node_1']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node_1']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node_1']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['edit_node_1']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['edit_node_1']['label'] = '';
+  $handler->display->display_options['fields']['edit_node_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node_1']['text'] = 'Edit metadata';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -221,28 +226,29 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_2';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: NINES Genre(s) (field_nines_genre_s_) */
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['id'] = 'field_nines_genre_s__tid';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['field'] = 'field_nines_genre_s__tid';
-  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['value'] = array(
     2 => '2',
     7 => '7',
@@ -333,6 +339,96 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['vocabulary'] = 'nines_genre';
+
+  /* Display: Uncat documents */
+  $handler = $view->new_display('panel_pane', 'Uncat documents', 'panel_pane_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Uncategorized Documents';
+  $handler->display->display_options['display_description'] = 'This shows all documents when the NINES Genres aren\'t filled as a reminder that they need to be. ';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'title' => 'title',
+    'edit_node' => 'edit_node',
+  );
+  $handler->display->display_options['row_options']['separator'] = ' | ';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p><em>The list below shows all documents you\'ve added to your edition but have not yet categorized. To do provide necessary additional metadata, click the edit links below.</em></p>';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: NINES Genre(s) (field_nines_genre_s_) */
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['id'] = 'field_nines_genre_s__tid';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['table'] = 'field_data_field_nines_genre_s_';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['field'] = 'field_nines_genre_s__tid';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['value'] = '';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['vocabulary'] = 'nines_genre';
+  $handler->display->display_options['argument_input'] = array(
+    'nid' => array(
+      'type' => 'none',
+      'context' => 'entity:comment.author',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Nid',
+    ),
+  );
   $export['documents_in_this_edition'] = $view;
 
   $view = new view();
@@ -352,6 +448,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -396,11 +493,15 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_resource_index_node']['id'] = 'reverse_field_resource_index_node';
   $handler->display->display_options['relationships']['reverse_field_resource_index_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_resource_index_node']['field'] = 'reverse_field_resource_index_node';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['id'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['table'] = 'field_data_field_documents_in_this_edition';
+  $handler->display->display_options['relationships']['field_documents_in_this_edition_target_id']['field'] = 'field_documents_in_this_edition_target_id';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
@@ -411,7 +512,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
-  $handler->display->display_options['fields']['draggableviews']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['draggableviews']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['draggableviews']['label'] = 'Reorder ToC';
   $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
@@ -422,7 +523,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -435,7 +536,7 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['field_nines_genre_s_']['id'] = 'field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['fields']['field_nines_genre_s_']['field'] = 'field_nines_genre_s_';
-  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['field_nines_genre_s_']['label'] = '';
   $handler->display->display_options['fields']['field_nines_genre_s_']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_nines_genre_s_']['type'] = 'taxonomy_term_reference_plain';
@@ -444,14 +545,14 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -465,14 +566,15 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: NINES Genre(s) (field_nines_genre_s_) */
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['id'] = 'field_nines_genre_s__tid';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['field'] = 'field_nines_genre_s__tid';
-  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['value'] = array(
     6 => '6',
     8 => '8',
@@ -502,14 +604,15 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: NINES Genre(s) (field_nines_genre_s_) */
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['id'] = 'field_nines_genre_s__tid';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['table'] = 'field_data_field_nines_genre_s_';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['field'] = 'field_nines_genre_s__tid';
-  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['value'] = array(
     2 => '2',
     7 => '7',

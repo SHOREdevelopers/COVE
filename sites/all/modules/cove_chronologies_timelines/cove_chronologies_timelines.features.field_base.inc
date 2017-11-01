@@ -20,7 +20,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
     ),
     'field_name' => 'body',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'format' => array(
@@ -350,14 +350,11 @@ function cove_chronologies_timelines_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'editions_index_page' => 'editions_index_page',
-          'journal_issue' => 'journal_issue',
-          'pedagogies_journal_issue' => 'pedagogies_journal_issue',
-          'section' => 'section',
         ),
       ),
       'handler_submit' => 'Change handler',
       'profile2_private' => FALSE,
-      'sync' => '',
+      'sync' => 'field_documents_in_this_edition',
       'target_type' => 'node',
     ),
     'translatable' => 0,
