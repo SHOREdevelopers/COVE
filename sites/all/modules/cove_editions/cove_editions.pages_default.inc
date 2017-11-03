@@ -455,37 +455,6 @@ print print_insert_link();  print print_mail_insert_link();
   $display->content['new-29c1bcc0-1035-4f58-8f33-4b4489d29338'] = $pane;
   $display->panels['main'][9] = 'new-29c1bcc0-1035-4f58-8f33-4b4489d29338';
   $pane = new stdClass();
-  $pane->pid = 'new-2ad39954-70d8-4555-ba51-8bb4a46c17fa';
-  $pane->panel = 'main';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
-  $pane->shown = FALSE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'admin_title' => 'Marginalia markup',
-    'title' => '',
-    'title_heading' => 'h2',
-    'body' => '<div class="in-page-controls"></div> <!--control container-->
-
-    <article class="content"> <!--outer_element-->
-      <section class="inner"> <!--inner_element-->
-      </section>
-    </article>',
-    'format' => 'unfiltered_html',
-    'substitute' => 1,
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 10;
-  $pane->locks = array();
-  $pane->uuid = '2ad39954-70d8-4555-ba51-8bb4a46c17fa';
-  $display->content['new-2ad39954-70d8-4555-ba51-8bb4a46c17fa'] = $pane;
-  $display->panels['main'][10] = 'new-2ad39954-70d8-4555-ba51-8bb4a46c17fa';
-  $pane = new stdClass();
   $pane->pid = 'new-46065dab-362e-45a6-92b3-3e753f72d819';
   $pane->panel = 'rightfloat';
   $pane->type = 'views';

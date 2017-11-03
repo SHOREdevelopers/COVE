@@ -50,89 +50,7 @@ function cove_editions_default_panels_mini() {
     'admin_title' => 'filters',
     'title' => 'Annotation Filters',
     'title_heading' => 'h2',
-    'body' => '<!--<div class="col-md-6">-->
-          <div id="annotation-well">
-            <!--<span class="filter-title">Filter</span>-->
-            <select id="tag-filter" multiple="multiple">
-              <option></option>
-            </select>
-            <select id="cat-filter" multiple="multiple">
-              <option></option>
-            </select>
-            <select id="user-filter" multiple="multiple">
-              <option></option>
-            </select>
-          </div><!--/well -->
-        <!--</div>-->
-
-      <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
-      <script type="text/javascript">
-  var annotations = $(".annotator-hl");
-  var tf = $(\'#tag-filter\').select2({
-    data: filterLists[\'tags\'],
-    placeholder: "Select one or more tags",
-    theme: "classic",
-    width: "300px",
-  });
-  var cf = $(\'#cat-filter\').select2({
-    data: filterLists[\'category\'],
-    placeholder: "Select one or more categories",
-    theme: "classic",
-    width: "300px",
-  });
-  var uf = $(\'#user-filter\').select2({
-    data: filterLists[\'user\'],
-    placeholder: "Select one or more annotators",
-    theme: "classic",
-    width: "300px",
-  });
-  tf.on("select2:select", function (e) {
-    annotations.attr("style", "background-color: transparent");
-    $("span[data-tags~=\'" + e.params.data.id + "\']").removeAttr("style");
-    console.log(e.params.data.id);
-  });
-  tf.on(\'select2:unselect\', function(e){
-    annotations.removeAttr("style");
-  });
-  cf.on("select2:select", function (e) {
-    annotations.attr("style", "background-color: transparent");
-    $("span[data-annotation_categories~=\'" + e.params.data.id + "\']").removeAttr("style");
-  });
-  cf.on(\'select2:unselect\', function(e){
-    annotations.removeAttr("style");
-  });
-  uf.on("select2:select", function (e) {
-    annotations.attr("style", "background-color: transparent");
-    $("span[data-user~=\'" + e.params.data.id + "\']").removeAttr("style");
-  });
-  uf.on(\'select2:unselect\', function(e){
-    annotations.removeAttr("style");
-  });
-
-  annotations.click(function(a){
-    var idtarget = a.target;
-
-    $(".glyphicon-comment").remove();
-    $(idtarget).prepend(\'<i class="glyphicon glyphicon-comment"></i>\');
-
-    var customTags = [ \'[%\', \'%]\' ];
-    var anno = Object.assign({}, idtarget.dataset)
-
-    anno.quote = $(idtarget).text()
-    var template = $(\'#annotation-template\').html();
-    Mustache.parse(template, customTags);
-    var rendered = Mustache.render(template, anno);
-    $("#annotation-viewer").html(rendered);
-
-  });
-
-  // TODO: Implement Next/Previous Annotation Buttons.
-  // TODO: Implement Next/Previous Viewport\'s-worth Buttons. (page breaks?)
-
-</script>',
+    'body' => '',
     'format' => 'unfiltered_html',
     'substitute' => TRUE,
   );
@@ -227,21 +145,21 @@ function cove_editions_default_panels_mini() {
         <h2>Annotations</h2>
             <span class="anno-label">Quote:</span>
             <span id="quote[%uuid%]" class="sbquote details">&quot;[%quote%]&quot;</span>
-
-
+        
+        
             <div class="anno-label">Comment:</div>
             <div><span id="text[%uuid%]" class="sbtext details">[%&text%]</span></div>
-
-
+        
+        
             <div><span class="anno-label">Author:</span>
             <span id="info[%uuid%]" class="sbinfo details">[%username%]</span></div>
-
+        
             <div><span class="anno-label">Tags:</span>
             <span id="tags[%uuid%]" class="sbtags details">[%#tags%]<span class="label label-default">[%.%]</span>[%/tags%]</span></div>
-
+        
             <div><span class="anno-label">Categories:</span>
             <span id="categories[%uuid%]" class="sbcats details">[%#annotation_categories%]<span class="label label-default">[%.%]</span> [%/annotation_categories%]</span></span></div>
-
+        
     </div>
 </script>',
     'format' => 'unfiltered_html',
