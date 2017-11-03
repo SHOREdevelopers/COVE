@@ -771,7 +771,7 @@ aside .caption, .caption {
   =============================================
  */
 
-.tip, .warning, .informalexample, .example, .note {
+.tip, .page-node .warning, .informalexample, .example, .note {
 	display: block;
 	background: #fff;
 	border: 1px solid #333;
