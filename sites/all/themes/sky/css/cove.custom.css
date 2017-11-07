@@ -146,6 +146,13 @@ text-align:center;
     float: left;
 }
 }
+
+/*Adjustments to headings*/
+
+h3 {
+    font-size: 1.4em;
+    line-height: 1.4em;
+}
 /* Front page work, starting with the slider */
 
 .view-frontpage-slider {
@@ -464,11 +471,10 @@ section.field.field-name-field-main-author, section.field.field-name-field-origi
     /* text-align: center; */
     /* display: inline; */
     text-align: center;
-    font-size: 120%;
+    font-size: 110%;
     padding: 7px;
     background: white;
     width: 100%;
-    height: 85px;
     overflow-y: auto;
 }
 
@@ -792,6 +798,13 @@ text-indent: 7.5em;
 .indent16 {
 	display:inline-block;
 text-indent: 8em;
+}
+
+/* For Works Cited entries */
+.hang {
+  text-indent: -30px;
+  margin-left: 30px;
+  line-height: 20px;
 }
 
 section.panel-pane.pane-entity-field.pane-node-field-authored-by-primary, section.panel-pane.pane-entity-field.pane-node-field-authored-by-secondary {
