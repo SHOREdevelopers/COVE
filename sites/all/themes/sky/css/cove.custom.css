@@ -1663,3 +1663,7 @@ img.alignleft, img.alignright {
 }
 
 .view-documents-in-this-edition .view-header {text-align:right;}
+
+.annotator-outer.annotator-editor.annotator-hide {
+    display: none;
+}
