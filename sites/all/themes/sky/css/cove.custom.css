@@ -109,7 +109,7 @@ box-shadow: 2px 5px 20px rgba(206, 206, 206, 0.9);
 }*/
 
 div#columns {
-    background: url("/sites/default/files/adaptivetheme/sky_files/pattern-line.jpg") no-repeat center top;
+    background: url("/sites/default/files/adaptivetheme/sky_files/pattern-line.jpg") repeat-x center top;
     background-color: #e0e0e0;
 }
 
