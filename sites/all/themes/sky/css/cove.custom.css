@@ -183,10 +183,21 @@ position:relative;
     font-size: 1.2vw;
 }
 
+@media (min-width: 1750px) {
+.frontPageSliderAuthor a {
+    font-size: 1vw;
+}
+}
+
 .frontPageSliderTitle a {
     background: rgba(0, 0, 0, 0.7);
     padding: 7px;
     font-size: 2vw;
+}
+@media (min-width: 1750px) {
+.frontPageSliderTitle a {
+    font-size: 1.8vw;
+}
 }
 
 .frontpageSliderText {
