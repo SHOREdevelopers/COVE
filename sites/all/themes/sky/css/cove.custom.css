@@ -173,7 +173,6 @@ position:relative;
     margin: -100px 10px;
     font-weight: bold;
 }
-
 .frontPageSliderAuthor {
     margin: 120px 0px 0px 10px;
 }
@@ -181,13 +180,13 @@ position:relative;
 .frontPageSliderAuthor a {
     background: white;
     padding: 8px 10px;
-    font-size: 125%;
+    font-size: 1.2vw;
 }
 
 .frontPageSliderTitle a {
     background: rgba(0, 0, 0, 0.7);
     padding: 7px;
-    font-size: 125%;
+    font-size: 2vw;
 }
 
 .frontpageSliderText {
