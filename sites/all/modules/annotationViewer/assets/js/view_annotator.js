@@ -422,9 +422,6 @@ Drupal.behaviors.AnnotationViewer = {
 						// Clear selection indicator
 						jQuery(".annotator-marginviewer-element").removeClass("annotation_selected");
 
-						// TODO: Test this idea for one-at-a-time viewing
-						jQuery(".annotator-marginviewer-element").hide(); // Hide all annotations
-
 						if(scrollToVal != 0){
 							// FIXME: this should work, but it doesn't, so we just go to 0 first and then offset
 							//console.log("Scrolling: "+scrollToVal + "(current:"+currentPosition+")");
@@ -438,6 +435,8 @@ Drupal.behaviors.AnnotationViewer = {
 							});
 						}
 
+						// TODO: Test this idea for one-at-a-time viewing
+						jQuery(".annotator-marginviewer-element").hide(); // Hide all annotations
 						jQuery(targetDiv).show(); // Show this annotation
 
 						complete();
