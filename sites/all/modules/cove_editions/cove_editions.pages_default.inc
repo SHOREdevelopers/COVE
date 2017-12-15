@@ -564,7 +564,7 @@ print print_insert_link();  print print_mail_insert_link();
       0 => '',
     ),
     'override_title' => 0,
-    'override_title_text' => '',
+    'override_title_text' => 'Navigation',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
