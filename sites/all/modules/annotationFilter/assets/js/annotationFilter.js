@@ -90,22 +90,50 @@ Drupal.behaviors.annotationFilter = {
 								//Tags
 							    //console.log("%c TAGS: %c" + tagFilters, 'background: #bbbbbb; color: #0000FF', 'background: #FFFFFF; color: #000000');
 								for (var i = 0; i < tagFilters.length; i++) {
-									var thisTag = tagFilters[i];
-									$("span[data-tags~='" + thisTag + "']").attr("style", "border:1px solid red");
+									self.thisTag = tagFilters[i];
+									annotations.each(function(index) {
+										if(this.getAttribute("data-tags")){
+											if (this.getAttribute("data-tags").indexOf(self.thisTag) !=-1){
+													//console.log("Found tag: "+self.thisTag);
+													this.setAttribute("style","border:1px solid red");
+											}
+										}
+									});
 								}
 
 								//Categories
 								//console.log("%c CATEGORIES: %c" + categoryFilters, 'background: #bbbbbb; color: #EEFF00', 'background: #FFFFFF; color: #000000');
 								for (var i = 0; i < categoryFilters.length; i++) {
-									var thisCategory = categoryFilters[i];
-									$("span[data-annotation_categories~='" + thisCategory + "']").attr("style", "border:1px solid green");
+									self.thisCategory = categoryFilters[i];
+									annotations.each(function(index) {
+										if(this.getAttribute("data-annotation_categories")){
+
+											if (this.getAttribute("data-annotation_categories").indexOf(self.thisCategory) !=-1){
+													//console.log("Found cat: "+self.thisCategory);
+													//console.log(this.innerText);
+													this.setAttribute("style","border:1px solid green");
+											}
+										}
+									});
 								}
 
 								//Annotators
 								//console.log("%c ANNOTATORS: %c" + annotatorFilters, 'background: #bbbbbb; color: #FF00FF', 'background: #FFFFFF; color: #000000');
 								for (var i = 0; i < annotatorFilters.length; i++) {
-									var thisUser = annotatorFilters[i];
-									$("span[data-user~='" + thisUser + "']").attr("style", "border:1px solid blue");
+
+									self.thisUser = annotatorFilters[i];
+									annotations.each(function(index) {
+										if(this.getAttribute("data-user")){
+
+											if (this.getAttribute("data-user").indexOf(self.thisUser) !=-1){
+												//console.log("Found user: "+self.thisUser);
+												this.setAttribute("style","border:1px solid blue");
+											}
+										}
+									});
+
+
+
 								}
 							}
 
