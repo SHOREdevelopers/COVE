@@ -14,7 +14,7 @@ Assumes this is in the DOM:
 
 */
 
-jQuery(document).ready(function($) {
+
 	function AnnotationPanel(){
 		// Everything relies on "annotation_support" having been run
 		if (typeof annotationsAsHash === 'undefined') {
@@ -33,66 +33,66 @@ jQuery(document).ready(function($) {
 		this.panelOpen(false);
 
 		// Make visible
-		$("#ap_detail_panel").fadeIn("fast");
+		jQuery("#ap_detail_panel").fadeIn("fast");
 
 
 		function buildTabs(){
 			// Init tab headers
-			$(".ap_tab").remove();
+			jQuery(".ap_tab").remove();
 			tabSet="";
-			$(".ap_tabContent").each(function(){
-				var tabName = $(this)[0].getAttribute("tabName");
+			jQuery(".ap_tabContent").each(function(){
+				var tabName = jQuery(this)[0].getAttribute("tabName");
 				tabSet += "<div class='ap_tab' onclick='annotationPanel.openTab(\""+tabName+"\")'>"+tabName+"</div>";
 			});
-			$("#ap_detail_panel_content").prepend(tabSet);
+			jQuery("#ap_detail_panel_content").prepend(tabSet);
 
 			// Position the tabs
 			var counter=0;
 			var indent=4;
-			$(".ap_tab").each(function(){
+			jQuery(".ap_tab").each(function(){
 				leftMargin=indent+"rem";
-				$(this).css("left",leftMargin);
+				jQuery(this).css("left",leftMargin);
 				indent+=6.3;
 			});
-			$(".ap_tab").first().addClass("open");
+			jQuery(".ap_tab").first().addClass("open");
 		}
 	};
 
 	AnnotationPanel.prototype.openTab = function(tabName){
 		this.panelOpen(true);
 		// Hide tab content
-		$(".ap_tabContent").hide();
+		jQuery(".ap_tabContent").hide();
 
 		// Set up the tabs themselves
-		$(".ap_tab").each(function(){
-			var thisTabName = $(this).text();
-			$(this).removeClass("open");
+		jQuery(".ap_tab").each(function(){
+			var thisTabName = jQuery(this).text();
+			jQuery(this).removeClass("open");
 			if(tabName === thisTabName){
-				$(this).addClass("open");
+				jQuery(this).addClass("open");
 			}
 		});
 
 		// Reveal proper tab content
 		var selector = 'div[tabName="'+tabName+'"]';
-		$(selector).show();
+		jQuery(selector).show();
 	}
 
 	AnnotationPanel.prototype.togglePanel = function(){
-		var isMinimized = $("#ap_detail_panel").hasClass("ap_detail_panel_minimized");
+		var isMinimized = jQuery("#ap_detail_panel").hasClass("ap_detail_panel_minimized");
 		this.panelOpen(isMinimized);
 	}
 	AnnotationPanel.prototype.panelOpen = function(shouldOpen){
 		if(shouldOpen){
-			$(".ap_tab").show();
-			$("#ap_detail_panel").removeClass("ap_detail_panel_minimized");
-			$("#ap_button_panelToggle").removeClass("fa-arrow-circle-up");
-			$("#ap_button_panelToggle").addClass("fa-arrow-circle-down");
+			jQuery(".ap_tab").show();
+			jQuery("#ap_detail_panel").removeClass("ap_detail_panel_minimized");
+			jQuery("#ap_button_panelToggle").removeClass("fa-arrow-circle-up");
+			jQuery("#ap_button_panelToggle").addClass("fa-arrow-circle-down");
 
 		}else{
-			$(".ap_tab").hide();
-			$("#ap_detail_panel").addClass("ap_detail_panel_minimized");
-			$("#ap_button_panelToggle").removeClass("fa-arrow-circle-down");
-			$("#ap_button_panelToggle").addClass("fa-arrow-circle-up");
+			jQuery(".ap_tab").hide();
+			jQuery("#ap_detail_panel").addClass("ap_detail_panel_minimized");
+			jQuery("#ap_button_panelToggle").removeClass("fa-arrow-circle-down");
+			jQuery("#ap_button_panelToggle").addClass("fa-arrow-circle-up");
 		}
 	}
 
@@ -111,8 +111,8 @@ jQuery(document).ready(function($) {
 							filterLists.annotation_categories[idx].text+
 							"</div>";
 		}
-		$("#ap_filter_category").empty();
-		$("#ap_filter_category").append(categoryList);
+		jQuery("#ap_filter_category").empty();
+		jQuery("#ap_filter_category").append(categoryList);
 
 		var tagList="Tags:<br>";
 		for(idx=0;idx<filterLists.tags.length;idx++){
@@ -125,8 +125,8 @@ jQuery(document).ready(function($) {
 						filterLists.tags[idx].text+
 						"</div>";
 		}
-		$("#ap_filter_tags").empty();
-		$("#ap_filter_tags").append(tagList);
+		jQuery("#ap_filter_tags").empty();
+		jQuery("#ap_filter_tags").append(tagList);
 
 		var userList="People:<br>";
 		for(idx=0;idx<filterLists.user.length;idx++){
@@ -140,8 +140,8 @@ jQuery(document).ready(function($) {
 						" ("+filterLists.user[idx].id+")"+
 						"</div>";
 		}
-		$("#ap_filter_people").empty();
-		$("#ap_filter_people").append(userList);
+		jQuery("#ap_filter_people").empty();
+		jQuery("#ap_filter_people").append(userList);
 
 		// Sort them
 		this.sortFilterItems();
@@ -151,27 +151,27 @@ jQuery(document).ready(function($) {
 		var selector="#"+id;
 
 		// Remove from filter
-		if($(selector).hasClass("active")){
-			$(selector).removeClass("active");
+		if(jQuery(selector).hasClass("active")){
+			jQuery(selector).removeClass("active");
 
-			switch($(selector).attr("filterType")) {
+			switch(jQuery(selector).attr("filterType")) {
 			    case "tag":
-					$(selector).appendTo("#ap_filter_tags");
+					jQuery(selector).appendTo("#ap_filter_tags");
 					break;
 
 				case "category":
-					$(selector).appendTo("#ap_filter_category");
+					jQuery(selector).appendTo("#ap_filter_category");
 					break;
 
 				case "person":
-					$(selector).appendTo("#ap_filter_people");
+					jQuery(selector).appendTo("#ap_filter_people");
 					break;
 			}
 
 		// Add to filter
 		}else{
-			$(selector).addClass("active");
-			$(selector).appendTo("#ap_filter_active");
+			jQuery(selector).addClass("active");
+			jQuery(selector).appendTo("#ap_filter_active");
 		}
 
 		applyFilters();
@@ -186,17 +186,17 @@ jQuery(document).ready(function($) {
 		this.sortFiltersIn("#ap_filter_active");
 	}
 	AnnotationPanel.prototype.sortFiltersIn = function(divID){
-		var tags = $(divID).children(".filterOption");
+		var tags = jQuery(divID).children(".filterOption");
 		var sortedTags = tags.sort(function(a,b){
-			return $(a).text().toLowerCase().localeCompare($(b).text().toLowerCase());
+			return jQuery(a).text().toLowerCase().localeCompare(jQuery(b).text().toLowerCase());
 		});
-		$(divID).html(sortedTags);
+		jQuery(divID).html(sortedTags);
 	}
 
 	// Load a particular annotation into the annotation panel
 	AnnotationPanel.prototype.loadAnnotation = function(spanID){
 		this.panelOpen(true);
-		var thisAnnotation = annotationsWithMetadata($("span[spanID='"+spanID+"']").first())[0];
+		var thisAnnotation = annotationsWithMetadata(jQuery("span[spanID='"+spanID+"']").first())[0];
 
 		// Load annotation info into infobar
 
@@ -236,20 +236,19 @@ jQuery(document).ready(function($) {
 		}
 		sourceInfo  += "</tr></table>";
 
-		$("#ap_annotation_sourceinfo").empty();
-		$("#ap_annotation_sourceinfo").append(sourceInfo);
+		jQuery("#ap_annotation_sourceinfo").empty();
+		jQuery("#ap_annotation_sourceinfo").append(sourceInfo);
 
 		// Load source text into detail pane
 		var convertLinebreaksToHTML = thisAnnotation.annotation.quote.replace(/(?:\r\n|\r|\n)/g, '<br />');
-		$("#ap_annotation_sourcetext").empty();
-		$("#ap_annotation_sourcetext").append("&ldquo;"+convertLinebreaksToHTML+"&rdquo;");
-		$("#ap_annotation_sourcetext").scrollTop(0);
+		jQuery("#ap_annotation_sourcetext").empty();
+		jQuery("#ap_annotation_sourcetext").append("&ldquo;"+convertLinebreaksToHTML+"&rdquo;");
+		jQuery("#ap_annotation_sourcetext").scrollTop(0);
 
 		// Load annotation into detail pane
-		$("#ap_annotation_annotation").empty();
-		$("#ap_annotation_annotation").append(thisAnnotation.annotation.text);
-		$("#ap_annotation_annotation").scrollTop(0);
+		jQuery("#ap_annotation_annotation").empty();
+		jQuery("#ap_annotation_annotation").append(thisAnnotation.annotation.text);
+		jQuery("#ap_annotation_annotation").scrollTop(0);
 
 		this.openTab('Annotations');
 	}
-});
