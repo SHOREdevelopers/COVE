@@ -15,3 +15,4 @@ scripts[] = assets/js/annotationSupport_annotationPanel.js
 
 ; Include stylesheets
 stylesheets[all][] = assets/css/annotationSupport.css
+stylesheets[all][] = assets/css/annotationSupport_lineNumbers.css

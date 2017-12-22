@@ -250,7 +250,7 @@
   font-size: 0.9rem;
   color: #00000087;
   padding: 4rem 2rem 0;
-  height: 21rem;
+  height: 24rem;
   float: left;
   width: 30%;
   font-style: italic;
@@ -264,7 +264,7 @@
   margin: 0;
   background-color: #e8e8e8;
   overflow: auto;
-  height: 21rem;
+  height: 24rem;
 }
 
 #ap_annotation_annotation img {
@@ -324,7 +324,7 @@
 
 #ap_filter_category, #ap_filter_people, #ap_filter_tags {
   overflow: auto;
-  height: 21rem;
+  height: 24rem;
   border: 1px dashed #0000001c;
   background-color: #ffffff30;
   padding: 0.5rem;
