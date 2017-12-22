@@ -10,6 +10,14 @@ jQuery(document).ready(function(jQuery) {
 		densityView=false;
 		filterApplied=false;
 
+		// Register last mouse click
+		document.addEventListener("click", printMousePos);
+		lastClickPosition=[];
+		function printMousePos(event) {
+			lastClickPosition.x = event.clientX;
+			lastClickPosition.y = event.clientY;
+		}
+
 		// Inject <div> structure
 		// FIXME: there's got to be a nicer way to do this
 		var panelDivs;
@@ -275,8 +283,8 @@ jQuery(document).ready(function(jQuery) {
 		jQuery('body').append(popover);
 		jQuery(currentPopoverDiv).hide();
 		var divUnderClick = "span[spanID='"+collectedAnnotations[0].getAttribute("spanID")+"']";
-		var topPos = jQuery(divUnderClick).position().top;
-		var leftPos = jQuery(divUnderClick).position().left + (jQuery(divUnderClick).width()/2);
+		var topPos = lastClickPosition.y;
+		var leftPos = lastClickPosition.x;// + ($(divUnderClick).width()/2);
 		var allRelatedAnnotation = "span[data-uuid='"+collectedAnnotations[0].getAttribute("data-uuid")+"']";
 		jQuery(allRelatedAnnotation).addClass("annotationSelected");
 		jQuery(divUnderClick).addClass("annotationSelectedExact");
