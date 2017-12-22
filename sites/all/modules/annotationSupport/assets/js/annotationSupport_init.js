@@ -260,9 +260,8 @@ jQuery(document).ready(function(jQuery) {
 				content += "</table>";
 		});
 
-		removeExistingPopover();
-
 		// Build a popover
+		jQuery(".popover_wrapper").remove();
 		var currentPopoverID=generateUUID();
 		var currentPopoverDiv='#'+currentPopoverID;
 		var popover =
