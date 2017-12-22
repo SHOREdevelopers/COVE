@@ -290,6 +290,14 @@ function cove_mapping_views_default_views() {
     'title' => 'title',
     'field_event2' => 'field_event2',
   );
+  /* Filter criterion: Content: Event Source (field_event_source) */
+  $handler->display->display_options['filters']['field_event_source_tid']['id'] = 'field_event_source_tid';
+  $handler->display->display_options['filters']['field_event_source_tid']['table'] = 'field_data_field_event_source';
+  $handler->display->display_options['filters']['field_event_source_tid']['field'] = 'field_event_source_tid';
+  $handler->display->display_options['filters']['field_event_source_tid']['value'] = array(
+    0 => '156',
+  );
+  $handler->display->display_options['filters']['field_event_source_tid']['vocabulary'] = 'event_source';
 
   /* Display: Entity Reference */
   $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
@@ -966,7 +974,7 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['label'] = 'something';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
   /* Field: Content: Path */
@@ -1048,7 +1056,7 @@ function cove_mapping_views_default_views() {
     'other_bottom' => 'title',
     'other_left' => 'title',
     'name_field' => 'title',
-    'description_field' => 'edit_node',
+    'description_field' => 'body',
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
