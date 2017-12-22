@@ -2,6 +2,46 @@ jQuery(document).ready(function(jQuery) {
 	// Sanity check: if there are annotations on this page
 	if (typeof annotations !== 'undefined') {
 		console.log('AnnotationSupport: Found annotations! Injecting support.');
+
+		// Inject <div> structure
+		// FIXME: there's got to be a nicer way to do this
+		var panelDivs;
+		panelDivs +='<div id="ap_detail_panel">';
+		panelDivs +='<div id="ap_detail_panel_content">';
+		panelDivs +='<div class="ap_tab_pinned">';
+		panelDivs +='<div id="ap_button_panelToggle" class="fa fa_button fa-arrow-circle-up"></div>';
+		panelDivs +='<div id="button_densityView" class="fa fa_button fa-file-text-o" aria-hidden="true" onclick="toggleDensity()"></div>';
+		panelDivs +='</div>';
+		panelDivs +='<div class="ap_tabContent" id="ap_tab_annotation" tabName="Annotations">';
+		panelDivs +='<div id="ap_annotation_sourceinfo"></div>';
+		panelDivs +='<div id="ap_annotation_sourcetext"><center>Annotation Details</center></div>';
+		panelDivs +='<div id="ap_annotation_annotation"><span class="fa fa-info-circle" aria-hidden="true"></span> Select an annotation from the text above, or click the "filters" tab to filter the document.</div>';
+		panelDivs +='</div>';
+		panelDivs +='<div class="ap_tabContent" id="ap_tab_filter" tabName="Filters">';
+		panelDivs +='<div class="ap_filterSet activeSet">';
+		panelDivs +='<div id="button_filterApplied" class="fa fa-toggle-off" aria-hidden="true" onclick="toggleFilter()"></div>';
+		panelDivs +='<div id="button_filterAppliedStatus"></div>';
+		panelDivs +='<hr>';
+		panelDivs +='<div id="ap_filter_active"></div>';
+		panelDivs +='</div>';
+		panelDivs +='<div class="ap_filterSet tagSet">';
+		panelDivs +='Tags:';
+		panelDivs +='<div id="ap_filter_tags"></div>';
+		panelDivs +='</div>';
+		panelDivs +='<div class="ap_filterSet categorySet">';
+		panelDivs +='Categories:';
+		panelDivs +='<div id="ap_filter_category"></div>';
+		panelDivs +='</div>';
+		panelDivs +='<div class="ap_filterSet peopleSet">';
+		panelDivs +='People:';
+		panelDivs +='<div id="ap_filter_people"></div>';
+		panelDivs +='</div>';
+		panelDivs +='</div>';
+		panelDivs +='</div>';
+		panelDivs +='</div>';
+
+
+		jQuery("body").append(panelDivs);
 		annotationToolInit();
 		jQuery("#annotation_detail_panel").fadeIn("fast");
 	}else{
