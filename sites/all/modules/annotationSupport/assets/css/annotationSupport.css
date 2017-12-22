@@ -56,7 +56,6 @@
 
 .popover_content {
   position: absolute;
-  transform: translate(-.4rem, 18rem);
   background-color: #BFBFBF;
   padding: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
