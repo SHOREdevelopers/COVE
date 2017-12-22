@@ -27,7 +27,7 @@ jQuery(document).ready(function(jQuery) {
 		panelDivs +='<div class="ap_tabContent" id="ap_tab_filter" tabName="Filters">';
 		panelDivs +='<div class="ap_filterSet activeSet">';
 		panelDivs +='<div id="button_filterApplied" class="fa fa-toggle-off" aria-hidden="true" onclick="toggleFilter()"></div>';
-		panelDivs +='<div id="button_filterAppliedStatus"></div>';
+		panelDivs +='<div id="button_filterAppliedStatus" class="off"></div>';
 		panelDivs +='<hr>';
 		panelDivs +='<div id="ap_filter_active"></div>';
 		panelDivs +='</div>';
@@ -308,7 +308,7 @@ jQuery(document).ready(function(jQuery) {
 	jQuery( window ).resize(function() {
 	  removeExistingPopover();
 	});
-	
+
 	jQuery( window ).scroll(function() {
 	  removeExistingPopover();
 	});

@@ -436,6 +436,8 @@
 
 #ap_annotation_sourceinfo td {
   border-left: 2px solid #ababab !important;
-  padding: 0 .5rem 0 .3rem  !important;
+  padding: 0 .5rem 0rem .8rem  !important;
   white-space: nowrap  !important;
+  max-width:2rem;
+  overflow:hidden;
 }
