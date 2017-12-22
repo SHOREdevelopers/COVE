@@ -5,12 +5,13 @@
 ;
 core = "7.x"
 package = Performant
-name = "Annotation Support"
+name = "Annotation Support v2.0"
 description = "Adds annotation viewer support"
 
 ; Annotator support
+scripts[] = annotationSupport/assets/js/annotationSupport_annotationPanel.js
 scripts[] = assets/js/annotationSupport_init.js
-scripts[] = assets/js/annotationSupport_detailPanel.js
+
 
 
 ; Include stylesheets
