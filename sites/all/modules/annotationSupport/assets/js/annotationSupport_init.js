@@ -14,8 +14,8 @@ jQuery(document).ready(function(jQuery) {
 		document.addEventListener("click", printMousePos);
 		lastClickPosition=[];
 		function printMousePos(event) {
-			lastClickPosition.x = event.clientX;
-			lastClickPosition.y = event.clientY;
+			lastClickPosition.x = event.pageX;
+			lastClickPosition.y = event.pageY;
 		}
 
 		// Inject <div> structure
