@@ -1,0 +1,7 @@
+<?php
+// Init, cram path into js var
+function annotationSupport_init() {
+	drupal_add_js(array('annotationSupport' => array('basepath' => drupal_get_path('module', 'annotationSupport'))), 'setting');
+}
+
+function annotationSupport_preprocess_page(&$vars) {}
