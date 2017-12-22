@@ -9,7 +9,7 @@ name = "Annotation Support v2.0"
 description = "Adds annotation viewer support"
 
 ; Annotator support
-scripts[] = annotationSupport/assets/js/annotationSupport_annotationPanel.js
+scripts[] = assets/js/annotationSupport_annotationPanel.js
 scripts[] = assets/js/annotationSupport_init.js
 
 
