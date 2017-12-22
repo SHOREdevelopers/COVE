@@ -3,6 +3,13 @@ jQuery(document).ready(function(jQuery) {
 	if (typeof annotations !== 'undefined') {
 		console.log('AnnotationSupport: Found annotations! Injecting support.');
 
+		currentPopoverID=null;
+		currentSelectedSpan=null;
+		debounceTimer=null;
+		collectedAnnotations=[];
+		densityView=false;
+		filterApplied=false;
+
 		// Inject <div> structure
 		// FIXME: there's got to be a nicer way to do this
 		var panelDivs;
@@ -52,12 +59,7 @@ jQuery(document).ready(function(jQuery) {
 	// Init: After annotations are loaded
 	function annotationToolInit(){
 
-		currentPopoverID=null;
-		currentSelectedSpan=null;
-		debounceTimer=null;
-		collectedAnnotations=[];
-		densityView=false;
-		filterApplied=false;
+
 
 		// Everything relies on "annotations" object, which comes from cove studio snapshot
 		if (typeof annotations === 'undefined') {
