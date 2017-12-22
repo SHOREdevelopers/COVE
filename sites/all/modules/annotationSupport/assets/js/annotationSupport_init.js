@@ -1,13 +1,13 @@
-jQuery(document).ready(function($) {
-
+jQuery(document).ready(function(jQuery) {
 	// Sanity check: if there are annotations on this page
 	if (typeof annotations !== 'undefined') {
 		console.log('AnnotationSupport: Found annotations! Injecting support.');
 		annotationToolInit();
-		$("#annotation_detail_panel").fadeIn("fast");
+		jQuery("#annotation_detail_panel").fadeIn("fast");
 	}else{
 		return;
 	}
+});
 
 	// Init: After annotations are loaded
 	function annotationToolInit(){
@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 		annotationPanel = new AnnotationPanel();
 
 		// Configure tabs and make visible
-		$("#ap_button_panelToggle").click(function(){
+		jQuery("#ap_button_panelToggle").click(function(){
 			annotationPanel.togglePanel();
 		});
 
@@ -45,14 +45,14 @@ jQuery(document).ready(function($) {
 		// Keep a copy of the background colors at load
 		annotationColorsBySpanID = [];
 		spansByDataUUID = [];
-		$(".annotator-hl").each(function(index) {
+		jQuery(".annotator-hl").each(function(index) {
 
 			// Add a unique ID for every span
 			var uniqueSpanID = generateUUID();
-			$(this).attr('spanID', uniqueSpanID);
+			jQuery(this).attr('spanID', uniqueSpanID);
 
 			// Create a lookup table for filters
-			var thisDataUUID = $(this)[0].getAttribute("data-uuid");
+			var thisDataUUID = jQuery(this)[0].getAttribute("data-uuid");
 			if(!(thisDataUUID in spansByDataUUID)){
 				spansByDataUUID[thisDataUUID]=[];
 			}
@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
 
 			// Add some transparency to the colors
 			// Assumes rgb(r,g,b) converts to rgba(r,g,b,0.6)
-			var bgcolor = $(this).css('background-color').split(",");
+			var bgcolor = jQuery(this).css('background-color').split(",");
 			var backgroundColorWithOpacityAdjustment = "rgba("+parseInt(bgcolor[0].replace(/\D/g,''))+","
 															  +parseInt(bgcolor[1].replace(/\D/g,''))+","
 															  +parseInt(bgcolor[2].replace(/\D/g,''))+
@@ -70,13 +70,13 @@ jQuery(document).ready(function($) {
 		resetAnnotationColor();
 
 		// Add click handler
-		$("span[spanid]").click(function() {
+		jQuery("span[spanid]").click(function() {
 	  		debounceCollect(this);
 		});
 
 
-		$("#ap_filter_active").append("Click on tags, categories or people to build a filter.");
-		$("#annotation_detail_panel").fadeIn("fast");
+		jQuery("#ap_filter_active").append("Click on tags, categories or people to build a filter.");
+		jQuery("#annotation_detail_panel").fadeIn("fast");
 	}
 
 	// Collect all the annotations from a click event
@@ -93,8 +93,8 @@ jQuery(document).ready(function($) {
 
 		//FIXME: this is not the way to de-dup an spansArrayvar uniqueNames = [];
 		u_collectedAnnotations=[];
-		$.each(collectedAnnotations, function(i, el){
-		    if($.inArray(el, u_collectedAnnotations) === -1) u_collectedAnnotations.push(el);
+		jQuery.each(collectedAnnotations, function(i, el){
+		    if(jQuery.inArray(el, u_collectedAnnotations) === -1) u_collectedAnnotations.push(el);
 		});
 
 		displayPopOverWith(u_collectedAnnotations);
@@ -144,7 +144,7 @@ jQuery(document).ready(function($) {
 			}
 
 			// Strip tags and linebreaks into teaser
-			var annotationText = $("<div>").html(thisAnnotation.annotation.text).text().trim();
+			var annotationText = jQuery("<div>").html(thisAnnotation.annotation.text).text().trim();
 			annotationText = annotationText.replace(/(\r\n|\n|\r)/gm,"");
 			thisAnnotation.teaser = annotationText.substring(0,teaserLength);
 			if(annotationText.length > teaserLength){
@@ -172,12 +172,12 @@ jQuery(document).ready(function($) {
 
 	// Reveal a popover populated with the content
 	function displayPopOverWith(collectedAnnotations){
-		$( "#annotation_detail_panel" ).empty();
+		jQuery( "#annotation_detail_panel" ).empty();
 		var content = "";//"Annotation count: "+collectedAnnotations.length;
 		var annotationsUnderThisClick = annotationsWithMetadata(collectedAnnotations);
 
 		var previousText="";
-		$.each( annotationsUnderThisClick, function( key, thisAnnotation ) {
+		jQuery.each( annotationsUnderThisClick, function( key, thisAnnotation ) {
 				content += "<table spanID='"+thisAnnotation.spanID+"' id='"+thisAnnotation.annotation.uuid+"'>";
 
 				if(thisAnnotation.annotated_text !== previousText){
@@ -231,26 +231,26 @@ jQuery(document).ready(function($) {
 		'</div>';
 
 		// Find the right location
-		$('body').append(popover);
-		$(currentPopoverDiv).hide();
+		jQuery('body').append(popover);
+		jQuery(currentPopoverDiv).hide();
 		var divUnderClick = "span[spanID='"+collectedAnnotations[0].getAttribute("spanID")+"']";
-		var topPos = $(divUnderClick).position().top;
-		var leftPos = $(divUnderClick).position().left + ($(divUnderClick).width()/2);
+		var topPos = jQuery(divUnderClick).position().top;
+		var leftPos = jQuery(divUnderClick).position().left + (jQuery(divUnderClick).width()/2);
 		var allRelatedAnnotation = "span[data-uuid='"+collectedAnnotations[0].getAttribute("data-uuid")+"']";
-		$(allRelatedAnnotation).addClass("annotationSelected");
-		$(divUnderClick).addClass("annotationSelectedExact");
-		currentSelectedSpan=$(allRelatedAnnotation);
+		jQuery(allRelatedAnnotation).addClass("annotationSelected");
+		jQuery(divUnderClick).addClass("annotationSelectedExact");
+		currentSelectedSpan=jQuery(allRelatedAnnotation);
 
 		// Display
-		$(currentPopoverDiv).on( "focusout", function(){removeExistingPopover();});
-		$(currentPopoverDiv).css({top: topPos, left: leftPos, position:'absolute'}).fadeIn("fast");
-		$(currentPopoverDiv).focus();
+		jQuery(currentPopoverDiv).on( "focusout", function(){removeExistingPopover();});
+		jQuery(currentPopoverDiv).css({top: topPos, left: leftPos, position:'absolute'}).fadeIn("fast");
+		jQuery(currentPopoverDiv).focus();
 
 		// Add click linked
-		$("table").each(function(index) {
-			$(this).on( "click", function(){
+		jQuery("table").each(function(index) {
+			jQuery(this).on( "click", function(){
 				removeExistingPopover();
-				annotationPanel.loadAnnotation($(this)[0].getAttribute("spanID"));
+				annotationPanel.loadAnnotation(jQuery(this)[0].getAttribute("spanID"));
 			});
 		});
 
@@ -259,13 +259,13 @@ jQuery(document).ready(function($) {
 	function removeExistingPopover(){
 		if(currentPopoverID != null){
 			var currentPopoverDiv='#'+currentPopoverID;
-			$("span").removeClass("annotationSelected");
-			$("span").removeClass("annotationSelectedExact");
-			$(currentPopoverDiv).fadeOut("fast", function(){});
+			jQuery("span").removeClass("annotationSelected");
+			jQuery("span").removeClass("annotationSelectedExact");
+			jQuery(currentPopoverDiv).fadeOut("fast", function(){});
 		}
 	}
 
-	$( window ).resize(function() {
+	jQuery( window ).resize(function() {
 	  removeExistingPopover();
 	});
 
@@ -277,14 +277,14 @@ jQuery(document).ready(function($) {
 	function setDensityMode(modeShouldBeOn){
 		densityView=modeShouldBeOn;
 		if(modeShouldBeOn){
-			$("#button_densityView").removeClass("fa-file-text-o");
-			$("#button_densityView").addClass("fa-file-text");
-			$("span[spanid]").each(function(index) {
-				$(this).css("background-color", "rgba(64,64,64,.3)");
+			jQuery("#button_densityView").removeClass("fa-file-text-o");
+			jQuery("#button_densityView").addClass("fa-file-text");
+			jQuery("span[spanid]").each(function(index) {
+				jQuery(this).css("background-color", "rgba(64,64,64,.3)");
 			});
 		}else{
-			$("#button_densityView").removeClass("fa-file-text");
-			$("#button_densityView").addClass("fa-file-text-o");
+			jQuery("#button_densityView").removeClass("fa-file-text");
+			jQuery("#button_densityView").addClass("fa-file-text-o");
 			resetAnnotationColor();
 		}
 	}
@@ -297,25 +297,25 @@ jQuery(document).ready(function($) {
 	function applyFilters(){
 
 		// Remove all click handler and all colors
-		$("span[spanID]").removeAttr("style");
-		$("span[spanID]").off();
+		jQuery("span[spanID]").removeAttr("style");
+		jQuery("span[spanID]").off();
 
 		// Turn on selected if there is anything to apply
-		if(filterApplied && ($("#ap_filter_active").find("div").length > 0) ){
-			$("#button_filterApplied").removeClass("fa-toggle-off");
-			$("#button_filterApplied").addClass("fa-toggle-on");
-			$("#button_filterAppliedStatus").addClass("on");
-			$("#button_filterAppliedStatus").removeClass("off");
+		if(filterApplied && (jQuery("#ap_filter_active").find("div").length > 0) ){
+			jQuery("#button_filterApplied").removeClass("fa-toggle-off");
+			jQuery("#button_filterApplied").addClass("fa-toggle-on");
+			jQuery("#button_filterAppliedStatus").addClass("on");
+			jQuery("#button_filterAppliedStatus").removeClass("off");
 
 			// Build an array of uuids that match the filter criteria
 			var matchingAnnotationIDs = [];
-			$("#ap_filter_active").find("div").each(function(){
+			jQuery("#ap_filter_active").find("div").each(function(){
 
 				// string: tag | category | person
-				var filterType = $(this)[0].getAttribute("filtertype");
+				var filterType = jQuery(this)[0].getAttribute("filtertype");
 
 				// id: tag | catID | email
-				var filterID = $(this)[0].getAttribute("filterid");
+				var filterID = jQuery(this)[0].getAttribute("filterid");
 
 				for(idx=0;idx<annotations.length;idx++){
 					var thisAnnotation = annotations[idx];
@@ -353,27 +353,27 @@ jQuery(document).ready(function($) {
 			}
 
 			// Finally restore the spans that match our filter parameters
-			$("span[spanID]").each(function(){
-				var thisSpanID = $(this)[0].getAttribute("spanID");
+			jQuery("span[spanID]").each(function(){
+				var thisSpanID = jQuery(this)[0].getAttribute("spanID");
 				if(theseSpansMatchFilter.indexOf(thisSpanID) > -1){
-					$(this).css("border", "1px grey dashed");
-					$(this).css("border-left", "0px");
-					$(this).css("border-right", "0px");
+					jQuery(this).css("border", "1px grey dashed");
+					jQuery(this).css("border-left", "0px");
+					jQuery(this).css("border-right", "0px");
 					if(densityView){
-						$(this).css("background-color", "rgba(64,64,64,.3)");
+						jQuery(this).css("background-color", "rgba(64,64,64,.3)");
 					}else{
-						$(this).css("background-color", annotationColorsBySpanID[thisSpanID]);
+						jQuery(this).css("background-color", annotationColorsBySpanID[thisSpanID]);
 					}
-					$(this).click(function() {debounceCollect(this);});
+					jQuery(this).click(function() {debounceCollect(this);});
 				}
 			});
 
 		// Turn off
 		}else{
-			$("#button_filterApplied").removeClass("fa-toggle-on");
-			$("#button_filterApplied").addClass("fa-toggle-off");
-			$("#button_filterAppliedStatus").removeClass("on");
-			$("#button_filterAppliedStatus").addClass("off");
+			jQuery("#button_filterApplied").removeClass("fa-toggle-on");
+			jQuery("#button_filterApplied").addClass("fa-toggle-off");
+			jQuery("#button_filterAppliedStatus").removeClass("on");
+			jQuery("#button_filterAppliedStatus").addClass("off");
 			resetFilters();
 		}
 	}
@@ -385,7 +385,7 @@ jQuery(document).ready(function($) {
 		setDensityMode(densityView);
 
 		// Add click handler
-		$("span[spanid]").click(function() {
+		jQuery("span[spanid]").click(function() {
 	  		debounceCollect(this);
 		});
 	}
@@ -404,11 +404,10 @@ jQuery(document).ready(function($) {
 	// Resets the annotations to their original colors
 	function resetAnnotationColor() {
 		idx = 0;
-		$("span[spanid]").each(function(index) {
-			var thisSpanID = $(this)[0].getAttribute("spanID");
-			$(this).removeClass();
-			$(this).css("background-color", annotationColorsBySpanID[thisSpanID]);
+		jQuery("span[spanid]").each(function(index) {
+			var thisSpanID = jQuery(this)[0].getAttribute("spanID");
+			jQuery(this).removeClass();
+			jQuery(this).css("background-color", annotationColorsBySpanID[thisSpanID]);
 			idx++;
 		});
 	}
-});
