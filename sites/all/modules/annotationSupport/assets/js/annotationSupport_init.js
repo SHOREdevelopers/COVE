@@ -3,7 +3,7 @@ jQuery(document).ready(function(jQuery) {
 	if (typeof annotations !== 'undefined') {
 		console.log('AnnotationSupport: Found annotations! Injecting support.');
 
-		currentPopoverID=null;
+
 		currentSelectedSpan=null;
 		debounceTimer=null;
 		collectedAnnotations=[];
@@ -263,8 +263,8 @@ jQuery(document).ready(function(jQuery) {
 		removeExistingPopover();
 
 		// Build a popover
-		currentPopoverID=generateUUID();
-		currentPopoverDiv='#'+currentPopoverID;
+		var currentPopoverID=generateUUID();
+		var currentPopoverDiv='#'+currentPopoverID;
 		var popover =
 		'<div id="'+currentPopoverID+'" class="popover_wrapper" tabindex="-1">'+
 		 	'<div class="push popover_content">'+
@@ -299,12 +299,11 @@ jQuery(document).ready(function(jQuery) {
 	}
 
 	function removeExistingPopover(){
-		if(currentPopoverID != null){
-			var currentPopoverDiv='#'+currentPopoverID;
-			jQuery("span").removeClass("annotationSelected");
-			jQuery("span").removeClass("annotationSelectedExact");
-			jQuery(currentPopoverDiv).fadeOut("fast", function(){});
-		}
+		jQuery("span").removeClass("annotationSelected");
+		jQuery("span").removeClass("annotationSelectedExact");
+		jQuery(".popover_wrapper").fadeOut("fast", function(){
+				jQuery(".popover_wrapper").remove();
+		});
 	}
 
 	jQuery( window ).resize(function() {
