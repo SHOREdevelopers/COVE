@@ -308,7 +308,10 @@ jQuery(document).ready(function(jQuery) {
 	jQuery( window ).resize(function() {
 	  removeExistingPopover();
 	});
-
+	
+	jQuery( window ).scroll(function() {
+	  removeExistingPopover();
+	});
 
 	function toggleDensity(){
 		setDensityMode(!densityView);
