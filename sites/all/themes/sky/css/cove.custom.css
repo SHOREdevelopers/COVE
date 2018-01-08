@@ -22,16 +22,16 @@ html, body {
     border-width: 0 0 1px;
     z-index: 500;
 }
-.region-top-menu .block a {
+.region-top-menu .block .pull-left a {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
     height: inherit;
 }
 
-.pull-right img {
+/*.pull-right img {
     padding-top: 8px;
-}
+}*/
 
 header#header {
     background-color: white;
@@ -80,8 +80,25 @@ margin-left:-10px;
 margin-right:-10px;
 }
 /*Removes login link from top banner block when logged in*/
-.logged-in #globalnav li {
+/*.logged-in #globalnav li {
     display: none;
+}*/
+
+#globalnav li.header-logo {
+    display: inline-block;
+    max-height: 50px;
+    font-family: serif;
+    font-variant-caps: small-caps;
+    font-size: 1.6em;
+    font-weight: lighter;
+}
+#globalnav li.divider {
+    margin-top: 12px;
+    color: #fff;
+}
+#globalnav img {
+    margin-top: -8px;
+    color: #ccc;
 }
 /* Nav Menu mods */
 nav#block-system-main-menu {
