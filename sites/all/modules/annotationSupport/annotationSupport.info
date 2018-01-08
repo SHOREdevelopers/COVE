@@ -1,0 +1,18 @@
+; annotationSupport
+;
+; This module is a drupal-ized version of "Annotation Support" tool
+; https://github.com/tezcatlipoca/cove-annotationSupport
+;
+core = "7.x"
+package = Performant
+name = "Annotation Support v2.0"
+description = "Adds annotation viewer support"
+
+; Annotator support
+scripts[] = assets/js/annotationSupport_init.js
+scripts[] = assets/js/annotationSupport_annotationPanel.js
+
+
+; Include stylesheets
+stylesheets[all][] = assets/css/annotationSupport.css
+stylesheets[all][] = assets/css/annotationSupport_lineNumbers.css
