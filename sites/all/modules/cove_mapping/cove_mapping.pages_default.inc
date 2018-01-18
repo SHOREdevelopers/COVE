@@ -766,6 +766,35 @@ function cove_mapping_default_page_manager_handlers() {
   $display->content['new-16a80c4e-4136-4b05-ab30-9a5dc009017f'] = $pane;
   $display->panels['one_main'][9] = 'new-16a80c4e-4136-4b05-ab30-9a5dc009017f';
   $pane = new stdClass();
+  $pane->pid = 'new-8729335e-43b0-4d8e-bf2a-7c5d5c63f5c0';
+  $pane->panel = 'one_main';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Map explanation',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<h3 style="text-align: center; color: #6689a1;">Please use + and - icons to zoom | click, hold and drag to navigate the globe</h3>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'map-explanation',
+  );
+  $pane->extras = array();
+  $pane->position = 10;
+  $pane->locks = array();
+  $pane->uuid = '8729335e-43b0-4d8e-bf2a-7c5d5c63f5c0';
+  $display->content['new-8729335e-43b0-4d8e-bf2a-7c5d5c63f5c0'] = $pane;
+  $display->panels['one_main'][10] = 'new-8729335e-43b0-4d8e-bf2a-7c5d5c63f5c0';
+  $pane = new stdClass();
   $pane->pid = 'new-0bd30478-6210-4f5b-8de8-f1bfd97c10a0';
   $pane->panel = 'one_main';
   $pane->type = 'views';
@@ -787,7 +816,7 @@ function cove_mapping_default_page_manager_handlers() {
     'display' => 'page',
     'override_title' => 1,
     'override_title_text' => '',
-    'override_title_heading' => 'h2',
+    'override_title_heading' => 'h4',
     'context' => array(
       0 => '',
     ),
@@ -798,11 +827,11 @@ function cove_mapping_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 10;
+  $pane->position = 11;
   $pane->locks = array();
   $pane->uuid = '0bd30478-6210-4f5b-8de8-f1bfd97c10a0';
   $display->content['new-0bd30478-6210-4f5b-8de8-f1bfd97c10a0'] = $pane;
-  $display->panels['one_main'][10] = 'new-0bd30478-6210-4f5b-8de8-f1bfd97c10a0';
+  $display->panels['one_main'][11] = 'new-0bd30478-6210-4f5b-8de8-f1bfd97c10a0';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

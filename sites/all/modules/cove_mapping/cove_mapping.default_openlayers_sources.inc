@@ -43,7 +43,7 @@ function cove_mapping_default_openlayers_sources() {
   $ol_source->description = 'Served from National Library of Scotland site';
   $ol_source->factory_service = 'openlayers.Source:XYZ';
   $ol_source->options = array(
-    'url' => 'http://geo.nls.uk/maps/os/1inch_2nd_ed/{z}/{x}/{-y}.png',
+    'url' => 'http://geo.nls.uk/maps/os/1inch_2nd_ed/{z}/{x}/{y}.png',
   );
   $export['great_britain_os_one_inch_1885_1900'] = $ol_source;
 

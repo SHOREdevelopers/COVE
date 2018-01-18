@@ -1565,12 +1565,12 @@ div#annotation-viewer {
 .pane-annotation-filters.block {
     margin-bottom: 0px;
 }
-.pane-3.block {
+/*.pane-3.block {
     margin-bottom: 0px;
     background: #9e9e9e;
     padding: 5px 0px;
     width: 100%;
-}
+}*/
 
 
 html {padding-top:0 !important;}
@@ -1690,4 +1690,18 @@ img.alignleft, img.alignright {
 
 .annotator-outer.annotator-editor.annotator-hide {
     display: none;
+}
+/* Offsetting anchor links to account for fixed header */
+a.anchor {
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+    display: block;
+}
+
+/* Explanatory text for maps needs almost no margin */
+
+.panel-pane.pane-custom.pane-3.map-explanation.no-title.block {
+    margin-bottom: -25px;
+    margin-top: -20px;
 }
