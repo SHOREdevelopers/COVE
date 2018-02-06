@@ -78,6 +78,29 @@ function cove_editions_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'edition_state' => array(
+      'name' => 'Edition state',
+      'machine_name' => 'edition_state',
+      'description' => 'The workflow-state of a given edition, from prototype to peer-reviewed',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'natural_feature' => array(
       'name' => 'Natural Feature',
       'machine_name' => 'natural_feature',

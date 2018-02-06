@@ -179,7 +179,7 @@ function cove_editions_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 47,
+      'weight' => 22,
     ),
   );
 
@@ -305,6 +305,47 @@ function cove_editions_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-editions_index_page-field_edition_state'.
+  $field_instances['node-editions_index_page-field_edition_state'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value' => array(
+      0 => array(
+        'tid' => 223,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The current state of the edition. Each edition can be elevated from prototype to peer-reviewed as these milestones are reached. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_edition_state',
+    'label' => 'Edition state',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 13,
     ),
   );
 
@@ -533,7 +574,7 @@ function cove_editions_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -913,7 +954,7 @@ function cove_editions_field_default_field_instances() {
         'tz_handling' => 'none',
       ),
       'type' => 'partial_date',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1302,7 +1343,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 16,
+      'weight' => 14,
     ),
   );
 
@@ -1366,7 +1407,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 17,
+      'weight' => 15,
     ),
   );
 
@@ -1430,7 +1471,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 18,
+      'weight' => 16,
     ),
   );
 
@@ -1494,7 +1535,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -1557,7 +1598,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 22,
+      'weight' => 21,
     ),
   );
 
@@ -1684,7 +1725,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 19,
+      'weight' => 18,
     ),
   );
 
@@ -1747,7 +1788,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
@@ -4245,6 +4286,7 @@ function cove_editions_field_default_field_instances() {
   t('Doc Owner');
   t('Documents in this Edition');
   t('Edition Description');
+  t('Edition state');
   t('Editor(s)');
   t('Enter a comma separated list of words');
   t('Enter the date or dates a resource was originally published. Please include ONLY the year or a range of years. ');
@@ -4287,6 +4329,7 @@ function cove_editions_field_default_field_instances() {
   t('Tags sourced from OpenCalais about Province Or State.');
   t('The Banner, <strong>1200px x 600px</strong>, that appears on the Table of Contents Page, i.e. here.');
   t('The URI of the analagous document at COVE Studio');
+  t('The current state of the edition. Each edition can be elevated from prototype to peer-reviewed as these milestones are reached. ');
   t('This field id import-driven, and shouldn\'t have any hand-entered tags.');
   t('This field is import-driven, and shouldn\'t have any hand-entered tags.');
   t('This is a special date handler that can contain "fuzzy" dates and with varying granularities, i.e. when the exact date of a publication is unknown or when a date can only be narrowed down to a year. ');

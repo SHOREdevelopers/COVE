@@ -21,7 +21,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Dates',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_original_publication_date',
       1 => 'field_partial_publication_date',
@@ -176,7 +176,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_index_banner',
       1 => 'field_icon',
@@ -205,7 +205,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy Keywords',
-    'weight' => '9',
+    'weight' => '12',
     'children' => array(
       0 => 'opencalais_person_tags',
       1 => 'taxonomy_vocabulary_3',
@@ -301,7 +301,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'NINES Metadata',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_nines_discipline_s_',
       1 => 'field_nines_genre_s_',
@@ -392,7 +392,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'People',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_edited_by',
       1 => 'field_main_author',
@@ -485,6 +485,7 @@ function cove_editions_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_parent_section',
+      1 => 'field_edition_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
