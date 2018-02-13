@@ -60,7 +60,7 @@ function cove_mapping_default_openlayers_layers() {
   $ol_layer->description = '';
   $ol_layer->factory_service = 'openlayers.Layer:Vector';
   $ol_layer->options = array(
-    'source' => 'openlayers_views_source_custom_map_openlayers_1',
+    'source' => 'openlayers_views_source_cove_master_map_openlayers_1',
     'visible' => 1,
     'style' => 'openlayers_examples_style_icon_marker',
   );

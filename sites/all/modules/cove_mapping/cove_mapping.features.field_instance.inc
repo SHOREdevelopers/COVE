@@ -740,6 +740,49 @@ function cove_mapping_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-place-field_vetted_'.
+  $field_instances['node-place-field_vetted_'] = array(
+    'bundle' => 'place',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => 'If marked as vetted, this place will be cleared to appear on the COVE master map and available to associate with timeline events.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vetted_',
+    'label' => 'Vetted?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-place-og_group_ref'.
   $field_instances['node-place-og_group_ref'] = array(
     'bundle' => 'place',
@@ -808,6 +851,7 @@ function cove_mapping_field_default_field_instances() {
   t('Geocoder');
   t('Groups audience');
   t('Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ');
+  t('If marked as vetted, this place will be cleared to appear on the COVE master map and available to associate with timeline events.');
   t('If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Latitude/Longitude');
   t('Legacy field. Do not use. ');
@@ -818,6 +862,7 @@ function cove_mapping_field_default_field_instances() {
   t('Places in this Map');
   t('Select the parent map of which this place is a part. This should happen automatically!');
   t('Use the controls at the bottom center of the map to add or remove map points. The layer selector at the top left can be used to toggle the historical map layer on and off. If you already know the latitude and longitude coordinates of the place you want to map, add them in the "Data" section immediately above, according to the following syntax: "POINT(longitude latitude)". For example, London, UK would be "POINT (-0.1277583 51.5073509)". ');
+  t('Vetted?');
   t('You can associated events in our database with a place. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created place will be available in the list. ');
 
   return $field_instances;
