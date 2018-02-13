@@ -82,6 +82,18 @@ function cove_mapping_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_vetted_'.
+  $permissions['create field_vetted_'] = array(
+    'name' => 'create field_vetted_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create map content'.
   $permissions['create map content'] = array(
     'name' => 'create map content',
@@ -230,6 +242,16 @@ function cove_mapping_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit field_vetted_'.
+  $permissions['edit field_vetted_'] = array(
+    'name' => 'edit field_vetted_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'manager' => 'manager',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own field_associated_place_anchor_ta'.
   $permissions['edit own field_associated_place_anchor_ta'] = array(
     'name' => 'edit own field_associated_place_anchor_ta',
@@ -285,6 +307,18 @@ function cove_mapping_user_default_permissions() {
       'administrator' => 'administrator',
       'annotator' => 'annotator',
       'author' => 'author',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_vetted_'.
+  $permissions['edit own field_vetted_'] = array(
+    'name' => 'edit own field_vetted_',
+    'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',
@@ -501,6 +535,18 @@ function cove_mapping_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_vetted_'.
+  $permissions['view field_vetted_'] = array(
+    'name' => 'view field_vetted_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view own field_associated_place_anchor_ta'.
   $permissions['view own field_associated_place_anchor_ta'] = array(
     'name' => 'view own field_associated_place_anchor_ta',
@@ -554,6 +600,18 @@ function cove_mapping_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'manager' => 'manager',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_vetted_'.
+  $permissions['view own field_vetted_'] = array(
+    'name' => 'view own field_vetted_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'field_permissions',
   );
