@@ -10,7 +10,7 @@
 function rc_gallery_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-collection-field_description'
+  // Exported field_instance: 'node-collection-field_description'.
   $field_instances['node-collection-field_description'] = array(
     'bundle' => 'collection',
     'default_value' => NULL,
@@ -56,7 +56,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-collection-field_images_in_this_collection'
+  // Exported field_instance: 'node-collection-field_images_in_this_collection'.
   $field_instances['node-collection-field_images_in_this_collection'] = array(
     'bundle' => 'collection',
     'default_value' => NULL,
@@ -73,6 +73,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -99,6 +100,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'content_taxonomy_opt_groups' => FALSE,
         'match_operator' => 'CONTAINS',
         'path' => '',
@@ -109,58 +111,12 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_credits'
-  $field_instances['node-galler_exhibit-field_credits'] = array(
-    'bundle' => 'galler_exhibit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The person credited with creating the Exhibit',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_credits',
-    'label' => 'Credits',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-galler_exhibit-field_description'
+  // Exported field_instance: 'node-galler_exhibit-field_description'.
   $field_instances['node-galler_exhibit-field_description'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For the Romantic Circles Gallery. A description of the exhibit',
+    'description' => 'Please provide a short description of your exhibit. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -185,7 +141,7 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -201,63 +157,11 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_exhibit_created_by'
-  $field_instances['node-galler_exhibit-field_exhibit_created_by'] = array(
-    'bundle' => 'galler_exhibit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_exhibit_created_by',
-    'label' => 'Exhibit Created by',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-galler_exhibit-field_exhibit_icon'
+  // Exported field_instance: 'node-galler_exhibit-field_exhibit_icon'.
   $field_instances['node-galler_exhibit-field_exhibit_icon'] = array(
     'bundle' => 'galler_exhibit',
     'deleted' => 0,
-    'description' => 'Add an image from the Gallery here for presentation purposes, both in the recommender and in the exhibit landing page. ',
+    'description' => 'Optionally, add an image from the Gallery here for presentation purposes. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -287,12 +191,11 @@ function rc_gallery_field_default_field_instances() {
     'label' => 'Exhibit Icon',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 0,
+      'alt_field' => 1,
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'image_field_caption' => 0,
-      'max_filesize' => '',
+      'max_filesize' => '20 MB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -310,12 +213,12 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_exhibit_tags'
+  // Exported field_instance: 'node-galler_exhibit-field_exhibit_tags'.
   $field_instances['node-galler_exhibit-field_exhibit_tags'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Providing keywords here will help us associate this exhibit with other pieces of content. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -340,7 +243,7 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_exhibit_tags',
     'label' => 'Exhibit Tags',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -349,6 +252,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
@@ -356,10 +260,12 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_gallery_items_in_this_exhi'
+  // Exported field_instance:
+  // 'node-galler_exhibit-field_gallery_items_in_this_exhi'.
   $field_instances['node-galler_exhibit-field_gallery_items_in_this_exhi'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -373,6 +279,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -393,12 +300,18 @@ function rc_gallery_field_default_field_instances() {
     'label' => 'Gallery Items in this Exhibit',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -408,12 +321,13 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_images_in_exhibit'
+  // Exported field_instance: 'node-galler_exhibit-field_images_in_exhibit'.
   $field_instances['node-galler_exhibit-field_images_in_exhibit'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Here, you can add images to your Exhibit. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -425,6 +339,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -445,12 +360,18 @@ function rc_gallery_field_default_field_instances() {
     'label' => 'Images in Exhibit',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -460,7 +381,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_nines_discipline_s_'
+  // Exported field_instance: 'node-galler_exhibit-field_nines_discipline_s_'.
   $field_instances['node-galler_exhibit-field_nines_discipline_s_'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => array(
@@ -509,7 +430,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_nines_genre_s_'
+  // Exported field_instance: 'node-galler_exhibit-field_nines_genre_s_'.
   $field_instances['node-galler_exhibit-field_nines_genre_s_'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => array(
@@ -555,7 +476,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-galler_exhibit-field_nines_type_s_'
+  // Exported field_instance: 'node-galler_exhibit-field_nines_type_s_'.
   $field_instances['node-galler_exhibit-field_nines_type_s_'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => array(
@@ -604,7 +525,66 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gallery-body'
+  // Exported field_instance: 'node-galler_exhibit-og_group_ref'.
+  $field_instances['node-galler_exhibit-og_group_ref'] = array(
+    'bundle' => 'galler_exhibit',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
+    'required' => FALSE,
+    'settings' => array(
+      'behaviors' => array(
+        'og_widget' => array(
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
+      ),
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-gallery-body'.
   $field_instances['node-gallery-body'] = array(
     'bundle' => 'gallery',
     'default_value' => NULL,
@@ -655,7 +635,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gallery-field_gallery_image'
+  // Exported field_instance: 'node-gallery-field_gallery_image'.
   $field_instances['node-gallery-field_gallery_image'] = array(
     'bundle' => 'gallery',
     'default_value' => '',
@@ -775,7 +755,8 @@ function rc_gallery_field_default_field_instances() {
     'widget_type' => 'imagefield_widget',
   );
 
-  // Exported field_instance: 'node-gallery_exhibit_item-field_item_description'
+  // Exported field_instance:
+  // 'node-gallery_exhibit_item-field_item_description'.
   $field_instances['node-gallery_exhibit_item-field_item_description'] = array(
     'bundle' => 'gallery_exhibit_item',
     'default_value' => NULL,
@@ -815,7 +796,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gallery_exhibit_item-field_parent_exhibit'
+  // Exported field_instance: 'node-gallery_exhibit_item-field_parent_exhibit'.
   $field_instances['node-gallery_exhibit_item-field_parent_exhibit'] = array(
     'bundle' => 'gallery_exhibit_item',
     'default_value' => NULL,
@@ -826,6 +807,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -852,6 +834,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -861,7 +844,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gallery_exhibit_item-field_related_image'
+  // Exported field_instance: 'node-gallery_exhibit_item-field_related_image'.
   $field_instances['node-gallery_exhibit_item-field_related_image'] = array(
     'bundle' => 'gallery_exhibit_item',
     'default_value' => NULL,
@@ -872,6 +855,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -898,6 +882,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -907,7 +892,7 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_accession_number_'
+  // Exported field_instance: 'node-gallery_image-field_accession_number_'.
   $field_instances['node-gallery_image-field_accession_number_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -949,29 +934,23 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 23,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_agent'
-  $field_instances['node-gallery_image-field_agent'] = array(
+  // Exported field_instance: 'node-gallery_image-field_artist'.
+  $field_instances['node-gallery_image-field_artist'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the simple form FIRSTNAME LASTNAME.',
     'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 59,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -981,25 +960,26 @@ function rc_gallery_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_agent',
-    'label' => 'Agent',
-    'required' => 0,
+    'field_name' => 'field_artist',
+    'label' => 'Artist',
+    'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 26,
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_artist_unknown'
+  // Exported field_instance: 'node-gallery_image-field_artist_unknown'.
   $field_instances['node-gallery_image-field_artist_unknown'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
@@ -1008,9 +988,9 @@ function rc_gallery_field_default_field_instances() {
       ),
     ),
     'default_value_function' => '',
-    'default_value_php' => FALSE,
+    'default_value_php' => '',
     'deleted' => 0,
-    'description' => 'Check this box if the artist is unknown',
+    'description' => 'Check this box if the artist is unknown.',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -1046,345 +1026,11 @@ function rc_gallery_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 14,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_associated_events'
-  $field_instances['node-gallery_image-field_associated_events'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_events',
-    'label' => 'Associated Events',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 40,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_associated_people_'
-  $field_instances['node-gallery_image-field_associated_people_'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 37,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_people_',
-    'label' => 'Associated People',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 28,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_associated_places'
-  $field_instances['node-gallery_image-field_associated_places'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Places associated with the item.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 28,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_places',
-    'label' => 'Associated Places',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 41,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_associated_reviews'
-  $field_instances['node-gallery_image-field_associated_reviews'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 54,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_reviews',
-    'label' => 'Associated Reviews',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 52,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_associated_texts'
-  $field_instances['node-gallery_image-field_associated_texts'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Texts associated with the item.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 29,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_texts',
-    'label' => 'Associated Texts',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 42,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_associated_user'
-  $field_instances['node-gallery_image-field_associated_user'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The user from the old Romantic Circles archive associated with this item.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_associated_user',
-    'label' => 'Associated User',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_bibliography'
-  $field_instances['node-gallery_image-field_bibliography'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 33,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_bibliography',
-    'label' => 'Bibliography',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 48,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_copyright'
+  // Exported field_instance: 'node-gallery_image-field_copyright'.
   $field_instances['node-gallery_image-field_copyright'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
@@ -1393,7 +1039,7 @@ function rc_gallery_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Content of <dc:rights> goes here',
+    'description' => 'If rights to this image are held by another institution and you\'ve gained permission to re-use them, please enter that copyright info here. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -1431,57 +1077,11 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 23,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_creation_description'
-  $field_instances['node-gallery_image-field_creation_description'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This field has been added since the migration to Drupal. The companion field "Creation Technique" was almost exclusively a set or list of terms that translated well to a taxonomy term reference field. But there were a number of instances where "Creation Technique" was written as sentences and paragraphs. This is where that information is now stored. ',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 52,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creation_description',
-    'label' => 'Creation Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creation_technique_'
+  // Exported field_instance: 'node-gallery_image-field_creation_technique_'.
   $field_instances['node-gallery_image-field_creation_technique_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -1520,532 +1120,16 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 27,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_creator_author'
-  $field_instances['node-gallery_image-field_creator_author'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'This field takes the value of the "creator" field when the image illustrates this author\'s work',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 45,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_author',
-    'label' => 'Author',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_collaborator'
-  $field_instances['node-gallery_image-field_creator_collaborator'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'This field takes the value of the "collaborator" field',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 48,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_collaborator',
-    'label' => 'Collaborator',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_delineator'
-  $field_instances['node-gallery_image-field_creator_delineator'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Takes the value of the "Creator" field when the artist is a delineator',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 46,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_delineator',
-    'label' => 'Delineator',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_editor'
-  $field_instances['node-gallery_image-field_creator_editor'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Takes the value of the "Creator" field when the creator is the editor of the related primary work',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 49,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_editor',
-    'label' => 'Editor',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_engraver'
-  $field_instances['node-gallery_image-field_creator_engraver'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Takes the value of the "Creator" field if the artist is an engraver',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 41,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_engraver',
-    'label' => 'Engraver',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_illustrator'
-  $field_instances['node-gallery_image-field_creator_illustrator'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Takes the value of the "Creator" field if the artist is an illustrator (pen & ink, etc.)',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 44,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_illustrator',
-    'label' => 'Illustrator',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_painter'
-  $field_instances['node-gallery_image-field_creator_painter'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Takes the value of the "creator" field if the artist is a painter',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 42,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_painter',
-    'label' => 'Painter',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_creator_photographer'
-  $field_instances['node-gallery_image-field_creator_photographer'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 50,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_creator_photographer',
-    'label' => 'Photographer',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_data_entry_person'
-  $field_instances['node-gallery_image-field_data_entry_person'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The name of the person responsible for adding this image (Maybe you!)',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_data_entry_person',
-    'label' => 'Data Entry Person',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 22,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_description'
+  // Exported field_instance: 'node-gallery_image-field_description'.
   $field_instances['node-gallery_image-field_description'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Description goes here',
+    'description' => 'Please provide a description of the image here. It may be as long or as brief as you like, but keep in mind that some information about the image can also be captured in the metadata fields below. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'hidden',
@@ -2071,7 +1155,7 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -2083,103 +1167,11 @@ function rc_gallery_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_edition_and_state'
-  $field_instances['node-gallery_image-field_edition_and_state'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Edition and state information for the object, if applicable.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_edition_and_state',
-    'label' => 'Edition and State',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 38,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_exhibition_history'
-  $field_instances['node-gallery_image-field_exhibition_history'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 20,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_exhibition_history',
-    'label' => 'Exhibition History',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 33,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_featured_in_exhibit'
+  // Exported field_instance: 'node-gallery_image-field_featured_in_exhibit'.
   $field_instances['node-gallery_image-field_featured_in_exhibit'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -2196,6 +1188,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -2222,16 +1215,17 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 50,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_from_the_collection'
+  // Exported field_instance: 'node-gallery_image-field_from_the_collection'.
   $field_instances['node-gallery_image-field_from_the_collection'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -2248,6 +1242,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -2277,57 +1272,11 @@ function rc_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 51,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_function'
-  $field_instances['node-gallery_image-field_function'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 32,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_function',
-    'label' => 'Function',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 47,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_gallery_location'
+  // Exported field_instance: 'node-gallery_image-field_gallery_location'.
   $field_instances['node-gallery_image-field_gallery_location'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -2366,18 +1315,19 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 29,
+      'weight' => 22,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_galleryimage'
+  // Exported field_instance: 'node-gallery_image-field_galleryimage'.
   $field_instances['node-gallery_image-field_galleryimage'] = array(
     'bundle' => 'gallery_image',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Upload your image here. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'hidden',
@@ -2415,17 +1365,16 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_galleryimage',
     'label' => 'Gallery Image',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'alt_field' => 0,
+      'alt_field' => 1,
       'default_image' => 0,
-      'file_directory' => 'galleryOriginals',
+      'file_directory' => 'gallery',
       'file_extensions' => 'png gif jpg jpeg',
-      'image_field_caption' => 0,
-      'max_filesize' => '',
+      'max_filesize' => '20 MB',
       'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 0,
+      'min_resolution' => '640x480',
+      'title_field' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2436,11 +1385,11 @@ function rc_gallery_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_height_in_centimeters'
+  // Exported field_instance: 'node-gallery_image-field_height_in_centimeters'.
   $field_instances['node-gallery_image-field_height_in_centimeters'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -2482,16 +1431,16 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 24,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_image_date'
+  // Exported field_instance: 'node-gallery_image-field_image_date'.
   $field_instances['node-gallery_image-field_image_date'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Here we put the dates of the original Gallery images. Since the granularity of the dates is variable, we\'re using this "partial date" solution',
+    'description' => 'This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, we\'ve provided various date estimation options here. Only a year is required absolutely required. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -2645,11 +1594,11 @@ function rc_gallery_field_default_field_instances() {
         'tz_handling' => 'none',
       ),
       'type' => 'partial_date',
-      'weight' => 16,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_latitude_longitude'
+  // Exported field_instance: 'node-gallery_image-field_latitude_longitude'.
   $field_instances['node-gallery_image-field_latitude_longitude'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -2701,111 +1650,16 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'geofield',
       'settings' => array(),
       'type' => 'geofield_latlon',
-      'weight' => 64,
+      'weight' => 36,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_long_title'
-  $field_instances['node-gallery_image-field_long_title'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 34,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_long_title',
-    'label' => 'Long Title',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 49,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_marks_description'
-  $field_instances['node-gallery_image-field_marks_description'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The description of any marks on the object put there after production.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_marks_description',
-    'label' => 'Marks Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 37,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_nines_discipline_s_'
+  // Exported field_instance: 'node-gallery_image-field_nines_discipline_s_'.
   $field_instances['node-gallery_image-field_nines_discipline_s_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
       0 => array(
-        'tid' => 27153,
-      ),
-      1 => array(
-        'tid' => 27162,
+        'tid' => 37,
       ),
     ),
     'deleted' => 0,
@@ -2842,16 +1696,16 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 60,
+      'weight' => 34,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_nines_genre_s_'
+  // Exported field_instance: 'node-gallery_image-field_nines_genre_s_'.
   $field_instances['node-gallery_image-field_nines_genre_s_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
       0 => array(
-        'tid' => 27204,
+        'tid' => 33,
       ),
     ),
     'deleted' => 0,
@@ -2888,19 +1742,16 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 58,
+      'weight' => 33,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_nines_type_s_'
+  // Exported field_instance: 'node-gallery_image-field_nines_type_s_'.
   $field_instances['node-gallery_image-field_nines_type_s_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
       0 => array(
-        'tid' => 27144,
-      ),
-      1 => array(
-        'tid' => 27148,
+        'tid' => 67,
       ),
     ),
     'deleted' => 0,
@@ -2937,116 +1788,11 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 62,
+      'weight' => 35,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_original_pub_date'
-  $field_instances['node-gallery_image-field_original_pub_date'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_original_pub_date',
-    'label' => 'Image Added Date',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 25,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_original_publication_date'
-  $field_instances['node-gallery_image-field_original_publication_date'] = array(
-    'bundle' => 'gallery_image',
-    'deleted' => 0,
-    'description' => 'This field will be invisible except for its use by Views to sort by date. When the Partial Date module gains Views support, this field will be deprecated, and can be dealt with accordingly. Until then...',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_original_publication_date',
-    'label' => 'Original publication date',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_text',
-      'weight' => 17,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_parent_section'
+  // Exported field_instance: 'node-gallery_image-field_parent_section'.
   $field_instances['node-gallery_image-field_parent_section'] = array(
     'bundle' => 'gallery_image',
     'default_value' => array(
@@ -3067,6 +1813,7 @@ function rc_gallery_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,
           'colorbox_node_width' => 600,
@@ -3094,195 +1841,11 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 56,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_parts_description'
-  $field_instances['node-gallery_image-field_parts_description'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The description of any other parts and the whole object for those items which are part of a larger work.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 23,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_parts_description',
-    'label' => 'Parts Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 36,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_primary_works'
-  $field_instances['node-gallery_image-field_primary_works'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'A primary work associated with this item.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_primary_works',
-    'label' => 'Primary Works',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 30,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_printing_context'
-  $field_instances['node-gallery_image-field_printing_context'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The context surrounding the printing of the item, if applicable.',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 26,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_printing_context',
-    'label' => 'Printing Context',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 39,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_provenance'
-  $field_instances['node-gallery_image-field_provenance'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 19,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_provenance',
-    'label' => 'Provenance',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
       'weight' => 32,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_publisher'
+  // Exported field_instance: 'node-gallery_image-field_publisher'.
   $field_instances['node-gallery_image-field_publisher'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -3325,108 +1888,11 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 24,
+      'weight' => 21,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_significance'
-  $field_instances['node-gallery_image-field_significance'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 31,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_significance',
-    'label' => 'Significance',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 46,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_skeleton_data_'
-  $field_instances['node-gallery_image-field_skeleton_data_'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'default_value_function' => '',
-    'default_value_php' => FALSE,
-    'deleted' => 0,
-    'description' => 'Check this box if this record reflects a partial/skeleton record, to be completed later',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 53,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_skeleton_data_',
-    'label' => 'Skeleton Data?',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_style'
+  // Exported field_instance: 'node-gallery_image-field_style'.
   $field_instances['node-gallery_image-field_style'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -3467,57 +1933,11 @@ function rc_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => 0,
       ),
       'type' => 'options_buttons',
-      'weight' => 44,
+      'weight' => 26,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_subject'
-  $field_instances['node-gallery_image-field_subject'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_subject',
-    'label' => 'Subject',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_support_medium'
+  // Exported field_instance: 'node-gallery_image-field_support_medium'.
   $field_instances['node-gallery_image-field_support_medium'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -3556,104 +1976,11 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 28,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-field_text_date'
-  $field_instances['node-gallery_image-field_text_date'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_text_date',
-    'label' => 'Date',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_theme'
-  $field_instances['node-gallery_image-field_theme'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_theme',
-    'label' => 'Theme',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 45,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-field_width_in_centimeters_'
+  // Exported field_instance: 'node-gallery_image-field_width_in_centimeters_'.
   $field_instances['node-gallery_image-field_width_in_centimeters_'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -3695,57 +2022,11 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 25,
     ),
   );
 
-  // Exported field_instance: 'node-gallery_image-opencalais_person_tags'
-  $field_instances['node-gallery_image-opencalais_person_tags'] = array(
-    'bundle' => 'gallery_image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This duplicates the "Agent" raw text values, and integrates them into the Calais "person" tagset',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'opencalais_person_tags',
-    'label' => 'Person',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 27,
-    ),
-  );
-
-  // Exported field_instance: 'node-gallery_image-taxonomy_vocabulary_3'
+  // Exported field_instance: 'node-gallery_image-taxonomy_vocabulary_3'.
   $field_instances['node-gallery_image-taxonomy_vocabulary_3'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
@@ -3784,120 +2065,69 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 55,
+      'weight' => 31,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('A primary work associated with this item.');
   t('Accession Number');
-  t('Add an image from the Gallery here for presentation purposes, both in the recommender and in the exhibit landing page. ');
-  t('Agent');
   t('Applicable NINES disciplines for RDF output. Multiple values may be selected.');
   t('Applicable NINES genres for RDF output. Multiple values may be selected.');
   t('Applicable NINES types for RDF output. Multiple values may be selected.');
+  t('Artist');
   t('Artist Unknown');
-  t('Associated Events');
-  t('Associated People');
-  t('Associated Places');
-  t('Associated Reviews');
-  t('Associated Texts');
-  t('Associated User');
-  t('Author');
-  t('Bibliography');
   t('Body');
-  t('Check this box if the artist is unknown');
-  t('Check this box if this record reflects a partial/skeleton record, to be completed later');
-  t('Collaborator');
-  t('Content of <dc:rights> goes here');
+  t('Check this box if the artist is unknown.');
   t('Content type for galleries and/or gallery images');
   t('Copyright');
-  t('Creation Description');
   t('Creation Technique');
-  t('Credits');
-  t('Data Entry Person');
-  t('Date');
-  t('Delineator');
   t('Description');
-  t('Description goes here');
-  t('Edition and State');
-  t('Edition and state information for the object, if applicable.');
-  t('Editor');
-  t('Engraver');
-  t('Exhibit Created by');
   t('Exhibit Icon');
   t('Exhibit Tags');
-  t('Exhibition History');
   t('Featured in Exhibit');
   t('For gallery images');
-  t('For the Romantic Circles Gallery. A description of the exhibit');
   t('From the Collection');
-  t('Function');
   t('Gallery Image');
   t('Gallery Items in this Exhibit');
+  t('Groups audience');
   t('Height (in centimeters)');
   t('Here add latitude and longitude coordinates for Gallery images tied to a particular place. This will be run via imports on TEI places files. See the feeds importers for more. ');
-  t('Here we put the dates of the original Gallery images. Since the granularity of the dates is variable, we\'re using this "partial date" solution');
-  t('Illustrator');
-  t('Image Added Date');
+  t('Here, you can add images to your Exhibit. ');
+  t('If rights to this image are held by another institution and you\'ve gained permission to re-use them, please enter that copyright info here. ');
   t('Image Date');
   t('Images in Exhibit');
   t('Images in this Collection');
   t('Item Description');
   t('Latitude/Longitude');
   t('Location');
-  t('Long Title');
-  t('Marks Description');
   t('NINES Discipline(s)');
   t('NINES Genre(s)');
   t('NINES Type(s)');
-  t('Original publication date');
-  t('Painter');
+  t('Optionally, add an image from the Gallery here for presentation purposes. ');
   t('Parent Exhibit');
   t('Parent Section');
-  t('Parts Description');
-  t('Person');
-  t('Photographer');
-  t('Places associated with the item.');
-  t('Primary Works');
-  t('Printing Context');
-  t('Provenance');
+  t('Please provide a description of the image here. It may be as long or as brief as you like, but keep in mind that some information about the image can also be captured in the metadata fields below. ');
+  t('Please provide a short description of your exhibit. ');
+  t('Providing keywords here will help us associate this exhibit with other pieces of content. ');
   t('Publisher');
   t('Related Image');
-  t('Significance');
-  t('Skeleton Data?');
   t('Style');
-  t('Subject');
   t('Support Medium');
   t('Tags');
-  t('Takes the value of the "Creator" field if the artist is an engraver');
-  t('Takes the value of the "Creator" field if the artist is an illustrator (pen & ink, etc.)');
-  t('Takes the value of the "Creator" field when the artist is a delineator');
-  t('Takes the value of the "Creator" field when the creator is the editor of the related primary work');
-  t('Takes the value of the "creator" field if the artist is a painter');
-  t('Texts associated with the item.');
   t('The Description of the Collection');
   t('The Exhibit to which this image/description belongs');
-  t('The context surrounding the printing of the item, if applicable.');
-  t('The description of any marks on the object put there after production.');
-  t('The description of any other parts and the whole object for those items which are part of a larger work.');
   t('The geographic or other physical location of the item');
   t('The image this Exhibit item refers to');
-  t('The name of the person responsible for adding this image (Maybe you!)');
-  t('The person credited with creating the Exhibit');
   t('The style of the image');
-  t('The user from the old Romantic Circles archive associated with this item.');
-  t('Theme');
-  t('This duplicates the "Agent" raw text values, and integrates them into the Calais "person" tagset');
-  t('This field has been added since the migration to Drupal. The companion field "Creation Technique" was almost exclusively a set or list of terms that translated well to a taxonomy term reference field. But there were a number of instances where "Creation Technique" was written as sentences and paragraphs. This is where that information is now stored. ');
-  t('This field takes the value of the "collaborator" field');
-  t('This field takes the value of the "creator" field when the image illustrates this author\'s work');
-  t('This field will be invisible except for its use by Views to sort by date. When the Partial Date module gains Views support, this field will be deprecated, and can be dealt with accordingly. Until then...');
+  t('This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, we\'ve provided various date estimation options here. Only a year is required absolutely required. ');
   t('This is information specific to the image\'s use and context in the exhibit, as opposed to general information about the image contained on its own page');
+  t('Upload your image here. ');
+  t('Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the simple form FIRSTNAME LASTNAME.');
   t('Width (in centimeters)');
 
   return $field_instances;

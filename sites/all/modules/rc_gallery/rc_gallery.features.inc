@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function rc_gallery_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
@@ -28,17 +31,9 @@ function rc_gallery_image_default_styles() {
 
   // Exported image style: gallery_for_exhibits.
   $styles['gallery_for_exhibits'] = array(
-    'name' => 'gallery_for_exhibits',
     'label' => 'gallery_for_exhibits',
     'effects' => array(
       35 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 150,
@@ -51,17 +46,9 @@ function rc_gallery_image_default_styles() {
 
   // Exported image style: gallery_node.
   $styles['gallery_node'] = array(
-    'name' => 'gallery_node',
     'label' => 'gallery_node',
     'effects' => array(
       37 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 620,
@@ -75,17 +62,9 @@ function rc_gallery_image_default_styles() {
 
   // Exported image style: gallery_slideshow.
   $styles['gallery_slideshow'] = array(
-    'name' => 'gallery_slideshow',
     'label' => 'gallery_slideshow',
     'effects' => array(
       33 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 230,
@@ -94,13 +73,6 @@ function rc_gallery_image_default_styles() {
         'weight' => -10,
       ),
       27 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 230,
@@ -114,17 +86,9 @@ function rc_gallery_image_default_styles() {
 
   // Exported image style: gallery_small.
   $styles['gallery_small'] = array(
-    'name' => 'gallery_small',
     'label' => 'gallery_small',
     'effects' => array(
       34 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 175,
@@ -133,13 +97,6 @@ function rc_gallery_image_default_styles() {
         'weight' => -10,
       ),
       28 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 175,
@@ -153,17 +110,9 @@ function rc_gallery_image_default_styles() {
 
   // Exported image style: gallery_zoom.
   $styles['gallery_zoom'] = array(
-    'name' => 'gallery_zoom',
     'label' => 'Gallery Zoom',
     'effects' => array(
       38 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 2000,
@@ -216,5 +165,6 @@ function rc_gallery_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

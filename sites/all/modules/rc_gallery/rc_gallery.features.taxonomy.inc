@@ -9,6 +9,29 @@
  */
 function rc_gallery_taxonomy_default_vocabularies() {
   return array(
+    'artist' => array(
+      'name' => 'Artist',
+      'machine_name' => 'artist',
+      'description' => 'Artists\' names for Gallery images',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'creation_technique' => array(
       'name' => 'Creation Technique',
       'machine_name' => 'creation_technique',

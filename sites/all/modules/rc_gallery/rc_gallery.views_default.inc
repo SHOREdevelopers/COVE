@@ -106,26 +106,6 @@ function rc_gallery_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
-  $translatables['gallery_collection_images'] = array(
-    t('Master'),
-    t('Images in this Collection'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Content entity referenced from field_images_in_this_collection'),
-    t('All'),
-    t('Block'),
-  );
   $export['gallery_collection_images'] = $view;
 
   $view = new view();
@@ -193,18 +173,6 @@ function rc_gallery_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'gallery/collections';
-  $translatables['gallery_collections'] = array(
-    t('Master'),
-    t('Gallery Collections'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('<h1 id="page-title">Gallery Collections</h1>'),
-    t('Page'),
-  );
   $export['gallery_collections'] = $view;
 
   $view = new view();
@@ -236,7 +204,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = '5';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_engraved_target_id']['id'] = 'field_engraved_target_id';
   $handler->display->display_options['relationships']['field_engraved_target_id']['table'] = 'field_data_field_engraved';
   $handler->display->display_options['relationships']['field_engraved_target_id']['field'] = 'field_engraved_target_id';
@@ -261,7 +229,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -286,7 +254,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Illustrated (field_illustrated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_illustrated_target_id']['id'] = 'field_illustrated_target_id';
   $handler->display->display_options['filters']['field_illustrated_target_id']['table'] = 'field_data_field_illustrated';
   $handler->display->display_options['filters']['field_illustrated_target_id']['field'] = 'field_illustrated_target_id';
@@ -295,7 +263,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_painted_target_id']['id'] = 'field_painted_target_id';
   $handler->display->display_options['relationships']['field_painted_target_id']['table'] = 'field_data_field_painted';
   $handler->display->display_options['relationships']['field_painted_target_id']['field'] = 'field_painted_target_id';
@@ -322,7 +290,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -340,7 +308,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Painted (field_painted) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_painted_target_id']['id'] = 'field_painted_target_id';
   $handler->display->display_options['filters']['field_painted_target_id']['table'] = 'field_data_field_painted';
   $handler->display->display_options['filters']['field_painted_target_id']['field'] = 'field_painted_target_id';
@@ -360,7 +328,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 2 */
   $handler = $view->new_display('panel_pane', 'Content pane 2', 'panel_pane_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_illustrated_target_id']['id'] = 'field_illustrated_target_id';
   $handler->display->display_options['relationships']['field_illustrated_target_id']['table'] = 'field_data_field_illustrated';
   $handler->display->display_options['relationships']['field_illustrated_target_id']['field'] = 'field_illustrated_target_id';
@@ -387,7 +355,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -411,7 +379,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 3 */
   $handler = $view->new_display('panel_pane', 'Content pane 3', 'panel_pane_3');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_delineated_target_id']['id'] = 'field_delineated_target_id';
   $handler->display->display_options['relationships']['field_delineated_target_id']['table'] = 'field_data_field_delineated';
   $handler->display->display_options['relationships']['field_delineated_target_id']['field'] = 'field_delineated_target_id';
@@ -438,7 +406,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -456,7 +424,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Delineated (field_delineated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_delineated_target_id']['id'] = 'field_delineated_target_id';
   $handler->display->display_options['filters']['field_delineated_target_id']['table'] = 'field_data_field_delineated';
   $handler->display->display_options['filters']['field_delineated_target_id']['field'] = 'field_delineated_target_id';
@@ -498,7 +466,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -516,7 +484,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Engraved (field_engraved) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_engraved_target_id']['id'] = 'field_engraved_target_id';
   $handler->display->display_options['filters']['field_engraved_target_id']['table'] = 'field_data_field_engraved';
   $handler->display->display_options['filters']['field_engraved_target_id']['field'] = 'field_engraved_target_id';
@@ -536,7 +504,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 5 */
   $handler = $view->new_display('panel_pane', 'Content pane 5', 'panel_pane_5');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_photographed_target_id']['id'] = 'field_photographed_target_id';
   $handler->display->display_options['relationships']['field_photographed_target_id']['table'] = 'field_data_field_photographed';
   $handler->display->display_options['relationships']['field_photographed_target_id']['field'] = 'field_photographed_target_id';
@@ -563,7 +531,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -581,7 +549,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Photographed (field_photographed) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_photographed_target_id']['id'] = 'field_photographed_target_id';
   $handler->display->display_options['filters']['field_photographed_target_id']['table'] = 'field_data_field_photographed';
   $handler->display->display_options['filters']['field_photographed_target_id']['field'] = 'field_photographed_target_id';
@@ -601,7 +569,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 6 */
   $handler = $view->new_display('panel_pane', 'Content pane 6', 'panel_pane_6');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_work_editor_target_id']['id'] = 'field_work_editor_target_id';
   $handler->display->display_options['relationships']['field_work_editor_target_id']['table'] = 'field_data_field_work_editor';
   $handler->display->display_options['relationships']['field_work_editor_target_id']['field'] = 'field_work_editor_target_id';
@@ -628,7 +596,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -646,7 +614,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Work Editor (field_work_editor) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_editor_target_id']['id'] = 'field_work_editor_target_id';
   $handler->display->display_options['filters']['field_work_editor_target_id']['table'] = 'field_data_field_work_editor';
   $handler->display->display_options['filters']['field_work_editor_target_id']['field'] = 'field_work_editor_target_id';
@@ -666,7 +634,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 7 */
   $handler = $view->new_display('panel_pane', 'Content pane 7', 'panel_pane_7');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_work_illustrated_in_target_id']['id'] = 'field_work_illustrated_in_target_id';
   $handler->display->display_options['relationships']['field_work_illustrated_in_target_id']['table'] = 'field_data_field_work_illustrated_in';
   $handler->display->display_options['relationships']['field_work_illustrated_in_target_id']['field'] = 'field_work_illustrated_in_target_id';
@@ -693,7 +661,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -711,7 +679,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Work Illustrated in (field_work_illustrated_in) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['id'] = 'field_work_illustrated_in_target_id';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['table'] = 'field_data_field_work_illustrated_in';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['field'] = 'field_work_illustrated_in_target_id';
@@ -731,7 +699,7 @@ function rc_gallery_views_default_views() {
   /* Display: Content pane 8 */
   $handler = $view->new_display('panel_pane', 'Content pane 8', 'panel_pane_8');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_collaborated_on_target_id']['id'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['relationships']['field_collaborated_on_target_id']['table'] = 'field_data_field_collaborated_on';
   $handler->display->display_options['relationships']['field_collaborated_on_target_id']['field'] = 'field_collaborated_on_target_id';
@@ -758,7 +726,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -776,7 +744,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Collaborated On (field_collaborated_on) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['id'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['table'] = 'field_data_field_collaborated_on';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['field'] = 'field_collaborated_on_target_id';
@@ -824,49 +792,49 @@ function rc_gallery_views_default_views() {
     2 => 'AND',
   );
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Collaborated On (field_collaborated_on) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['id'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['table'] = 'field_data_field_collaborated_on';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['field'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['group'] = 1;
-  /* Filter criterion: Content: Delineated (field_delineated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_delineated_target_id']['id'] = 'field_delineated_target_id';
   $handler->display->display_options['filters']['field_delineated_target_id']['table'] = 'field_data_field_delineated';
   $handler->display->display_options['filters']['field_delineated_target_id']['field'] = 'field_delineated_target_id';
   $handler->display->display_options['filters']['field_delineated_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_delineated_target_id']['group'] = 1;
-  /* Filter criterion: Content: Engraved (field_engraved) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_engraved_target_id']['id'] = 'field_engraved_target_id';
   $handler->display->display_options['filters']['field_engraved_target_id']['table'] = 'field_data_field_engraved';
   $handler->display->display_options['filters']['field_engraved_target_id']['field'] = 'field_engraved_target_id';
   $handler->display->display_options['filters']['field_engraved_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_engraved_target_id']['group'] = 1;
-  /* Filter criterion: Content: Illustrated (field_illustrated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_illustrated_target_id']['id'] = 'field_illustrated_target_id';
   $handler->display->display_options['filters']['field_illustrated_target_id']['table'] = 'field_data_field_illustrated';
   $handler->display->display_options['filters']['field_illustrated_target_id']['field'] = 'field_illustrated_target_id';
   $handler->display->display_options['filters']['field_illustrated_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_illustrated_target_id']['group'] = 1;
-  /* Filter criterion: Content: Painted (field_painted) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_painted_target_id']['id'] = 'field_painted_target_id';
   $handler->display->display_options['filters']['field_painted_target_id']['table'] = 'field_data_field_painted';
   $handler->display->display_options['filters']['field_painted_target_id']['field'] = 'field_painted_target_id';
   $handler->display->display_options['filters']['field_painted_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_painted_target_id']['group'] = 1;
-  /* Filter criterion: Content: Photographed (field_photographed) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_photographed_target_id']['id'] = 'field_photographed_target_id';
   $handler->display->display_options['filters']['field_photographed_target_id']['table'] = 'field_data_field_photographed';
   $handler->display->display_options['filters']['field_photographed_target_id']['field'] = 'field_photographed_target_id';
   $handler->display->display_options['filters']['field_photographed_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_photographed_target_id']['group'] = 1;
-  /* Filter criterion: Content: Work Editor (field_work_editor) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_editor_target_id']['id'] = 'field_work_editor_target_id';
   $handler->display->display_options['filters']['field_work_editor_target_id']['table'] = 'field_data_field_work_editor';
   $handler->display->display_options['filters']['field_work_editor_target_id']['field'] = 'field_work_editor_target_id';
   $handler->display->display_options['filters']['field_work_editor_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_work_editor_target_id']['group'] = 1;
-  /* Filter criterion: Content: Work Illustrated in (field_work_illustrated_in) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['id'] = 'field_work_illustrated_in_target_id';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['table'] = 'field_data_field_work_illustrated_in';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['field'] = 'field_work_illustrated_in_target_id';
@@ -879,45 +847,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 2;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  $translatables['gallery_contributor_section'] = array(
-    t('Master'),
-    t('Contributions to the RC Gallery'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Content entity referenced from field_engraved'),
-    t('([field_text_date])'),
-    t('All'),
-    t('Content pane'),
-    t('Content entity referenced from field_painted'),
-    t('Painted'),
-    t('View panes'),
-    t('Content pane 2'),
-    t('Content entity referenced from field_illustrated'),
-    t('Illustrated'),
-    t('Content pane 3'),
-    t('Content entity referenced from field_delineated'),
-    t('Delineated'),
-    t('Content pane 4'),
-    t('Engraved'),
-    t('Content pane 5'),
-    t('Content entity referenced from field_photographed'),
-    t('Photographed'),
-    t('Content pane 6'),
-    t('Content entity referenced from field_work_editor'),
-    t('Work Editor'),
-    t('Content pane 7'),
-    t('Content entity referenced from field_work_illustrated_in'),
-    t('Work illustrated in'),
-    t('Content pane 8'),
-    t('Content entity referenced from field_collaborated_on'),
-    t('Work collaborated on'),
-    t('Content pane 9'),
-    t('<h2 style="text-transform:uppercase; color:#2e2e2e; letter-spacing:2px;">Contributions to the RC Gallery</h2>'),
-  );
   $export['gallery_contributor_section'] = $view;
 
   $view = new view();
@@ -969,11 +898,11 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Surname (field_surname) */
+  /* Sort criterion: Field: Surname (field_surname) */
   $handler->display->display_options['sorts']['field_surname_value']['id'] = 'field_surname_value';
   $handler->display->display_options['sorts']['field_surname_value']['table'] = 'field_data_field_surname';
   $handler->display->display_options['sorts']['field_surname_value']['field'] = 'field_surname_value';
-  /* Sort criterion: Content: First/Middle name (field_firstname) */
+  /* Sort criterion: Field: First/Middle name (field_firstname) */
   $handler->display->display_options['sorts']['field_firstname_value']['id'] = 'field_firstname_value';
   $handler->display->display_options['sorts']['field_firstname_value']['table'] = 'field_data_field_firstname';
   $handler->display->display_options['sorts']['field_firstname_value']['field'] = 'field_firstname_value';
@@ -981,49 +910,49 @@ function rc_gallery_views_default_views() {
     1 => 'OR',
     2 => 'AND',
   );
-  /* Filter criterion: Content: Collaborated On (field_collaborated_on) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['id'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['table'] = 'field_data_field_collaborated_on';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['field'] = 'field_collaborated_on_target_id';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_collaborated_on_target_id']['group'] = 1;
-  /* Filter criterion: Content: Delineated (field_delineated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_delineated_target_id']['id'] = 'field_delineated_target_id';
   $handler->display->display_options['filters']['field_delineated_target_id']['table'] = 'field_data_field_delineated';
   $handler->display->display_options['filters']['field_delineated_target_id']['field'] = 'field_delineated_target_id';
   $handler->display->display_options['filters']['field_delineated_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_delineated_target_id']['group'] = 1;
-  /* Filter criterion: Content: Engraved (field_engraved) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_engraved_target_id']['id'] = 'field_engraved_target_id';
   $handler->display->display_options['filters']['field_engraved_target_id']['table'] = 'field_data_field_engraved';
   $handler->display->display_options['filters']['field_engraved_target_id']['field'] = 'field_engraved_target_id';
   $handler->display->display_options['filters']['field_engraved_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_engraved_target_id']['group'] = 1;
-  /* Filter criterion: Content: Illustrated (field_illustrated) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_illustrated_target_id']['id'] = 'field_illustrated_target_id';
   $handler->display->display_options['filters']['field_illustrated_target_id']['table'] = 'field_data_field_illustrated';
   $handler->display->display_options['filters']['field_illustrated_target_id']['field'] = 'field_illustrated_target_id';
   $handler->display->display_options['filters']['field_illustrated_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_illustrated_target_id']['group'] = 1;
-  /* Filter criterion: Content: Painted (field_painted) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_painted_target_id']['id'] = 'field_painted_target_id';
   $handler->display->display_options['filters']['field_painted_target_id']['table'] = 'field_data_field_painted';
   $handler->display->display_options['filters']['field_painted_target_id']['field'] = 'field_painted_target_id';
   $handler->display->display_options['filters']['field_painted_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_painted_target_id']['group'] = 1;
-  /* Filter criterion: Content: Photographed (field_photographed) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_photographed_target_id']['id'] = 'field_photographed_target_id';
   $handler->display->display_options['filters']['field_photographed_target_id']['table'] = 'field_data_field_photographed';
   $handler->display->display_options['filters']['field_photographed_target_id']['field'] = 'field_photographed_target_id';
   $handler->display->display_options['filters']['field_photographed_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_photographed_target_id']['group'] = 1;
-  /* Filter criterion: Content: Work Editor (field_work_editor) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_editor_target_id']['id'] = 'field_work_editor_target_id';
   $handler->display->display_options['filters']['field_work_editor_target_id']['table'] = 'field_data_field_work_editor';
   $handler->display->display_options['filters']['field_work_editor_target_id']['field'] = 'field_work_editor_target_id';
   $handler->display->display_options['filters']['field_work_editor_target_id']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_work_editor_target_id']['group'] = 1;
-  /* Filter criterion: Content: Work Illustrated in (field_work_illustrated_in) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['id'] = 'field_work_illustrated_in_target_id';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['table'] = 'field_data_field_work_illustrated_in';
   $handler->display->display_options['filters']['field_work_illustrated_in_target_id']['field'] = 'field_work_illustrated_in_target_id';
@@ -1044,7 +973,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 2;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Surname (field_surname) */
+  /* Filter criterion: Field: Surname (field_surname) */
   $handler->display->display_options['filters']['field_surname_value']['id'] = 'field_surname_value';
   $handler->display->display_options['filters']['field_surname_value']['table'] = 'field_data_field_surname';
   $handler->display->display_options['filters']['field_surname_value']['field'] = 'field_surname_value';
@@ -1053,16 +982,6 @@ function rc_gallery_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
-  $translatables['gallery_creators'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Block'),
-  );
   $export['gallery_creators'] = $view;
 
   $view = new view();
@@ -1171,7 +1090,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title_1']['node_in_colorbox_height'] = '600';
-  /* Field: Field: Description */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -1269,26 +1188,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
   $handler->display->display_options['block_description'] = 'Preview of images';
-  $translatables['gallery_exhibit_images'] = array(
-    t('Master'),
-    t('Images in this Exhibit'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Content entity referenced from field_gallery_items_in_this_exhi'),
-    t('Content entity referenced from field_related_image'),
-    t('Exhibit Description'),
-    t('[field_galleryimage-title]'),
-    t('Main Description'),
-    t('Go to the main image page'),
-    t('All'),
-    t('Block'),
-    t('Preview of images'),
-    t('<em>Click an image above to view it in a lightbox</em>. <em>Scroll down to see the full entry for each image</em>.'),
-  );
   $export['gallery_exhibit_images'] = $view;
 
   $view = new view();
@@ -1351,7 +1250,7 @@ function rc_gallery_views_default_views() {
     'colorbox_caption_custom' => '',
   );
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
-  /* Field: Field: Description */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -1428,23 +1327,6 @@ function rc_gallery_views_default_views() {
   );
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
   $handler->display->display_options['block_description'] = 'Preview of images';
-  $translatables['gallery_exhibit_images_2'] = array(
-    t('Master'),
-    t('Images in this Exhibit'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Content entity referenced from field_images_in_exhibit'),
-    t('Main Description'),
-    t('All'),
-    t('Block'),
-    t('Block 2'),
-    t('Preview of images'),
-    t('<em>Click an image above to view it in a lightbox</em>. <em>Scroll down to see the full entry for each image</em>.'),
-  );
   $export['gallery_exhibit_images_2'] = $view;
 
   $view = new view();
@@ -1521,7 +1403,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Field: Description */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -1533,7 +1415,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['field_description']['element_wrapper_class'] = 'desc';
-  /* Field: Content: Credits */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_credits']['id'] = 'field_credits';
   $handler->display->display_options['fields']['field_credits']['table'] = 'field_data_field_credits';
   $handler->display->display_options['fields']['field_credits']['field'] = 'field_credits';
@@ -1563,30 +1445,6 @@ function rc_gallery_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'gallery/exhibits';
-  $translatables['gallery_exhibits'] = array(
-    t('Master'),
-    t('Gallery Exhibits'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('<h1 id="page-title">Gallery Exhibits</h1>'),
-    t('Displaying @start - @end of @total Exhibits
-<br/>
-<br/>'),
-    t('Read more'),
-    t('Exhibit Created by'),
-    t('Page'),
-  );
   $export['gallery_exhibits'] = $view;
 
   $view = new view();
@@ -1601,12 +1459,12 @@ function rc_gallery_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Romantic Circles Gallery';
+  $handler->display->display_options['title'] = 'COVE Gallery';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See all';
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -1614,66 +1472,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Newest first';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Oldest first';
-  $handler->display->display_options['exposed_form']['options']['bef'] = array(
-    'general' => array(
-      'allow_secondary' => 0,
-      'secondary_label' => 'Advanced options',
-    ),
-    'sort' => array(
-      'bef_format' => 'default',
-      'advanced' => array(
-        'collapsible' => 0,
-        'collapsible_label' => 'Sort options',
-        'combine' => 0,
-        'combine_rewrite' => '',
-        'reset' => 0,
-        'reset_label' => '',
-        'is_secondary' => 0,
-      ),
-    ),
-    'term_node_tid_depth' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
-        'is_secondary' => 0,
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-          ),
-        ),
-      ),
-    ),
-    'term_node_tid_depth_1' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
-        'is_secondary' => 0,
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-          ),
-        ),
-      ),
-    ),
-    'term_node_tid_depth_2' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
-        'is_secondary' => 0,
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-          ),
-        ),
-      ),
-    ),
-  );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1686,16 +1484,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['row_options']['inline'] = array(
     'field_text_date' => 'field_text_date',
   );
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'This a snapshot of the Romantic Circles Gallery, a fully curated database of Romantic-Era images. Click the "See all" link below to browse the full set of images.  ';
-  $handler->display->display_options['header']['area']['format'] = '1';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_parent_section_target_id']['id'] = 'field_parent_section_target_id';
-  $handler->display->display_options['relationships']['field_parent_section_target_id']['table'] = 'field_data_field_parent_section';
-  $handler->display->display_options['relationships']['field_parent_section_target_id']['field'] = 'field_parent_section_target_id';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
@@ -1737,7 +1525,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Field: Description */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -1749,86 +1537,54 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '400',
   );
-  /* Field: Content: Painter */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_painter']['id'] = 'field_creator_painter';
   $handler->display->display_options['fields']['field_creator_painter']['table'] = 'field_data_field_creator_painter';
   $handler->display->display_options['fields']['field_creator_painter']['field'] = 'field_creator_painter';
   $handler->display->display_options['fields']['field_creator_painter']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_painter']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_painter']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_painter']['delta_offset'] = '0';
-  /* Field: Content: Delineator */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_delineator']['id'] = 'field_creator_delineator';
   $handler->display->display_options['fields']['field_creator_delineator']['table'] = 'field_data_field_creator_delineator';
   $handler->display->display_options['fields']['field_creator_delineator']['field'] = 'field_creator_delineator';
   $handler->display->display_options['fields']['field_creator_delineator']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_delineator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_delineator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_delineator']['delta_offset'] = '0';
-  /* Field: Content: Illustrator */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_illustrator']['id'] = 'field_creator_illustrator';
   $handler->display->display_options['fields']['field_creator_illustrator']['table'] = 'field_data_field_creator_illustrator';
   $handler->display->display_options['fields']['field_creator_illustrator']['field'] = 'field_creator_illustrator';
   $handler->display->display_options['fields']['field_creator_illustrator']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_illustrator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_illustrator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_illustrator']['delta_offset'] = '0';
-  /* Field: Content: Engraver */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_engraver']['id'] = 'field_creator_engraver';
   $handler->display->display_options['fields']['field_creator_engraver']['table'] = 'field_data_field_creator_engraver';
   $handler->display->display_options['fields']['field_creator_engraver']['field'] = 'field_creator_engraver';
   $handler->display->display_options['fields']['field_creator_engraver']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_engraver']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_engraver']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_engraver']['delta_offset'] = '0';
-  /* Field: Content: Photographer */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_photographer']['id'] = 'field_creator_photographer';
   $handler->display->display_options['fields']['field_creator_photographer']['table'] = 'field_data_field_creator_photographer';
   $handler->display->display_options['fields']['field_creator_photographer']['field'] = 'field_creator_photographer';
   $handler->display->display_options['fields']['field_creator_photographer']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_photographer']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_photographer']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_photographer']['delta_offset'] = '0';
-  /* Field: Content: Author */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_author']['id'] = 'field_creator_author';
   $handler->display->display_options['fields']['field_creator_author']['table'] = 'field_data_field_creator_author';
   $handler->display->display_options['fields']['field_creator_author']['field'] = 'field_creator_author';
   $handler->display->display_options['fields']['field_creator_author']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_author']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_author']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_author']['delta_offset'] = '0';
-  /* Field: Content: Editor */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_editor']['id'] = 'field_creator_editor';
   $handler->display->display_options['fields']['field_creator_editor']['table'] = 'field_data_field_creator_editor';
   $handler->display->display_options['fields']['field_creator_editor']['field'] = 'field_creator_editor';
   $handler->display->display_options['fields']['field_creator_editor']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_editor']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_editor']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_editor']['delta_offset'] = '0';
-  /* Field: Content: Collaborator */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_creator_collaborator']['id'] = 'field_creator_collaborator';
   $handler->display->display_options['fields']['field_creator_collaborator']['table'] = 'field_data_field_creator_collaborator';
   $handler->display->display_options['fields']['field_creator_collaborator']['field'] = 'field_creator_collaborator';
   $handler->display->display_options['fields']['field_creator_collaborator']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_creator_collaborator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_collaborator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_collaborator']['delta_offset'] = '0';
   /* Field: Content: Artist Unknown */
   $handler->display->display_options['fields']['field_artist_unknown']['id'] = 'field_artist_unknown';
   $handler->display->display_options['fields']['field_artist_unknown']['table'] = 'field_data_field_artist_unknown';
@@ -1954,7 +1710,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['sorts']['field_original_publication_date_value']['id'] = 'field_original_publication_date_value';
   $handler->display->display_options['sorts']['field_original_publication_date_value']['table'] = 'field_data_field_original_publication_date';
   $handler->display->display_options['sorts']['field_original_publication_date_value']['field'] = 'field_original_publication_date_value';
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Original publication date -  start date (field_original_publication_date)';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1971,8 +1726,8 @@ function rc_gallery_views_default_views() {
     'gallery_image' => 'gallery_image',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Gallery Home */
+  $handler = $view->new_display('page', 'Gallery Home', 'galleryhome');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -1999,11 +1754,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = 'Displaying @start - @end of @total images';
-  /* Header: Global: View area */
-  $handler->display->display_options['header']['view']['id'] = 'view';
-  $handler->display->display_options['header']['view']['table'] = 'views';
-  $handler->display->display_options['header']['view']['field'] = 'view';
-  $handler->display->display_options['header']['view']['view_to_insert'] = 'gallery_creators:block_1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Gallery Image */
   $handler->display->display_options['fields']['field_galleryimage']['id'] = 'field_galleryimage';
@@ -2029,13 +1779,12 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Field: Description */
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -2047,246 +1796,15 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '400',
   );
-  /* Field: Content: Artist Unknown */
-  $handler->display->display_options['fields']['field_artist_unknown']['id'] = 'field_artist_unknown';
-  $handler->display->display_options['fields']['field_artist_unknown']['table'] = 'field_data_field_artist_unknown';
-  $handler->display->display_options['fields']['field_artist_unknown']['field'] = 'field_artist_unknown';
-  $handler->display->display_options['fields']['field_artist_unknown']['label'] = '';
-  $handler->display->display_options['fields']['field_artist_unknown']['element_type'] = 'em';
-  $handler->display->display_options['fields']['field_artist_unknown']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_artist_unknown']['hide_empty'] = TRUE;
-  /* Field: Content: Painter */
-  $handler->display->display_options['fields']['field_creator_painter']['id'] = 'field_creator_painter';
-  $handler->display->display_options['fields']['field_creator_painter']['table'] = 'field_data_field_creator_painter';
-  $handler->display->display_options['fields']['field_creator_painter']['field'] = 'field_creator_painter';
-  $handler->display->display_options['fields']['field_creator_painter']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_painter']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_painter']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_painter']['delta_offset'] = '0';
-  /* Field: Content: Engraver */
-  $handler->display->display_options['fields']['field_creator_engraver']['id'] = 'field_creator_engraver';
-  $handler->display->display_options['fields']['field_creator_engraver']['table'] = 'field_data_field_creator_engraver';
-  $handler->display->display_options['fields']['field_creator_engraver']['field'] = 'field_creator_engraver';
-  $handler->display->display_options['fields']['field_creator_engraver']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_engraver']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_engraver']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_engraver']['delta_offset'] = '0';
-  /* Field: Content: Illustrator */
-  $handler->display->display_options['fields']['field_creator_illustrator']['id'] = 'field_creator_illustrator';
-  $handler->display->display_options['fields']['field_creator_illustrator']['table'] = 'field_data_field_creator_illustrator';
-  $handler->display->display_options['fields']['field_creator_illustrator']['field'] = 'field_creator_illustrator';
-  $handler->display->display_options['fields']['field_creator_illustrator']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_illustrator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_illustrator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_illustrator']['delta_offset'] = '0';
-  /* Field: Content: Delineator */
-  $handler->display->display_options['fields']['field_creator_delineator']['id'] = 'field_creator_delineator';
-  $handler->display->display_options['fields']['field_creator_delineator']['table'] = 'field_data_field_creator_delineator';
-  $handler->display->display_options['fields']['field_creator_delineator']['field'] = 'field_creator_delineator';
-  $handler->display->display_options['fields']['field_creator_delineator']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_delineator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_delineator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_delineator']['delta_offset'] = '0';
-  /* Field: Content: Author */
-  $handler->display->display_options['fields']['field_creator_author']['id'] = 'field_creator_author';
-  $handler->display->display_options['fields']['field_creator_author']['table'] = 'field_data_field_creator_author';
-  $handler->display->display_options['fields']['field_creator_author']['field'] = 'field_creator_author';
-  $handler->display->display_options['fields']['field_creator_author']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_author']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_author']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_author']['delta_offset'] = '0';
-  /* Field: Content: Editor */
-  $handler->display->display_options['fields']['field_creator_editor']['id'] = 'field_creator_editor';
-  $handler->display->display_options['fields']['field_creator_editor']['table'] = 'field_data_field_creator_editor';
-  $handler->display->display_options['fields']['field_creator_editor']['field'] = 'field_creator_editor';
-  $handler->display->display_options['fields']['field_creator_editor']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_editor']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_editor']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_editor']['delta_offset'] = '0';
-  /* Field: Content: Photographer */
-  $handler->display->display_options['fields']['field_creator_photographer']['id'] = 'field_creator_photographer';
-  $handler->display->display_options['fields']['field_creator_photographer']['table'] = 'field_data_field_creator_photographer';
-  $handler->display->display_options['fields']['field_creator_photographer']['field'] = 'field_creator_photographer';
-  $handler->display->display_options['fields']['field_creator_photographer']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_photographer']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_photographer']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_photographer']['delta_offset'] = '0';
-  /* Field: Content: Collaborator */
-  $handler->display->display_options['fields']['field_creator_collaborator']['id'] = 'field_creator_collaborator';
-  $handler->display->display_options['fields']['field_creator_collaborator']['table'] = 'field_data_field_creator_collaborator';
-  $handler->display->display_options['fields']['field_creator_collaborator']['field'] = 'field_creator_collaborator';
-  $handler->display->display_options['fields']['field_creator_collaborator']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_creator_collaborator']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_creator_collaborator']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_creator_collaborator']['delta_offset'] = '0';
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
-  $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
-  $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
-  $handler->display->display_options['fields']['field_text_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_text_date']['element_label_type'] = 'strong';
-  /* Field: Content: Image Date */
-  $handler->display->display_options['fields']['field_image_date']['id'] = 'field_image_date';
-  $handler->display->display_options['fields']['field_image_date']['table'] = 'field_data_field_image_date';
-  $handler->display->display_options['fields']['field_image_date']['field'] = 'field_image_date';
-  $handler->display->display_options['fields']['field_image_date']['label'] = '';
-  $handler->display->display_options['fields']['field_image_date']['element_type'] = 'strong';
-  $handler->display->display_options['fields']['field_image_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image_date']['click_sort_column'] = 'timestamp';
-  $handler->display->display_options['fields']['field_image_date']['settings'] = array(
-    'use_override' => 'none',
-    'format' => 'medium',
-    'component_settings' => array(
-      'meridiem' => 'a',
-      'year_designation' => 'sign',
-      'display' => array(
-        'year' => 'estimate_label',
-        'month' => 'estimate_label',
-        'day' => 'estimate_label',
-        'hour' => 'estimate_label',
-        'minute' => 'estimate_label',
-        'second' => 'estimate_label',
-        'timezone' => 'date_only',
-      ),
-      'separator' => array(
-        'date' => ' ',
-        'time' => ':',
-        'datetime' => ' ',
-        'other' => ' ',
-        'range' => '',
-      ),
-      'components' => array(
-        'year' => array(
-          'format' => 'Y',
-          'empty' => '',
-          'weight' => '-7',
-        ),
-        'month' => array(
-          'format' => 'F',
-          'empty' => '',
-          'weight' => '-8',
-        ),
-        'day' => array(
-          'format' => 'j',
-          'empty' => '',
-          'weight' => '-9',
-        ),
-        'hour' => array(
-          'format' => 'h',
-          'empty' => '',
-          'weight' => '-6',
-        ),
-        'minute' => array(
-          'format' => 'i',
-          'empty' => '',
-          'weight' => '-5',
-        ),
-        'second' => array(
-          'format' => 's',
-          'empty' => '',
-          'weight' => '-4',
-        ),
-        'timezone' => array(
-          'format' => 'T',
-          'empty' => '',
-          'weight' => '-3',
-        ),
-        'c1' => array(
-          'value' => '',
-          'weight' => '-2',
-        ),
-        'c2' => array(
-          'value' => '',
-          'weight' => '-1',
-        ),
-        'c3' => array(
-          'value' => '',
-          'weight' => '0',
-        ),
-        'approx' => array(
-          'value' => '',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  /* Field: Content: From the Collection */
-  $handler->display->display_options['fields']['field_from_the_collection']['id'] = 'field_from_the_collection';
-  $handler->display->display_options['fields']['field_from_the_collection']['table'] = 'field_data_field_from_the_collection';
-  $handler->display->display_options['fields']['field_from_the_collection']['field'] = 'field_from_the_collection';
-  $handler->display->display_options['fields']['field_from_the_collection']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_from_the_collection']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_from_the_collection']['settings'] = array(
-    'link' => 1,
-  );
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['alter']['text'] = '<a href="node/[nid]?width=800&height=600" class="colorbox-node">Quick View</a>';
-  $handler->display->display_options['fields']['nid']['element_type'] = 'div';
-  $handler->display->display_options['fields']['nid']['element_class'] = 'quickView';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid']['node_in_colorbox'] = TRUE;
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
-  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
-  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid_1']['label'] = '';
-  $handler->display->display_options['fields']['nid_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['nid_1']['alter']['text'] = '<a href="node/[nid_1]">Full View</a>';
-  $handler->display->display_options['fields']['nid_1']['element_type'] = 'div';
-  $handler->display->display_options['fields']['nid_1']['element_class'] = 'fullView';
-  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid_1']['node_in_colorbox_width'] = '600';
-  $handler->display->display_options['fields']['nid_1']['node_in_colorbox_height'] = '600';
-  /* Field: Global: View */
-  $handler->display->display_options['fields']['view']['id'] = 'view';
-  $handler->display->display_options['fields']['view']['table'] = 'views';
-  $handler->display->display_options['fields']['view']['field'] = 'view';
-  $handler->display->display_options['fields']['view']['label'] = '';
-  $handler->display->display_options['fields']['view']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['view']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view']['view'] = 'contributor_names_landing_pages';
-  $handler->display->display_options['fields']['view']['display'] = 'block_3';
-  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Original publication date -  start date (field_original_publication_date) */
   $handler->display->display_options['sorts']['field_original_publication_date_value']['id'] = 'field_original_publication_date_value';
   $handler->display->display_options['sorts']['field_original_publication_date_value']['table'] = 'field_data_field_original_publication_date';
   $handler->display->display_options['sorts']['field_original_publication_date_value']['field'] = 'field_original_publication_date_value';
   $handler->display->display_options['sorts']['field_original_publication_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Sort by publication/creation date';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Sort by date';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -2295,86 +1813,6 @@ function rc_gallery_views_default_views() {
     'gallery_image' => 'gallery_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Support Medium using Has Taxonomy terms (with depth) */
-  $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
-  $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth']['ui_name'] = 'Support Medium using Has Taxonomy terms (with depth)';
-  $handler->display->display_options['filters']['term_node_tid_depth']['group'] = 1;
-  $handler->display->display_options['filters']['term_node_tid_depth']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator_id'] = 'term_node_tid_depth_op';
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['label'] = 'Medium';
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['description'] = 'Select and item to filter results by artistic medium.';
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator'] = 'term_node_tid_depth_op';
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['identifier'] = 'term_node_tid_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    5 => 0,
-    8 => 0,
-    10 => 0,
-    4 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['term_node_tid_depth']['type'] = 'select';
-  $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'support_medium';
-  $handler->display->display_options['filters']['term_node_tid_depth']['hierarchy'] = 1;
-  $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '2';
-  /* Filter criterion: Creation Technique using Has taxonomy terms (with depth) */
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['id'] = 'term_node_tid_depth_1';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['table'] = 'node';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['field'] = 'term_node_tid_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['ui_name'] = 'Creation Technique using Has taxonomy terms (with depth)';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['value'] = '';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['operator_id'] = 'term_node_tid_depth_1_op';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['label'] = 'Creation Technique';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['description'] = 'Select an item to filter results by creation technique.';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['operator'] = 'term_node_tid_depth_1_op';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['identifier'] = 'term_node_tid_depth_1';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    5 => 0,
-    8 => 0,
-    10 => 0,
-    4 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['type'] = 'select';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['vocabulary'] = 'creation_technique';
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['hierarchy'] = 1;
-  $handler->display->display_options['filters']['term_node_tid_depth_1']['depth'] = '2';
-  /* Filter criterion: Style using Has taxonomy terms (with depth) */
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['id'] = 'term_node_tid_depth_2';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['table'] = 'node';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['field'] = 'term_node_tid_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['ui_name'] = 'Style using Has taxonomy terms (with depth)';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['operator_id'] = 'term_node_tid_depth_2_op';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['label'] = 'Style';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['description'] = 'Select an item from the list to filter by the image\'s style';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['operator'] = 'term_node_tid_depth_2_op';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['identifier'] = 'term_node_tid_depth_2';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    5 => 0,
-    8 => 0,
-    10 => 0,
-    4 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['type'] = 'select';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['vocabulary'] = 'style';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['hierarchy'] = 1;
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['depth'] = '2';
   $handler->display->display_options['metatags'] = array(
     'description' => array(
       'value' => 'The Romantic Circles Gallery is a fully curated gallery of Romantic-era images',
@@ -2462,7 +1900,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
-  /* Field: Field: Description */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -2474,7 +1912,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '400',
   );
-  /* Field: Content: Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_text_date']['id'] = 'field_text_date';
   $handler->display->display_options['fields']['field_text_date']['table'] = 'field_data_field_text_date';
   $handler->display->display_options['fields']['field_text_date']['field'] = 'field_text_date';
@@ -2511,8 +1949,8 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['sorts']['random']['field'] = 'random';
   $handler->display->display_options['sorts']['random']['expose']['label'] = 'Random';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Featured */
+  $handler = $view->new_display('block', 'Featured', 'featured');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -2530,60 +1968,275 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  $translatables['gallery_slider'] = array(
-    t('Master'),
-    t('Romantic Circles Gallery'),
-    t('See all'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Newest first'),
-    t('Oldest first'),
-    t('Select any filter and click on Apply to see results'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('This a snapshot of the Romantic Circles Gallery, a fully curated database of Romantic-Era images. Click the "See all" link below to browse the full set of images.  '),
-    t('Content entity referenced from field_parent_section'),
-    t('<a href="node/[nid_1]?width=800&height=600" class="colorbox-node">[field_galleryimage]</a>'),
-    t('Read full description'),
-    t('Painter'),
-    t('Delineator'),
-    t('Illustrator'),
-    t('Engraver'),
-    t('Photographer'),
-    t('Author'),
-    t('Editor'),
-    t('Collaborator'),
-    t('Image Date'),
-    t('From the Collection'),
-    t('<br/><a href="/node/[nid]?width=800&height=600" class="colorbox-node">Quick View</a>'),
-    t('<a href="/node/[nid_2]">Full View</a>'),
-    t('Original publication date -  start date (field_original_publication_date)'),
-    t('Page'),
-    t('<h1 id="page-title">Images in the Gallery</h1>'),
-    t('<h4 class="boldblue" style="text-align:center;">Gallery Editors: [view]</h4>'),
-    t('Displaying @start - @end of @total images'),
-    t('Date'),
-    t('<a href="node/[nid]?width=800&height=600" class="colorbox-node">Quick View</a>'),
-    t('<a href="node/[nid_1]">Full View</a>'),
-    t('Sort by publication/creation date'),
-    t('Medium'),
-    t('Select and item to filter results by artistic medium.'),
-    t('Creation Technique'),
-    t('Select an item to filter results by creation technique.'),
-    t('Style'),
-    t('Select an item from the list to filter by the image\'s style'),
-    t('Block'),
-    t('Gallery Slider'),
-    t('more'),
-    t('<br/><a href="node/[nid]?width=800&height=600" class="colorbox-node">Quick View</a>'),
-    t('<a href="node/[nid_2]">Full View</a>'),
-    t('Random'),
+
+  /* Display: Slider */
+  $handler = $view->new_display('block', 'Slider', 'slider');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'slideshow';
+  $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
+  $handler->display->display_options['style_options']['slideshow_skin'] = 'default';
+  $handler->display->display_options['style_options']['skin_info'] = array(
+    'class' => 'default',
+    'name' => 'Default',
+    'module' => 'views_slideshow',
+    'path' => '',
+    'stylesheets' => array(),
+  );
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
+    'nid_1' => 0,
+    'field_galleryimage' => 0,
+    'title' => 0,
+    'field_description' => 0,
+    'field_creator_painter' => 0,
+    'field_creator_delineator' => 0,
+    'field_creator_illustrator' => 0,
+    'field_creator_engraver' => 0,
+    'field_creator_photographer' => 0,
+    'field_creator_author' => 0,
+    'field_creator_editor' => 0,
+    'field_creator_collaborator' => 0,
+    'field_artist_unknown' => 0,
+    'field_from_the_collection' => 0,
+    'nid' => 0,
+    'nid_2' => 0,
+  );
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['enable'] = 1;
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_slide_counter']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
+    'nid_1' => 0,
+    'field_galleryimage' => 0,
+    'title' => 0,
+    'field_description' => 0,
+    'field_creator_painter' => 0,
+    'field_creator_delineator' => 0,
+    'field_creator_illustrator' => 0,
+    'field_creator_engraver' => 0,
+    'field_creator_photographer' => 0,
+    'field_creator_author' => 0,
+    'field_creator_editor' => 0,
+    'field_creator_collaborator' => 0,
+    'field_artist_unknown' => 0,
+    'field_from_the_collection' => 0,
+    'nid' => 0,
+    'nid_2' => 0,
+  );
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_slide_counter']['weight'] = '1';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['effect'] = 'scrollHorz';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['transition_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '5000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '5';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_text_date' => 'field_text_date',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Gallery Image */
+  $handler->display->display_options['fields']['field_galleryimage']['id'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['table'] = 'field_data_field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['field'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['label'] = '';
+  $handler->display->display_options['fields']['field_galleryimage']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_galleryimage']['alter']['text'] = '<a href="node/[nid_1]?width=800&height=600" class="colorbox-node">[field_galleryimage]</a>';
+  $handler->display->display_options['fields']['field_galleryimage']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_galleryimage']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
+    'colorbox_node_style' => 'gallery_small',
+    'colorbox_image_style' => 'gallery_node',
+    'colorbox_gallery' => 'post',
+    'colorbox_gallery_custom' => '',
+    'colorbox_caption' => 'auto',
+    'colorbox_caption_custom' => '',
+  );
+  $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['field_description']['alter']['more_link_text'] = 'Read full description';
+  $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_description']['settings'] = array(
+    'trim_length' => '400',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Original publication date -  start date (field_original_publication_date) */
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['id'] = 'field_original_publication_date_value';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['table'] = 'field_data_field_original_publication_date';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['field'] = 'field_original_publication_date_value';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Original publication date -  start date (field_original_publication_date)';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gallery_image' => 'gallery_image',
+  );
+
+  /* Display: Slider Single */
+  $handler = $view->new_display('block', 'Slider Single', 'slidersingle');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'slideshow';
+  $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
+  $handler->display->display_options['style_options']['slideshow_skin'] = 'default';
+  $handler->display->display_options['style_options']['skin_info'] = array(
+    'class' => 'default',
+    'name' => 'Default',
+    'module' => 'views_slideshow',
+    'path' => '',
+    'stylesheets' => array(),
+  );
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
+    'field_galleryimage' => 0,
+    'title' => 0,
+    'field_description' => 0,
+  );
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['enable'] = 1;
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_slide_counter']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
+    'field_galleryimage' => 0,
+    'title' => 0,
+    'field_description' => 0,
+  );
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
+  $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_slide_counter']['weight'] = '1';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['effect'] = 'scrollHorz';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['transition_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '5000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '1';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_text_date' => 'field_text_date',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Gallery Image */
+  $handler->display->display_options['fields']['field_galleryimage']['id'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['table'] = 'field_data_field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['field'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['label'] = '';
+  $handler->display->display_options['fields']['field_galleryimage']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_galleryimage']['alter']['text'] = '<a href="node/[nid_1]?width=800&height=600" class="colorbox-node">[field_galleryimage]</a>';
+  $handler->display->display_options['fields']['field_galleryimage']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_galleryimage']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
+    'colorbox_node_style' => 'gallery_small',
+    'colorbox_image_style' => 'gallery_node',
+    'colorbox_gallery' => 'post',
+    'colorbox_gallery_custom' => '',
+    'colorbox_caption' => 'auto',
+    'colorbox_caption_custom' => '',
+  );
+  $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['field_description']['alter']['more_link_text'] = 'Read full description';
+  $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_description']['settings'] = array(
+    'trim_length' => '400',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Original publication date -  start date (field_original_publication_date) */
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['id'] = 'field_original_publication_date_value';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['table'] = 'field_data_field_original_publication_date';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['field'] = 'field_original_publication_date_value';
+  $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Original publication date -  start date (field_original_publication_date)';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gallery_image' => 'gallery_image',
   );
   $export['gallery_slider'] = $view;
 
