@@ -6,9 +6,9 @@
 /* FontAwesome icon font http://fontawesome.io/ */
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
-#content {
+/*#content {
   padding: 3rem 0 0 0;
-}
+}*/
 
 #annotation_snapshotSelector_container {
   z-index: 9000;
@@ -280,7 +280,10 @@
   line-height: 1.5rem;
 }
 
-
+#ap_annotation_annotation span {
+    font-size: inherit !important;
+    font-family: inherit !important;
+}
 
 #ap_annotation_sourceinfo {
   font-family: sans-serif;
