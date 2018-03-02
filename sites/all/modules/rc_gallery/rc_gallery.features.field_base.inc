@@ -277,7 +277,7 @@ function rc_gallery_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_from_the_collection',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(
@@ -337,47 +337,6 @@ function rc_gallery_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'image',
     'type_name' => 'gallery',
-  );
-
-  // Exported field_base: 'field_gallery_items_in_this_exhi'.
-  $field_bases['field_gallery_items_in_this_exhi'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_gallery_items_in_this_exhi',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'direction' => 'ASC',
-          'property' => 'title',
-          'type' => 'property',
-        ),
-        'target_bundles' => array(
-          'gallery_exhibit_item' => 'gallery_exhibit_item',
-        ),
-      ),
-      'sync' => 'field_parent_exhibit',
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_gallery_location'.
@@ -540,7 +499,7 @@ function rc_gallery_field_default_field_bases() {
         'from_granularity_month' => 0,
         'from_granularity_second' => 0,
         'from_granularity_timezone' => 0,
-        'from_granularity_year' => 0,
+        'from_granularity_year' => 1,
         'txt_long' => 0,
         'txt_short' => 0,
       ),
@@ -557,7 +516,7 @@ function rc_gallery_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_images_in_exhibit',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'target_id' => array(

@@ -260,72 +260,11 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-galler_exhibit-field_gallery_items_in_this_exhi'.
-  $field_instances['node-galler_exhibit-field_gallery_items_in_this_exhi'] = array(
-    'bundle' => 'galler_exhibit',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'colorbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'colorbox_node_classes' => '',
-          'colorbox_node_height' => 600,
-          'colorbox_node_link' => FALSE,
-          'colorbox_node_width' => 600,
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_gallery_items_in_this_exhi',
-    'label' => 'Gallery Items in this Exhibit',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-galler_exhibit-field_images_in_exhibit'.
   $field_instances['node-galler_exhibit-field_images_in_exhibit'] = array(
     'bundle' => 'galler_exhibit',
-    'default_value' => NULL,
-    'default_value_function' => '',
+    'default_value' => array(),
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => 'Here, you can add images to your Exhibit. ',
     'display' => array(
@@ -362,21 +301,32 @@ function rc_gallery_field_default_field_instances() {
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
-          'status' => 0,
+          'action' => 'none',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'providers' => array(
+            'og_context' => 0,
+            'url' => 1,
+          ),
+          'skip_perm' => 0,
+          'status' => 1,
         ),
       ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'find_gallery_images|entityreference_view_widget_1',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 8,
     ),
   );
@@ -529,6 +479,7 @@ function rc_gallery_field_default_field_instances() {
   $field_instances['node-galler_exhibit-og_group_ref'] = array(
     'bundle' => 'galler_exhibit',
     'default_value' => NULL,
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -549,10 +500,11 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'og_group_ref',
     'label' => 'Groups audience',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'og_widget' => array(
+          'access_override' => 0,
           'admin' => array(
             'widget_type' => 'entityreference_autocomplete',
           ),
@@ -560,6 +512,17 @@ function rc_gallery_field_default_field_instances() {
             'widget_type' => 'options_select',
           ),
           'status' => TRUE,
+        ),
+        'prepopulate' => array(
+          'action' => 'none',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'providers' => array(
+            'og_context' => 0,
+            'url' => 1,
+          ),
+          'skip_perm' => 0,
+          'status' => 1,
         ),
       ),
       'user_register_form' => FALSE,
@@ -577,6 +540,7 @@ function rc_gallery_field_default_field_instances() {
       ),
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
@@ -943,7 +907,7 @@ function rc_gallery_field_default_field_instances() {
     'bundle' => 'gallery_image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the simple form FIRSTNAME LASTNAME.',
+    'description' => 'Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the form of FIRSTNAME LASTNAME.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -962,7 +926,7 @@ function rc_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_artist',
     'label' => 'Artist',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1120,7 +1084,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
@@ -1175,6 +1139,7 @@ function rc_gallery_field_default_field_instances() {
   $field_instances['node-gallery_image-field_featured_in_exhibit'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1209,18 +1174,28 @@ function rc_gallery_field_default_field_instances() {
     'label' => 'Featured in Exhibit',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'action' => 'hide',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'providers' => array(
+            'og_context' => 0,
+            'url' => 1,
+          ),
+          'skip_perm' => 'administer permissions',
+          'status' => 1,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_select',
       'weight' => 7,
     ),
   );
@@ -1229,6 +1204,7 @@ function rc_gallery_field_default_field_instances() {
   $field_instances['node-gallery_image-field_from_the_collection'] = array(
     'bundle' => 'gallery_image',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1263,6 +1239,11 @@ function rc_gallery_field_default_field_instances() {
     'label' => 'From the Collection',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1440,7 +1421,7 @@ function rc_gallery_field_default_field_instances() {
     'bundle' => 'gallery_image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, we\'ve provided various date estimation options here. Only a year is required absolutely required. ',
+    'description' => 'This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, various date estimation options are provided. Only a year is absolutely required. ',
     'display' => array(
       'colorbox' => array(
         'label' => 'above',
@@ -1650,7 +1631,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'geofield',
       'settings' => array(),
       'type' => 'geofield_latlon',
-      'weight' => 36,
+      'weight' => 35,
     ),
   );
 
@@ -1696,7 +1677,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 34,
+      'weight' => 33,
     ),
   );
 
@@ -1742,7 +1723,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 32,
     ),
   );
 
@@ -1788,7 +1769,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 35,
+      'weight' => 34,
     ),
   );
 
@@ -1841,7 +1822,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 32,
+      'weight' => 31,
     ),
   );
 
@@ -1976,7 +1957,50 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 28,
+      'weight' => 29,
+    ),
+  );
+
+  // Exported field_instance: 'node-gallery_image-field_vetted_'.
+  $field_instances['node-gallery_image-field_vetted_'] = array(
+    'bundle' => 'gallery_image',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => 'An admin-only field. If marked vetted, images will appear in the Gallery landing page. Otherwise, not. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 61,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vetted_',
+    'label' => 'Vetted?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
     ),
   );
 
@@ -2026,6 +2050,71 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gallery_image-og_group_ref'.
+  $field_instances['node-gallery_image-og_group_ref'] = array(
+    'bundle' => 'gallery_image',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 60,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'og_widget' => array(
+          'access_override' => 0,
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
+      ),
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-gallery_image-taxonomy_vocabulary_3'.
   $field_instances['node-gallery_image-taxonomy_vocabulary_3'] = array(
     'bundle' => 'gallery_image',
@@ -2069,13 +2158,14 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 31,
+      'weight' => 30,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Accession Number');
+  t('An admin-only field. If marked vetted, images will appear in the Gallery landing page. Otherwise, not. ');
   t('Applicable NINES disciplines for RDF output. Multiple values may be selected.');
   t('Applicable NINES genres for RDF output. Multiple values may be selected.');
   t('Applicable NINES types for RDF output. Multiple values may be selected.');
@@ -2093,7 +2183,6 @@ function rc_gallery_field_default_field_instances() {
   t('For gallery images');
   t('From the Collection');
   t('Gallery Image');
-  t('Gallery Items in this Exhibit');
   t('Groups audience');
   t('Height (in centimeters)');
   t('Here add latitude and longitude coordinates for Gallery images tied to a particular place. This will be run via imports on TEI places files. See the feeds importers for more. ');
@@ -2124,10 +2213,11 @@ function rc_gallery_field_default_field_instances() {
   t('The geographic or other physical location of the item');
   t('The image this Exhibit item refers to');
   t('The style of the image');
-  t('This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, we\'ve provided various date estimation options here. Only a year is required absolutely required. ');
+  t('This is a date associated with an image\'s original "publication". Since exact dates may not be possible in many cases, various date estimation options are provided. Only a year is absolutely required. ');
   t('This is information specific to the image\'s use and context in the exhibit, as opposed to general information about the image contained on its own page');
   t('Upload your image here. ');
-  t('Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the simple form FIRSTNAME LASTNAME.');
+  t('Use the autocomplete to find an existing artist in the database. If one does not exist, you can add one in the form of FIRSTNAME LASTNAME.');
+  t('Vetted?');
   t('Width (in centimeters)');
 
   return $field_instances;

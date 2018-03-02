@@ -20,16 +20,6 @@ function rc_gallery_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create field_gallery_items_in_this_exhi'.
-  $permissions['create field_gallery_items_in_this_exhi'] = array(
-    'name' => 'create field_gallery_items_in_this_exhi',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'manager' => 'manager',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'create galler_exhibit content'.
   $permissions['create galler_exhibit content'] = array(
     'name' => 'create galler_exhibit content',
@@ -192,16 +182,6 @@ function rc_gallery_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit field_gallery_items_in_this_exhi'.
-  $permissions['edit field_gallery_items_in_this_exhi'] = array(
-    'name' => 'edit field_gallery_items_in_this_exhi',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'manager' => 'manager',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit own collection content'.
   $permissions['edit own collection content'] = array(
     'name' => 'edit own collection content',
@@ -210,16 +190,6 @@ function rc_gallery_user_default_permissions() {
       'manager' => 'manager',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'edit own field_gallery_items_in_this_exhi'.
-  $permissions['edit own field_gallery_items_in_this_exhi'] = array(
-    'name' => 'edit own field_gallery_items_in_this_exhi',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'manager' => 'manager',
-    ),
-    'module' => 'field_permissions',
   );
 
   // Exported permission: 'edit own galler_exhibit content'.
@@ -255,26 +225,6 @@ function rc_gallery_user_default_permissions() {
       'manager' => 'manager',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'view field_gallery_items_in_this_exhi'.
-  $permissions['view field_gallery_items_in_this_exhi'] = array(
-    'name' => 'view field_gallery_items_in_this_exhi',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'manager' => 'manager',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_gallery_items_in_this_exhi'.
-  $permissions['view own field_gallery_items_in_this_exhi'] = array(
-    'name' => 'view own field_gallery_items_in_this_exhi',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'manager' => 'manager',
-    ),
-    'module' => 'field_permissions',
   );
 
   return $permissions;

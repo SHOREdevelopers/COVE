@@ -8,6 +8,12 @@
  * Implements hook_ctools_plugin_api().
  */
 function rc_gallery_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => "1");
+  }
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -48,10 +54,10 @@ function rc_gallery_image_default_styles() {
   $styles['gallery_node'] = array(
     'label' => 'gallery_node',
     'effects' => array(
-      37 => array(
+      7 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 620,
+          'width' => 700,
           'height' => '',
           'upscale' => 1,
         ),

@@ -11,6 +11,495 @@ function rc_gallery_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'add_images_to_this_exhibit';
+  $view->description = 'Shows the add places to this map button when a user is a member of the group that created the chronology';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Add images to this exhibit';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'add-link';
+  $handler->display->display_options['hide_admin_links'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'og_context';
+  $handler->display->display_options['access']['perm'] = 'create gallery_image content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'og_group_ref_target_id';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<ul class="tabs primary"><li><a href="/node/add/gallery-image?field_featured_in_exhibit=!1&destination=/node/!1">+ Add images to this exhibit</a></li></ul>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $export['add_images_to_this_exhibit'] = $view;
+
+  $view = new view();
+  $view->name = 'find_gallery_images';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Find Gallery Images';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Entity Reference View Widget Checkbox: Content */
+  $handler->display->display_options['fields']['entityreference_view_widget']['id'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['table'] = 'node';
+  $handler->display->display_options['fields']['entityreference_view_widget']['field'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['label'] = '';
+  $handler->display->display_options['fields']['entityreference_view_widget']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['entityreference_view_widget']['ervw']['force_single'] = 0;
+  /* Field: Content: Event date */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['click_sort_column'] = 'timestamp';
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'use_override' => 'none',
+    'format' => 'medium',
+    'component_settings' => array(
+      'meridiem' => 'a',
+      'year_designation' => 'ce',
+      'display' => array(
+        'year' => 'estimate_label',
+        'month' => 'estimate_label',
+        'day' => 'estimate_label',
+        'hour' => 'estimate_label',
+        'minute' => 'estimate_label',
+        'second' => 'estimate_label',
+        'timezone' => 'date_only',
+      ),
+      'separator' => array(
+        'date' => ' ',
+        'time' => ':',
+        'datetime' => ' ',
+        'other' => ' ',
+        'range' => '',
+      ),
+      'components' => array(
+        'year' => array(
+          'format' => 'Y',
+          'empty' => '',
+          'weight' => '-7',
+        ),
+        'month' => array(
+          'format' => 'M',
+          'empty' => '',
+          'weight' => '-8',
+        ),
+        'day' => array(
+          'format' => 'j',
+          'empty' => '',
+          'weight' => '-9',
+        ),
+        'hour' => array(
+          'format' => 'h',
+          'empty' => '',
+          'weight' => '-6',
+        ),
+        'minute' => array(
+          'format' => 'i',
+          'empty' => '',
+          'weight' => '-5',
+        ),
+        'second' => array(
+          'format' => 's',
+          'empty' => '',
+          'weight' => '-4',
+        ),
+        'timezone' => array(
+          'format' => 'T',
+          'empty' => '',
+          'weight' => '-3',
+        ),
+        'c1' => array(
+          'value' => '',
+          'weight' => '-2',
+        ),
+        'c2' => array(
+          'value' => '',
+          'weight' => '-1',
+        ),
+        'c3' => array(
+          'value' => '',
+          'weight' => '0',
+        ),
+        'approx' => array(
+          'value' => 'circa. ',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Event Description */
+  $handler->display->display_options['fields']['field_event2']['id'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
+  $handler->display->display_options['fields']['field_event2']['field'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['label'] = '';
+  $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['text'] = '<strong>[field_event_date]</strong> |  <strong>[title]</strong><br/>[field_event2]';
+  $handler->display->display_options['fields']['field_event2']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_text'] = 'more';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_path'] = '/node/[nid]';
+  $handler->display->display_options['fields']['field_event2']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['preserve_tags'] = '<em> <i> <strong> <b> <br>';
+  $handler->display->display_options['fields']['field_event2']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event2']['settings'] = array(
+    'trim_length' => '100',
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['title'] = 'Find events associates with %1';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['not'] = TRUE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gallery_image' => 'gallery_image',
+  );
+  /* Filter criterion: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search events';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_description' => 'field_description',
+  );
+
+  /* Display: Entity Reference */
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'title' => 'title',
+    'field_description' => 'field_description',
+    'nid' => 0,
+    'field_gallery_image' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['separator'] = '<br/>';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '600';
+  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['preserve_tags'] = '<em><strong>';
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  /* Field: Content: Gallery Image */
+  $handler->display->display_options['fields']['field_gallery_image']['id'] = 'field_gallery_image';
+  $handler->display->display_options['fields']['field_gallery_image']['table'] = 'field_data_field_gallery_image';
+  $handler->display->display_options['fields']['field_gallery_image']['field'] = 'field_gallery_image';
+  $handler->display->display_options['fields']['field_gallery_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_gallery_image']['settings'] = array(
+    'image_style' => 'gallery_small',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_gallery_image']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_gallery_image']['delta_offset'] = '0';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['path'] = 'associated-events';
+
+  /* Display: Entity Reference View Widget */
+  $handler = $view->new_display('entityreference_view_widget', 'Entity Reference View Widget', 'entityreference_view_widget_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'entityreference_view_widget' => 'entityreference_view_widget',
+    'field_event_date' => 'field_event_date',
+    'nid' => 'nid',
+    'title' => 'title',
+    'field_event2' => 'field_event2',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_event_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'entityreference_view_widget' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event2' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Entity Reference View Widget Checkbox: Content */
+  $handler->display->display_options['fields']['entityreference_view_widget']['id'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['table'] = 'node';
+  $handler->display->display_options['fields']['entityreference_view_widget']['field'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['label'] = '';
+  $handler->display->display_options['fields']['entityreference_view_widget']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['entityreference_view_widget']['ervw']['force_single'] = 0;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Gallery Image */
+  $handler->display->display_options['fields']['field_galleryimage']['id'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['table'] = 'field_data_field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['field'] = 'field_galleryimage';
+  $handler->display->display_options['fields']['field_galleryimage']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
+    'image_style' => 'gallery_small',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_galleryimage']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '600';
+  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['preserve_tags'] = '<em><strong>';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['title'] = 'Find events associated with %1';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['not'] = TRUE;
+  $export['find_gallery_images'] = $view;
+
+  $view = new view();
   $view->name = 'gallery_collection_images';
   $view->description = '';
   $view->tag = 'default';
@@ -1028,7 +1517,7 @@ function rc_gallery_views_default_views() {
     'field_description' => 'field_description',
   );
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['id'] = 'field_gallery_items_in_this_exhi_target_id';
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['field'] = 'field_gallery_items_in_this_exhi_target_id';
@@ -1073,6 +1562,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
     'colorbox_node_style' => 'gallery_for_exhibits',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => 'gallery_node',
     'colorbox_gallery' => 'custom',
     'colorbox_gallery_custom' => 'main',
@@ -1081,6 +1571,7 @@ function rc_gallery_views_default_views() {
   );
   $handler->display->display_options['fields']['field_galleryimage']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_galleryimage']['separator'] = ' ';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -1105,7 +1596,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '300',
   );
-  /* Sort criterion: Content: Gallery Items in this Exhibit (field_gallery_items_in_this_exhi:delta) */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['sorts']['delta']['field'] = 'delta';
@@ -1133,7 +1624,7 @@ function rc_gallery_views_default_views() {
     'galler_exhibit' => 'galler_exhibit',
     'gallery_exhibit_item' => 'gallery_exhibit_item',
   );
-  /* Filter criterion: Content: Gallery Items in this Exhibit (field_gallery_items_in_this_exhi) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['id'] = 'field_gallery_items_in_this_exhi_target_id';
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['field'] = 'field_gallery_items_in_this_exhi_target_id';
@@ -1179,6 +1670,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
     'colorbox_node_style' => '40px_icon',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => 'gallery_node',
     'colorbox_gallery' => 'custom',
     'colorbox_gallery_custom' => 'preview',
@@ -1186,6 +1678,7 @@ function rc_gallery_views_default_views() {
     'colorbox_caption_custom' => '',
   );
   $handler->display->display_options['fields']['field_galleryimage']['group_column'] = 'entity_id';
+  $handler->display->display_options['fields']['field_galleryimage']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
   $handler->display->display_options['block_description'] = 'Preview of images';
   $export['gallery_exhibit_images'] = $view;
@@ -1206,11 +1699,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['css_class'] = 'teaserItem';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '518400';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -1238,11 +1727,14 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['field'] = 'field_galleryimage';
   $handler->display->display_options['fields']['field_galleryimage']['relationship'] = 'field_images_in_exhibit_target_id';
   $handler->display->display_options['fields']['field_galleryimage']['label'] = '';
+  $handler->display->display_options['fields']['field_galleryimage']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_galleryimage']['element_class'] = 'leftFloat';
   $handler->display->display_options['fields']['field_galleryimage']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_galleryimage']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
-    'colorbox_node_style' => 'thumbnail',
+    'colorbox_node_style' => 'gallery_for_exhibits',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => 'gallery_node',
     'colorbox_gallery' => 'custom',
     'colorbox_gallery_custom' => 'main',
@@ -1250,16 +1742,20 @@ function rc_gallery_views_default_views() {
     'colorbox_caption_custom' => '',
   );
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_galleryimage']['separator'] = ' ';
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['relationship'] = 'field_images_in_exhibit_target_id';
-  $handler->display->display_options['fields']['field_description']['label'] = 'Main Description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
   $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '400';
+  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['preserve_tags'] = '<p> <br>';
   $handler->display->display_options['fields']['field_description']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['field_description']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Images in Exhibit (field_images_in_exhibit:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_images_in_exhibit';
@@ -1280,11 +1776,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Gallery Items in this Exhibit (field_gallery_items_in_this_exhi) */
-  $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['id'] = 'field_gallery_items_in_this_exhi_target_id';
-  $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['table'] = 'field_data_field_gallery_items_in_this_exhi';
-  $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['field'] = 'field_gallery_items_in_this_exhi_target_id';
-  $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['operator'] = 'empty';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
@@ -1294,8 +1785,8 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Preview of images';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '10';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'left';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -1319,6 +1810,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
     'colorbox_node_style' => '40px_icon',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => 'gallery_node',
     'colorbox_gallery' => 'custom',
     'colorbox_gallery_custom' => 'preview',
@@ -1326,6 +1818,7 @@ function rc_gallery_views_default_views() {
     'colorbox_caption_custom' => '',
   );
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_galleryimage']['separator'] = ' ';
   $handler->display->display_options['block_description'] = 'Preview of images';
   $export['gallery_exhibit_images_2'] = $view;
 
@@ -1765,12 +2258,14 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_galleryimage']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_galleryimage']['settings'] = array(
     'colorbox_node_style' => 'gallery_small',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => 'gallery_node',
     'colorbox_gallery' => 'page',
     'colorbox_gallery_custom' => '',
     'colorbox_caption' => 'auto',
     'colorbox_caption_custom' => '',
   );
+  $handler->display->display_options['fields']['field_galleryimage']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_galleryimage']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1789,20 +2284,21 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '200';
   $handler->display->display_options['fields']['field_description']['alter']['more_link_text'] = 'Read full description';
+  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_description']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['alter']['preserve_tags'] = '<em>';
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '400',
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Original publication date -  start date (field_original_publication_date) */
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['id'] = 'field_original_publication_date_value';
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['table'] = 'field_data_field_original_publication_date';
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['field'] = 'field_original_publication_date_value';
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_original_publication_date_value']['expose']['label'] = 'Sort by date';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -1813,6 +2309,13 @@ function rc_gallery_views_default_views() {
     'gallery_image' => 'gallery_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Vetted? (field_vetted_) */
+  $handler->display->display_options['filters']['field_vetted__value']['id'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['filters']['field_vetted__value']['field'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['metatags'] = array(
     'description' => array(
       'value' => 'The Romantic Circles Gallery is a fully curated gallery of Romantic-era images',
