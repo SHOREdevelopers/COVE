@@ -405,6 +405,30 @@ function cove_users_default_page_manager_handlers() {
   $display->content['new-d401023d-1057-4ab0-82a4-d1c17236c1ba'] = $pane;
   $display->panels['left'][4] = 'new-d401023d-1057-4ab0-82a4-d1c17236c1ba';
   $pane = new stdClass();
+  $pane->pid = 'new-92b16876-f00e-40f1-9080-2af987cd427d';
+  $pane->panel = 'left';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'subscribe_to_course_group-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'link_to_view' => 0,
+    'override_title' => 1,
+    'override_title_text' => 'Subscribe to Course/Group',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = '92b16876-f00e-40f1-9080-2af987cd427d';
+  $display->content['new-92b16876-f00e-40f1-9080-2af987cd427d'] = $pane;
+  $display->panels['left'][5] = 'new-92b16876-f00e-40f1-9080-2af987cd427d';
+  $pane = new stdClass();
   $pane->pid = 'new-a47a3879-0f5b-4cbd-b57c-b93d35be3ea7';
   $pane->panel = 'user_left';
   $pane->type = 'custom';
