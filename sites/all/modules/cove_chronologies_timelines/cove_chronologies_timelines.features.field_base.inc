@@ -354,7 +354,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
       ),
       'handler_submit' => 'Change handler',
       'profile2_private' => FALSE,
-      'sync' => 'field_documents_in_this_edition',
+      'sync' => 'field_timelines_in_this_edition',
       'target_type' => 'node',
     ),
     'translatable' => 0,

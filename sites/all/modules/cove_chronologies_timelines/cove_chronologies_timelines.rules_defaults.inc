@@ -37,6 +37,7 @@ function cove_chronologies_timelines_default_rules_configuration() {
   $items['rules_chron_entry_save_redirect'] = entity_import('rules_config', '{ "rules_chron_entry_save_redirect" : {
       "LABEL" : "Chron. entry save redirect",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "chronology", "redirect" ],
       "REQUIRES" : [ "rules" ],

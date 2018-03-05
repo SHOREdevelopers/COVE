@@ -745,7 +745,10 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'tabs-float',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
@@ -753,31 +756,63 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $display->content['new-f67d3ec2-bebb-47e3-97c4-67fef0423449'] = $pane;
   $display->panels['one_main'][0] = 'new-f67d3ec2-bebb-47e3-97c4-67fef0423449';
   $pane = new stdClass();
+  $pane->pid = 'new-2d7cb221-a5df-49c3-97b6-31f009ba5ca6';
+  $pane->panel = 'one_main';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'add_items_to_this_chronology2-panel_pane_1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '2d7cb221-a5df-49c3-97b6-31f009ba5ca6';
+  $display->content['new-2d7cb221-a5df-49c3-97b6-31f009ba5ca6'] = $pane;
+  $display->panels['one_main'][1] = 'new-2d7cb221-a5df-49c3-97b6-31f009ba5ca6';
+  $pane = new stdClass();
   $pane->pid = 'new-93a8f8ff-dd31-4bee-9a11-913042a02758';
   $pane->panel = 'one_main';
   $pane->type = 'custom';
   $pane->subtype = 'custom';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array(
     'plugins' => array(
-      0 => array(
+      1 => array(
+        'name' => 'og_member',
+        'settings' => array(
+          'state' => array(
+            1 => '1',
+          ),
+        ),
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
+        'not' => FALSE,
+      ),
+      2 => array(
         'name' => 'role',
         'settings' => array(
           'rids' => array(
-            0 => 3,
-            1 => 5,
-            2 => 4,
-            3 => 6,
-            4 => 7,
-            5 => 9,
-            6 => 8,
-            7 => 10,
+            0 => 2,
+            1 => 4,
+            2 => 10,
+            3 => 7,
+            4 => 9,
+            5 => 8,
+            6 => 3,
           ),
         ),
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
     ),
+    'logic' => 'or',
   );
   $pane->configuration = array(
     'admin_title' => 'Add items',
@@ -796,11 +831,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
     'css_class' => 'chron-tab',
   );
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '93a8f8ff-dd31-4bee-9a11-913042a02758';
   $display->content['new-93a8f8ff-dd31-4bee-9a11-913042a02758'] = $pane;
-  $display->panels['one_main'][1] = 'new-93a8f8ff-dd31-4bee-9a11-913042a02758';
+  $display->panels['one_main'][2] = 'new-93a8f8ff-dd31-4bee-9a11-913042a02758';
   $pane = new stdClass();
   $pane->pid = 'new-9226a2ee-6092-4050-a6e2-fa186c65f124';
   $pane->panel = 'one_main';
@@ -824,11 +859,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
     'css_class' => 'submitted',
   );
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = '9226a2ee-6092-4050-a6e2-fa186c65f124';
   $display->content['new-9226a2ee-6092-4050-a6e2-fa186c65f124'] = $pane;
-  $display->panels['one_main'][2] = 'new-9226a2ee-6092-4050-a6e2-fa186c65f124';
+  $display->panels['one_main'][3] = 'new-9226a2ee-6092-4050-a6e2-fa186c65f124';
   $pane = new stdClass();
   $pane->pid = 'new-30407d3d-a8d5-4b4e-b4eb-73d0ed640ad2';
   $pane->panel = 'one_main';
@@ -858,13 +893,52 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'group-nav',
+  );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = '30407d3d-a8d5-4b4e-b4eb-73d0ed640ad2';
   $display->content['new-30407d3d-a8d5-4b4e-b4eb-73d0ed640ad2'] = $pane;
-  $display->panels['one_main'][3] = 'new-30407d3d-a8d5-4b4e-b4eb-73d0ed640ad2';
+  $display->panels['one_main'][4] = 'new-30407d3d-a8d5-4b4e-b4eb-73d0ed640ad2';
+  $pane = new stdClass();
+  $pane->pid = 'new-b67140a7-a598-49d0-afa7-60fa1f9e8c56';
+  $pane->panel = 'one_main';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_resource_index';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'title',
+    'formatter' => 'entityreference_label',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(
+      'link' => 1,
+      'colorbox_node_link' => 0,
+      'colorbox_node_classes' => '',
+      'colorbox_node_width' => '600',
+      'colorbox_node_height' => '600',
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 1,
+    'override_title_text' => 'Part of Edition:',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = 'b67140a7-a598-49d0-afa7-60fa1f9e8c56';
+  $display->content['new-b67140a7-a598-49d0-afa7-60fa1f9e8c56'] = $pane;
+  $display->panels['one_main'][5] = 'new-b67140a7-a598-49d0-afa7-60fa1f9e8c56';
   $pane = new stdClass();
   $pane->pid = 'new-a3e1eee0-ea20-487c-b1e4-3a142a52c6f8';
   $pane->panel = 'one_main';
@@ -885,11 +959,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = 'a3e1eee0-ea20-487c-b1e4-3a142a52c6f8';
   $display->content['new-a3e1eee0-ea20-487c-b1e4-3a142a52c6f8'] = $pane;
-  $display->panels['one_main'][4] = 'new-a3e1eee0-ea20-487c-b1e4-3a142a52c6f8';
+  $display->panels['one_main'][6] = 'new-a3e1eee0-ea20-487c-b1e4-3a142a52c6f8';
   $pane = new stdClass();
   $pane->pid = 'new-00e6450d-2a7a-4dad-a9e1-4baa9f0c1871';
   $pane->panel = 'one_main';
@@ -910,11 +984,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 7;
   $pane->locks = array();
   $pane->uuid = '00e6450d-2a7a-4dad-a9e1-4baa9f0c1871';
   $display->content['new-00e6450d-2a7a-4dad-a9e1-4baa9f0c1871'] = $pane;
-  $display->panels['one_main'][5] = 'new-00e6450d-2a7a-4dad-a9e1-4baa9f0c1871';
+  $display->panels['one_main'][7] = 'new-00e6450d-2a7a-4dad-a9e1-4baa9f0c1871';
   $pane = new stdClass();
   $pane->pid = 'new-b68eb07b-27ba-4b41-bbcf-46bc47ea41b3';
   $pane->panel = 'one_main';
@@ -940,11 +1014,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 8;
   $pane->locks = array();
   $pane->uuid = 'b68eb07b-27ba-4b41-bbcf-46bc47ea41b3';
   $display->content['new-b68eb07b-27ba-4b41-bbcf-46bc47ea41b3'] = $pane;
-  $display->panels['one_main'][6] = 'new-b68eb07b-27ba-4b41-bbcf-46bc47ea41b3';
+  $display->panels['one_main'][8] = 'new-b68eb07b-27ba-4b41-bbcf-46bc47ea41b3';
   $pane = new stdClass();
   $pane->pid = 'new-bd04fcef-563d-481b-a193-b4b3d4c1f7ab';
   $pane->panel = 'one_main';
@@ -959,11 +1033,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 9;
   $pane->locks = array();
   $pane->uuid = 'bd04fcef-563d-481b-a193-b4b3d4c1f7ab';
   $display->content['new-bd04fcef-563d-481b-a193-b4b3d4c1f7ab'] = $pane;
-  $display->panels['one_main'][7] = 'new-bd04fcef-563d-481b-a193-b4b3d4c1f7ab';
+  $display->panels['one_main'][9] = 'new-bd04fcef-563d-481b-a193-b4b3d4c1f7ab';
   $pane = new stdClass();
   $pane->pid = 'new-824efc0e-b952-4759-8a1b-a02e6c471364';
   $pane->panel = 'one_main';
@@ -981,11 +1055,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 8;
+  $pane->position = 10;
   $pane->locks = array();
   $pane->uuid = '824efc0e-b952-4759-8a1b-a02e6c471364';
   $display->content['new-824efc0e-b952-4759-8a1b-a02e6c471364'] = $pane;
-  $display->panels['one_main'][8] = 'new-824efc0e-b952-4759-8a1b-a02e6c471364';
+  $display->panels['one_main'][10] = 'new-824efc0e-b952-4759-8a1b-a02e6c471364';
   $pane = new stdClass();
   $pane->pid = 'new-16a80c4e-4136-4b05-ab30-9a5dc009017f';
   $pane->panel = 'one_main';
@@ -1023,11 +1097,11 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
     'css_class' => 'rightFloat',
   );
   $pane->extras = array();
-  $pane->position = 9;
+  $pane->position = 11;
   $pane->locks = array();
   $pane->uuid = '16a80c4e-4136-4b05-ab30-9a5dc009017f';
   $display->content['new-16a80c4e-4136-4b05-ab30-9a5dc009017f'] = $pane;
-  $display->panels['one_main'][9] = 'new-16a80c4e-4136-4b05-ab30-9a5dc009017f';
+  $display->panels['one_main'][11] = 'new-16a80c4e-4136-4b05-ab30-9a5dc009017f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
