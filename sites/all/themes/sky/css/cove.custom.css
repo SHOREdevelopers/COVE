@@ -1696,6 +1696,11 @@ img.alignleft, img.alignright {
     margin-left: 15px;
 }
 
+/*On occassion, might want to unfloat something that's floated by default*/
+.noFloat {
+float:none;  
+}
+
 /* Suppress system messages when saving Place and Chron. entry nodes; there are better ways to do this but this is just one-off fix */
 
 .node-type-map li.message-item:nth-child(2) {
