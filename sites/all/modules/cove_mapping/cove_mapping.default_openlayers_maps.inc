@@ -42,6 +42,7 @@ function cove_mapping_default_openlayers_maps() {
       0 => 'openlayers_geofield_control_geofield',
       1 => 'openlayers_control_zoom',
       2 => 'clone_of_openlayers_examples_control_simple_layer_switcher',
+      3 => 'openlayers_control_fullscreen',
     ),
     'interactions' => array(
       0 => 'openlayers_interaction_dragpan',
