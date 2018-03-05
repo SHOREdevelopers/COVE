@@ -176,8 +176,7 @@ function branch_imports_feeds_importer_default() {
           7 => array(
             'source' => 'blank_source_8',
             'target' => 'guid',
-            'unique' => FALSE,
-            'language' => 'und',
+            'unique' => 1,
           ),
           8 => array(
             'source' => 'blank_source_9',
@@ -189,10 +188,11 @@ function branch_imports_feeds_importer_default() {
             'source' => 'blank_source_10',
             'target' => 'field_event_source',
             'unique' => FALSE,
+            'language' => 'und',
           ),
         ),
         'insert_new' => '1',
-        'update_existing' => '2',
+        'update_existing' => '0',
         'update_non_existent' => 'delete',
         'input_format' => 'full_html',
         'skip_hash_check' => 0,
