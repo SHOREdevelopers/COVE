@@ -516,7 +516,7 @@ function rc_gallery_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_images_in_exhibit',
     'field_permissions' => array(
-      'type' => 2,
+      'type' => 0,
     ),
     'indexes' => array(
       'target_id' => array(
