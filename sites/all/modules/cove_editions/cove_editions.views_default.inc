@@ -1126,12 +1126,11 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'status',
+      'field' => 'field_edition_state',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['row_class'] = '[status]';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'title' => 'title',
@@ -1150,6 +1149,10 @@ function cove_editions_views_default_views() {
                     based on the highest scholarly standards and is peer-reviewed.
                   </div>';
   $handler->display->display_options['header']['area']['format'] = 'unfiltered_html';
+  /* Relationship: Content: Edition state (field_edition_state) */
+  $handler->display->display_options['relationships']['field_edition_state_tid']['id'] = 'field_edition_state_tid';
+  $handler->display->display_options['relationships']['field_edition_state_tid']['table'] = 'field_data_field_edition_state';
+  $handler->display->display_options['relationships']['field_edition_state_tid']['field'] = 'field_edition_state_tid';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1240,22 +1243,19 @@ function cove_editions_views_default_views() {
     'link' => 1,
   );
   $handler->display->display_options['fields']['field_edited_by']['delta_offset'] = '0';
-  /* Field: Content: Published */
-  $handler->display->display_options['fields']['status']['id'] = 'status';
-  $handler->display->display_options['fields']['status']['table'] = 'node';
-  $handler->display->display_options['fields']['status']['field'] = 'status';
-  $handler->display->display_options['fields']['status']['label'] = '';
-  $handler->display->display_options['fields']['status']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['status']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['status']['type'] = 'custom';
-  $handler->display->display_options['fields']['status']['type_custom_true'] = 'Completed Prototype Editions';
-  $handler->display->display_options['fields']['status']['type_custom_false'] = 'Prototype Editions Under Construction';
-  $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Sort criterion: Content: Published */
-  $handler->display->display_options['sorts']['status']['id'] = 'status';
-  $handler->display->display_options['sorts']['status']['table'] = 'node';
-  $handler->display->display_options['sorts']['status']['field'] = 'status';
-  $handler->display->display_options['sorts']['status']['order'] = 'DESC';
+  /* Field: Content: Edition state */
+  $handler->display->display_options['fields']['field_edition_state']['id'] = 'field_edition_state';
+  $handler->display->display_options['fields']['field_edition_state']['table'] = 'field_data_field_edition_state';
+  $handler->display->display_options['fields']['field_edition_state']['field'] = 'field_edition_state';
+  $handler->display->display_options['fields']['field_edition_state']['label'] = '';
+  $handler->display->display_options['fields']['field_edition_state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_edition_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_edition_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_edition_state_tid';
   /* Sort criterion: Content: Date published (field_published) */
   $handler->display->display_options['sorts']['field_published_value']['id'] = 'field_published_value';
   $handler->display->display_options['sorts']['field_published_value']['table'] = 'field_data_field_published';
