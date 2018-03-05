@@ -473,11 +473,13 @@ function cove_groups_default_page_manager_handlers() {
   $pane->configuration = array(
     'admin_title' => 'Group to do',
     'title' => '',
-    'body' => '<h2 class="block-title" style="display: inline;">What can I do in COVE Groups?</h2>
+    'body' => '<h2 class="block-title">What can I do in COVE Groups?</h2>
 <ul style="display: inline;">
-<li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/form-icon-small.png" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/blog_entry">Write posts</a></li>
+<li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/form-icon-small.png" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/blog">Write posts</a></li>
 <li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/timeline-icon-small.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/chronology?og_group_ref=%node:nid">Create timelines</a></li>
 <li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/map-marker-icon-small.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/map?og_group_ref=%node:nid">Create Maps</a></li>
+<li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/gallery-image-icon-small.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/gallery-image?og_group_ref=%node:nid">Create Gallery Images</a></li>
+<li style="display: inline;"><img style="width: 30px; margin-right: 7px;" src="/sites/default/files/gallery-exhibit-icon-small.png" width="30/" /><a style="font-size: 120%; margin-right: 15px;" href="/node/add/galler-exhibit?og_group_ref=%node:nid">Create Gallery Exhibits</a></li>
 <!--<li style="display:inline">Create Personographies (coming soon)</li>--></ul>',
     'format' => 'full_html',
     'substitute' => 1,

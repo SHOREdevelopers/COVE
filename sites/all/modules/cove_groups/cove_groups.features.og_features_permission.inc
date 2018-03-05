@@ -36,7 +36,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -46,7 +45,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -56,7 +54,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -73,7 +70,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -83,7 +79,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -149,7 +144,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -159,7 +153,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -169,7 +162,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -186,7 +178,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -196,7 +187,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -238,7 +228,9 @@ function cove_groups_og_features_default_permissions() {
 
   // Exported og permission: 'node:course:subscribe without approval'
   $permissions['node:course:subscribe without approval'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'non-member' => 'non-member',
+    ),
   );
 
   // Exported og permission: 'node:course:unsubscribe'
@@ -310,7 +302,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -320,7 +311,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -330,7 +320,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -347,7 +336,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
@@ -357,7 +345,6 @@ function cove_groups_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
       'student' => 'student',
     ),
   );
