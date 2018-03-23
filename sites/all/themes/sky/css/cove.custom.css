@@ -100,6 +100,11 @@ margin-right:-10px;
     margin-top: -8px;
     color: #ccc;
 }
+
+/* When logged in, hide Login link from bar */
+.logged-in ul#globalnav li:first-child {
+    display: none;
+}
 /* Nav Menu mods */
 nav#block-system-main-menu {
 position:relative;
