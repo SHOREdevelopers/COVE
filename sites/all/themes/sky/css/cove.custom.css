@@ -1465,7 +1465,7 @@ margin-top: 22px;
 }
 
 .ol-popup {
-    min-width: 400px;
+    min-width: 550px;
 }
 
 /* The openlayers layer switcher as a CSS dropdown */
@@ -1747,4 +1747,11 @@ a.anchor {
 .panel-pane.pane-custom.pane-3.map-explanation.no-title.block {
     margin-bottom: -25px;
     margin-top: -20px;
+}
+
+/* This used as a background to badge the map pop-ups with associated events on the places */
+
+.historical-icon {
+    background: url(/sites/default/files/historical-event-icon.png) no-repeat right bottom;
+    height: 32px;
 }
