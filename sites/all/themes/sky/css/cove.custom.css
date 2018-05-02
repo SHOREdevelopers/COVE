@@ -1755,3 +1755,9 @@ a.anchor {
     background: url(/sites/default/files/historical-event-icon.png) no-repeat right bottom;
     height: 32px;
 }
+
+a.bottom-more-link {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 6px;
+}
