@@ -469,7 +469,23 @@ function cove_groups_default_page_manager_handlers() {
   $pane->type = 'custom';
   $pane->subtype = 'custom';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'og_member',
+        'settings' => array(
+          'state' => array(
+            1 => '1',
+          ),
+        ),
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'admin_title' => 'Group to do',
     'title' => '',
