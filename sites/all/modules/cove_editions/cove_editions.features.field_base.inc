@@ -307,7 +307,7 @@ function cove_editions_field_default_field_bases() {
           'editions_page' => 'editions_page',
         ),
       ),
-      'sync' => FALSE,
+      'sync' => 'field_resource_index',
       'target_type' => 'node',
     ),
     'translatable' => 0,
@@ -387,6 +387,43 @@ function cove_editions_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_editor_in_chief'.
+  $field_bases['field_editor_in_chief'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_editor_in_chief',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(),
+      ),
+      'sync' => '',
+      'target_type' => 'user',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_icon'.
@@ -1025,7 +1062,7 @@ function cove_editions_field_default_field_bases() {
           'chronology' => 'chronology',
         ),
       ),
-      'sync' => 'field_resource_index',
+      'sync' => FALSE,
       'target_type' => 'node',
     ),
     'translatable' => 0,

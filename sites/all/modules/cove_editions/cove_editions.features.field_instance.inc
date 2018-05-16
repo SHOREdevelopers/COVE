@@ -120,7 +120,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -304,7 +304,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -346,6 +346,60 @@ function cove_editions_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-editions_index_page-field_editor_in_chief'.
+  $field_instances['node-editions_index_page-field_editor_in_chief'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'If your edition has a lead editor or editors, you can add them here using the autocomplete functionality. Leave blank if this doesn\'t apply.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_editor_in_chief',
+    'label' => 'Editor-In-Chief',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
     ),
   );
 
@@ -1003,7 +1057,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1223,7 +1277,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1343,7 +1397,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -1407,7 +1461,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1471,7 +1525,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -4288,6 +4342,7 @@ function cove_editions_field_default_field_instances() {
   t('Edition Description');
   t('Edition state');
   t('Editor(s)');
+  t('Editor-In-Chief');
   t('Enter a comma separated list of words');
   t('Enter the date or dates a resource was originally published. Please include ONLY the year or a range of years. ');
   t('Enter the date this page is to be published (i.e. not created) on the site, specifying only Month and Year.');
@@ -4295,6 +4350,7 @@ function cove_editions_field_default_field_instances() {
   t('For Editions. A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.');
   t('Hidden field. All posts from COVE Studio are coming from admin, but POST requests are also sending along the UID of the user who should own the document. That is being stored here for processing via Rules. ');
   t('Icon');
+  t('If your edition has a lead editor or editors, you can add them here using the autocomplete functionality. Leave blank if this doesn\'t apply.');
   t('Index Banner');
   t('Interior Banner');
   t('Maps in this Edition');

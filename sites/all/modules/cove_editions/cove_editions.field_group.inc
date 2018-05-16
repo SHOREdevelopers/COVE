@@ -176,7 +176,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_index_banner',
       1 => 'field_icon',
@@ -205,7 +205,7 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy Keywords',
-    'weight' => '12',
+    'weight' => '14',
     'children' => array(
       0 => 'opencalais_person_tags',
       1 => 'taxonomy_vocabulary_3',
@@ -392,13 +392,14 @@ function cove_editions_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'People',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_edited_by',
       1 => 'field_main_author',
       2 => 'field_resource_technical_editor',
       3 => 'field_annotator',
       4 => 'field_postgraduate_researcher',
+      5 => 'field_editor_in_chief',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

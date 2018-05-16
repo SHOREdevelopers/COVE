@@ -489,14 +489,7 @@ h2.field-label {
     color: black !important;
 }
 
-.pane-node-field-main-author, .pane-node-field-original-publication-date, .pane-node-field-edited-by {
-    float: left;
-    /* display: inline; */
-    width: 33.3333333%;
-    /* text-align: center; */
-}
-
-section.field.field-name-field-main-author, section.field.field-name-field-original-publication-date, section.field.field-name-field-edited-by {
+section.field.field-name-field-main-author, section.field.field-name-field-original-publication-date, section.field.field-name-field-edited-by, section.field-name-field-annotator, section.field-name-field-editor-in-chief {
     /* margin: auto; */
     /* width: 100%; */
     display: inline-block;
@@ -537,8 +530,8 @@ section.field.field-name-field-main-author, section.field.field-name-field-origi
 }
 
 .node-type-editions-index-page div#content {
-    width: 80%;
-    margin: auto;
+   /*  width: 80%; 
+    margin: auto; */
     /*border: 1px solid #508596;*/
     background: #FBFBFB;
     padding: 0px 30px;

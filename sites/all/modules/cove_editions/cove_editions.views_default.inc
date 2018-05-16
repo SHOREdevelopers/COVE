@@ -1611,5 +1611,247 @@ function cove_editions_views_default_views() {
   );
   $export['maps_timelines_in_this_edition'] = $view;
 
+  $view = new view();
+  $view->name = 'node_metadata';
+  $view->description = 'Collects all the metadata on node fields and opens in a colorbox link';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Node Metadata';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'About this Page';
+  $handler->display->display_options['css_class'] = 'teaserItemSimple';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'No results';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'This page could use metadata. If you are the owner of this document, please <a href="/node/!1/edit">edit</a> this page to add more metadata. ';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_resource_index_target_id']['id'] = 'field_resource_index_target_id';
+  $handler->display->display_options['relationships']['field_resource_index_target_id']['table'] = 'field_data_field_resource_index';
+  $handler->display->display_options['relationships']['field_resource_index_target_id']['field'] = 'field_resource_index_target_id';
+  $handler->display->display_options['relationships']['field_resource_index_target_id']['label'] = 'parent_resource';
+  /* Field: Content: Author */
+  $handler->display->display_options['fields']['field_main_author']['id'] = 'field_main_author';
+  $handler->display->display_options['fields']['field_main_author']['table'] = 'field_data_field_main_author';
+  $handler->display->display_options['fields']['field_main_author']['field'] = 'field_main_author';
+  $handler->display->display_options['fields']['field_main_author']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_main_author']['label'] = '';
+  $handler->display->display_options['fields']['field_main_author']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_main_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_author']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['field_main_author']['delta_offset'] = '0';
+  /* Field: Content: Index Banner */
+  $handler->display->display_options['fields']['field_index_banner']['id'] = 'field_index_banner';
+  $handler->display->display_options['fields']['field_index_banner']['table'] = 'field_data_field_index_banner';
+  $handler->display->display_options['fields']['field_index_banner']['field'] = 'field_index_banner';
+  $handler->display->display_options['fields']['field_index_banner']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_index_banner']['label'] = 'Part of';
+  $handler->display->display_options['fields']['field_index_banner']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_index_banner']['element_label_type'] = 'div';
+  $handler->display->display_options['fields']['field_index_banner']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_index_banner']['element_wrapper_class'] = 'leftFloat';
+  $handler->display->display_options['fields']['field_index_banner']['empty'] = 'This page could use metadata. If you are the owner of this document, please <a href="/node/!1/edit">edit</a> this page to add more metadata. ';
+  $handler->display->display_options['fields']['field_index_banner']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_index_banner']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_index_banner']['settings'] = array(
+    'image_style' => '40px_icon',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Parent Resource */
+  $handler->display->display_options['fields']['field_resource_index']['id'] = 'field_resource_index';
+  $handler->display->display_options['fields']['field_resource_index']['table'] = 'field_data_field_resource_index';
+  $handler->display->display_options['fields']['field_resource_index']['field'] = 'field_resource_index';
+  $handler->display->display_options['fields']['field_resource_index']['label'] = 'Part of';
+  $handler->display->display_options['fields']['field_resource_index']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_resource_index']['alter']['text'] = '[field_index_banner]<div class="resourceTitle">[field_resource_index]<hr class="narrow"/><div class="small">by [field_main_author]</div></div>';
+  $handler->display->display_options['fields']['field_resource_index']['element_type'] = 'h1';
+  $handler->display->display_options['fields']['field_resource_index']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_resource_index']['settings'] = array(
+    'link' => 1,
+  );
+  /* Field: Content: Authored by (Primary) */
+  $handler->display->display_options['fields']['field_authored_by_primary_']['id'] = 'field_authored_by_primary_';
+  $handler->display->display_options['fields']['field_authored_by_primary_']['table'] = 'field_data_field_authored_by_primary_';
+  $handler->display->display_options['fields']['field_authored_by_primary_']['field'] = 'field_authored_by_primary_';
+  $handler->display->display_options['fields']['field_authored_by_primary_']['label'] = 'Author';
+  $handler->display->display_options['fields']['field_authored_by_primary_']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_authored_by_primary_']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['field_authored_by_primary_']['delta_offset'] = '0';
+  /* Field: Content: Authored by (Secondary) */
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['id'] = 'field_authored_by_secondary_';
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['table'] = 'field_data_field_authored_by_secondary_';
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['field'] = 'field_authored_by_secondary_';
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['label'] = 'Document Author(s)';
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['field_authored_by_secondary_']['delta_offset'] = '0';
+  /* Field: Content: Original publication date */
+  $handler->display->display_options['fields']['field_original_publication_date']['id'] = 'field_original_publication_date';
+  $handler->display->display_options['fields']['field_original_publication_date']['table'] = 'field_data_field_original_publication_date';
+  $handler->display->display_options['fields']['field_original_publication_date']['field'] = 'field_original_publication_date';
+  $handler->display->display_options['fields']['field_original_publication_date']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_original_publication_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_original_publication_date']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_original_publication_date']['element_wrapper_class'] = 'clear';
+  $handler->display->display_options['fields']['field_original_publication_date']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_original_publication_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_original_publication_date']['delta_offset'] = '0';
+  /* Field: Content: Editor-In-Chief */
+  $handler->display->display_options['fields']['field_editor_in_chief']['id'] = 'field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['table'] = 'field_data_field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['field'] = 'field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_editor_in_chief']['settings'] = array(
+    'link' => 1,
+  );
+  /* Field: Content: Edited By */
+  $handler->display->display_options['fields']['field_edited_by']['id'] = 'field_edited_by';
+  $handler->display->display_options['fields']['field_edited_by']['table'] = 'field_data_field_edited_by';
+  $handler->display->display_options['fields']['field_edited_by']['field'] = 'field_edited_by';
+  $handler->display->display_options['fields']['field_edited_by']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_edited_by']['label'] = 'Editor(s)';
+  $handler->display->display_options['fields']['field_edited_by']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_edited_by']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['field_edited_by']['delta_offset'] = '0';
+  /* Field: Content: Annotator(s) */
+  $handler->display->display_options['fields']['field_annotator']['id'] = 'field_annotator';
+  $handler->display->display_options['fields']['field_annotator']['table'] = 'field_data_field_annotator';
+  $handler->display->display_options['fields']['field_annotator']['field'] = 'field_annotator';
+  $handler->display->display_options['fields']['field_annotator']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_annotator']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_annotator']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['field_annotator']['delta_offset'] = '0';
+  /* Field: Content: Tags */
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['id'] = 'taxonomy_vocabulary_3';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['table'] = 'field_data_taxonomy_vocabulary_3';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['field'] = 'taxonomy_vocabulary_3';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['element_label_type'] = 'h5';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['element_label_class'] = 'block-title';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_3']['delta_offset'] = '0';
+  /* Field: Content: Person */
+  $handler->display->display_options['fields']['opencalais_person_tags']['id'] = 'opencalais_person_tags';
+  $handler->display->display_options['fields']['opencalais_person_tags']['table'] = 'field_data_opencalais_person_tags';
+  $handler->display->display_options['fields']['opencalais_person_tags']['field'] = 'opencalais_person_tags';
+  $handler->display->display_options['fields']['opencalais_person_tags']['element_label_type'] = 'h5';
+  $handler->display->display_options['fields']['opencalais_person_tags']['element_label_class'] = 'block-title';
+  $handler->display->display_options['fields']['opencalais_person_tags']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['opencalais_person_tags']['delta_offset'] = '0';
+  /* Field: Content: Date published */
+  $handler->display->display_options['fields']['field_published']['id'] = 'field_published';
+  $handler->display->display_options['fields']['field_published']['table'] = 'field_data_field_published';
+  $handler->display->display_options['fields']['field_published']['field'] = 'field_published';
+  $handler->display->display_options['fields']['field_published']['relationship'] = 'field_resource_index_target_id';
+  $handler->display->display_options['fields']['field_published']['label'] = 'Published @ COVE';
+  $handler->display->display_options['fields']['field_published']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_published']['element_label_type'] = 'h5';
+  $handler->display->display_options['fields']['field_published']['element_label_class'] = 'block-title';
+  $handler->display->display_options['fields']['field_published']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_published']['settings'] = array(
+    'format_type' => 'month_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'map_per_node:block_1';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
+  $handler->display->display_options['path'] = 'node/%/metadata';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'floatViewBlocks';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['text'] = '<div class="links"><h4><a class="colorbox-node" href="/node/[nid]/metadata?width=350&height=350">About this Page</a></h4></div>';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $export['node_metadata'] = $view;
+
   return $export;
 }
