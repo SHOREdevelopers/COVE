@@ -14,6 +14,7 @@ function cove_mapping_user_default_permissions() {
   $permissions['access geocoder autocomplete'] = array(
     'name' => 'access geocoder autocomplete',
     'roles' => array(
+      'annotator' => 'annotator',
       'authenticated user' => 'authenticated user',
       'manager' => 'manager',
     ),
@@ -36,6 +37,7 @@ function cove_mapping_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'annotator' => 'annotator',
+      'authenticated user' => 'authenticated user',
       'author' => 'author',
       'editor' => 'editor',
       'manager' => 'manager',
@@ -60,6 +62,7 @@ function cove_mapping_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'annotator' => 'annotator',
+      'authenticated user' => 'authenticated user',
       'author' => 'author',
       'editor' => 'editor',
       'manager' => 'manager',
@@ -137,6 +140,7 @@ function cove_mapping_user_default_permissions() {
     'name' => 'delete any place content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'manager' => 'manager',
     ),
     'module' => 'node',
@@ -185,6 +189,7 @@ function cove_mapping_user_default_permissions() {
     'name' => 'edit any place content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'manager' => 'manager',
     ),
     'module' => 'node',
@@ -205,6 +210,8 @@ function cove_mapping_user_default_permissions() {
     'name' => 'edit field_geocoder',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',
     ),
@@ -226,6 +233,8 @@ function cove_mapping_user_default_permissions() {
     'name' => 'edit field_place_search',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',
     ),
@@ -237,6 +246,7 @@ function cove_mapping_user_default_permissions() {
     'name' => 'edit field_places_in_this_map',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
       'manager' => 'manager',
     ),
     'module' => 'field_permissions',
@@ -247,6 +257,7 @@ function cove_mapping_user_default_permissions() {
     'name' => 'edit field_vetted_',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'manager' => 'manager',
     ),
     'module' => 'field_permissions',
@@ -268,6 +279,7 @@ function cove_mapping_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'annotator' => 'annotator',
+      'authenticated user' => 'authenticated user',
       'author' => 'author',
       'editor' => 'editor',
       'manager' => 'manager',
@@ -292,6 +304,7 @@ function cove_mapping_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'annotator' => 'annotator',
+      'authenticated user' => 'authenticated user',
       'author' => 'author',
       'editor' => 'editor',
       'manager' => 'manager',
@@ -498,8 +511,10 @@ function cove_mapping_user_default_permissions() {
   $permissions['view field_geocoder'] = array(
     'name' => 'view field_geocoder',
     'roles' => array(
+      'annotator' => 'annotator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -518,8 +533,10 @@ function cove_mapping_user_default_permissions() {
   $permissions['view field_place_search'] = array(
     'name' => 'view field_place_search',
     'roles' => array(
+      'annotator' => 'annotator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -528,6 +545,7 @@ function cove_mapping_user_default_permissions() {
   $permissions['view field_places_in_this_map'] = array(
     'name' => 'view field_places_in_this_map',
     'roles' => array(
+      'annotator' => 'annotator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'manager' => 'manager',
@@ -587,8 +605,10 @@ function cove_mapping_user_default_permissions() {
   $permissions['view own field_place_search'] = array(
     'name' => 'view own field_place_search',
     'roles' => array(
+      'annotator' => 'annotator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -597,6 +617,7 @@ function cove_mapping_user_default_permissions() {
   $permissions['view own field_places_in_this_map'] = array(
     'name' => 'view own field_places_in_this_map',
     'roles' => array(
+      'annotator' => 'annotator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'manager' => 'manager',

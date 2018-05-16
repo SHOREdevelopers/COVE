@@ -1184,6 +1184,52 @@ function cove_mapping_default_page_manager_handlers() {
   $display->content['new-2046b4b8-9692-43d3-a89c-160814c6d71a'] = $pane;
   $display->panels['two_66_33_second'][2] = 'new-2046b4b8-9692-43d3-a89c-160814c6d71a';
   $pane = new stdClass();
+  $pane->pid = 'new-e2810e5d-0999-4197-9015-de2206119fa1';
+  $pane->panel = 'two_66_33_second';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'entity_field_value:node:place:field_vetted_',
+        'settings' => array(
+          'field_vetted_' => array(
+            'und' => array(
+              0 => array(
+                'value' => '1',
+              ),
+            ),
+          ),
+          'field_vetted__value' => array(
+            0 => '1',
+          ),
+        ),
+        'context' => 'argument_entity_id:node_1',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'admin_title' => '',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<h2 class="pane-title block-title"><a href="/maps/cove-master">View on the COVE Master Map</a></h2>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = 'e2810e5d-0999-4197-9015-de2206119fa1';
+  $display->content['new-e2810e5d-0999-4197-9015-de2206119fa1'] = $pane;
+  $display->panels['two_66_33_second'][3] = 'new-e2810e5d-0999-4197-9015-de2206119fa1';
+  $pane = new stdClass();
   $pane->pid = 'new-d8bdefe6-4b90-4450-9683-0fb30c5297f0';
   $pane->panel = 'two_66_33_top';
   $pane->type = 'node_title';

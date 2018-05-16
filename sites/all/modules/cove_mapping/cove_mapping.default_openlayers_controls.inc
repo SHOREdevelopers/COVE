@@ -20,6 +20,7 @@ function cove_mapping_default_openlayers_controls() {
   $ol_control->options = array(
     'label' => 'Layers',
     'layers' => array(
+      'custom_map_data_overlay' => 'custom_map_data_overlay',
       'great_britain_os_one_inch_1885_1900' => 'great_britain_os_one_inch_1885_1900',
       'openlayers_layer_tile_osm' => 'openlayers_layer_tile_osm',
     ),

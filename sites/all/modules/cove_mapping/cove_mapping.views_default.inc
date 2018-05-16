@@ -1009,6 +1009,7 @@ function cove_mapping_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'COVE Master Map';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1031,6 +1032,17 @@ function cove_mapping_views_default_views() {
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="descbig">The COVE Master Map provides pre-vetted information about locations across the globe. Many of these places are tied to significant nineteenth-century historical events (indicated with a <img style="width:16px;" src="/sites/default/files/historical-event-icon.png"/> icon). By clicking on these titles, you will be taken to a page that links up the location with a historical event, many of which are then connected to scholarly articles published in BRANCH or to critical editions published in The COVE. This map will grow as new articles and editions are published. This pre-vetted information can be used in the maps that you create yourself using The COVE’s map-builder tool. </div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '<br/><em>Showing @total map points</em>';
   /* Field: Content: Geocode */
   $handler->display->display_options['fields']['field_geocode']['id'] = 'field_geocode';
   $handler->display->display_options['fields']['field_geocode']['table'] = 'field_data_field_geocode';
@@ -1041,16 +1053,43 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_geocode']['settings'] = array(
     'data' => 'full',
   );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = 'class="colorbox-node" href="[path]"';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: Associated Events */
+  $handler->display->display_options['fields']['field_assoc_events']['id'] = 'field_assoc_events';
+  $handler->display->display_options['fields']['field_assoc_events']['table'] = 'field_data_field_assoc_events';
+  $handler->display->display_options['fields']['field_assoc_events']['field'] = 'field_assoc_events';
+  $handler->display->display_options['fields']['field_assoc_events']['label'] = '';
+  $handler->display->display_options['fields']['field_assoc_events']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_assoc_events']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_assoc_events']['alter']['text'] = '<img src="/sites/default/files/historical-event-icon.png"/>';
+  $handler->display->display_options['fields']['field_assoc_events']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_assoc_events']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_assoc_events']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_assoc_events']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_assoc_events']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [field_assoc_events]';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['title']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '800';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
@@ -1061,24 +1100,22 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = '';
-  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['text'] = '[body]<br/>[edit_node]';
-  $handler->display->display_options['fields']['body']['alter']['max_length'] = '450';
-  $handler->display->display_options['fields']['body']['alter']['more_link'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['more_link_text'] = 'more';
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a class="bottom-more-link" href="[path]" target="_blank">View place page for more</a>
+[body]';
+  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['link_class'] = 'colorbox-node';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '1000';
+  $handler->display->display_options['fields']['body']['alter']['more_link_text'] = 'View full place page';
   $handler->display->display_options['fields']['body']['alter']['more_link_path'] = '[path]';
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_class'] = '[field_assoc_events]';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1100,6 +1137,31 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['field_vetted__value']['field'] = 'field_vetted__value';
   $handler->display->display_options['filters']['field_vetted__value']['value'] = array(
     1 => '1',
+  );
+  /* Filter criterion: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Place search';
+  $handler->display->display_options['filters']['combine']['expose']['description'] = 'Search by place name or description';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'body' => 'body',
   );
 
   /* Display: Openlayers data-POINT */

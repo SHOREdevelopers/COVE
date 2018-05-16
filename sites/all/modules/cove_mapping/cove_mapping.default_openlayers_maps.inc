@@ -97,8 +97,7 @@ function cove_mapping_default_openlayers_maps() {
     'interactions' => array(
       0 => 'openlayers_interaction_dragpan',
       1 => 'openlayers_interaction_dragrotate',
-      2 => 'openlayers_interaction_mousewheelzoom',
-      3 => 'openlayers_interaction_doubleclickzoom',
+      2 => 'openlayers_interaction_doubleclickzoom',
     ),
     'components' => array(
       0 => 'place_map_pop_up',
@@ -144,8 +143,7 @@ function cove_mapping_default_openlayers_maps() {
     'interactions' => array(
       0 => 'openlayers_interaction_dragpan',
       1 => 'openlayers_interaction_dragrotate',
-      2 => 'openlayers_interaction_mousewheelzoom',
-      3 => 'openlayers_interaction_doubleclickzoom',
+      2 => 'openlayers_interaction_doubleclickzoom',
     ),
     'components' => array(
       0 => 'place_map_pop_up',
