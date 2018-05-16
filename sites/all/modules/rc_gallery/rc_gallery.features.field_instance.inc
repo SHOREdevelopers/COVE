@@ -260,6 +260,67 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-galler_exhibit-field_gallery_items_in_this_exhi'.
+  $field_instances['node-galler_exhibit-field_gallery_items_in_this_exhi'] = array(
+    'bundle' => 'galler_exhibit',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gallery_items_in_this_exhi',
+    'label' => 'Gallery Items in this Exhibit',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-galler_exhibit-field_images_in_exhibit'.
   $field_instances['node-galler_exhibit-field_images_in_exhibit'] = array(
     'bundle' => 'galler_exhibit',
@@ -1138,7 +1199,7 @@ function rc_gallery_field_default_field_instances() {
   // Exported field_instance: 'node-gallery_image-field_featured_in_exhibit'.
   $field_instances['node-gallery_image-field_featured_in_exhibit'] = array(
     'bundle' => 'gallery_image',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => '',
@@ -2183,6 +2244,7 @@ function rc_gallery_field_default_field_instances() {
   t('For gallery images');
   t('From the Collection');
   t('Gallery Image');
+  t('Gallery Items in this Exhibit');
   t('Groups audience');
   t('Height (in centimeters)');
   t('Here add latitude and longitude coordinates for Gallery images tied to a particular place. This will be run via imports on TEI places files. See the feeds importers for more. ');

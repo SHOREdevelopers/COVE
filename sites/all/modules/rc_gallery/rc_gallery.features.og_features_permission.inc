@@ -23,7 +23,6 @@ function rc_gallery_og_features_default_permissions() {
   $permissions['node:course:create gallery_image content'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'member' => 'member',
       'student' => 'student',
     ),
   );
@@ -55,7 +54,6 @@ function rc_gallery_og_features_default_permissions() {
   $permissions['node:course:delete own gallery_image content'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'member' => 'member',
       'student' => 'student',
     ),
   );
@@ -87,7 +85,6 @@ function rc_gallery_og_features_default_permissions() {
   $permissions['node:course:update own gallery_image content'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'member' => 'member',
       'student' => 'student',
     ),
   );

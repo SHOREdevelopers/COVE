@@ -1517,7 +1517,7 @@ function rc_gallery_views_default_views() {
     'field_description' => 'field_description',
   );
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  /* Relationship: Broken/missing handler */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['id'] = 'field_gallery_items_in_this_exhi_target_id';
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['relationships']['field_gallery_items_in_this_exhi_target_id']['field'] = 'field_gallery_items_in_this_exhi_target_id';
@@ -1596,7 +1596,7 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['settings'] = array(
     'trim_length' => '300',
   );
-  /* Sort criterion: Broken/missing handler */
+  /* Sort criterion: Content: Gallery Items in this Exhibit (field_gallery_items_in_this_exhi:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['sorts']['delta']['field'] = 'delta';
@@ -1624,7 +1624,7 @@ function rc_gallery_views_default_views() {
     'galler_exhibit' => 'galler_exhibit',
     'gallery_exhibit_item' => 'gallery_exhibit_item',
   );
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Content: Gallery Items in this Exhibit (field_gallery_items_in_this_exhi) */
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['id'] = 'field_gallery_items_in_this_exhi_target_id';
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['table'] = 'field_data_field_gallery_items_in_this_exhi';
   $handler->display->display_options['filters']['field_gallery_items_in_this_exhi_target_id']['field'] = 'field_gallery_items_in_this_exhi_target_id';
