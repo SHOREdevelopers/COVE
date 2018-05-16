@@ -337,7 +337,7 @@ font-weight:bold;
 color:gray;
 }
 
-.teaserItem .views-field-field-editor, .teaserItem .views-field-field-edited-by {
+.teaserItem .views-field-field-editor, .teaserItem .views-field-field-edited-by, .views-field-field-editor-in-chief {
 text-align:right;
 display:block;
 margin-top:8px;
