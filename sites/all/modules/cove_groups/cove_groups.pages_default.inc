@@ -423,7 +423,7 @@ function cove_groups_default_page_manager_handlers() {
     'link' => 1,
     'context' => 'argument_entity_id:node_1',
     'override_title' => 1,
-    'override_title_text' => 'Instructor',
+    'override_title_text' => 'Leader',
     'override_title_heading' => 'h4',
   );
   $pane->cache = array();
@@ -449,7 +449,7 @@ function cove_groups_default_page_manager_handlers() {
       0 => 'argument_entity_id:node_1',
     ),
     'override_title' => 1,
-    'override_title_text' => 'Students',
+    'override_title_text' => 'Participants',
     'override_title_heading' => 'h4',
   );
   $pane->cache = array();
