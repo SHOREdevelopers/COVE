@@ -151,6 +151,7 @@ function cove_editions_field_group_info() {
       2 => 'field_places_mentioned_in_this_l',
       3 => 'field_unique_target',
       4 => 'field_xml_tei',
+      5 => 'field_document_order',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

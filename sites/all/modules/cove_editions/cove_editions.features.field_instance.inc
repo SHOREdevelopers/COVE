@@ -175,6 +175,7 @@ function cove_editions_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -445,6 +446,7 @@ function cove_editions_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -507,6 +509,7 @@ function cove_editions_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -2214,7 +2217,7 @@ function cove_editions_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -2265,7 +2268,53 @@ function cove_editions_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-editions_page-field_document_order'.
+  $field_instances['node-editions_page-field_document_order'] = array(
+    'bundle' => 'editions_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Set the order of a document for Table of Contents and navigation lists',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_document_order',
+    'label' => 'Document Order',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 14,
     ),
   );
 
@@ -3224,7 +3273,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -3281,7 +3330,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -3338,7 +3387,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 14,
     ),
   );
 
@@ -3396,7 +3445,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 13,
+      'weight' => 17,
     ),
   );
 
@@ -3453,7 +3502,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 18,
     ),
   );
 
@@ -3568,7 +3617,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 15,
     ),
   );
 
@@ -3625,7 +3674,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
+      'weight' => 16,
     ),
   );
 
@@ -4338,6 +4387,7 @@ function cove_editions_field_default_field_instances() {
   t('Country');
   t('Date published');
   t('Doc Owner');
+  t('Document Order');
   t('Documents in this Edition');
   t('Edition Description');
   t('Edition state');
@@ -4378,6 +4428,7 @@ function cove_editions_field_default_field_instances() {
   t('Region');
   t('Related Person');
   t('Resource Technical Editor');
+  t('Set the order of a document for Table of Contents and navigation lists');
   t('Synonyms');
   t('Tags');
   t('Tags sourced from OpenCalais about City.');

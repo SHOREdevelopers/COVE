@@ -453,13 +453,11 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['edit_node_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node_1']['text'] = 'Edit metadata';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  /* Sort criterion: Content: Document Order (field_document_order) */
+  $handler->display->display_options['sorts']['field_document_order_value']['id'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['sorts']['field_document_order_value']['field'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -510,13 +508,11 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['edit_node_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node_1']['text'] = 'Edit metadata';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_2';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  /* Sort criterion: Content: Document Order (field_document_order) */
+  $handler->display->display_options['sorts']['field_document_order_value']['id'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['sorts']['field_document_order_value']['field'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -574,24 +570,21 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Document Order (field_document_order) */
+  $handler->display->display_options['sorts']['field_document_order_value']['id'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['sorts']['field_document_order_value']['field'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -653,26 +646,21 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Document Order (field_document_order) */
+  $handler->display->display_options['sorts']['field_document_order_value']['id'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['sorts']['field_document_order_value']['field'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'field_documents_in_this_edition_target_id';
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_2';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -708,6 +696,7 @@ function cove_editions_views_default_views() {
     21 => '21',
     24 => '24',
   );
+  $handler->display->display_options['filters']['field_nines_genre_s__tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_nines_genre_s__tid']['vocabulary'] = 'nines_genre';
 
@@ -886,6 +875,18 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Document Order */
+  $handler->display->display_options['fields']['field_document_order']['id'] = 'field_document_order';
+  $handler->display->display_options['fields']['field_document_order']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['fields']['field_document_order']['field'] = 'field_document_order';
+  $handler->display->display_options['fields']['field_document_order']['relationship'] = 'field_documents_in_this_edition_target_id';
+  $handler->display->display_options['fields']['field_document_order']['label'] = '';
+  $handler->display->display_options['fields']['field_document_order']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_document_order']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_document_order']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 0,
+  );
   /* Field: Draggableviews: Content */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
@@ -895,8 +896,13 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['handler'] = 'draggableviews_handler_fieldapi';
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['hierarchy_handler'] = 'draggableviews_hierarchy_handler_native';
   $handler->display->display_options['fields']['draggableviews']['draggableviews']['save_button_label'] = 'Save Reordering';
   $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['draggableviews_handler_fieldapi'] = array(
+    'field' => 'field_data_field_document_order:field_document_order_value',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -919,13 +925,11 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['field_nines_genre_s_']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_nines_genre_s_']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_nines_genre_s_']['delta_offset'] = '0';
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_documents_in_this_edition_target_id';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'documents_in_this_edition_drag_:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  /* Sort criterion: Content: Document Order (field_document_order) */
+  $handler->display->display_options['sorts']['field_document_order_value']['id'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['table'] = 'field_data_field_document_order';
+  $handler->display->display_options['sorts']['field_document_order_value']['field'] = 'field_document_order_value';
+  $handler->display->display_options['sorts']['field_document_order_value']['relationship'] = 'field_documents_in_this_edition_target_id';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -1476,7 +1480,6 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
@@ -1580,7 +1583,6 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
