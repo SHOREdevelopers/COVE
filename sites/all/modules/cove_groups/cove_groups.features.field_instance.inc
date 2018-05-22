@@ -15,7 +15,7 @@ function cove_groups_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter a short description of your course here. ',
+    'description' => 'Enter a short description of your group here. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -279,7 +279,7 @@ function cove_groups_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Description');
   t('Determine if this is an OG group.');
-  t('Enter a short description of your course here. ');
+  t('Enter a short description of your group here. ');
   t('Group');
   t('Group register');
   t('Group visibility');

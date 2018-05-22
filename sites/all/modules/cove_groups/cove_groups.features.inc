@@ -26,12 +26,12 @@ function cove_groups_views_api($module = NULL, $api = NULL) {
 function cove_groups_node_info() {
   $items = array(
     'course' => array(
-      'name' => t('Course'),
+      'name' => t('Group'),
       'base' => 'node_content',
-      'description' => t('Content type for course-based groups'),
+      'description' => t('Content type for course-based or scholar-driven groups'),
       'has_title' => '1',
       'title_label' => t('Group name'),
-      'help' => t('As an administrator, your fist step is to create a course. You can then add content and users.'),
+      'help' => t('As an administrator, your first step is to create a group. Groups can take the form of either academic courses or scholar-driven projects. Once you\'ve created a group, you can then add content and users.'),
     ),
   );
   drupal_alter('node_info', $items);
