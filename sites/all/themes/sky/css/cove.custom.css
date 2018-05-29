@@ -15,6 +15,16 @@ html, body {
     background-attachment: fixed;
 }
 
+.navbar li {
+    float: left;
+}
+
+@media only screen and (max-width:768px) {
+.navbar li a {
+  font-size:60%;
+  padding:5px !important;  
+}
+}
 .logged-in .navbar-fixed-top {
     top: 29px;
 }
@@ -115,11 +125,17 @@ position:relative;
     margin-right: 0;
 }
 
-#menu-bar .menu-wrapper li a, #menu-bar .menu-wrapper .menu li a {
+#menu-bar .menu-wrapper li a, #menu-bar .menu-wrapper .menu li a, #menu-bar .menu-wrapper .menu li span {
     display: block;
     line-height: 2.5em;
     padding: 0 1.5em;
     white-space: nowrap;
+}
+.sf-menu.sf-style-cove li span {
+    color: white;
+    font-weight: bold;
+    padding: 0.75em 1em;
+    text-transform: uppercase;
 }
 /*div#columns {
     z-index: 400;
@@ -986,9 +1002,10 @@ position:relative;
 
 /*Adjusting logo for smartphones*/
 
-@media only screen and (min-width:321px) and (max-width:480px) {
+@media only screen and (min-width:321px) and (max-width:men480px) {
 #branding {
     height: 45px;
+    margin-top: 40px !important;
 }
 
 #logo {
@@ -1244,6 +1261,11 @@ p.dateDesc {
 font-style:italic;
 font-size:small;
 }
+/* Remove the layer switcher in timelines. Using display none here because it's desirable in the fullscreen mode, so I don't want to remove it altogether from this instance of the map */
+div.view-custom-timeline div.layerswitcher {
+    display: none;
+}
+
 /* hide links that don't have a title attribute for date descriptions. Used with tooltips on the Date description field for partial date and chronologies.*/
 div.view-custom-timeline td.views-field-field-event-date-1 a[title=''] {
   display:none;
