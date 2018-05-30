@@ -505,7 +505,7 @@ h2.field-label {
     color: black !important;
 }
 
-section.field.field-name-field-main-author, section.field.field-name-field-original-publication-date, section.field.field-name-field-edited-by, section.field-name-field-annotator, section.field-name-field-editor-in-chief {
+section.field.field-name-field-main-author, section.field.field-name-field-original-publication-date, section.field.field-name-field-edited-by, section.field-name-field-annotator, section.field-name-field-editor-in-chief, section.field-name-field-postgraduate-researcher {
     /* margin: auto; */
     /* width: 100%; */
     display: inline-block;
