@@ -601,6 +601,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 1,
         'preview_image_style' => 'gallery_small',
         'progress_indicator' => 'throbber',
       ),

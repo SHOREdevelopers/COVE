@@ -1237,12 +1237,19 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
+  /* Field: Content: Editor-In-Chief */
+  $handler->display->display_options['fields']['field_editor_in_chief']['id'] = 'field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['table'] = 'field_data_field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['field'] = 'field_editor_in_chief';
+  $handler->display->display_options['fields']['field_editor_in_chief']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_editor_in_chief']['settings'] = array(
+    'link' => 1,
+  );
   /* Field: Content: Edited By */
   $handler->display->display_options['fields']['field_edited_by']['id'] = 'field_edited_by';
   $handler->display->display_options['fields']['field_edited_by']['table'] = 'field_data_field_edited_by';
   $handler->display->display_options['fields']['field_edited_by']['field'] = 'field_edited_by';
-  $handler->display->display_options['fields']['field_edited_by']['label'] = 'Edited by';
-  $handler->display->display_options['fields']['field_edited_by']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_edited_by']['label'] = 'Editor(s)';
   $handler->display->display_options['fields']['field_edited_by']['settings'] = array(
     'link' => 1,
   );

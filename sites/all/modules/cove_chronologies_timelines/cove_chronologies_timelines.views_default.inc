@@ -878,14 +878,10 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_places_in_this_map_target_id']['id'] = 'field_places_in_this_map_target_id';
-  $handler->display->display_options['relationships']['field_places_in_this_map_target_id']['table'] = 'field_data_field_places_in_this_map';
-  $handler->display->display_options['relationships']['field_places_in_this_map_target_id']['field'] = 'field_places_in_this_map_target_id';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_assoc_places_target_id']['id'] = 'field_assoc_places_target_id';
-  $handler->display->display_options['relationships']['field_assoc_places_target_id']['table'] = 'field_data_field_assoc_places';
-  $handler->display->display_options['relationships']['field_assoc_places_target_id']['field'] = 'field_assoc_places_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['id'] = 'reverse_field_assoc_events_node';
+  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['field'] = 'reverse_field_assoc_events_node';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1187,43 +1183,32 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  /* Field: Global: View */
-  $handler->display->display_options['fields']['view']['id'] = 'view';
-  $handler->display->display_options['fields']['view']['table'] = 'views';
-  $handler->display->display_options['fields']['view']['field'] = 'view';
-  $handler->display->display_options['fields']['view']['label'] = '';
-  $handler->display->display_options['fields']['view']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view']['view'] = 'map_per_event';
-  $handler->display->display_options['fields']['view']['display'] = 'panel_pane_1';
-  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
   /* Field: Content: Geocode */
   $handler->display->display_options['fields']['field_geocode']['id'] = 'field_geocode';
   $handler->display->display_options['fields']['field_geocode']['table'] = 'field_data_field_geocode';
   $handler->display->display_options['fields']['field_geocode']['field'] = 'field_geocode';
-  $handler->display->display_options['fields']['field_geocode']['relationship'] = 'field_assoc_places_target_id';
+  $handler->display->display_options['fields']['field_geocode']['relationship'] = 'reverse_field_assoc_events_node';
   $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
   $handler->display->display_options['fields']['field_geocode']['type'] = 'openlayers_geofield';
   $handler->display->display_options['fields']['field_geocode']['settings'] = array(
     'map_layer_preset' => 'openlayers_geofield_map_geofield_formatter:openlayers_geofield_layer_formatter',
     'data' => 'full',
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_assoc_places_target_id';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_1']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['node_in_colorbox_width'] = '600';
-  $handler->display->display_options['fields']['title_1']['node_in_colorbox_height'] = '600';
-  $handler->display->display_options['fields']['title_1']['node_in_colorbox_rel'] = '';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   /* Field: Content: Event Description */
   $handler->display->display_options['fields']['field_event2']['id'] = 'field_event2';
   $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
@@ -1232,7 +1217,6 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_event2']['alter']['text'] = '[field_event2]
 [field_geocode]
-[title_1]
 <p>by [name]</p>';
   /* Field: Content: Event date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
@@ -1321,6 +1305,7 @@ function cove_chronologies_timelines_views_default_views() {
       ),
     ),
   );
+  $handler->display->display_options['fields']['field_event_date']['group_column'] = 'data';
   /* Field: Content: Event date */
   $handler->display->display_options['fields']['field_event_date_1']['id'] = 'field_event_date_1';
   $handler->display->display_options['fields']['field_event_date_1']['table'] = 'field_data_field_event_date';
@@ -1417,6 +1402,7 @@ function cove_chronologies_timelines_views_default_views() {
     'image_style' => 'gallery_small',
     'image_link' => 'file',
   );
+  $handler->display->display_options['fields']['field_image']['group_column'] = 'fid';
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_image_1']['id'] = 'field_image_1';
   $handler->display->display_options['fields']['field_image_1']['table'] = 'field_data_field_image';
@@ -1430,16 +1416,6 @@ function cove_chronologies_timelines_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
-  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2291,8 +2267,21 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'openlayers_source_vector';
+  $handler->display->display_options['style_options']['data_source'] = array(
+    'value' => 'wkt',
+    'other_lat' => 'title',
+    'other_lon' => 'title',
+    'wkt' => 'field_geocode',
+    'other_top' => 'title',
+    'other_right' => 'title',
+    'other_bottom' => 'title',
+    'other_left' => 'title',
+    'name_field' => 'title',
+    'description_field' => '',
+  );
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_assoc_places_target_id']['id'] = 'field_assoc_places_target_id';
   $handler->display->display_options['relationships']['field_assoc_places_target_id']['table'] = 'field_data_field_assoc_places';
@@ -2317,9 +2306,7 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['field_geocode']['label'] = '';
   $handler->display->display_options['fields']['field_geocode']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
-  $handler->display->display_options['fields']['field_geocode']['type'] = 'openlayers_geofield';
   $handler->display->display_options['fields']['field_geocode']['settings'] = array(
-    'map_layer_preset' => 'openlayers_geofield_map_geofield_formatter:openlayers_geofield_layer_formatter',
     'data' => 'full',
   );
   /* Contextual filter: Content: Nid */
@@ -2348,6 +2335,25 @@ function cove_chronologies_timelines_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'openlayers_map_views';
+  $handler->display->display_options['style_options']['data_source'] = array(
+    'value' => 'wkt',
+    'other_lat' => 'title',
+    'other_lon' => 'title',
+    'wkt' => 'field_geocode',
+    'other_top' => 'title',
+    'other_right' => 'title',
+    'other_bottom' => 'title',
+    'other_left' => 'title',
+    'name_field' => 'title',
+    'description_field' => '',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -2371,6 +2377,57 @@ function cove_chronologies_timelines_views_default_views() {
   );
   $handler->display->display_options['fields']['field_assoc_places']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_assoc_places']['multi_type'] = 'ol';
+
+  /* Display: Openlayers data */
+  $handler = $view->new_display('openlayers', 'Openlayers data', 'openlayers_1');
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+
+  /* Display: Content pane 2 */
+  $handler = $view->new_display('panel_pane', 'Content pane 2', 'panel_pane_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Geocode */
+  $handler->display->display_options['fields']['field_geocode']['id'] = 'field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['table'] = 'field_data_field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['field'] = 'field_geocode';
+  $handler->display->display_options['fields']['field_geocode']['label'] = '';
+  $handler->display->display_options['fields']['field_geocode']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
+  $handler->display->display_options['fields']['field_geocode']['settings'] = array(
+    'data' => 'full',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_assoc_places_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   $export['map_per_event'] = $view;
 
   $view = new view();
