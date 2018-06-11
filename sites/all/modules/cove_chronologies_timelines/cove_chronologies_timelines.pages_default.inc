@@ -495,6 +495,8 @@ function cove_chronologies_timelines_default_page_manager_handlers() {
       'colorbox_gallery_custom' => '',
       'colorbox_caption' => 'auto',
       'colorbox_caption_custom' => '',
+      'image_style' => '',
+      'image_link' => '',
     ),
     'context' => 'argument_entity_id:node_1',
     'override_title' => 0,

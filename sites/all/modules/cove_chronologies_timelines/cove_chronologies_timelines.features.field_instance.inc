@@ -300,7 +300,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -340,7 +340,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -555,7 +555,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -606,7 +606,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -665,7 +665,50 @@ function cove_chronologies_timelines_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-chronology_entry-field_vetted_'.
+  $field_instances['node-chronology_entry-field_vetted_'] = array(
+    'bundle' => 'chronology_entry',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => 'If marked as vetted, this chronology entry will be available for all users to add to their timelines or associate with places. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vetted_',
+    'label' => 'Vetted?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
     ),
   );
 
@@ -724,7 +767,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -738,6 +781,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('Groups audience');
   t('Here, you can add already-existing events relevant to your Timeline. To do so, click the "Add items" button below. ');
   t('Here, you can add an image that is in some way illustrative of an event; for example, a title page for a book publication, a portrait of a person involved in an event, or a depiction of a historical event. This is not required but highly encouraged. See below for basic size requirements, and keep in mind that the image will be resized to fit the timeline format. ');
+  t('If marked as vetted, this chronology entry will be available for all users to add to their timelines or associate with places. ');
   t('If this chronology is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Image');
   t('Items in this chronology');
@@ -746,6 +790,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('Parent Resource');
   t('Provide a short description of your chronology');
   t('Select the parent chronology of which this entry is a part. This should happen automatically!');
+  t('Vetted?');
   t('You can associated places in our database with an event. To do so, click the "Add items" button below. If a place does not already exist in the database, you can create one <a target="_blank" href="/node/add/place">here</a>. Once saved, your newly created event will be available in the list. ');
 
   return $field_instances;
