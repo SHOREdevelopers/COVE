@@ -858,18 +858,82 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'timelinejs';
-  $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = TRUE;
-  $handler->display->display_options['style_options']['timeline_config']['start_at_end'] = 0;
-  $handler->display->display_options['style_options']['additional_config']['start_at_current'] = 0;
-  $handler->display->display_options['style_options']['timeline_fields']['caption'] = 'field_image_1';
-  $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_image';
-  $handler->display->display_options['style_options']['timeline_fields']['start_date'] = 'field_event_date';
-  $handler->display->display_options['style_options']['timeline_fields']['end_date'] = 'field_event_date';
-  $handler->display->display_options['style_options']['timeline_fields']['display_date'] = 'field_event_date_1';
-  $handler->display->display_options['style_options']['timeline_fields']['text'] = 'field_event2';
-  $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
-  $handler->display->display_options['style_options']['timeline_fields']['unique_id'] = 'nid';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'nid' => 'nid',
+    'view' => 'view',
+    'name' => 'name',
+    'field_event2' => 'field_event2',
+    'field_event_date' => 'field_event_date',
+    'field_event_date_1' => 'field_event_date_1',
+    'field_image' => 'field_image',
+    'field_image_1' => 'field_image_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'view' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event2' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_image_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
@@ -878,10 +942,10 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['id'] = 'reverse_field_assoc_events_node';
-  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_assoc_events_node']['field'] = 'reverse_field_assoc_events_node';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['id'] = 'field_assoc_places_target_id';
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['table'] = 'field_data_field_assoc_places';
+  $handler->display->display_options['relationships']['field_assoc_places_target_id']['field'] = 'field_assoc_places_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1169,6 +1233,22 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'timelinejs';
+  $handler->display->display_options['style_options']['timeline_config']['hash_bookmark'] = 0;
+  $handler->display->display_options['style_options']['timeline_config']['start_at_end'] = 0;
+  $handler->display->display_options['style_options']['additional_config']['start_at_current'] = 0;
+  $handler->display->display_options['style_options']['timeline_fields']['caption'] = 'field_image_1';
+  $handler->display->display_options['style_options']['timeline_fields']['media'] = 'field_image';
+  $handler->display->display_options['style_options']['timeline_fields']['start_date'] = 'field_event_date';
+  $handler->display->display_options['style_options']['timeline_fields']['end_date'] = 'field_event_date';
+  $handler->display->display_options['style_options']['timeline_fields']['display_date'] = 'field_event_date_1';
+  $handler->display->display_options['style_options']['timeline_fields']['text'] = 'field_event2';
+  $handler->display->display_options['style_options']['timeline_fields']['headline'] = 'title';
+  $handler->display->display_options['style_options']['timeline_fields']['unique_id'] = 'nid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
@@ -1193,17 +1273,18 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
-  /* Field: Content: Geocode */
-  $handler->display->display_options['fields']['field_geocode']['id'] = 'field_geocode';
-  $handler->display->display_options['fields']['field_geocode']['table'] = 'field_data_field_geocode';
-  $handler->display->display_options['fields']['field_geocode']['field'] = 'field_geocode';
-  $handler->display->display_options['fields']['field_geocode']['relationship'] = 'reverse_field_assoc_events_node';
-  $handler->display->display_options['fields']['field_geocode']['click_sort_column'] = 'geom';
-  $handler->display->display_options['fields']['field_geocode']['type'] = 'openlayers_geofield';
-  $handler->display->display_options['fields']['field_geocode']['settings'] = array(
-    'map_layer_preset' => 'openlayers_geofield_map_geofield_formatter:openlayers_geofield_layer_formatter',
-    'data' => 'full',
+  /* Field: Content: Associated Places */
+  $handler->display->display_options['fields']['field_assoc_places']['id'] = 'field_assoc_places';
+  $handler->display->display_options['fields']['field_assoc_places']['table'] = 'field_data_field_assoc_places';
+  $handler->display->display_options['fields']['field_assoc_places']['field'] = 'field_assoc_places';
+  $handler->display->display_options['fields']['field_assoc_places']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_assoc_places']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_assoc_places']['settings'] = array(
+    'view_mode' => 'map_thumb',
+    'links' => 0,
   );
+  $handler->display->display_options['fields']['field_assoc_places']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_assoc_places']['separator'] = '';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -1216,7 +1297,8 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['fields']['field_event2']['label'] = 'Event';
   $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_event2']['alter']['text'] = '[field_event2]
-[field_geocode]
+<br/>
+[field_assoc_places]
 <p>by [name]</p>';
   /* Field: Content: Event date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
@@ -2250,10 +2332,10 @@ function cove_chronologies_timelines_views_default_views() {
 
   $view = new view();
   $view->name = 'map_per_event';
-  $view->description = 'Map that will show all places associated with an event';
+  $view->description = 'Map that will show all places associated with an event or Gallery image (currently)';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Map per Event';
+  $view->human_name = 'Associated Place(s)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -2329,8 +2411,9 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_assoc_places_target_id';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'chronology_entry' => 'chronology_entry',
+    'place' => 'place',
   );
 
   /* Display: Content pane */
@@ -2428,6 +2511,29 @@ function cove_chronologies_timelines_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'openlayers_map_views';
+  $handler->display->display_options['style_options']['data_source'] = array(
+    'value' => 'wkt',
+    'other_lat' => 'title',
+    'other_lon' => 'title',
+    'wkt' => 'field_geocode',
+    'other_top' => 'title',
+    'other_right' => 'title',
+    'other_bottom' => 'title',
+    'other_left' => 'title',
+    'name_field' => 'title',
+    'description_field' => '',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'content/%/associated-places';
   $export['map_per_event'] = $view;
 
   $view = new view();
