@@ -1776,3 +1776,33 @@ a.bottom-more-link {
     bottom: 0;
     margin-bottom: 6px;
 }
+
+article.node-map-thumb h1.node-title {
+    font-size: 1.2em;
+}
+
+article.node-map-thumb header.node-header {
+    border-bottom: none;
+}
+
+article.node-map-thumb .comment header h3 a, h1 a, h1.node-title a {
+    color: #c34528;
+}
+article.node-map-thumb {
+  margin-bottom: 1em;
+}
+
+article.node-map-thumb .node-content {
+    padding:0;
+}
+
+article.node-map-thumb .form-item,form-type-openlayers {
+    margin: 0.75em 0;
+}
+
+.view-custom-timeline article.node-map-thumb:first-of-type:before {
+    content: 'Associated Places';
+    font-weight: bold;
+    margin: 12px 0px 5px 0px;
+    font-size: 1.2em;
+}

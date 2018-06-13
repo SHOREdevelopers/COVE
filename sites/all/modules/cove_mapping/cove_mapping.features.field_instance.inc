@@ -260,6 +260,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'map_thumb' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -310,6 +316,12 @@ function cove_mapping_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
+        'weight' => 7,
+      ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -369,6 +381,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 2,
       ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -420,6 +438,16 @@ function cove_mapping_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'openlayers_geofield',
+        'settings' => array(
+          'data' => 'full',
+          'map_layer_preset' => 'openlayers_geofield_map_geofield_formatter:openlayers_geofield_layer_formatter',
+        ),
+        'type' => 'openlayers_geofield',
+        'weight' => 6,
+      ),
+      'map_thumb' => array(
+        'label' => 'hidden',
         'module' => 'openlayers_geofield',
         'settings' => array(
           'data' => 'full',
@@ -497,6 +525,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'geofield_wkt',
         'weight' => 8,
       ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -549,6 +583,12 @@ function cove_mapping_field_default_field_instances() {
     'description' => 'Legacy field. Do not use. ',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'map_thumb' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -611,6 +651,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 5,
       ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -663,6 +709,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -706,6 +758,12 @@ function cove_mapping_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 3,
+      ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -761,6 +819,12 @@ function cove_mapping_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 9,
       ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -796,6 +860,12 @@ function cove_mapping_field_default_field_instances() {
         'module' => 'og_ui',
         'settings' => array(),
         'type' => 'og_list_default',
+        'weight' => 4,
+      ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(

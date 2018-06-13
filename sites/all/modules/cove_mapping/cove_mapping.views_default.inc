@@ -334,6 +334,10 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
   $handler->display->display_options['arguments']['nid']['not'] = TRUE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -348,11 +352,13 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'chronology_entry' => 'chronology_entry',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
   $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search events';
@@ -381,7 +387,18 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['field_event_source_tid']['value'] = array(
     0 => '156',
   );
+  $handler->display->display_options['filters']['field_event_source_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_event_source_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_event_source_tid']['vocabulary'] = 'event_source';
+  /* Filter criterion: Content: Vetted? (field_vetted_) */
+  $handler->display->display_options['filters']['field_vetted__value']['id'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['filters']['field_vetted__value']['field'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_vetted__value']['group'] = 2;
+  $handler->display->display_options['filters']['field_vetted__value']['reduce_duplicates'] = TRUE;
 
   /* Display: Entity Reference */
   $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
@@ -729,6 +746,14 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_event2']['settings'] = array(
     'trim_length' => '100',
   );
+  /* Field: Content: Event Source */
+  $handler->display->display_options['fields']['field_event_source']['id'] = 'field_event_source';
+  $handler->display->display_options['fields']['field_event_source']['table'] = 'field_data_field_event_source';
+  $handler->display->display_options['fields']['field_event_source']['field'] = 'field_event_source';
+  /* Field: Content: Vetted? */
+  $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -1366,10 +1391,10 @@ function cove_mapping_views_default_views() {
 
   $view = new view();
   $view->name = 'timeline_per_place';
-  $view->description = 'A custom timeline added to an edition or group';
+  $view->description = 'Associated events with places or Gallery images';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Timeline per Place';
+  $view->human_name = 'Associated Event(s)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1645,13 +1670,6 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'place' => 'place',
-  );
   /* Filter criterion: Content: Associated Events (field_assoc_events) */
   $handler->display->display_options['filters']['field_assoc_events_target_id']['id'] = 'field_assoc_events_target_id';
   $handler->display->display_options['filters']['field_assoc_events_target_id']['table'] = 'field_data_field_assoc_events';

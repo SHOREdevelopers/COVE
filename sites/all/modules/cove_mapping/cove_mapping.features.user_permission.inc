@@ -259,6 +259,7 @@ function cove_mapping_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
       'manager' => 'manager',
+      'section editor' => 'section editor',
     ),
     'module' => 'field_permissions',
   );
