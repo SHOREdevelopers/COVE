@@ -205,6 +205,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -771,6 +772,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'bar',
       ),
@@ -959,7 +961,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 23,
+      'weight' => 30,
     ),
   );
 
@@ -1055,6 +1057,118 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gallery_image-field_assoc_events'.
+  $field_instances['node-gallery_image-field_assoc_events'] = array(
+    'bundle' => 'gallery_image',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 62,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_assoc_events',
+    'label' => 'Associated Events',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_event_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-gallery_image-field_assoc_places'.
+  $field_instances['node-gallery_image-field_assoc_places'] = array(
+    'bundle' => 'gallery_image',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 63,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_assoc_places',
+    'label' => 'Associated Places',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'associated_place_autocomplete|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-gallery_image-field_copyright'.
   $field_instances['node-gallery_image-field_copyright'] = array(
     'bundle' => 'gallery_image',
@@ -1145,7 +1259,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 28,
+      'weight' => 34,
     ),
   );
 
@@ -1361,7 +1475,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 22,
+      'weight' => 29,
     ),
   );
 
@@ -1423,6 +1537,7 @@ function rc_gallery_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'imce_filefield_on' => 0,
         'preview_image_style' => 'medium',
         'progress_indicator' => 'throbber',
       ),
@@ -1473,7 +1588,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 24,
+      'weight' => 31,
     ),
   );
 
@@ -1692,7 +1807,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'geofield',
       'settings' => array(),
       'type' => 'geofield_latlon',
-      'weight' => 35,
+      'weight' => 41,
     ),
   );
 
@@ -1738,7 +1853,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 39,
     ),
   );
 
@@ -1784,7 +1899,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 32,
+      'weight' => 38,
     ),
   );
 
@@ -1830,7 +1945,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 34,
+      'weight' => 40,
     ),
   );
 
@@ -1883,7 +1998,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 31,
+      'weight' => 37,
     ),
   );
 
@@ -1930,7 +2045,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 28,
     ),
   );
 
@@ -1975,7 +2090,7 @@ function rc_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => 0,
       ),
       'type' => 'options_buttons',
-      'weight' => 26,
+      'weight' => 33,
     ),
   );
 
@@ -2018,7 +2133,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 29,
+      'weight' => 35,
     ),
   );
 
@@ -2061,7 +2176,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -2107,7 +2222,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 25,
+      'weight' => 32,
     ),
   );
 
@@ -2219,7 +2334,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 30,
+      'weight' => 36,
     ),
   );
 
@@ -2232,6 +2347,8 @@ function rc_gallery_field_default_field_instances() {
   t('Applicable NINES types for RDF output. Multiple values may be selected.');
   t('Artist');
   t('Artist Unknown');
+  t('Associated Events');
+  t('Associated Places');
   t('Body');
   t('Check this box if the artist is unknown.');
   t('Content type for galleries and/or gallery images');

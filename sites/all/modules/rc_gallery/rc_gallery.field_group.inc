@@ -21,7 +21,7 @@ function rc_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced Fields',
-    'weight' => '11',
+    'weight' => '13',
     'children' => array(
       0 => 'field_nines_discipline_s_',
       1 => 'field_nines_genre_s_',
