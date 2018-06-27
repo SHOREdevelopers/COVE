@@ -178,10 +178,27 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="descbig">Check any boxes next to items you\'d like to associate with your content, then click "Submit" below. Various filters and sorts are available to help you find what you\'re looking for. Allowable selections are any vetted materials on the site, as well as group content marked as public. </div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<em>Your filter settings did not match any events.</em>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   /* Field: Entity Reference View Widget Checkbox: Content */
   $handler->display->display_options['fields']['entityreference_view_widget']['id'] = 'entityreference_view_widget';
   $handler->display->display_options['fields']['entityreference_view_widget']['table'] = 'node';
@@ -317,11 +334,18 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_event2']['settings'] = array(
     'trim_length' => '100',
   );
+  /* Sort criterion: Content: Group content visibility (group_content_access) */
+  $handler->display->display_options['sorts']['group_content_access_value']['id'] = 'group_content_access_value';
+  $handler->display->display_options['sorts']['group_content_access_value']['table'] = 'field_data_group_content_access';
+  $handler->display->display_options['sorts']['group_content_access_value']['field'] = 'group_content_access_value';
+  $handler->display->display_options['sorts']['group_content_access_value']['expose']['label'] = 'Group status';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['created']['expose']['label'] = 'Post date';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -362,34 +386,23 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search events';
+  $handler->display->display_options['filters']['combine']['expose']['description'] = 'Type any word or words to find relevant events';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    5 => 0,
     4 => 0,
-    6 => 0,
+    10 => 0,
     7 => 0,
     9 => 0,
     8 => 0,
-    10 => 0,
+    3 => 0,
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'title' => 'title',
     'field_event2' => 'field_event2',
   );
-  /* Filter criterion: Content: Event Source (field_event_source) */
-  $handler->display->display_options['filters']['field_event_source_tid']['id'] = 'field_event_source_tid';
-  $handler->display->display_options['filters']['field_event_source_tid']['table'] = 'field_data_field_event_source';
-  $handler->display->display_options['filters']['field_event_source_tid']['field'] = 'field_event_source_tid';
-  $handler->display->display_options['filters']['field_event_source_tid']['value'] = array(
-    0 => '156',
-  );
-  $handler->display->display_options['filters']['field_event_source_tid']['group'] = 2;
-  $handler->display->display_options['filters']['field_event_source_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_event_source_tid']['vocabulary'] = 'event_source';
   /* Filter criterion: Content: Vetted? (field_vetted_) */
   $handler->display->display_options['filters']['field_vetted__value']['id'] = 'field_vetted__value';
   $handler->display->display_options['filters']['field_vetted__value']['table'] = 'field_data_field_vetted_';
@@ -398,7 +411,52 @@ function cove_mapping_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_vetted__value']['group'] = 2;
+  $handler->display->display_options['filters']['field_vetted__value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['operator_id'] = 'field_vetted__value_op';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['label'] = 'Vetted?';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['description'] = 'Displays vetted materials by default. Select "Not Vetted" for content associated with groups. ';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['operator'] = 'field_vetted__value_op';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['identifier'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['filters']['field_vetted__value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Group content visibility (group_content_access) */
+  $handler->display->display_options['filters']['group_content_access_value']['id'] = 'group_content_access_value';
+  $handler->display->display_options['filters']['group_content_access_value']['table'] = 'field_data_group_content_access';
+  $handler->display->display_options['filters']['group_content_access_value']['field'] = 'group_content_access_value';
+  $handler->display->display_options['filters']['group_content_access_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['group_content_access_value']['group'] = 2;
+  $handler->display->display_options['filters']['group_content_access_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Groups audience (og_group_ref) */
+  $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['operator_id'] = 'og_group_ref_target_id_op';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['label'] = 'Group name';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['description'] = 'Filter content by group';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['operator'] = 'og_group_ref_target_id_op';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['identifier'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
 
   /* Display: Entity Reference */
   $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
@@ -572,8 +630,13 @@ function cove_mapping_views_default_views() {
     'nid' => 'nid',
     'title' => 'title',
     'field_event2' => 'field_event2',
+    'field_event_source' => 'field_event_source',
+    'field_vetted_' => 'field_vetted_',
+    'og_group_ref' => 'og_group_ref',
+    'group_content_access' => 'group_content_access',
+    'name' => 'name',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_event_date';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'entityreference_view_widget' => array(
       'align' => '',
@@ -602,6 +665,39 @@ function cove_mapping_views_default_views() {
       'empty_column' => 0,
     ),
     'field_event2' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_source' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_vetted_' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'og_group_ref' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 1,
+    ),
+    'group_content_access' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -754,19 +850,25 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['label'] = '';
+  $handler->display->display_options['fields']['field_vetted_']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_vetted_']['element_class'] = 'descbig';
+  $handler->display->display_options['fields']['field_vetted_']['element_label_colon'] = FALSE;
+  /* Field: Content: Groups audience */
+  $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
+  $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['title'] = 'Find events associated with %1';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['not'] = TRUE;
   $export['associated_event_autocomplete'] = $view;
 
   $view = new view();
@@ -785,14 +887,119 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="descbig">Check any boxes next to items you\'d like to associate with your content, then click "Submit" below. Various filters and sorts are available to help you find what you\'re looking for. Allowable selections are any vetted materials on the site, as well as group content marked as public. </div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<em>Your filter settings did not match any places.</em>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Field: Entity Reference View Widget Checkbox: Content */
+  $handler->display->display_options['fields']['entityreference_view_widget']['id'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['table'] = 'node';
+  $handler->display->display_options['fields']['entityreference_view_widget']['field'] = 'entityreference_view_widget';
+  $handler->display->display_options['fields']['entityreference_view_widget']['label'] = '';
+  $handler->display->display_options['fields']['entityreference_view_widget']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['entityreference_view_widget']['ervw']['force_single'] = 0;
+  /* Field: Content: Event date */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['click_sort_column'] = 'timestamp';
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'use_override' => 'none',
+    'format' => 'medium',
+    'component_settings' => array(
+      'meridiem' => 'a',
+      'year_designation' => 'ce',
+      'display' => array(
+        'year' => 'estimate_label',
+        'month' => 'estimate_label',
+        'day' => 'estimate_label',
+        'hour' => 'estimate_label',
+        'minute' => 'estimate_label',
+        'second' => 'estimate_label',
+        'timezone' => 'date_only',
+      ),
+      'separator' => array(
+        'date' => ' ',
+        'time' => ':',
+        'datetime' => ' ',
+        'other' => ' ',
+        'range' => '',
+      ),
+      'components' => array(
+        'year' => array(
+          'format' => 'Y',
+          'empty' => '',
+          'weight' => '-7',
+        ),
+        'month' => array(
+          'format' => 'M',
+          'empty' => '',
+          'weight' => '-8',
+        ),
+        'day' => array(
+          'format' => 'j',
+          'empty' => '',
+          'weight' => '-9',
+        ),
+        'hour' => array(
+          'format' => 'h',
+          'empty' => '',
+          'weight' => '-6',
+        ),
+        'minute' => array(
+          'format' => 'i',
+          'empty' => '',
+          'weight' => '-5',
+        ),
+        'second' => array(
+          'format' => 's',
+          'empty' => '',
+          'weight' => '-4',
+        ),
+        'timezone' => array(
+          'format' => 'T',
+          'empty' => '',
+          'weight' => '-3',
+        ),
+        'c1' => array(
+          'value' => '',
+          'weight' => '-2',
+        ),
+        'c2' => array(
+          'value' => '',
+          'weight' => '-1',
+        ),
+        'c3' => array(
+          'value' => '',
+          'weight' => '0',
+        ),
+        'approx' => array(
+          'value' => 'circa. ',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -808,6 +1015,7 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -817,22 +1025,52 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
-  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['preserve_tags'] = '<em> <i> <strong> <b>';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['empty'] = 'No description';
+  /* Field: Content: Event Description */
+  $handler->display->display_options['fields']['field_event2']['id'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
+  $handler->display->display_options['fields']['field_event2']['field'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['label'] = '';
+  $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['text'] = '<strong>[field_event_date]</strong> |  <strong>[title]</strong><br/>[field_event2]';
+  $handler->display->display_options['fields']['field_event2']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_text'] = 'more';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_path'] = '/node/[nid]';
+  $handler->display->display_options['fields']['field_event2']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['preserve_tags'] = '<em> <i> <strong> <b> <br>';
+  $handler->display->display_options['fields']['field_event2']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event2']['settings'] = array(
+    'trim_length' => '100',
+  );
+  /* Sort criterion: Content: Group content visibility (group_content_access) */
+  $handler->display->display_options['sorts']['group_content_access_value']['id'] = 'group_content_access_value';
+  $handler->display->display_options['sorts']['group_content_access_value']['table'] = 'field_data_group_content_access';
+  $handler->display->display_options['sorts']['group_content_access_value']['field'] = 'group_content_access_value';
+  $handler->display->display_options['sorts']['group_content_access_value']['expose']['label'] = 'Group status';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['created']['expose']['label'] = 'Post date';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['title'] = 'Find events associates with %1';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['not'] = TRUE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -847,15 +1085,86 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'place' => 'place',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Combine fields filter';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search places';
+  $handler->display->display_options['filters']['combine']['expose']['description'] = 'Type any word or words to find relevant places';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+  );
+  /* Filter criterion: Content: Vetted? (field_vetted_) */
+  $handler->display->display_options['filters']['field_vetted__value']['id'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['filters']['field_vetted__value']['field'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_vetted__value']['group'] = 2;
+  $handler->display->display_options['filters']['field_vetted__value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['operator_id'] = 'field_vetted__value_op';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['label'] = 'Vetted?';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['description'] = 'Displays vetted materials by default. Select "Not Vetted" for content associated with groups. ';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['operator'] = 'field_vetted__value_op';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['identifier'] = 'field_vetted__value';
+  $handler->display->display_options['filters']['field_vetted__value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_vetted__value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Group content visibility (group_content_access) */
+  $handler->display->display_options['filters']['group_content_access_value']['id'] = 'group_content_access_value';
+  $handler->display->display_options['filters']['group_content_access_value']['table'] = 'field_data_group_content_access';
+  $handler->display->display_options['filters']['group_content_access_value']['field'] = 'group_content_access_value';
+  $handler->display->display_options['filters']['group_content_access_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['group_content_access_value']['group'] = 2;
+  $handler->display->display_options['filters']['group_content_access_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Groups audience (og_group_ref) */
+  $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['operator_id'] = 'og_group_ref_target_id_op';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['label'] = 'Group name';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['description'] = 'Filter content by group';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['operator'] = 'og_group_ref_target_id_op';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['identifier'] = 'og_group_ref_target_id';
+  $handler->display->display_options['filters']['og_group_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    10 => 0,
+    7 => 0,
+    9 => 0,
+    8 => 0,
+    3 => 0,
+  );
 
   /* Display: Entity Reference */
   $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
@@ -867,33 +1176,106 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
     'title' => 'title',
+    'field_event2' => 'field_event2',
+    'field_event_date' => 0,
+    'nid' => 0,
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['row_options']['separator'] = '<br/>';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: Event Description */
+  $handler->display->display_options['fields']['field_event2']['id'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['table'] = 'field_data_field_event2';
+  $handler->display->display_options['fields']['field_event2']['field'] = 'field_event2';
+  $handler->display->display_options['fields']['field_event2']['label'] = '';
+  $handler->display->display_options['fields']['field_event2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['text'] = '<strong>[field_event_date]</strong> |  <strong>[title]</strong><br/>[field_event2]';
+  $handler->display->display_options['fields']['field_event2']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_text'] = 'more';
+  $handler->display->display_options['fields']['field_event2']['alter']['more_link_path'] = '/node/[nid]';
+  $handler->display->display_options['fields']['field_event2']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['alter']['preserve_tags'] = '<em> <i> <strong> <b> <br>';
+  $handler->display->display_options['fields']['field_event2']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['field_event2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event2']['settings'] = array(
+    'trim_length' => '100',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['enabled'] = FALSE;
-  $handler->display->display_options['path'] = 'associated-places';
+  $handler->display->display_options['path'] = 'associated-events';
 
   /* Display: Entity Reference View Widget */
   $handler = $view->new_display('entityreference_view_widget', 'Entity Reference View Widget', 'entityreference_view_widget_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_vetted_',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['columns'] = array(
     'entityreference_view_widget' => 'entityreference_view_widget',
+    'field_event_date' => 'field_event_date',
     'nid' => 'nid',
     'title' => 'title',
-    'body' => 'body',
+    'field_event2' => 'field_event2',
+    'field_event_source' => 'field_event_source',
+    'field_vetted_' => 'field_vetted_',
+    'og_group_ref' => 'og_group_ref',
+    'group_content_access' => 'group_content_access',
+    'name' => 'name',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'entityreference_view_widget' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -912,7 +1294,40 @@ function cove_mapping_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'body' => array(
+    'field_event2' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_source' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_vetted_' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'og_group_ref' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 1,
+    ),
+    'group_content_access' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -945,13 +1360,13 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Place name';
   $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="views-er-autocomplete"><strong>[title]</strong><br/>[field_event2] ... <a class="colorbox-node colorbox-node-gallery" data-inner-width="600" data-inner-height="600" href="/node/[nid]">more</a></div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox'] = TRUE;
   $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
@@ -959,66 +1374,39 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
-  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['preserve_tags'] = '<em> <i> <strong> <b>';
+  $handler->display->display_options['fields']['body']['label'] = 'Description';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['empty'] = 'No description';
+  /* Field: Content: Vetted? */
+  $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['label'] = '';
+  $handler->display->display_options['fields']['field_vetted_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_vetted_']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_vetted_']['element_class'] = 'descbig';
+  $handler->display->display_options['fields']['field_vetted_']['element_label_colon'] = FALSE;
+  /* Field: Content: Groups audience */
+  $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
+  $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
+  /* Field: Content: Group content visibility */
+  $handler->display->display_options['fields']['group_content_access']['id'] = 'group_content_access';
+  $handler->display->display_options['fields']['group_content_access']['table'] = 'field_data_group_content_access';
+  $handler->display->display_options['fields']['group_content_access']['field'] = 'group_content_access';
+  $handler->display->display_options['fields']['group_content_access']['label'] = '';
+  $handler->display->display_options['fields']['group_content_access']['alter']['text'] = '[group_content_access-value]';
+  $handler->display->display_options['fields']['group_content_access']['element_label_colon'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['not'] = TRUE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'place' => 'place',
-  );
-  /* Filter criterion: Global: Combine fields filter */
-  $handler->display->display_options['filters']['combine']['id'] = 'combine';
-  $handler->display->display_options['filters']['combine']['table'] = 'views';
-  $handler->display->display_options['filters']['combine']['field'] = 'combine';
-  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
-  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search places';
-  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
-  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-    4 => 0,
-    6 => 0,
-    7 => 0,
-    9 => 0,
-    8 => 0,
-    10 => 0,
-  );
-  $handler->display->display_options['filters']['combine']['fields'] = array(
-    'title' => 'title',
-    'body' => 'body',
-  );
   $export['associated_place_autocomplete'] = $view;
 
   $view = new view();
