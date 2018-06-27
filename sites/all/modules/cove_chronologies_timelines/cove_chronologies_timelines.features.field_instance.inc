@@ -712,6 +712,59 @@ function cove_chronologies_timelines_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-chronology_entry-group_content_access'.
+  $field_instances['node-chronology_entry-group_content_access'] = array(
+    'bundle' => 'chronology_entry',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 13,
+    ),
+    'widget_type' => 'options_select',
+  );
+
   // Exported field_instance: 'node-chronology_entry-og_group_ref'.
   $field_instances['node-chronology_entry-og_group_ref'] = array(
     'bundle' => 'chronology_entry',
@@ -778,6 +831,7 @@ function cove_chronologies_timelines_field_default_field_instances() {
   t('Event Description');
   t('Event Source');
   t('Event date');
+  t('Group content visibility');
   t('Groups audience');
   t('Here, you can add already-existing events relevant to your Timeline. To do so, click the "Add items" button below. ');
   t('Here, you can add an image that is in some way illustrative of an event; for example, a title page for a book publication, a portrait of a person involved in an event, or a depiction of a historical event. This is not required but highly encouraged. See below for basic size requirements, and keep in mind that the image will be resized to fit the timeline format. ');
