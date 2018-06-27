@@ -596,17 +596,17 @@ function cove_groups_views_default_views() {
 
   $view = new view();
   $view->name = 'course_posts_graph';
-  $view->description = 'Break-down of course posts by type';
+  $view->description = 'Break-down of group posts by type';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Course posts graph';
+  $view->human_name = 'Group posts graph';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Course posts graph';
+  $handler->display->display_options['title'] = 'Group posts graph';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -625,7 +625,7 @@ function cove_groups_views_default_views() {
     'type' => '#0d233a',
     'type_1' => '#910000',
   );
-  $handler->display->display_options['style_options']['title'] = 'Course posts by type';
+  $handler->display->display_options['style_options']['title'] = 'Posts by type';
   $handler->display->display_options['style_options']['width'] = '';
   $handler->display->display_options['style_options']['height'] = '';
   $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '0';

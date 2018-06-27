@@ -83,13 +83,6 @@ function cove_groups_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:course:create small_group content'
-  $permissions['node:course:create small_group content'] = array(
-    'roles' => array(
-      'administrator member' => 'administrator member',
-    ),
-  );
-
   // Exported og permission: 'node:course:delete any blog content'
   $permissions['node:course:delete any blog content'] = array(
     'roles' => array(
@@ -127,13 +120,6 @@ function cove_groups_og_features_default_permissions() {
 
   // Exported og permission: 'node:course:delete any place content'
   $permissions['node:course:delete any place content'] = array(
-    'roles' => array(
-      'administrator member' => 'administrator member',
-    ),
-  );
-
-  // Exported og permission: 'node:course:delete any small_group content'
-  $permissions['node:course:delete any small_group content'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
     ),
@@ -188,13 +174,6 @@ function cove_groups_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'member' => 'member',
       'student' => 'student',
-    ),
-  );
-
-  // Exported og permission: 'node:course:delete own small_group content'
-  $permissions['node:course:delete own small_group content'] = array(
-    'roles' => array(
-      'administrator member' => 'administrator member',
     ),
   );
 
@@ -283,13 +262,6 @@ function cove_groups_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:course:update any small_group content'
-  $permissions['node:course:update any small_group content'] = array(
-    'roles' => array(
-      'administrator member' => 'administrator member',
-    ),
-  );
-
   // Exported og permission: 'node:course:update group'
   $permissions['node:course:update group'] = array(
     'roles' => array(
@@ -346,13 +318,6 @@ function cove_groups_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'member' => 'member',
       'student' => 'student',
-    ),
-  );
-
-  // Exported og permission: 'node:course:update own small_group content'
-  $permissions['node:course:update own small_group content'] = array(
-    'roles' => array(
-      'administrator member' => 'administrator member',
     ),
   );
 
