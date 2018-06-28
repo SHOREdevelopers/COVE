@@ -179,6 +179,150 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'sort' => array(
+      'bef_format' => 'default',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 0,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => '',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'secondary_label' => NULL,
+        'bef_filter_description' => NULL,
+        'any_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'combine' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'og_group_ref_target_id' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'secondary_label' => NULL,
+    'collapsible_label' => NULL,
+    'combine_rewrite' => NULL,
+    'reset_label' => NULL,
+    'bef_filter_description' => NULL,
+    'any_label' => NULL,
+    'filter_rewrite_values' => NULL,
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -411,7 +555,6 @@ function cove_mapping_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_vetted__value']['group'] = 2;
-  $handler->display->display_options['filters']['field_vetted__value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_vetted__value']['expose']['operator_id'] = 'field_vetted__value_op';
   $handler->display->display_options['filters']['field_vetted__value']['expose']['label'] = 'Vetted?';
   $handler->display->display_options['filters']['field_vetted__value']['expose']['description'] = 'Displays vetted materials by default. Select "Not Vetted" for content associated with groups. ';
@@ -624,6 +767,13 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_vetted_',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['columns'] = array(
     'entityreference_view_widget' => 'entityreference_view_widget',
     'field_event_date' => 'field_event_date',
@@ -633,7 +783,6 @@ function cove_mapping_views_default_views() {
     'field_event_source' => 'field_event_source',
     'field_vetted_' => 'field_vetted_',
     'og_group_ref' => 'og_group_ref',
-    'group_content_access' => 'group_content_access',
     'name' => 'name',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
@@ -689,13 +838,6 @@ function cove_mapping_views_default_views() {
       'align' => '',
       'separator' => '',
       'empty_column' => 1,
-    ),
-    'group_content_access' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
     ),
     'name' => array(
       'sortable' => 0,
@@ -850,9 +992,9 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
-  $handler->display->display_options['fields']['field_vetted_']['label'] = '';
+  $handler->display->display_options['fields']['field_vetted_']['label'] = 'Status';
   $handler->display->display_options['fields']['field_vetted_']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_vetted_']['element_class'] = 'descbig';
+  $handler->display->display_options['fields']['field_vetted_']['element_class'] = '[field_vetted_] ';
   $handler->display->display_options['fields']['field_vetted_']['element_label_colon'] = FALSE;
   /* Field: Content: Groups audience */
   $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
@@ -888,6 +1030,150 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'sort' => array(
+      'bef_format' => 'default',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 0,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => '',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'secondary_label' => NULL,
+        'bef_filter_description' => NULL,
+        'any_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'combine' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'og_group_ref_target_id' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'secondary_label' => NULL,
+    'collapsible_label' => NULL,
+    'combine_rewrite' => NULL,
+    'reset_label' => NULL,
+    'bef_filter_description' => NULL,
+    'any_label' => NULL,
+    'filter_rewrite_values' => NULL,
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -1119,7 +1405,6 @@ function cove_mapping_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_vetted__value']['group'] = 2;
-  $handler->display->display_options['filters']['field_vetted__value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_vetted__value']['expose']['operator_id'] = 'field_vetted__value_op';
   $handler->display->display_options['filters']['field_vetted__value']['expose']['label'] = 'Vetted?';
   $handler->display->display_options['filters']['field_vetted__value']['expose']['description'] = 'Displays vetted materials by default. Select "Not Vetted" for content associated with groups. ';
@@ -1256,11 +1541,9 @@ function cove_mapping_views_default_views() {
   );
   $handler->display->display_options['style_options']['columns'] = array(
     'entityreference_view_widget' => 'entityreference_view_widget',
-    'field_event_date' => 'field_event_date',
     'nid' => 'nid',
     'title' => 'title',
-    'field_event2' => 'field_event2',
-    'field_event_source' => 'field_event_source',
+    'body' => 'body',
     'field_vetted_' => 'field_vetted_',
     'og_group_ref' => 'og_group_ref',
     'group_content_access' => 'group_content_access',
@@ -1269,13 +1552,6 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'entityreference_view_widget' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_event_date' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1294,14 +1570,7 @@ function cove_mapping_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_event2' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_event_source' => array(
+    'body' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1380,10 +1649,9 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
   $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
-  $handler->display->display_options['fields']['field_vetted_']['label'] = '';
-  $handler->display->display_options['fields']['field_vetted_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_vetted_']['label'] = 'Status';
   $handler->display->display_options['fields']['field_vetted_']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_vetted_']['element_class'] = 'descbig';
+  $handler->display->display_options['fields']['field_vetted_']['element_class'] = '[field_vetted_]';
   $handler->display->display_options['fields']['field_vetted_']['element_label_colon'] = FALSE;
   /* Field: Content: Groups audience */
   $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
@@ -1398,6 +1666,7 @@ function cove_mapping_views_default_views() {
   $handler->display->display_options['fields']['group_content_access']['table'] = 'field_data_group_content_access';
   $handler->display->display_options['fields']['group_content_access']['field'] = 'group_content_access';
   $handler->display->display_options['fields']['group_content_access']['label'] = '';
+  $handler->display->display_options['fields']['group_content_access']['exclude'] = TRUE;
   $handler->display->display_options['fields']['group_content_access']['alter']['text'] = '[group_content_access-value]';
   $handler->display->display_options['fields']['group_content_access']['element_label_colon'] = FALSE;
   /* Field: User: Name */

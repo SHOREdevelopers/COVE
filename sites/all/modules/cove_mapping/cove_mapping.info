@@ -3,6 +3,7 @@ description = Components for mapping features--contrib module, Panels, Views, et
 core = 7.x
 package = Features
 version = 7.x-1.0-beta1
+dependencies[] = better_exposed_filters
 dependencies[] = entity_view_mode
 dependencies[] = entityreference
 dependencies[] = entityreference_view_widget
