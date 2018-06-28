@@ -848,6 +848,68 @@ function cove_mapping_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-place-group_content_access'.
+  $field_instances['node-place-group_content_access'] = array(
+    'bundle' => 'place',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'map_thumb' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 13,
+    ),
+    'widget_type' => 'options_select',
+  );
+
   // Exported field_instance: 'node-place-og_group_ref'.
   $field_instances['node-place-og_group_ref'] = array(
     'bundle' => 'place',
@@ -926,6 +988,7 @@ function cove_mapping_field_default_field_instances() {
   t('Body');
   t('Geocode');
   t('Geocoder');
+  t('Group content visibility');
   t('Groups audience');
   t('Here, you can add already-existing places relevant to your Map. To do so, click the "Add items" button below. ');
   t('If marked as vetted, this place will be cleared to appear on the COVE master map and available to associate with timeline events.');
