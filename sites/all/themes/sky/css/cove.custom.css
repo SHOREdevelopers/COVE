@@ -597,7 +597,8 @@ clear:both;
    .caption   { font-size: small;
                 font-weight: bold; }
    blockquote   { margin-left: 8%;
-                  margin-right: 8%; }
+                  margin-right: 8%;
+                  font-style:inherit;}
    blockquote.med  { font-size: medium;
                      margin-left: 6%;
                      margin-right: 6%; }
