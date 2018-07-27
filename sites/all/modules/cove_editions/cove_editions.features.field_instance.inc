@@ -120,7 +120,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -305,7 +305,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -346,7 +346,7 @@ function cove_editions_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 7,
     ),
   );
 
@@ -400,7 +400,64 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-editions_index_page-field_exhibits_in_this_edition'.
+  $field_instances['node-editions_index_page-field_exhibits_in_this_edition'] = array(
+    'bundle' => 'editions_index_page',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_exhibits_in_this_edition',
+    'label' => 'Exhibits in this edition',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'add_exhibits_to_this_edition|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 5,
     ),
   );
 
@@ -451,7 +508,7 @@ function cove_editions_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 45,
+      'weight' => 12,
     ),
   );
 
@@ -514,7 +571,7 @@ function cove_editions_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 46,
+      'weight' => 13,
     ),
   );
 
@@ -574,7 +631,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -631,7 +688,7 @@ function cove_editions_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -835,7 +892,7 @@ function cove_editions_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -896,7 +953,7 @@ function cove_editions_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 6,
     ),
   );
 
@@ -1011,7 +1068,7 @@ function cove_editions_field_default_field_instances() {
         'tz_handling' => 'none',
       ),
       'type' => 'partial_date',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1060,7 +1117,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1218,7 +1275,7 @@ function cove_editions_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 2,
+      'weight' => 4,
     ),
     'widget_type' => 'date_text',
   );
@@ -1280,7 +1337,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1718,7 +1775,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1898,7 +1955,7 @@ function cove_editions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -4397,6 +4454,7 @@ function cove_editions_field_default_field_instances() {
   t('Enter the date or dates a resource was originally published. Please include ONLY the year or a range of years. ');
   t('Enter the date this page is to be published (i.e. not created) on the site, specifying only Month and Year.');
   t('Enter the date this page is to be published (i.e. not created), specifying only Month and Year.');
+  t('Exhibits in this edition');
   t('For Editions. A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.');
   t('Hidden field. All posts from COVE Studio are coming from admin, but POST requests are also sending along the UID of the user who should own the document. That is being stored here for processing via Rules. ');
   t('Icon');

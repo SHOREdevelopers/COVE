@@ -1835,6 +1835,7 @@ function rc_gallery_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Gallery Exhibits';
+  $handler->display->display_options['css_class'] = 'teaserItem';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
@@ -1908,14 +1909,6 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['field_description']['element_wrapper_class'] = 'desc';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_credits']['id'] = 'field_credits';
-  $handler->display->display_options['fields']['field_credits']['table'] = 'field_data_field_credits';
-  $handler->display->display_options['fields']['field_credits']['field'] = 'field_credits';
-  $handler->display->display_options['fields']['field_credits']['label'] = 'Exhibit Created by';
-  $handler->display->display_options['fields']['field_credits']['element_wrapper_type'] = 'h5';
-  $handler->display->display_options['fields']['field_credits']['element_wrapper_class'] = 'right';
-  $handler->display->display_options['fields']['field_credits']['hide_empty'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

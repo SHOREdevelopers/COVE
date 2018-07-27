@@ -325,7 +325,7 @@ function cove_editions_field_default_field_bases() {
           'editions_page' => 'editions_page',
         ),
       ),
-      'sync' => 'field_resource_index',
+      'sync' => FALSE,
       'target_type' => 'node',
     ),
     'translatable' => 0,
@@ -439,6 +439,45 @@ function cove_editions_field_default_field_bases() {
       ),
       'sync' => '',
       'target_type' => 'user',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_exhibits_in_this_edition'.
+  $field_bases['field_exhibits_in_this_edition'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_exhibits_in_this_edition',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'galler_exhibit' => 'galler_exhibit',
+        ),
+      ),
+      'sync' => 'field_resource_index',
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',

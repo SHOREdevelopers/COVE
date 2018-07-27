@@ -210,7 +210,7 @@ function rc_gallery_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -257,7 +257,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 4,
     ),
   );
 
@@ -318,7 +318,7 @@ function rc_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 2,
     ),
   );
 
@@ -389,7 +389,7 @@ function rc_gallery_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -438,7 +438,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 44,
+      'weight' => 11,
     ),
   );
 
@@ -484,7 +484,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 42,
+      'weight' => 10,
     ),
   );
 
@@ -533,7 +533,58 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 46,
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-galler_exhibit-field_resource_index'.
+  $field_instances['node-galler_exhibit-field_resource_index'] = array(
+    'bundle' => 'galler_exhibit',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'If this Gallery exhibit is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'colorbox_node_classes' => '',
+          'colorbox_node_height' => 600,
+          'colorbox_node_link' => FALSE,
+          'colorbox_node_width' => 600,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_resource_index',
+    'label' => 'Parent Resource',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 6,
     ),
   );
 
@@ -585,7 +636,7 @@ function rc_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 48,
+      'weight' => 14,
     ),
     'widget_type' => 'options_select',
   );
@@ -659,7 +710,7 @@ function rc_gallery_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 47,
+      'weight' => 13,
     ),
   );
 
@@ -2474,6 +2525,7 @@ function rc_gallery_field_default_field_instances() {
   t('Here add latitude and longitude coordinates for Gallery images tied to a particular place. This will be run via imports on TEI places files. See the feeds importers for more. ');
   t('Here, you can add images to your Exhibit. ');
   t('If rights to this image are held by another institution and you\'ve gained permission to re-use them, please enter that copyright info here. ');
+  t('If this Gallery exhibit is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ');
   t('Image Date');
   t('Images in Exhibit');
   t('Images in this Collection');
@@ -2485,6 +2537,7 @@ function rc_gallery_field_default_field_instances() {
   t('NINES Type(s)');
   t('Optionally, add an image from the Gallery here for presentation purposes. ');
   t('Parent Exhibit');
+  t('Parent Resource');
   t('Parent Section');
   t('Please provide a description of the image here. It may be as long or as brief as you like, but keep in mind that some information about the image can also be captured in the metadata fields below. ');
   t('Please provide a short description of your exhibit. ');
