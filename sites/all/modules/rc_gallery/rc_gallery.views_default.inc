@@ -1848,6 +1848,13 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_vetted_',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'field_exhibit_icon' => 'field_exhibit_icon',
@@ -1909,6 +1916,18 @@ function rc_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_description']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['field_description']['element_wrapper_class'] = 'desc';
+  /* Field: Content: Vetted? */
+  $handler->display->display_options['fields']['field_vetted_']['id'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['field'] = 'field_vetted_';
+  $handler->display->display_options['fields']['field_vetted_']['label'] = '';
+  $handler->display->display_options['fields']['field_vetted_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_vetted_']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Vetted? (field_vetted_) */
+  $handler->display->display_options['sorts']['field_vetted__value']['id'] = 'field_vetted__value';
+  $handler->display->display_options['sorts']['field_vetted__value']['table'] = 'field_data_field_vetted_';
+  $handler->display->display_options['sorts']['field_vetted__value']['field'] = 'field_vetted__value';
+  $handler->display->display_options['sorts']['field_vetted__value']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

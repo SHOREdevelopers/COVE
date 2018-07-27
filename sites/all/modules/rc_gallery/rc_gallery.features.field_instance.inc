@@ -588,6 +588,49 @@ function rc_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-galler_exhibit-field_vetted_'.
+  $field_instances['node-galler_exhibit-field_vetted_'] = array(
+    'bundle' => 'galler_exhibit',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vetted_',
+    'label' => 'Vetted?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-galler_exhibit-group_content_access'.
   $field_instances['node-galler_exhibit-group_content_access'] = array(
     'bundle' => 'galler_exhibit',
