@@ -1182,6 +1182,16 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['view_3']['view'] = 'maps_timelines_in_this_edition';
   $handler->display->display_options['fields']['view_3']['display'] = 'block_2';
   $handler->display->display_options['fields']['view_3']['arguments'] = '[!nid]';
+  /* Field: Global: View */
+  $handler->display->display_options['fields']['view_4']['id'] = 'view_4';
+  $handler->display->display_options['fields']['view_4']['table'] = 'views';
+  $handler->display->display_options['fields']['view_4']['field'] = 'view';
+  $handler->display->display_options['fields']['view_4']['label'] = 'Exhibits';
+  $handler->display->display_options['fields']['view_4']['element_label_type'] = 'h4';
+  $handler->display->display_options['fields']['view_4']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['view_4']['view'] = 'maps_timelines_in_this_edition';
+  $handler->display->display_options['fields']['view_4']['display'] = 'block_3';
+  $handler->display->display_options['fields']['view_4']['arguments'] = '[!nid]';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -1433,10 +1443,10 @@ function cove_editions_views_default_views() {
 
   $view = new view();
   $view->name = 'maps_timelines_in_this_edition';
-  $view->description = 'Shows a list of all docs within an edition on the resource page';
+  $view->description = 'Shows a list of all docs within an edition on the resource page and in the menu system';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Maps/Timelines in this Edition';
+  $view->human_name = 'Maps/Timelines/Exhibits in this Edition';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1464,7 +1474,6 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_resource_index_node';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -1507,7 +1516,6 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['relationship'] = 'field_timelines_in_this_edition_target_id';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
@@ -1515,9 +1523,8 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'field_timelines_in_this_edition_target_id';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'chronology' => 'chronology',
+    'galler_exhibit' => 'galler_exhibit',
   );
 
   /* Display: Timelines */
@@ -1558,6 +1565,24 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'field_timelines_in_this_edition_target_id';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_timelines_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_timelines_in_this_edition_target_id';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'chronology' => 'chronology',
+  );
 
   /* Display: Menu-Timelines */
   $handler = $view->new_display('block', 'Menu-Timelines', 'block_1');
@@ -1604,6 +1629,24 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_timelines_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_timelines_in_this_edition_target_id';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'chronology' => 'chronology',
+  );
 
   /* Display: Maps */
   $handler = $view->new_display('panel_pane', 'Maps', 'panel_pane_2');
@@ -1713,6 +1756,127 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'field_maps_in_this_edition_target_id';
   $handler->display->display_options['filters']['type']['value'] = array(
     'map' => 'map',
+  );
+
+  /* Display: Exhibits */
+  $handler = $view->new_display('panel_pane', 'Exhibits', 'panel_pane_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Exhibits';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['id'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['table'] = 'field_data_field_exhibits_in_this_edition';
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['field'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  /* Field: Content: NINES Genre(s) */
+  $handler->display->display_options['fields']['field_nines_genre_s_']['id'] = 'field_nines_genre_s_';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['table'] = 'field_data_field_nines_genre_s_';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['field'] = 'field_nines_genre_s_';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['label'] = '';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_nines_genre_s_']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_nines_genre_s_']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'galler_exhibit' => 'galler_exhibit',
+  );
+
+  /* Display: Menu-Exhibits */
+  $handler = $view->new_display('block', 'Menu-Exhibits', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Exhibits';
+  $handler->display->display_options['display_description'] = 'gets embedded onto internal pages as a menu';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['id'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['table'] = 'field_data_field_exhibits_in_this_edition';
+  $handler->display->display_options['relationships']['field_exhibits_in_this_edition_target_id']['field'] = 'field_exhibits_in_this_edition_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['id'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_resource_index_node']['field'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_rel'] = '';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_resource_index_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_exhibits_in_this_edition_target_id';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'galler_exhibit' => 'galler_exhibit',
   );
   $export['maps_timelines_in_this_edition'] = $view;
 
