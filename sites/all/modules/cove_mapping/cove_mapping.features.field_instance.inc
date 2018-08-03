@@ -122,7 +122,7 @@ function cove_mapping_field_default_field_instances() {
   // Exported field_instance: 'node-map-field_resource_index'.
   $field_instances['node-map-field_resource_index'] = array(
     'bundle' => 'map',
-    'default_value' => NULL,
+    'default_value' => array(),
     'default_value_function' => '',
     'deleted' => 0,
     'description' => 'If this map is part of a "resource," e.g. an edition, select a value here; otherwise, leave it blank. ',
@@ -161,16 +161,70 @@ function cove_mapping_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'content_taxonomy_autocomplete_new_terms' => 'allow',
+        'content_taxonomy_opt_groups' => FALSE,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'options_select',
       'weight' => 3,
     ),
+  );
+
+  // Exported field_instance: 'node-map-group_content_access'.
+  $field_instances['node-map-group_content_access'] = array(
+    'bundle' => 'map',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
+    ),
+    'widget_type' => 'options_select',
   );
 
   // Exported field_instance: 'node-map-og_group_ref'.

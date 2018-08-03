@@ -354,7 +354,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
       ),
       'handler_submit' => 'Change handler',
       'profile2_private' => FALSE,
-      'sync' => 'field_documents_in_this_edition',
+      'sync' => 'field_exhibits_in_this_edition',
       'target_type' => 'node',
     ),
     'translatable' => 0,
@@ -368,6 +368,9 @@ function cove_chronologies_timelines_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'group_content_access',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -383,6 +386,7 @@ function cove_chronologies_timelines_field_default_field_bases() {
         2 => 'Private - accessible only to group members',
       ),
       'allowed_values_function' => '',
+      'allowed_values_php' => '',
     ),
     'translatable' => 0,
     'type' => 'list_integer',
