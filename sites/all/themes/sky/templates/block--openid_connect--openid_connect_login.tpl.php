@@ -13,7 +13,7 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
       <li role="presentation"><?php print $content ?></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="/user/login">Not A NAVSA member? Click here.</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.navsa.org/members/join-navsa/">Not A NAVSA member?</a></li>
     </ul>
   </div>
 	</li>
