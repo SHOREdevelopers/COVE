@@ -1389,6 +1389,13 @@ function cove_editions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'editions_index_page' => 'editions_index_page',
   );
+  /* Filter criterion: Content: Edition state (field_edition_state) */
+  $handler->display->display_options['filters']['field_edition_state_tid']['id'] = 'field_edition_state_tid';
+  $handler->display->display_options['filters']['field_edition_state_tid']['table'] = 'field_data_field_edition_state';
+  $handler->display->display_options['filters']['field_edition_state_tid']['field'] = 'field_edition_state_tid';
+  $handler->display->display_options['filters']['field_edition_state_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_edition_state_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_edition_state_tid']['vocabulary'] = 'edition_state';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
