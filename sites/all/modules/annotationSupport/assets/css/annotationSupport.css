@@ -47,7 +47,7 @@
 }
 
 .popover_wrapper {
-  z-index: 1000;
+  z-index: 0;
   position: relative;
   margin-top: 1.5rem;
   display: inline-block;
@@ -56,7 +56,7 @@
 
 .popover_content {
   position: absolute;
-  background-color: #BFBFBF;
+  background-color: #ffffff;
   padding: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   width: auto;
@@ -168,14 +168,18 @@
 }
 
 .popover_content table {
-  border: 1px solid #6f6a6a45;
+  border: none !important;
   border-radius: 0.3rem;
   padding: 0 0 1rem;
   margin: 0.4rem 0 0;
 }
+.popover_content table tbody{
+  border: none !important;
+}
 
 .popover_content table:hover {
-  background-color: #6f6a6a9e;
+  background-color: whiteSmoke;
+  cursor:pointer;
 }
 
 #ap_detail_panel {
@@ -183,18 +187,19 @@
   display: none;
   position: fixed;
   bottom: 0;
-  height: 25rem;
+  height: 20rem;
+  z-index:1;
 }
 
 #ap_detail_panel_content {
 
-  background-color: #BFBFBF;
+  background-color: rgba(191, 191, 191, 0.95);
   z-index: 2000;
   width: 100vw;
-  height: 25rem;
+  height: 20rem;
   border: 0;
   border-top: 1px #b5b5b5 solid;
-  box-shadow: 7px -1px 5px 1px rgba(0, 0, 0, 0.26);
+  /* box-shadow: 7px -1px 5px 1px rgba(0, 0, 0, 0.26);  */
 }
 
 
@@ -220,6 +225,7 @@
   line-height: 1.6rem;
   height: 1.7rem;
   font-size: .85rem;
+  cursor: pointer;
 }
 
 #ap_button_panelToggle {
@@ -247,14 +253,15 @@
 #ap_annotation_sourcetext {
   font-family: sans-serif;
   font-size: 0.9rem;
-  color: #00000087;
+  color: #000000;
   padding: 4rem 2rem 0;
-  height: 24rem;
+  height: 18rem;
   float: left;
   width: 30%;
   font-style: italic;
-  background-color: #00000017;
+  /* background-color: #00000017;  */
   overflow: auto;
+     text-align: center;
 }
 
 #ap_annotation_annotation {
@@ -263,7 +270,7 @@
   margin: 0;
   background-color: #e8e8e8;
   overflow: auto;
-  height: 24rem;
+  height: 18rem;
 }
 
 #ap_annotation_annotation img {
@@ -314,7 +321,7 @@
   width: 25%;
   height: 100%;
   float: left;
-  height: 25rem;
+  height: 20rem;
   border: 1px solid #00000017;
   overflow: hidden;
 }
@@ -326,7 +333,7 @@
 
 #ap_filter_category, #ap_filter_people, #ap_filter_tags {
   overflow: auto;
-  height: 24rem;
+  height: 18rem;
   border: 1px dashed #0000001c;
   background-color: #ffffff30;
   padding: 0.5rem;

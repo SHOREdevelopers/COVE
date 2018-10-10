@@ -1,4 +1,23 @@
 jQuery(document).ready(function(jQuery) {
+
+jQuery(function() {
+    jQuery("#ap_detail_panel").resizable({
+    handles: 'n, s',
+    maxHeight: 400,
+});
+});
+
+// Hide default tooltip on title attribute, since that contains email address which we want to hide
+jQuery('[title]').mouseover(function () {
+        $this = jQuery(this);
+        $this.data('title', $this.attr('title'));
+        // Using null here wouldn't work in IE, but empty string will work just fine.
+        $this.attr('title', '');
+    }).mouseout(function () {
+        $this = jQuery(this);
+        $this.attr('title', $this.data('title'));
+    });
+
 	// Sanity check: if there are annotations on this page
 	if (typeof annotations !== 'undefined') {
 		console.log('AnnotationSupport: Found annotations! Injecting support.');
@@ -66,9 +85,6 @@ jQuery(document).ready(function(jQuery) {
 
 	// Init: After annotations are loaded
 	function annotationToolInit(){
-
-
-
 		// Everything relies on "annotations" object, which comes from cove studio snapshot
 		if (typeof annotations === 'undefined') {
 			console.log('AnnotationTool: No annotations found!');
@@ -174,7 +190,8 @@ jQuery(document).ready(function(jQuery) {
 			// Author
 			thisAnnotation.displaystring_author="";
 			if(thisAnnotation.author_username){
-				thisAnnotation.displaystring_author = thisAnnotation.author_username + " ("+thisAnnotation.author_email+")";
+				thisAnnotation.displaystring_author = thisAnnotation.author_username
+				// + " ("+thisAnnotation.author_email+")"; Commenting out to remove email address from display.
 			}
 
 			// Tags
@@ -198,7 +215,7 @@ jQuery(document).ready(function(jQuery) {
 			annotationText = annotationText.replace(/(\r\n|\n|\r)/gm,"");
 			thisAnnotation.teaser = annotationText.substring(0,teaserLength);
 			if(annotationText.length > teaserLength){
-				thisAnnotation.teaser += "…";
+				thisAnnotation.teaser += " <strong>…</strong>";
 			}
 
 			data[idx]=thisAnnotation;
@@ -308,10 +325,9 @@ jQuery(document).ready(function(jQuery) {
 	function removeExistingPopover(){
 		jQuery("span").removeClass("annotationSelected");
 		jQuery("span").removeClass("annotationSelectedExact");
-		jQuery(".popover_wrapper").fadeOut("fast", function(){
-				jQuery(".popover_wrapper").remove();
-		});
-	}
+		jQuery(document).click( function(event) { if( jQuery(event.target).closest('.popover_wrapper').length == 0 ) { jQuery('.popover_wrapper').fadeOut('slow'); } } );
+		}
+
 
 	jQuery( window ).resize(function() {
 	  removeExistingPopover();

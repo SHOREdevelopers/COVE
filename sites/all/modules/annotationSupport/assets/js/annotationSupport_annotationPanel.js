@@ -48,11 +48,11 @@ Assumes this is in the DOM:
 
 			// Position the tabs
 			var counter=0;
-			var indent=4;
+			var indent=4.2;
 			jQuery(".ap_tab").each(function(){
 				leftMargin=indent+"rem";
 				jQuery(this).css("left",leftMargin);
-				indent+=6.3;
+				indent+=7;
 			});
 			jQuery(".ap_tab").first().addClass("open");
 		}
@@ -137,7 +137,7 @@ Assumes this is in the DOM:
 						"onclick=\"annotationPanel.toggleFilterItemState(\'"+thisID+"\')\" "+
 						"filterID='"+filterLists.user[idx].id+"'>"+
 						filterLists.user[idx].text+
-						" ("+filterLists.user[idx].id+")"+
+						/*" ("+filterLists.user[idx].id+")"+*/
 						"</div>";
 		}
 		jQuery("#ap_filter_people").empty();
