@@ -410,15 +410,17 @@ print print_insert_link();  print print_mail_insert_link();
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
-      'format_type' => 'rc_published_date',
+      'format_type' => 'month_year',
       'multiple_number' => '',
       'multiple_from' => '',
       'multiple_to' => '',
       'fromto' => 'both',
+      'show_remaining_days' => 0,
     ),
     'context' => 'argument_entity_id:node_1',
     'override_title' => 1,
-    'override_title_text' => 'Published @ RC',
+    'override_title_text' => 'Published @ COVE',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
