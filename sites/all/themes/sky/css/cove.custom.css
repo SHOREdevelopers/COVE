@@ -594,8 +594,7 @@ clear:both;
    img        { border: 0; }
    img.left  { float:left;
                margin: 0px 8px 6px 0px; }
-   .caption   { font-size: small;
-                font-weight: bold; }
+   
    blockquote   { margin-left: 8%;
                   margin-right: 8%;
                   font-style:inherit;}
@@ -642,6 +641,13 @@ clear:both;
               clear: both;
               }
 
+.caption {
+    font-size: 10px;
+    text-align: center;
+}
+.view-custom-timeline .caption {
+width: 138px;
+}
 div#views_slideshow_cycle_main_gallery_slider-slider {
     width: 955px;
     margin: auto;
