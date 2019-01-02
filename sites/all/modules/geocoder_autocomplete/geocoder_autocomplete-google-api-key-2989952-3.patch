@@ -1,0 +1,43 @@
+diff --git a/geocoder_autocomplete.module b/geocoder_autocomplete.module
+index 9f4d812..4e2061a 100755
+--- a/geocoder_autocomplete.module
++++ b/geocoder_autocomplete.module
+@@ -51,12 +51,36 @@ function geocoder_autocomplete_autocomplete($string = '') {
+     if ($suffix = variable_get('geocoder_autocomplete_suffix', '')) {
+       $string .= ', ' . check_plain($suffix);
+     }
++
++    // Removed deprecated 'sensor' array key from $query.
+     $query = array(
+       'address' => $string,
+       'language' => $GLOBALS['language']->language,
+-      'sensor' => 'false',
+     );
+-    $url = 'http://maps.googleapis.com/maps/api/geocode/json';
++
++    // api key parameter is mandatory after google maps policy update
++    if (module_exists('geocoder')) {
++      // Add Google API authentication parameters.
++      switch (variable_get('geocoder_google_auth_method')) {
++        // Google Geocoding API Key.
++        case GEOCODER_GOOGLE_AUTH_KEY:
++          $geocoder_settings = variable_get("geocoder_settings", array());
++          if (!empty($geocoder_settings['geocoder_apikey_google'])) {
++            $query['key'] = $geocoder_settings['geocoder_apikey_google'];
++          }
++          break;
++        // Google Maps for Work signature.
++        case GEOCODER_GOOGLE_AUTH_WORK:
++          $client_id = variable_get('geocoder_google_client_id', FALSE);
++          $private_key = variable_get('geocoder_google_private_key', FALSE);
++          if (!empty($client_id) && !empty($private_key)) {
++            $query['client'] = $client_id;
++          }
++          break;
++      }
++    }
++
++    $url = 'https://maps.googleapis.com/maps/api/geocode/json?';
+ 
+     $data = array(
+       'url' => $url,

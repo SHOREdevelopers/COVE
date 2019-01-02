@@ -14,8 +14,6 @@ function cove_mapping_user_default_permissions() {
   $permissions['access geocoder autocomplete'] = array(
     'name' => 'access geocoder autocomplete',
     'roles' => array(
-      'annotator' => 'annotator',
-      'authenticated user' => 'authenticated user',
       'manager' => 'manager',
     ),
     'module' => 'geocoder_autocomplete',
@@ -559,6 +557,8 @@ function cove_mapping_user_default_permissions() {
     'name' => 'view field_vetted_',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',
@@ -631,6 +631,10 @@ function cove_mapping_user_default_permissions() {
     'name' => 'view own field_vetted_',
     'roles' => array(
       'administrator' => 'administrator',
+      'annotator' => 'annotator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'author' => 'author',
       'editor' => 'editor',
       'manager' => 'manager',
       'section editor' => 'section editor',

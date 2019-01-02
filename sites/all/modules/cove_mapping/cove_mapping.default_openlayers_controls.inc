@@ -20,15 +20,12 @@ function cove_mapping_default_openlayers_controls() {
   $ol_control->options = array(
     'label' => 'Layers',
     'layers' => array(
-      'custom_map_data_overlay' => 'custom_map_data_overlay',
       'great_britain_os_one_inch_1885_1900' => 'great_britain_os_one_inch_1885_1900',
-      'openlayers_layer_tile_osm' => 'openlayers_layer_tile_osm',
+      'clone_of_custom_map_data_overlay' => 'clone_of_custom_map_data_overlay',
     ),
     'multiselect' => 1,
     'layer_labels' => array(
-      'custom_map_data_overlay' => 'Custom Map Data Overlay',
-      'great_britain_os_one_inch_1885_1900' => 'Great Britain - OS One Inch, 1885-1900',
-      'openlayers_layer_tile_osm' => 'OpenStreetMap',
+      'composite_england_and_wales_railway_map_1847' => 'Composite: England and Wales Railway Map, 1847',
     ),
   );
   $export['clone_of_openlayers_examples_control_simple_layer_switcher'] = $ol_control;
