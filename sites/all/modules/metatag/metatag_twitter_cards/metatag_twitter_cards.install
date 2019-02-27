@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Update scripts for the Metatag: Twitter Cards module.
@@ -17,6 +18,15 @@ function metatag_twitter_cards_update_dependencies() {
 }
 
 /**
+ * Implements hook_uninstall().
+ */
+function metatag_twitter_cards_uninstall() {
+  // Remove all of the maxlength variables.
+  variable_del('metatag_maxlength_twitter:title');
+  variable_del('metatag_maxlength_twitter:description');
+}
+
+/**
  * Implementations of hook_update_N().
  */
 
@@ -27,7 +37,7 @@ function metatag_twitter_cards_update_7100(&$sandbox) {
   module_load_include('install', 'metatag');
   $old_tag = 'twitter:image:src';
   $new_tag = 'twitter:image';
-  return metatag_update_replace_meta_tag($sandbox, $old_tag, $new_tag);
+  return metatag_update_replace_entity_tag($sandbox, $old_tag, $new_tag);
 }
 
 /**
@@ -37,7 +47,7 @@ function metatag_twitter_cards_update_7101() {
   module_load_include('install', 'metatag');
   $old_tag = 'twitter:image:src';
   $new_tag = 'twitter:image';
-  return metatag_update_replace_config($old_tag, $new_tag);
+  return metatag_update_replace_config_tag($old_tag, $new_tag);
 }
 
 /**

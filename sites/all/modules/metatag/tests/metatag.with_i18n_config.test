@@ -1,10 +1,15 @@
 <?php
+
 /**
  * @file
- * Tests for the Metatag module to ensure i18n integration doesn't break.
+ * Tests for Metatag's i18n integration for the configurations.
  */
 
+/**
+ * Tests for Metatag's i18n integration for the configurations.
+ */
 class MetatagCoreWithI18nConfigTest extends MetatagTestHelper {
+
   /**
    * {@inheritdoc}
    */
@@ -13,6 +18,7 @@ class MetatagCoreWithI18nConfigTest extends MetatagTestHelper {
       'name' => 'Metatag core tests with i18n: configs',
       'description' => 'Test Metatag configuration integration with the i18n module.',
       'group' => 'Metatag',
+      'dependencies' => array('ctools', 'token', 'i18n'),
     );
   }
 
@@ -27,6 +33,9 @@ class MetatagCoreWithI18nConfigTest extends MetatagTestHelper {
     // Enable all of the modules that are needed.
     parent::setUp($modules);
 
+    // Add more locales.
+    $this->setupLocales();
+
     // Set up the locales.
     $perms = array(
       'administer languages',
@@ -40,7 +49,9 @@ class MetatagCoreWithI18nConfigTest extends MetatagTestHelper {
       'administer nodes',
     );
     $this->adminUser = $this->createAdminUser($perms);
-    $this->setupLocales();
+
+    // Log in the admin user.
+    $this->drupalLogin($this->adminUser);
 
     // Reload the translations.
     drupal_flush_all_caches();
@@ -53,7 +64,7 @@ class MetatagCoreWithI18nConfigTest extends MetatagTestHelper {
    */
   public function testI18nDefaultConfig() {
     // Plan out the different translation string tests.
-    $string_en = 'Drupal 7 (http://drupal.org)';
+    $string_en = 'Drupal 7 (https://www.drupal.org)';
     $string_fr = 'French Drupal';
     $config_name = 'metatag_config:global:generator';
 

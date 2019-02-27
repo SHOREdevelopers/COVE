@@ -1,9 +1,13 @@
 <?php
+
 /**
  * @file
  * Tests for the Metatag OpenGraph module.
  */
 
+/**
+ * Tests for the Metatag OpenGraph module.
+ */
 class MetatagOpenGraphTest extends MetatagTestHelper {
 
   /**

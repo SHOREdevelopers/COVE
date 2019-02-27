@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * API documentation for the Metatag module.
@@ -35,7 +36,7 @@ function hook_metatag_config_default() {
   $config->disabled = FALSE;
   $config->config = array(
     'title' => array('value' => '[current-page:title] | [site:name]'),
-    'generator' => array('value' => 'Drupal 7 (http://drupal.org)'),
+    'generator' => array('value' => 'Drupal 7 (https://www.drupal.org)'),
     'canonical' => array('value' => '[current-page:url:absolute]'),
     'shortlink' => array('value' => '[current-page:url:unaliased]'),
   );
@@ -214,6 +215,11 @@ function hook_metatag_config_delete($config) {
  *     'url' - If set to TRUE, relative paths will be converted to absolute.
  *     'is_language' - If set to TRUE, will not allow the Drupal default
  *       language value "und" to be output.
+ *     'maxlength' - If set to a numeric value, meta tag values will be trimmed
+ *       to this limit, which may be overridden via the settings page. Note: any
+ *       meta tags with this value assigned can have its maxlength controlled,
+ *       so setting the attribute to an empty string will allow site builders to
+ *       adjust the meta tag lengths as needed.
  *     'select_or_other' - If set to TRUE, form[#type] is set to 'select' and
  *       the "select_or_other" module is available, that module will be used to
  *       provide a text field to manually insert another option.
@@ -434,4 +440,21 @@ function hook_metatag_i18n_context_alter(&$context, $tag_name) {
   if ($tag_name == 'canonical') {
     $context = '';
   }
+}
+
+/**
+ * Allow modules to overide the expiration of metatag caches.
+ *
+ * By default Metatag caches everything as CACHE_PERMANENT, this alter allows to
+ * change that.
+ *
+ * @param $expire
+ *   The expire value to change.
+ * @param $cid
+ *   The cid about to be cached.
+ * @param $data
+ *   The data to be cached.
+ */
+function hook_metatag_cache_set_expire_alter(&$expire, $cid, $data) {
+  $expire = CACHE_TEMPORARY;
 }

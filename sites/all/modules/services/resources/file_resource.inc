@@ -73,7 +73,7 @@ function _file_resource_definition() {
           'access arguments append' => TRUE,
           'args' => array(
             array(
-              'name' => 'cid',
+              'name' => 'fid',
               'type' => 'int',
               'description' => 'The id of the file to delete',
               'source' => array('path' => '0'),
@@ -297,7 +297,7 @@ function _file_resource_delete($fid) {
 }
 
 /**
- * Return an array of optionally paged fids baed on a set of criteria.
+ * Return an array of optionally paged fids based on a set of criteria.
  *
  * An example request might look like
  *

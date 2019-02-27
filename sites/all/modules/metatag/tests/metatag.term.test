@@ -1,10 +1,15 @@
 <?php
+
 /**
  * @file
  * Tests for the Metatag module and taxonomy term entities.
  */
 
+/**
+ * Tests for the Metatag module and taxonomy term entities.
+ */
 class MetatagCoreTermTest extends MetatagTestHelper {
+
   /**
    * {@inheritdoc}
    */
@@ -13,6 +18,7 @@ class MetatagCoreTermTest extends MetatagTestHelper {
       'name' => 'Metatag core tests for terms',
       'description' => 'Test Metatag edit functionality for terms.',
       'group' => 'Metatag',
+      'dependencies' => array('ctools', 'token'),
     );
   }
 
@@ -58,10 +64,11 @@ class MetatagCoreTermTest extends MetatagTestHelper {
       'create url aliases',
     );
     $this->adminUser = $this->createAdminUser($perms);
+
+    // Log in the admin user.
     $this->drupalLogin($this->adminUser);
 
     // Assign default values for the new vocabulary.
-
     // Load the "add default configuration" page.
     $this->drupalGet('admin/config/search/metatags/config/add');
     $this->assertResponse(200);
@@ -80,9 +87,7 @@ class MetatagCoreTermTest extends MetatagTestHelper {
 
     // Submit the form with some values.
     $this->drupalPost(NULL, array(
-      'metatags[und][dcterms.subject][value]' => '[term:name]',
-      'metatags[und][dcterms.format][value]' => 'text/html',
-      'metatags[und][dcterms.identifier][value]' => '[current-page:url:absolute]',
+      'metatags[und][abstract][value]' => '[term:name]',
     ), t('Save'));
     $this->assertResponse(200);
 
@@ -93,7 +98,6 @@ class MetatagCoreTermTest extends MetatagTestHelper {
     $this->assertEqual($this->getUrl(), url('admin/config/search/metatags', array('absolute' => TRUE)));
 
     // Create a test term.
-
     // Load the term form.
     $this->drupalGet('admin/structure/taxonomy/' . $vocabulary->machine_name . '/add');
     $this->assertResponse(200);
@@ -101,10 +105,9 @@ class MetatagCoreTermTest extends MetatagTestHelper {
     // Verify the page loaded correctly.
     // @todo Update this to extract the H1 tag.
     // $this->assertText(strip_tags(t('Create @name', array('@name' => $vocabulary->name))));
-
     // Verify that it's possible to submit values to the form.
     $this->drupalPost(NULL, array(
-      'metatags[und][dcterms.subject][value]' => '[term:name] ponies',
+      'metatags[und][abstract][value]' => '[term:name] ponies',
       'name' => $term_name,
       'path[alias]' => $term_path,
     ), t('Save'));
@@ -144,7 +147,7 @@ class MetatagCoreTermTest extends MetatagTestHelper {
       // Only the non-default values are stored.
       $expected = array(
         'und' => array(
-          'dcterms.subject' => array(
+          'abstract' => array(
             'value' => '[term:name] ponies',
           ),
         ),
@@ -158,8 +161,9 @@ class MetatagCoreTermTest extends MetatagTestHelper {
     }
 
     // Verify the title is using the custom default for this vocabulary.
-    $xpath = $this->xpath("//meta[@name='dcterms.subject']");
-    $this->assertEqual(count($xpath), 1, 'Exactly one dcterms.subject meta tag found.');
+    $xpath = $this->xpath("//meta[@name='abstract']");
+    $this->assertEqual(count($xpath), 1, 'Exactly one abstract meta tag found.');
     $this->assertEqual($xpath[0]['content'], "Who likes magic ponies");
   }
+
 }

@@ -1,10 +1,15 @@
 <?php
+
 /**
  * @file
  * Tests for the Metatag module for the direct Views integration.
  */
 
+/**
+ * Tests for the Metatag module for the direct Views integration.
+ */
 class MetatagViewsI18nTest extends MetatagTestHelper {
+
   /**
    * {@inheritdoc}
    */
@@ -33,6 +38,9 @@ class MetatagViewsI18nTest extends MetatagTestHelper {
 
     parent::setUp($modules);
 
+    // Add more locales.
+    $this->setupLocales();
+
     // Set up the locales.
     $perms = array(
       'administer languages',
@@ -42,7 +50,9 @@ class MetatagViewsI18nTest extends MetatagTestHelper {
       'translate user-defined strings',
     );
     $this->adminUser = $this->createAdminUser($perms);
-    $this->setupLocales();
+
+    // Log in the admin user.
+    $this->drupalLogin($this->adminUser);
 
     // Reload the translations.
     drupal_flush_all_caches();
