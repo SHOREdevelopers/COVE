@@ -1,12 +1,13 @@
 jQuery(document).ready(function(jQuery) {
 
-jQuery(function() {
+/* jQuery(function() {
     jQuery("#ap_detail_panel").resizable({
     handles: 'n, s',
     maxHeight: 400,
 });
 });
-
+ */
+ 
 // Hide default tooltip on title attribute, since that contains email address which we want to hide
 jQuery('[title]').mouseover(function () {
         $this = jQuery(this);
