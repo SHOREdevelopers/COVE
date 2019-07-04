@@ -85,7 +85,8 @@ function cove_mapping_default_openlayers_maps() {
     'layers' => array(
       0 => 'openlayers_layer_tile_osm',
       1 => 'great_britain_os_one_inch_1885_1900',
-      2 => 'custom_map_data_overlay',
+      2 => 'custom_map',
+      3 => 'custom_map_data_overlay',
     ),
     'controls' => array(
       0 => 'openlayers_control_fullscreen',
@@ -130,7 +131,8 @@ function cove_mapping_default_openlayers_maps() {
     'layers' => array(
       0 => 'openlayers_layer_tile_osm',
       1 => 'great_britain_os_one_inch_1885_1900',
-      2 => 'custom_map_data_overlay',
+      2 => 'custom_map',
+      3 => 'custom_map_data_overlay',
     ),
     'controls' => array(
       0 => 'openlayers_control_fullscreen',

@@ -48,7 +48,7 @@ function cove_mapping_default_openlayers_layers() {
   $ol_layer->options = array(
     'source' => 'openlayers_views_source_custom_map_page',
     'visible' => 1,
-    'style' => 'openlayers_examples_style_icon_marker',
+    'style' => 'openlayers_style_invisible',
   );
   $export['custom_map'] = $ol_layer;
 
