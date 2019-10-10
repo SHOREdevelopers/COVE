@@ -13,7 +13,7 @@
 #annotation_snapshotSelector_container {
   z-index: 9000;
   background-color: grey;
-  width: 100vw;
+  height: 100%;
   padding: .5rem;
   position: fixed;
 }
@@ -126,7 +126,7 @@
 
 .popover_content {
   border-radius: 0.3rem;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
 }
 
 .popover_content table {
@@ -142,7 +142,7 @@
 
 .popover_annotatedText {
   border-radius: 0.3rem 0.3rem 0 0;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   font-style: italic;
   font-size: 0.8rem;
   background-color: #adadad;
@@ -183,49 +183,111 @@
 }
 
 #ap_detail_panel {
-  padding: 1.7rem 0 0;
-  display: none;
-  position: fixed;
-  bottom: 0;
-  height: 20rem;
-  z-index:1;
+ padding: 1.7rem 0 0;
+    display: none;
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 100%;
+    z-index: 2002;
+    overflow: auto;
 }
 
 #ap_detail_panel_content {
-
-  background-color: rgba(191, 191, 191, 0.95);
-  z-index: 2000;
-  width: 100vw;
-  height: 20rem;
-  border: 0;
-  border-top: 1px #b5b5b5 solid;
+ background-color: rgb(232, 232, 232);
+    z-index: 2002;
+    width: 36vw;
+    height: 100%;
+    border: 0;
+    border-top: 1px #b5b5b5 solid;
   /* box-shadow: 7px -1px 5px 1px rgba(0, 0, 0, 0.26);  */
 }
 
 
 
 .ap_detail_panel_minimized {
-  height: 0.5rem !important;
+  width: 0.5rem !important;
 }
 
 /* The tab headers */
 
-.ap_tab, .ap_tab_pinned {
+.ap_tab {
   border-radius: 0.3rem 0.3rem 0 0;
   background-color: #868686;
   border-top: 1px #b5b5b5 solid;
   position: absolute;
   top: 0;
+  left: 0;
   margin: 0;
   width: 7rem;
   text-align: left;
   padding: 0 0.4rem;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   font-weight: 700;
   line-height: 1.6rem;
   height: 1.7rem;
   font-size: .85rem;
   cursor: pointer;
+}
+
+.ap_DensityButton {
+    border-radius: 0.3rem 0.3rem 0 0;
+    background-color: #ffffff;
+    border: 1px 1px 0 1px solid #b5b5b5;
+    border-top: 1px #b5b5b5 solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 3rem;
+    text-align: center;
+    padding: 0 0.4rem;
+    /* font-family: sans-serif; */
+    /* font-weight: 700; */
+    line-height: 1.6rem !important;
+    height: 1.7rem;
+    font-size: 1.3rem !important;
+    cursor: pointer;
+}
+
+div#button_densityView.off {
+    color: #1b6c7a;
+}
+
+.ap_tab_pinned {
+    border-radius: 0.3rem;
+    background-color: #868686;
+    /* border-top: 1px #b5b5b5 solid; */
+    position: fixed;
+    /* position: absolute; */
+    top: 4rem;
+    /* left: 0; */
+    margin: 0;
+    width: 7rem;
+    text-align: left;
+    padding: 0.4rem;
+    /* font-family: sans-serif; */
+    font-weight: 700;
+    line-height: 1.6rem;
+    /* height: 1.7rem; */
+    font-size: .85rem;
+    cursor: pointer;
+    right: 0;
+    }
+    
+    .ap_tab_pinned {
+  font-size: 2.5rem;
+    line-height: 1.9rem;
+    text-align: center;
+    width: 3.5rem;
+    /* border-bottom: 1px #9E9E9E solid; */
+    background-color: #9E9E9E;
+    z-index: 2003;
+    }
+
+
+.ap_tab_pinned.tab-open {
+    right: 35vw;
 }
 
 #ap_button_panelToggle {
@@ -234,43 +296,36 @@
 
 .ap_tab.open, .ap_tab_pinned {
   z-index: 2010;
-  border: 1px 1px 0 1px solid #b5b5b5;
-  border-bottom: 1px solid #BFBFBF;
-  background-color: #BFBFBF;
-}
-
-.ap_tab_pinned {
-  font-size: 1.4rem;
-  line-height: 1.9rem;
-  text-align: center;
-  width: 4.2rem;
-  border-bottom: 1px #9E9E9E solid;
-  background-color: #9E9E9E;
+    border: 1px 1px 0 1px solid #b5b5b5;
+    /* border-bottom: 1px solid #BFBFBF; */
+    background-color: white;
+    border: 1px solid #cacaca;
 }
 
 /* The tab content */
 
+.ap_tabContent {
+    background-color: #e8e8e8;
+}
+
 #ap_annotation_sourcetext {
-  font-family: sans-serif;
-  font-size: 0.9rem;
-  color: #000000;
-  padding: 4rem 2rem 0;
-  height: 18rem;
-  float: left;
-  width: 30%;
-  font-style: italic;
-  /* background-color: #00000017;  */
-  overflow: auto;
-     text-align: center;
+    font-family: sans-serif; */
+    font-size: 0.9rem;
+    padding: 1rem;
+    font-style: italic;
+    background-color: #e8e8e8;
+    overflow: auto;
+    text-align: center;
+    border-bottom: 3px solid gray;
 }
 
 #ap_annotation_annotation {
-  font-family: sans-serif;
-  padding: 4rem 2rem 0;
-  margin: 0;
-  background-color: #e8e8e8;
-  overflow: auto;
-  height: 18rem;
+    /*font-family: sans-serif;*/
+    padding: 2rem 2rem 0;
+    margin: 0;
+    background-color: #e8e8e8;
+    overflow: auto;
+    height: 100vh; 
 }
 
 #ap_annotation_annotation img {
@@ -282,7 +337,7 @@
 
 #ap_annotation_annotation p {
   margin: 0 0 1rem;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -293,10 +348,9 @@
 }
 
 #ap_annotation_sourceinfo {
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   background-color: #e6e5e5;
   width: 100%;
-  position: fixed;
   padding: 0.4rem;
   min-height: 1.6rem;
   border-bottom: 1px solid #b3b3b3;
@@ -315,13 +369,9 @@
 
 .ap_filterSet {
   color: #00000080;
-  font-family: sans-serif;
-  padding: 1rem;
+  /*font-family: sans-serif;*/
+  padding: 1rem 1rem 1rem 1.5rem;
   display: block;
-  width: 25%;
-  height: 100%;
-  float: left;
-  height: 20rem;
   border: 1px solid #00000017;
   overflow: hidden;
 }
@@ -333,7 +383,6 @@
 
 #ap_filter_category, #ap_filter_people, #ap_filter_tags {
   overflow: auto;
-  height: 18rem;
   border: 1px dashed #0000001c;
   background-color: #ffffff30;
   padding: 0.5rem;
@@ -342,7 +391,7 @@
 
 .filterOption {
   overflow: hidden;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   font-size: 0.8rem;
   white-space: nowrap;
   background-color: #f1f1f1;
@@ -400,6 +449,9 @@
   padding: 0 0.3rem 0 0;
 }
 
+#ap_detail_panel .fa {
+    display: block;
+    }
 .fa_button {
   font-size: 1.3rem;
   padding: 0 0.2rem 0 0;

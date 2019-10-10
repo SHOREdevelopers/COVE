@@ -44,9 +44,9 @@ jQuery('[title]').mouseover(function () {
 		panelDivs +='<div id="ap_detail_panel">';
 		panelDivs +='<div id="ap_detail_panel_content">';
 		panelDivs +='<div class="ap_tab_pinned">';
-		panelDivs +='<div id="ap_button_panelToggle" class="fa fa_button fa-arrow-circle-up"></div>';
-		panelDivs +='<div id="button_densityView" class="fa fa_button fa-file-text-o" aria-hidden="true" onclick="toggleDensity()"></div>';
+		panelDivs +='<div id="ap_button_panelToggle" class="fa fa_button fa-arrow-circle-left"></div>';
 		panelDivs +='</div>';
+		panelDivs +='<div id="button_densityView" class="ap_DensityButton fa fa_button fa-adjust" aria-hidden="true" onclick="toggleDensity()" tabName="Density"></div>';
 		panelDivs +='<div class="ap_tabContent" id="ap_tab_annotation" tabName="Annotations">';
 		panelDivs +='<div id="ap_annotation_sourceinfo"></div>';
 		panelDivs +='<div id="ap_annotation_sourcetext"><center>Annotation Details</center></div>';
@@ -345,14 +345,14 @@ jQuery('[title]').mouseover(function () {
 	function setDensityMode(modeShouldBeOn){
 		densityView=modeShouldBeOn;
 		if(modeShouldBeOn){
-			jQuery("#button_densityView").removeClass("fa-file-text-o");
-			jQuery("#button_densityView").addClass("fa-file-text");
+			jQuery("#button_densityView").removeClass("fa-adjust on");
+			jQuery("#button_densityView").addClass("fa-adjust off");
 			jQuery("span[spanid]").each(function(index) {
 				jQuery(this).css("background-color", "rgba(64,64,64,.3)");
 			});
 		}else{
-			jQuery("#button_densityView").removeClass("fa-file-text");
-			jQuery("#button_densityView").addClass("fa-file-text-o");
+			jQuery("#button_densityView").removeClass("fa-adjust off");
+			jQuery("#button_densityView").addClass("fa-adjust on");
 			resetAnnotationColor();
 		}
 	}
