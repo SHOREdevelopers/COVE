@@ -190,7 +190,6 @@
     right: 0;
     height: 100%;
     z-index: 2002;
-    overflow: auto;
 }
 
 #ap_detail_panel_content {
@@ -201,6 +200,7 @@
     border: 0;
     border-top: 1px #b5b5b5 solid;
   /* box-shadow: 7px -1px 5px 1px rgba(0, 0, 0, 0.26);  */
+  overflow: auto;
 }
 
 
