@@ -1246,6 +1246,10 @@ ul.primary li a, ul.primary li.active a {
     float: left;
 }
 
+/* Date ranges want to display block. Changing to inline. */
+.view-editions-home .date-display-range {
+    display: inline;
+}
 /* Changing the default look of jquery accordion */
 
 .ui-state-default {
