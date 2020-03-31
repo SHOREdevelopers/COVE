@@ -22,7 +22,7 @@ html, body {
 @media only screen and (max-width:768px) {
 .navbar li a {
   font-size:60%;
-  padding:5px !important;  
+  padding:5px !important;
 }
 }
 .logged-in .navbar-fixed-top {
@@ -546,7 +546,7 @@ section.field.field-name-field-main-author, section.field.field-name-field-origi
 }
 
 .node-type-editions-index-page div#content {
-   /*  width: 80%; 
+   /*  width: 80%;
     margin: auto; */
     /*border: 1px solid #508596;*/
     background: #FBFBFB;
@@ -594,7 +594,7 @@ clear:both;
    img        { border: 0; }
    img.left  { float:left;
                margin: 0px 8px 6px 0px; }
-   
+
    blockquote   { margin-left: 8%;
                   margin-right: 8%;
                   font-style:inherit;}
@@ -1303,7 +1303,7 @@ div.view-custom-timeline td.views-field.views-field-field-event-date-1, div.view
 }
 
 .add-link li a {
-    background-color: #279eb2 !important; 
+    background-color: #279eb2 !important;
     color: white !important;
     margin: 0 20px !important;
 }
@@ -1671,14 +1671,14 @@ span.tags-label {
 
 
 
-.pane-3 h2.pane-title.block-title {
+/*.pane-3 h2.pane-title.block-title {
     display: inline;
     float: left;
     margin-right: 10px;
     font-size: 16px;
     margin-top: 6px;
     color: white;
-}
+}*/
 
 /*.select2-container--classic .select2-search--inline .select2-search__field {
     width: 250px !important;
@@ -1739,7 +1739,7 @@ img.alignleft, img.alignright {
 
 /*On occassion, might want to unfloat something that's floated by default*/
 .noFloat {
-float:none;  
+float:none;
 }
 
 /* Suppress system messages when saving Place and Chron. entry nodes; there are better ways to do this but this is just one-off fix */
