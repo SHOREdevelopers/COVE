@@ -115,6 +115,15 @@ function sky_process_region(&$vars) {
     $vars['inner_prefix'] = '<h2 class="menu-toggle"><a href="#">' . t('Menu') . '</a></h2>';
   }
 }
+function sky_preprocess_page(&$variables) {
+  drupal_add_library('system', 'ui');
+  drupal_add_library('system', 'ui.accordion');
+  drupal_add_library('system', 'effects.highlight');
+  drupal_add_js('jQuery(document).ready(function(){jQuery("#accordion").accordion({ collapsible: true, heightStyle: content });});', 'inline');
+  }
+
+  $vars['scripts'] = drupal_get_js();
+}
 // Most js loaded in page source but leaving here commented out possibly for later
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 //drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
@@ -146,4 +155,3 @@ drupal_add_js('/sites/all/libraries/bootstrap/bootstrap.min.js', array('type' =>
 //drupal_add_js('https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.js', array('type' => 'external', 'scope' => 'header'));
-drupal_add_js('/sites/all/themes/sky/accordion.js', array('type' => 'file', 'scope' => 'footer'));
