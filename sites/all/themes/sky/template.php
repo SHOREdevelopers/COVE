@@ -4,7 +4,7 @@
 /**
  * Override or insert variables into the html template.
  */
- 
+
 function sky_preprocess_html(&$vars) {
   global $theme_key;
   $theme_name = $theme_key;
@@ -122,14 +122,14 @@ function sky_process_region(&$vars) {
     //drupal_add_js('/sites/all/themes/sky/lib/annotator-full.1.2.9/annotator-full.min.js', array('type' => 'file', 'scope' => 'footer'));
     // Locale for language
     //drupal_add_js('/sites/all/themes/sky/lib/jquery-i18n-master/jquery.i18n.min.js', array('type' => 'file', 'scope' => 'footer'));
-    // For show the annotation creation date 
+    // For show the annotation creation date
     //drupal_add_js('/sites/all/themes/sky/lib/jquery.dateFormat.js', array('type' => 'file', 'scope' => 'footer'));
-    // File with the translations 
+    // File with the translations
     //drupal_add_js('/sites/all/themes/sky/locale/en/annotator.js', array('type' => 'file', 'scope' => 'footer'));
-    // Scroll panel 
+    // Scroll panel
     //drupal_add_js('/sites/all/themes/sky/lib/jquery.slimscroll.js', array('type' => 'file', 'scope' => 'footer'));
-    // annotator 
-    // anotator plug in 
+    // annotator
+    // anotator plug in
     //drupal_add_js('/sites/all/themes/sky/view_annotator.js', array('type' => 'file', 'scope' => 'footer'));
     //drupal_add_js('/sites/all/themes/sky/src/categories.js', array('type' => 'file', 'scope' => 'footer'));
     //drupal_add_js('/sites/all/themes/sky/lib/tinymce/tinymce.min.js', array('type' => 'file', 'scope' => 'footer'));
@@ -146,3 +146,4 @@ drupal_add_js('/sites/all/libraries/bootstrap/bootstrap.min.js', array('type' =>
 //drupal_add_js('https://cdn.jsdelivr.net/lodash/4.15.0/lodash.core.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js', array('type' => 'external', 'scope' => 'footer'));
 //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.js', array('type' => 'external', 'scope' => 'header'));
+drupal_add_js('/sites/all/themes/sky/accordion.js', array('type' => 'file', 'scope' => 'footer'));
