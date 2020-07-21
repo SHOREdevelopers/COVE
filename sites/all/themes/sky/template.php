@@ -55,7 +55,12 @@ function sky_process_html(&$vars) {
 function sky_preprocess_page(&$vars) {
   if ($vars['page']['footer'] || $vars['page']['four_first']|| $vars['page']['four_second'] || $vars['page']['four_third'] || $vars['page']['four_fourth']) {
     $vars['classes_array'][] = 'with-footer';
+    drupal_add_library('system', 'ui');
+  drupal_add_library('system', 'ui.accordion');
+  drupal_add_library('system', 'effects.highlight');
+  drupal_add_js('jQuery(document).ready(function(){jQuery("#accordion").accordion({ collapsible: true, heightStyle: content });});', 'inline');
   }
+  $vars['scripts'] = drupal_get_js();
 }
 
 /**
@@ -115,15 +120,7 @@ function sky_process_region(&$vars) {
     $vars['inner_prefix'] = '<h2 class="menu-toggle"><a href="#">' . t('Menu') . '</a></h2>';
   }
 }
-function sky_preprocess_page(&$variables) {
-  drupal_add_library('system', 'ui');
-  drupal_add_library('system', 'ui.accordion');
-  drupal_add_library('system', 'effects.highlight');
-  drupal_add_js('jQuery(document).ready(function(){jQuery("#accordion").accordion({ collapsible: true, heightStyle: content });});', 'inline');
-  }
 
-  $vars['scripts'] = drupal_get_js();
-}
 // Most js loaded in page source but leaving here commented out possibly for later
 //drupal_add_js('/sites/all/themes/sky/tooltip.js', array('type' => 'file'));
 //drupal_add_js('/sites/all/themes/sky/openannosidebar.js', array('type' => 'file', 'scope' => 'footer'));
