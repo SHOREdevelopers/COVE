@@ -23,9 +23,9 @@ class OpenIDConnectClientCustom extends OpenIDConnectClientBase {
    */
   public function getEndpoints() {
     return array(
-      'authorization' => 'https://example.com/oauth2/authorize',
-      'token' => 'https://example.com/oauth2/token',
-      'userinfo' => 'https://example.com/oauth2/UserInfo',
+      'authorization' => 'https://bavs.ac.uk/oauth/authorize',
+      'token' => 'https://bavs.ac.uk/oauth/authorize',
+      'userinfo' => 'https://bavs.ac.uk/oauth/me',
     );
   }
 
