@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * An example implementation of OpenID Connect client.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function example_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'openid_connect') {
+    return 'plugins/' . $plugin;
+  }
+}

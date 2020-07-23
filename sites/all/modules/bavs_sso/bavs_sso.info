@@ -1,0 +1,6 @@
+name = BAVS SSO client
+description = Implementation of BAVS SSO for the OpenID Connect protocol.
+core = 7.x
+package = OAuth2
+
+dependencies[] = openid_connect
