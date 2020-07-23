@@ -8,7 +8,7 @@
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function example_ctools_plugin_directory($module, $plugin) {
+function bavssso_ctools_plugin_directory($module, $plugin) {
   if ($module == 'openid_connect') {
     return 'plugins/' . $plugin;
   }
