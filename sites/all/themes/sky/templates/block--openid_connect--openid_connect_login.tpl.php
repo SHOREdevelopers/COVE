@@ -13,6 +13,7 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
       <li role="presentation"><?php print $content ?></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="https://bavs.ac.uk/membership/">Not A BAVS member?</a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.navsa.org/members/join-navsa/">Not A NAVSA member?</a></li>
     </ul>
   </div>
@@ -33,4 +34,5 @@
 </div>
 <script>
 document.getElementById("edit-openid-connect-client-generic-login").value = "Log in with NAVSA";
+document.getElementById("edit-openid-connect-client-custom-login").value = "Log in with BAVS";
 </script>
