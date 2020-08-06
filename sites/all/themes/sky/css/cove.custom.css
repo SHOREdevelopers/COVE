@@ -1399,12 +1399,12 @@ color:white;
     margin: 0.5em 0;
 }
 
-.node-type-course .panels-flexible-region-last .panel-pane, .nav_to-do {
+/*.node-type-course .panels-flexible-region-last .panel-pane, .nav_to-do {
      padding: 12px;
      background: -moz-linear-gradient(top, rgba(0,183,234,1) 0%, rgba(255,255,255,0.96) 100px, rgba(255,255,255,0.95) 150px);
      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,183,234,1)), color-stop(100px, rgba(255,255,255,0.96)), color-stop(150px, rgba(255,255,255,0.95)));
      margin: 0px 10px 7px 10px;
- }
+ }*/
 
 .node-type-course .view.view-og-nodes {
     margin-left: -18px;
