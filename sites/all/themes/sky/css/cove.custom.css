@@ -68,6 +68,11 @@ h1#site-name {
 
 /* Mods to Region Top Menu and NAVSA bar */
 
+/* Removes static NAVSA bar when not logged in favor of OpenId block with login link */
+.not-logged-in div#block-block-2 {
+    display: none;
+}
+
 .region-top-menu {
     background-color: black;
     height: 50px;
@@ -112,9 +117,9 @@ margin-right:-10px;
 }
 
 /* When logged in, hide Login link from bar */
-/*.logged-in ul#globalnav li:first-child {
+.logged-in ul#globalnav li:first-child {
     display: none;
-}*/
+}
 /* Nav Menu mods */
 nav#block-system-main-menu {
 position:relative;
@@ -1714,7 +1719,7 @@ span.tags-label {
     font-weight: bold;
 }
 
-/*.block-openid-connect h2 { display:none;}*/
+.block-openid-connect h2 { display:none;}
 
 /*div#mini-panel-annotation_filters {
     display: none;
