@@ -31,7 +31,9 @@
   </ul> </div> </nav>
 </div>
 </div>
-<script>
-document.getElementById("edit-openid-connect-client-custom-login").value = "Log in with BAVS";
-document.getElementById("edit-openid-connect-client-generic-login").value = "Log in with NAVSA";
+<script type="text/javascript">
+$(document).ready(function() {
+$('#edit-openid-connect-client-custom-login').val('Login with BAVS');
+$('#edit-openid-connect-client-generic-login').val('Login with NAVSA');
+});
 </script>
