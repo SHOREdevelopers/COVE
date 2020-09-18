@@ -1,3 +1,9 @@
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+$('#edit-openid-connect-client-custom-login').val('Login with BAVS');
+$('#edit-openid-connect-client-generic-login').val('Login with NAVSA');
+}(jQuery));
+</script>
 <div id="block-<?php print $block->module . '-' . $block->delta; ?>" class="<?php print $classes; ?> " <?php print $attributes; ?>>
 <?php print render($title_prefix); ?>
 <?php if ($block->subject): ?>
@@ -31,9 +37,3 @@
   </ul> </div> </nav>
 </div>
 </div>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-$('#edit-openid-connect-client-custom-login').val('Login with BAVS');
-$('#edit-openid-connect-client-generic-login').val('Login with NAVSA');
-}(jQuery));
-</script>
