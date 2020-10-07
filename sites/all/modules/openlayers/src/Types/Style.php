@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
 /**
  * Class Style.
  */
-abstract class Style extends Object implements StyleInterface {
+abstract class Style extends Base implements StyleInterface {
   /**
    * The array containing the options.
    *

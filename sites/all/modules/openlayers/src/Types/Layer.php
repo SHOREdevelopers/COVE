@@ -11,7 +11,7 @@ use Drupal\openlayers\Openlayers;
 /**
  * Class Layer.
  */
-abstract class Layer extends Object implements LayerInterface {
+abstract class Layer extends Base implements LayerInterface {
   /**
    * The array containing the options.
    *

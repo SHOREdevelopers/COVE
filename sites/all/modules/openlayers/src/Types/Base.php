@@ -13,9 +13,9 @@ use Drupal\openlayers\Types\Collection;
 use Drupal\openlayers\Types\ObjectInterface;
 
 /**
- * Class Object.
+ * Class Base.
  */
-abstract class Object extends PluginBase implements ObjectInterface {
+abstract class Base extends PluginBase implements ObjectInterface {
   /**
    * A unique ID for the object.
    *

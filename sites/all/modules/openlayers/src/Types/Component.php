@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
 /**
  * Class Component.
  */
-abstract class Component extends Object implements ComponentInterface {
+abstract class Component extends Base implements ComponentInterface {
   /**
    * The array containing the options.
    *

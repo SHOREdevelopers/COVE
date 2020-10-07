@@ -1,0 +1,194 @@
+From 2674d53b64e5e5de6437e29a44dd3be616b87781 Mon Sep 17 00:00:00 2001
+From: Peter Philipp <peter.philipp@cando-image.com>
+Date: Tue, 16 Jun 2020 16:06:54 +1200
+Subject: [PATCH] #2952602-22
+
+---
+ src/Plugin/Map/OLMap/OLMap.php     | 2 +-
+ src/Types/{Object.php => Base.php} | 4 ++--
+ src/Types/Collection.php           | 2 +-
+ src/Types/Component.php            | 2 +-
+ src/Types/Control.php              | 2 +-
+ src/Types/Error.php                | 4 ++--
+ src/Types/Interaction.php          | 2 +-
+ src/Types/Layer.php                | 2 +-
+ src/Types/Map.php                  | 2 +-
+ src/Types/Projection.php           | 2 +-
+ src/Types/Source.php               | 2 +-
+ src/Types/Style.php                | 2 +-
+ 12 files changed, 14 insertions(+), 14 deletions(-)
+ rename src/Types/{Object.php => Base.php} (99%)
+
+diff --git a/src/Plugin/Map/OLMap/OLMap.php b/src/Plugin/Map/OLMap/OLMap.php
+index fbe423d0..29062fb3 100644
+--- a/src/Plugin/Map/OLMap/OLMap.php
++++ b/src/Plugin/Map/OLMap/OLMap.php
+@@ -140,7 +140,7 @@ class OLMap extends Map {
+     $i = 0;
+     $data = array();
+     $map_options = $this->getOptions();
+-    /** @var \Drupal\openlayers\Types\Object $object */
++    /** @var \Drupal\openlayers\Types\Base $object */
+     foreach ($this->getCollection()->getFlatList() as $object) {
+       $weight = 0;
+       if (isset($map_options['capabilities']['options']['table'][$object->getMachineName()])) {
+diff --git a/src/Types/Object.php b/src/Types/Base.php
+similarity index 99%
+rename from src/Types/Object.php
+rename to src/Types/Base.php
+index 76f7d494..2d95c80d 100644
+--- a/src/Types/Object.php
++++ b/src/Types/Base.php
+@@ -13,9 +13,9 @@ use Drupal\openlayers\Types\Collection;
+ use Drupal\openlayers\Types\ObjectInterface;
+ 
+ /**
+- * Class Object.
++ * Class Base.
+  */
+-abstract class Object extends PluginBase implements ObjectInterface {
++abstract class Base extends PluginBase implements ObjectInterface {
+   /**
+    * A unique ID for the object.
+    *
+diff --git a/src/Types/Collection.php b/src/Types/Collection.php
+index 58f70bde..a1419bcc 100644
+--- a/src/Types/Collection.php
++++ b/src/Types/Collection.php
+@@ -22,7 +22,7 @@ class Collection extends PluginBase {
+    *
+    * @var ObjectInterface[] $objects
+    *   List of objects in this collection. The items have to be instances of
+-   *   \Drupal\openlayers\Types\Object.
++   *   \Drupal\openlayers\Types\Base.
+    */
+   protected $objects = array();
+ 
+diff --git a/src/Types/Component.php b/src/Types/Component.php
+index c31c165a..a08d34c8 100644
+--- a/src/Types/Component.php
++++ b/src/Types/Component.php
+@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Component.
+  */
+-abstract class Component extends Object implements ComponentInterface {
++abstract class Component extends Base implements ComponentInterface {
+   /**
+    * The array containing the options.
+    *
+diff --git a/src/Types/Control.php b/src/Types/Control.php
+index 31fbd1be..b2d18722 100644
+--- a/src/Types/Control.php
++++ b/src/Types/Control.php
+@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Control.
+  */
+-abstract class Control extends Object implements ControlInterface {
++abstract class Control extends Base implements ControlInterface {
+   /**
+    * The array containing the options.
+    *
+diff --git a/src/Types/Error.php b/src/Types/Error.php
+index e3075f89..2a8c507a 100644
+--- a/src/Types/Error.php
++++ b/src/Types/Error.php
+@@ -7,7 +7,7 @@
+ namespace Drupal\openlayers\Types;
+ 
+ use Drupal\Core\Logger\LoggerChannelInterface;
+-use Drupal\openlayers\Types\Object;
++use Drupal\openlayers\Types\Base;
+ use Drupal\service_container\Messenger\MessengerInterface;
+ 
+ /**
+@@ -24,7 +24,7 @@ use Drupal\service_container\Messenger\MessengerInterface;
+  * Dummy class to avoid breaking the whole processing if a plugin class is
+  * missing.
+  */
+-class Error extends Object implements ControlInterface, ComponentInterface, LayerInterface, SourceInterface, StyleInterface {
++class Error extends Base implements ControlInterface, ComponentInterface, LayerInterface, SourceInterface, StyleInterface {
+ 
+   /**
+    * Contains the error message string.
+diff --git a/src/Types/Interaction.php b/src/Types/Interaction.php
+index 98fe4a55..8b99c930 100644
+--- a/src/Types/Interaction.php
++++ b/src/Types/Interaction.php
+@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Interaction.
+  */
+-abstract class Interaction extends Object implements InteractionInterface {
++abstract class Interaction extends Base implements InteractionInterface {
+   /**
+    * The array containing the options.
+    *
+diff --git a/src/Types/Layer.php b/src/Types/Layer.php
+index 65b39c7f..fa66582e 100644
+--- a/src/Types/Layer.php
++++ b/src/Types/Layer.php
+@@ -11,7 +11,7 @@ use Drupal\openlayers\Openlayers;
+ /**
+  * Class Layer.
+  */
+-abstract class Layer extends Object implements LayerInterface {
++abstract class Layer extends Base implements LayerInterface {
+   /**
+    * The array containing the options.
+    *
+diff --git a/src/Types/Map.php b/src/Types/Map.php
+index b9d98586..341500a8 100644
+--- a/src/Types/Map.php
++++ b/src/Types/Map.php
+@@ -11,7 +11,7 @@ use Drupal\openlayers\Openlayers;
+ /**
+  * Class Map.
+  */
+-abstract class Map extends Object implements MapInterface {
++abstract class Map extends Base implements MapInterface {
+   /**
+    * {@inheritdoc}
+    *
+diff --git a/src/Types/Projection.php b/src/Types/Projection.php
+index dc11714a..471c71b1 100644
+--- a/src/Types/Projection.php
++++ b/src/Types/Projection.php
+@@ -9,6 +9,6 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Projection.
+  */
+-abstract class Projection extends Object implements ProjectionInterface {
++abstract class Projection extends Base implements ProjectionInterface {
+ 
+ }
+diff --git a/src/Types/Source.php b/src/Types/Source.php
+index d98c51fa..727bfae3 100644
+--- a/src/Types/Source.php
++++ b/src/Types/Source.php
+@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Source.
+  */
+-abstract class Source extends Object implements SourceInterface {
++abstract class Source extends Base implements SourceInterface {
+   /**
+    * The array containing the options.
+    *
+diff --git a/src/Types/Style.php b/src/Types/Style.php
+index cf499154..d42c1edf 100644
+--- a/src/Types/Style.php
++++ b/src/Types/Style.php
+@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
+ /**
+  * Class Style.
+  */
+-abstract class Style extends Object implements StyleInterface {
++abstract class Style extends Base implements StyleInterface {
+   /**
+    * The array containing the options.
+    *
+-- 
+2.27.0.windows.1
+

@@ -22,7 +22,7 @@ class Collection extends PluginBase {
    *
    * @var ObjectInterface[] $objects
    *   List of objects in this collection. The items have to be instances of
-   *   \Drupal\openlayers\Types\Object.
+   *   \Drupal\openlayers\Types\Base.
    */
   protected $objects = array();
 

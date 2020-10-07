@@ -7,7 +7,7 @@
 namespace Drupal\openlayers\Types;
 
 use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\openlayers\Types\Object;
+use Drupal\openlayers\Types\Base;
 use Drupal\service_container\Messenger\MessengerInterface;
 
 /**
@@ -24,7 +24,7 @@ use Drupal\service_container\Messenger\MessengerInterface;
  * Dummy class to avoid breaking the whole processing if a plugin class is
  * missing.
  */
-class Error extends Object implements ControlInterface, ComponentInterface, LayerInterface, SourceInterface, StyleInterface {
+class Error extends Base implements ControlInterface, ComponentInterface, LayerInterface, SourceInterface, StyleInterface {
 
   /**
    * Contains the error message string.

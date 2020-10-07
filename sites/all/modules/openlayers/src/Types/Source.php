@@ -9,7 +9,7 @@ namespace Drupal\openlayers\Types;
 /**
  * Class Source.
  */
-abstract class Source extends Object implements SourceInterface {
+abstract class Source extends Base implements SourceInterface {
   /**
    * The array containing the options.
    *

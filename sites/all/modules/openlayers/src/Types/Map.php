@@ -11,7 +11,7 @@ use Drupal\openlayers\Openlayers;
 /**
  * Class Map.
  */
-abstract class Map extends Object implements MapInterface {
+abstract class Map extends Base implements MapInterface {
   /**
    * {@inheritdoc}
    *
