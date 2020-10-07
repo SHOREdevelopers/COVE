@@ -11,8 +11,6 @@ function charts_examples($library = NULL, $id = NULL) {
   else {
     $charts_info = charts_info();
   }
-  $output = array();
-
   $table = array();
   foreach ($charts_info as $library => $chart_library_info) {
     $table['header'][] = array(

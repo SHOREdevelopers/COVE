@@ -240,7 +240,7 @@ class GeofieldWidget extends Component {
 
     $geom = $this->initialDataToGeomFeatures();
     $wkt = '';
-    if (!empty($geom['geom'])) {
+    if (!empty($geom['geom']) && !$geom['geom']->isEmpty()) {
       $wkt = $geom['geom']->out('wkt');
     }
     $parents = $this->getOption('parents');

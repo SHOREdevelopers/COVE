@@ -1,0 +1,6 @@
+name = NAVSA SSO client
+description = Implementation of NAVSA SSO for the OpenID Connect protocol.
+core = 7.x
+package = OAuth2
+
+dependencies[] = openid_connect

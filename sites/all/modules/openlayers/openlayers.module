@@ -355,12 +355,3 @@ function openlayers_hook_info() {
 
   return array_fill_keys($hooks, array('group' => 'openlayers'));
 }
-
-/**
- * Implements hook_stream_wrappers_alter().
- */
-function openlayers_stream_wrappers_alter(&$wrappers) {
-  // Initalize the container
-  ServiceContainer::init();
-}
-

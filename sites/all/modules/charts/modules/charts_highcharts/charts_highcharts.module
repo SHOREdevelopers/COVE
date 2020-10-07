@@ -29,6 +29,9 @@ function charts_highcharts_library() {
       'js' => array(
         array('data' => $highcharts_info['library path'] . '/js/highcharts.js', 'type' => 'file'),
       ),
+      'css' => array(
+        array('data' => $highcharts_info['library path'] . '/css/highcharts.css', 'type' => 'file'),
+      ),
     );
   }
   $library['charts_highcharts'] = array(
@@ -57,7 +60,7 @@ function charts_highcharts_libraries_info() {
     'vendor url' => 'http://www.highcharts.com',
     'download url' => 'http://www.highcharts.com/download',
     'version arguments' => array(
-      'file' => 'highcharts.js',
+      'file' => 'js/highcharts.js',
       // 3.x.x
       'pattern' => '/v(\d+\.\d+\.\d)/',
       'lines' => 5,

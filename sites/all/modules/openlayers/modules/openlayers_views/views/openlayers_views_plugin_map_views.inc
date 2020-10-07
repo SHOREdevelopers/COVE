@@ -9,6 +9,16 @@
  */
 class openlayers_views_plugin_map_views extends openlayers_views_plugin_style_source_vector {
 
+
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
+    $options = parent::option_definition();
+    $options['base_map_layer'] = array('default' => '');
+    return $options;
+  }
+
   /**
    * {@inheritdoc}
    */

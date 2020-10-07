@@ -46,6 +46,19 @@ class charts_plugin_style_chart extends views_plugin_style {
       return;
     }
 
+    // Limit grouping options (we only support one grouping field).
+    if (isset($form['grouping'][0])) {
+      $form['grouping'][0]['field']['#title'] = t('Grouping field');
+      $form['grouping'][0]['field']['#description'] = t('If grouping by a particular field, that field will be used to generate multiple data series on the same chart.');
+      $form['grouping'][0]['field']['#attributes']['class'][] = 'charts-grouping-field';
+      // Grouping by rendered version has no effect in charts. Hide the options.
+      $form['grouping'][0]['rendered']['#access'] = FALSE;
+      $form['grouping'][0]['rendered_strip']['#access'] = FALSE;
+    }
+    if (isset($form['grouping'][1])) {
+      $form['grouping'][1]['#access'] = FALSE;
+    }
+
     // Merge in the global chart settings form.
     module_load_include('inc', 'charts', 'includes/charts.pages');
     $field_options = $this->display->handler->get_field_labels();
@@ -152,12 +165,15 @@ class charts_plugin_style_chart extends views_plugin_style {
       '#id' => drupal_clean_css_identifier('chart_' . $chart_id),
       '#title' => $this->options['title_position'] ? $this->options['title'] : FALSE,
       '#title_position' => $this->options['title_position'],
-      '#colors' => $this->options['colors'],
+      '#tooltips' => $this->options['tooltips'],
+      '#data_labels' => $this->options['data_labels'],
+      '#colors' => ($this->options['type'] != 'geomap') ? $this->options['colors'] : FALSE,
       '#background' => $this->options['background'] ? $this->options['background'] : 'transparent',
       '#legend' => $this->options['legend_position'] ? TRUE : FALSE,
       '#legend_position' => $this->options['legend_position'] ? $this->options['legend_position'] : NULL,
       '#width' => $this->options['width'],
       '#height' => $this->options['height'],
+      '#view' => $this->view, // pass info about the actual view results to allow further processing
     );
     $chart_type_info = chart_get_type($this->options['type']);
 
@@ -171,14 +187,16 @@ class charts_plugin_style_chart extends views_plugin_style {
         $data_row = array();
         if ($label_field_key) {
           // Labels need to be decoded, as the charting library will re-encode.
-          $data_row[] = htmlspecialchars_decode($renders[$row_number][$label_field_key], ENT_QUOTES);
+          $data_row[] = htmlspecialchars_decode($this->get_field($row_number, $label_field_key), ENT_QUOTES);
         }
+        $value = $this->get_field($row_number, $data_field_key);
         // Convert empty strings to NULL.
-        if ($renders[$row_number][$data_field_key] === '') {
+        if ($value === '') {
           $value = NULL;
         }
+        // Strip thousands placeholders if present, then cast to float.
         else {
-          $value = (float) $renders[$row_number][$data_field_key];
+          $value = (float) str_replace(array(',', ' '), '', $value);
         }
         $data_row[] = $value;
         $data[] = $data_row;
@@ -207,33 +225,49 @@ class charts_plugin_style_chart extends views_plugin_style {
         '#max' => $this->options['yaxis_max'],
         '#min' => $this->options['yaxis_min'],
       );
-      foreach ($data_fields as $field_key => $field_handler) {
-        $chart[$this->view->current_display . '__' . $field_key] = array(
-          '#type' => 'chart_data',
-          '#data' => array(),
-          '#color' => isset($this->options['field_colors'][$field_key]) ? $this->options['field_colors'][$field_key] : NULL,
-          '#title' => $field_handler->options['label'],
-          '#prefix' => $this->options['yaxis_prefix'] ? $this->options['yaxis_prefix'] : NULL,
-          '#suffix' => $this->options['yaxis_suffix'] ? $this->options['yaxis_suffix'] : NULL,
-          '#decimal_count' => $this->options['yaxis_decimal_count'] ? $this->options['yaxis_decimal_count'] : NULL,
-        );
-      }
 
-      $renders = $this->render_fields($this->view->result);
-      foreach ($renders as $row_number => $row) {
-        if ($label_field_key) {
-          $chart['xaxis']['#labels'][] = $renders[$row_number][$label_field_key];
-        }
+      $sets = $this->render_grouping($this->view->result, $this->options['grouping'], TRUE);
+      foreach ($sets as $series_label => $data_set) {
+        $series_index = isset($series_index) ? $series_index + 1 : 0;
         foreach ($data_fields as $field_key => $field_handler) {
-          // Convert empty strings to NULL.
-          if ($renders[$row_number][$field_key] === '') {
-            $value = NULL;
+          $chart[$this->view->current_display . '__' . $field_key . '_' . $series_index] = array(
+            '#type' => 'chart_data',
+            '#data' => array(),
+            // If using a grouping field, inherit from the chart level colors.
+            '#color' => ($series_label === '' && isset($this->options['field_colors'][$field_key])) ? $this->options['field_colors'][$field_key] : NULL,
+            '#title' => $series_label ? $series_label : $field_handler->options['label'],
+            '#prefix' => $this->options['yaxis_prefix'] ? $this->options['yaxis_prefix'] : NULL,
+            '#suffix' => $this->options['yaxis_suffix'] ? $this->options['yaxis_suffix'] : NULL,
+            '#decimal_count' => $this->options['yaxis_decimal_count'] ? $this->options['yaxis_decimal_count'] : NULL,
+          );
+        }
+
+        // Grouped results come back indexed by their original result number
+        // from before the grouping, so we need to keep our own row number when
+        // looping through the rows.
+        $row_number = 0;
+        foreach ($data_set['rows'] as $result_number => $row) {
+          if ($label_field_key && !isset($chart['xaxis']['#labels'][$row_number])) {
+            $chart['xaxis']['#labels'][$row_number] = $this->get_field($result_number, $label_field_key);
           }
-          // Strip thousands placeholders if present, then cast to float.
-          else {
-            $value = (float) str_replace(array(',', ' '), '', $renders[$row_number][$field_key]);
+          foreach ($data_fields as $field_key => $field_handler) {
+            // Don't allow the grouping field to provide data.
+            if (isset($this->options['grouping'][0]['field']) && $field_key === $this->options['grouping'][0]['field']) {
+              continue;
+            }
+
+            $value = $this->get_field($result_number, $field_key);
+            // Convert empty strings to NULL.
+            if ($value === '') {
+              $value = NULL;
+            }
+            // Strip thousands placeholders if present, then cast to float.
+            else {
+              $value = (float) str_replace(array(',', ' '), '', $value);
+            }
+            $chart[$this->view->current_display . '__' . $field_key . '_' . $series_index]['#data'][] = $value;
           }
-          $chart[$this->view->current_display . '__' . $field_key]['#data'][] = $value;
+          $row_number++;
         }
       }
     }

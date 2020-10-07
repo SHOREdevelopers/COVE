@@ -42,7 +42,7 @@ class TimelineDate extends DateTime implements TimelineDateInterface {
     // The TimelineJS documentation doesn't say anything specific about whether
     // leading zeros should be included in date parts, but the examples do not
     // include them.  Therefore, they are omitted here.
-    $exploded_date = explode(',', $this->format('Y,n,j,g,i,s'));
+    $exploded_date = explode(',', $this->format('Y,n,j,G,i,s'));
 
     // Re-key the date array with the property names that TimelineJS expects.
     return array(

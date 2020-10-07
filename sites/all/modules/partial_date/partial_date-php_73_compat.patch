@@ -1,0 +1,34 @@
+diff --git a/partial_date.module b/partial_date.module
+index dcd9069..41b336d 100644
+--- a/partial_date.module
++++ b/partial_date.module
+@@ -1572,6 +1572,8 @@ function partial_date_format($item, array $settings = array()) {
+   $valid_components = partial_date_components();
+   $last_type = FALSE;
+   foreach ($settings['components'] as $type => $component) {
++    $bypass_component = FALSE;
++
+     if (isset($valid_components[$type])) {
+       $markup = '';
+       // Value is determined by the $settings['display]
+@@ -1587,7 +1589,8 @@ function partial_date_format($item, array $settings = array()) {
+       switch ($display_type) {
+         case 'none':
+           // We need to avoid adding an empty option.
+-          continue;
++          $bypass_component = TRUE;
++          break;
+ 
+         case 'date_only':
+           if ($value !== FALSE) {
+@@ -1626,6 +1629,10 @@ function partial_date_format($item, array $settings = array()) {
+ 
+       }
+ 
++      if ($bypass_component) {
++        continue;
++      }
++
+       if (!strlen($markup)) {
+         if (isset($component['empty']) && strlen($component['empty'])) {
+           // What do we get? If numeric, assume a date / time component, otherwise

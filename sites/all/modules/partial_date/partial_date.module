@@ -1560,6 +1560,8 @@ function partial_date_format($item, array $settings = array()) {
   $valid_components = partial_date_components();
   $last_type = FALSE;
   foreach ($settings['components'] as $type => $component) {
+    $bypass_component = FALSE;
+
     if (isset($valid_components[$type])) {
       $markup = '';
       // Value is determined by the $settings['display]
@@ -1575,7 +1577,8 @@ function partial_date_format($item, array $settings = array()) {
       switch ($display_type) {
         case 'none':
           // We need to avoid adding an empty option.
-          continue;
+          $bypass_component = TRUE;
+          break;
 
         case 'date_only':
           if ($value !== FALSE) {
@@ -1612,6 +1615,10 @@ function partial_date_format($item, array $settings = array()) {
           $markup = partial_date_format_component($item[$type . '_estimate_value'], $component['format'], $item, $settings);
           break;
 
+      }
+
+      if ($bypass_component) {
+        continue;
       }
 
       if (!strlen($markup)) {

@@ -3,7 +3,7 @@ Drupal.openlayers.pluginManager.register({
   init: function(data) {
     var options = jQuery.extend(true, {}, data.opt);
     var projection = ol.proj.get('EPSG:3857');
-    var coord = ol.proj.transform([options.view.center.lat, options.view.center.lon], 'EPSG:4326', projection);
+    var coord = ol.proj.transform([options.view.center.lon, options.view.center.lat], 'EPSG:4326', projection);
 
     var view_opts = {
       center: coord,

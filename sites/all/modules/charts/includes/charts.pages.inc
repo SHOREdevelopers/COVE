@@ -129,6 +129,30 @@ function charts_settings_form($form, $defaults = array(), $field_options = array
     '#parents' => array_merge($parents, array('title_position')),
   );
 
+  $form['display']['tooltips'] = array(
+    '#title' => t('Tooltips'),
+    '#type' => 'select',
+    '#options' => array(
+      '' => t('Disabled'),
+      'TRUE' => t('Enabled'),
+    ),
+    '#description' => t('Show data details on mouse over? Note: unavailable for print or on mobile devices.'),
+    '#default_value' => $options['tooltips'],
+    '#parents' => array_merge($parents, array('tooltips')),
+  );
+
+  $form['display']['data_labels'] = array(
+    '#title' => t('Data labels'),
+    '#type' => 'select',
+    '#options' => array(
+      '' => t('Disabled'),
+      'TRUE' => t('Enabled'),
+    ),
+    '#default_value' => $options['data_labels'],
+    '#description' => t('Show data details as labels on chart? Note: recommended for print or on mobile devices.'),
+    '#parents' => array_merge($parents, array('data_labels')),
+  );
+
   $form['display']['legend_position'] = array(
     '#title' => t('Legend position'),
     '#type' => 'select',
@@ -361,6 +385,7 @@ function charts_default_settings() {
   $defaults['field_colors'] = NULL;
   $defaults['title'] = '';
   $defaults['title_position'] = 'out';
+  $defaults['data_labels'] = FALSE;
   $defaults['legend'] = TRUE;
   $defaults['legend_position'] = 'right';
   $defaults['colors'] = charts_default_colors();

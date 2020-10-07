@@ -147,6 +147,11 @@ function openlayers_geofield_field_formatter_view($entity_type, $entity, $field,
     }
   }
 
+  // If there are no items, stop here. We won't show anything.
+  if (empty($items)) {
+    return $element;
+  }
+
   // Ensure geophp is available.
   geophp_load();
 
@@ -422,7 +427,10 @@ function openlayers_geofield_field_widget_form(&$form, &$form_state, $field, $in
       // Get the initial data from $form_state['input'], if it exists.
       // Otherwise, use the field's $items. This allows the Geocoder button
       // to populate the map, replacing any other shapes.
-      $initial_data = !empty($form_state['input'][$field_name][$langcode]) ? $form_state['input'][$field_name][$langcode] : $items;
+      $initial_data = $items;
+      if (($input_value = drupal_array_get_nested_value($form_state['input'], $element['#field_parents'])) && !empty($input_value[$field_name][$langcode])) {
+        $initial_data = $input_value[$field_name][$langcode];
+      }
 
       $component->setOption('dataType', array('WKT' => 'WKT'));
       $component->setOption('dataProjection', 'EPSG:4326');

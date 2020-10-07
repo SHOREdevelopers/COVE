@@ -9,7 +9,7 @@ Drupal.behaviors.chartsGoogle.attach = function(context, settings) {
   // First time loading in Views preview may not work because the Google JS
   // API may not yet be loaded.
   if (typeof google !== 'undefined') {
-    google.load('visualization', '1', { callback: renderCharts });
+    google.load('visualization', '1', { callback: renderCharts, packages: ['corechart'] });
   }
 
   // Redraw charts on window resize.

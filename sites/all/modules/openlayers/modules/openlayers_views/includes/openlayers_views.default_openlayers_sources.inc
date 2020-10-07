@@ -7,7 +7,7 @@
 function openlayers_views_default_openlayers_sources() {
   $sources = array();
 
-  foreach (openalyers_views_get_views() as $data) {
+  foreach (openlayers_views_get_views() as $data) {
     list($style_plugin, $view, $display) = $data;
     $machine_name = 'openlayers_views_source_' . $view->name . '_' . $display;
 

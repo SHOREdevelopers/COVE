@@ -24,9 +24,9 @@ files[] = src/TimelineText.php
 files[] = src/TimelineTextInterface.php
 files[] = src/TimelineTitleSlide.php
 
-; Information added by Drupal.org packaging script on 2016-11-25
-version = "7.x-3.0+1-dev"
+; Information added by Drupal.org packaging script on 2017-10-10
+version = "7.x-3.1"
 core = "7.x"
 project = "views_timelinejs"
-datestamp = "1480097288"
+datestamp = "1507646948"
 

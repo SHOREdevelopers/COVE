@@ -26,7 +26,7 @@ function charts_menu() {
     'description' => 'Set the default library, behavior, and style of charts.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('charts_default_settings_form'),
-    'access arguments' => array('set default settings for charts'),
+    'access arguments' => array('administer charts'),
     'file' => 'includes/charts.pages.inc',
   );
   $items['charts/examples'] = array(
@@ -158,11 +158,12 @@ function charts_library() {
 function charts_permission() {
   return array(
     'administer charts' => array(
-      'title' => t('Configure chart settings'),
+      'title' => t('Administer Charts'),
+      'description' => t('Visit the <a href="!url">Default chart configuration</a> (used for Charts administration)', array('!url' => url('admin/config/content/charts'))),
     ),
     'access example charts' => array(
       'title' => t('Access example charts'),
-      'description' => t('Grants access to the <a href="!url">charts examples</a> page. Use this page for testing chart functionality.', array('!url' => url('charts/examples'))),
+      'description' => t('Visit the <a href="!url">Charts examples</a> (used for Charts testing and demo)', array('!url' => url('charts/examples'))),
     ),
   );
 }
@@ -359,10 +360,17 @@ function charts_charts_type_info() {
  * Default colors used in all libraries.
  */
 function charts_default_colors() {
-  return array(
-    '#2f7ed8', '#0d233a', '#8bbc21','#910000', '#1aadce',
-    '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a',
-  );
+  $form = variable_get('charts_default_settings');   
+    
+  if (isset($form['colors'])) {
+    return $form['colors'];  
+  }
+  else {
+    return array(
+      '#2f7ed8', '#0d233a', '#8bbc21','#910000', '#1aadce',
+      '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a',
+    );
+  }
 }
 
 /**

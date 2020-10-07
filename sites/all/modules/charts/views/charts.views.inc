@@ -13,14 +13,14 @@ function charts_views_plugins() {
   $plugins = array();
 
   $plugins['style']['chart'] = array(
-    'title' => t('Chart'),
+    'title' => t('Charts'),
     'help' => t('Displays the content in several Chart styles.'),
     'handler' => 'charts_plugin_style_chart',
     'uses row plugin' => FALSE,
     'uses row class' => FALSE,
     'uses fields' => TRUE,
     'uses options' => TRUE,
-    'uses grouping' => FALSE,
+    'uses grouping' => TRUE,
     'type' => 'normal',
   );
   $plugins['style']['chart_extension'] = $plugins['style']['chart'];

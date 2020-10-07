@@ -284,7 +284,9 @@ function PTView(model, elements) {
 
         //  Detect window width for small screens.
         var widthDecimal;
-        if (window.innerWidth < 768) widthDecimal = .83;
+        if (window.innerWidth < 400) widthDecimal = .75;
+        else if (window.innerWidth < 540) widthDecimal = .8;
+        else if (window.innerWidth < 768) widthDecimal = .83;
         else if (window.innerWidth > 1200) widthDecimal = .9;
         else widthDecimal = .86;
 
@@ -624,13 +626,13 @@ PTController.prototype = {
 Drupal.behaviors.page_turner = {
     attach: function (context, settings) {
         // We assume here the body text is always the first field
-        var content = context.getElementsByTagName('section')[0].getElementsByClassName('field')[0];
+        var content = context.getElementsByTagName('article')[0].getElementsByClassName('field')[0];
         var model = new PTModel(content, settings),
         // Our selectors and ids; should probably make more consistent
             view = new PTView(model, {
-                'content': 'section',
+                'content': 'article',
                 'pages': {
-                    'loc': 'field-name-body',
+                    'loc': 'content',
                     'container': 'page-turner-pages-container',
                     'id': 'page-turner-pages',
                     'numbers': 'page-turner-pages-numbers',

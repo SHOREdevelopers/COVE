@@ -115,6 +115,11 @@ function _charts_highcharts_populate_chart_options($chart, $chart_definition) {
   $chart_definition['chart']['height'] = $chart['#height'] ? $chart['#height'] : NULL;
   $chart_definition['credits']['enabled'] = FALSE;
 
+  // Merge in chart raw options.
+  if (isset($chart['#raw_options'])) {
+    $chart_definition = drupal_array_merge_deep($chart_definition, $chart['#raw_options']);
+  }
+
   return $chart_definition;
 }
 
@@ -167,6 +172,11 @@ function _charts_highcharts_populate_chart_axes($chart, $chart_definition) {
           // Rotation not allowed on left/right axis.
           unset($axis['labels']['rotation']);
         }
+      }
+
+      // Merge in axis raw options.
+      if (isset($chart[$key]['#raw_options'])) {
+        $axis = drupal_array_merge_deep($axis, $chart[$key]['#raw_options']);
       }
 
       $chart_definition[$axisType][] = $axis;
@@ -247,6 +257,11 @@ function _charts_highcharts_populate_chart_data(&$chart, $chart_definition) {
       charts_trim_array($series);
       $series['data'] = $series_data;
 
+      // Merge in series raw options.
+      if (isset($chart[$key]['#raw_options'])) {
+        $series = drupal_array_merge_deep($series, $chart[$key]['#raw_options']);
+      }
+
       // Add the series to the main chart definition.
       $chart_definition['series'][$key] = $series;
 
@@ -293,6 +308,11 @@ function _charts_highcharts_populate_chart_data(&$chart, $chart_definition) {
           $series_point['states']['hover']['fillColor'] = $data_item['#color'];
           $series_point['states']['select']['fillColor'] = $data_item['#color'];
           charts_trim_array($series_point);
+
+          // Merge in point raw options.
+          if (isset($data_item['#raw_options'])) {
+            $series_point = drupal_array_merge_deep($series_point, $data_item['#raw_options']);
+          }
         }
       }
 

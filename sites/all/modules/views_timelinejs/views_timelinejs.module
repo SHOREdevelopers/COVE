@@ -16,6 +16,14 @@ function views_timelinejs_views_api() {
 
 /**
  * Implements hook_library().
+ *
+ * The views_timelinejs_css_library_group variable provides backward
+ * compatibility for sites that originally installed version 7.x-3.0 which gave
+ * the TimelineJS CSS libraries a weight of 200.
+ *
+ * @todo Remove this variable in the next major version of the module.
+ *
+ * @see https://www.drupal.org/node/2856403
  */
 function views_timelinejs_library() {
   global $base_url;
@@ -36,7 +44,7 @@ function views_timelinejs_library() {
       'timeline.css' => array(
         'data' => 'https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css',
         'type' => 'external',
-        'group' => 200,
+        'group' => variable_get('views_timelinejs_css_library_group', CSS_DEFAULT),
       ),
     ),
   );
@@ -55,7 +63,7 @@ function views_timelinejs_library() {
       'timeline.css' => array(
         'data' => $base_url . '/sites/all/libraries/TimelineJS3/compiled/css/timeline.css',
         'type' => 'external',
-        'group' => 200,
+        'group' => variable_get('views_timelinejs_css_library_group', CSS_DEFAULT),
       ),
     ),
   );
@@ -70,7 +78,7 @@ function views_timelinejs_library() {
         'font.' . $set . '.css' => array(
           'data' => 'https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.' . $set . '.css',
           'type' => 'external',
-          'group' => 201,
+          'group' => variable_get('views_timelinejs_css_library_group', CSS_DEFAULT),
         ),
       ),
     );
@@ -82,7 +90,7 @@ function views_timelinejs_library() {
         'font.' . $set . '.css' => array(
           'data' => $base_url . '/sites/all/libraries/TimelineJS3/compiled/css/fonts/font.' . $set . '.css',
           'type' => 'external',
-          'group' => 201,
+          'group' => variable_get('views_timelinejs_css_library_group', CSS_DEFAULT),
         ),
       ),
     );

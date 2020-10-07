@@ -90,6 +90,11 @@ function _charts_google_populate_chart_options($chart, $chart_definition) {
   $chart_definition['options']['animation']['duration'] = 10000;
   $chart_definition['options']['animation']['easing'] = 'out';
 
+  // Merge in chart raw options.
+  if (isset($chart['#raw_options'])) {
+    $chart_definition['options'] = drupal_array_merge_deep($chart_definition['options'], $chart['#raw_options']);
+  }
+
   return $chart_definition;
 }
 
@@ -121,7 +126,7 @@ function _charts_google_populate_chart_axes($chart, $chart_definition) {
       $axis['textStyle']['bold'] = $chart[$key]['#labels_font_weight'] === 'bold' ? TRUE : FALSE;
       $axis['textStyle']['italic'] = $chart[$key]['#labels_font_style'] === 'italic' ? TRUE : FALSE;
       $axis['textStyle']['fontSize'] = $chart[$key]['#labels_font_size'];
-      $axis['slantedText'] = isset($chart[$key]['#labels_rotation']) ? TRUE : NULL;
+      $axis['slantedText'] = !empty($chart[$key]['#labels_rotation']) ? TRUE : NULL;
       $axis['slantedTextAngle'] = $chart[$key]['#labels_rotation'];
       $axis['gridlines']['color'] = $chart[$key]['#grid_line_color'];
       $axis['baselineColor'] = $chart[$key]['#base_line_color'];
@@ -129,6 +134,11 @@ function _charts_google_populate_chart_axes($chart, $chart_definition) {
       $axis['viewWindowMode'] = isset($chart[$key]['#max']) ? 'explicit' : NULL;
       $axis['viewWindow']['max'] = strlen($chart[$key]['#max']) ? (int) $chart[$key]['#max'] : NULL;
       $axis['viewWindow']['min'] = strlen($chart[$key]['#min']) ? (int) $chart[$key]['#min'] : NULL;
+
+      // Merge in axis raw options.
+      if (isset($chart[$key]['#raw_options'])) {
+        $axis = drupal_array_merge_deep($axis, $chart[$key]['#raw_options']);
+      }
 
       // Multi-axis support only applies to the major axis in Google charts.
       $chart_type_info = chart_get_type($chart['#chart_type']);
@@ -245,6 +255,11 @@ function _charts_google_populate_chart_data(&$chart, $chart_definition) {
         $series['type'] = $data_chart_type;
       }
 
+      // Merge in series raw options.
+      if (isset($chart[$key]['#raw_options'])) {
+        $series = drupal_array_merge_deep($series, $chart[$key]['#raw_options']);
+      }
+
       // Add the series to the main chart definition.
       charts_trim_array($series);
       $chart_definition['options']['series'][$series_number] = $series;
@@ -266,6 +281,12 @@ function _charts_google_populate_chart_data(&$chart, $chart_definition) {
           // Color role not yet supported. See https://code.google.com/p/google-visualization-api-issues/issues/detail?id=1267
           $chart_definition['_data'][$sub_key + 1][$series_number + 1]['color'] = $data_item['#color'];
           $chart_definition['_data'][$sub_key + 1][$series_number + 1]['tooltip'] = $data_item['#title'];
+
+          // Merge in data point raw options.
+          if (isset($data_item['#raw_options'])) {
+            $chart_definition['_data'][$sub_key + 1][$series_number + 1] = drupal_array_merge_deep($chart_definition['_data'][$sub_key + 1][$series_number + 1], $data_item['#raw_options']);
+          }
+
           charts_trim_array($chart_definition['_data'][$sub_key + 1][$series_number + 1]);
         }
       }

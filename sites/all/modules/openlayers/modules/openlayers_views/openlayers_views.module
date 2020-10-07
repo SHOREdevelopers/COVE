@@ -30,7 +30,7 @@ function openlayers_views_ctools_plugin_api($module, $api) {
  * @return array[]
  *   List of views id and display names.
  */
-function openalyers_views_get_views() {
+function openlayers_views_get_views() {
   $views = array();
 
   /** @var view $view */
