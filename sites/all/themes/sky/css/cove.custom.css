@@ -73,6 +73,10 @@ h1#site-name {
     display: none;
 }
 
+div#block-block-2 {
+    position: fixed;
+}
+
 .region-top-menu {
     background-color: black;
     height: 50px;
@@ -672,6 +676,7 @@ div#views_slideshow_cycle_main_gallery_slider-slider {
     background-color: #eeeeee;
     padding: 20px;
     border: 1px solid #b2b2b2;
+    position: relative;
 }
 .view-display-id-slider .views-field-field-galleryimage {
     margin-right: 5px;
