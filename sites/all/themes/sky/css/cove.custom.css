@@ -73,10 +73,6 @@ h1#site-name {
     display: none;
 }
 
-div#block-block-2 {
-    position: fixed;
-}
-
 .region-top-menu {
     background-color: black;
     height: 50px;
