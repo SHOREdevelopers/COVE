@@ -9,6 +9,6 @@
  */
 
 $plugin = array(
-  'title' => t('Generic'),
+  'title' => t('NAVSA'),
   'class' => 'OpenIDConnectClientGeneric',
 );

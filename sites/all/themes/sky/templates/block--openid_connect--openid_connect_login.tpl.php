@@ -31,9 +31,3 @@
   </ul> </div> </nav>
 </div>
 </div>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-$('#edit-openid-connect-client-custom-login').val('Login with BAVS');
-$('#edit-openid-connect-client-generic-login').val('Login with NAVSA');
-}(jQuery));
-</script>
