@@ -804,7 +804,22 @@ function openid_connect_complete_authorization($client, $tokens, &$destination) 
     return FALSE;
   }
 
+  // Check whether the e-mail address is valid.
+  if (!filter_var($userinfo['email'], FILTER_VALIDATE_EMAIL)) {
+    drupal_set_message(t('The e-mail address %mail is not valid.', array('%mail' => $userinfo['email'])), 'error');
+
+    return FALSE;
+  }
+
   $account = openid_connect_user_load_by_sub($sub, $client->getName());
+  $results = module_invoke_all('openid_connect_pre_authorize', $tokens, $account, $userinfo, $client->getName());
+
+  // Deny access if any module returns FALSE.
+  if (in_array(FALSE, $results, TRUE)) {
+    watchdog('openid_connect', 'Login denied for @email via pre-authorize hook.', array('@email' => $userinfo['email']), WATCHDOG_ERROR);
+    return FALSE;
+  }
+
   if ($account) {
     // An existing account was found. Save user claims.
     if (variable_get('openid_connect_always_save_userinfo', TRUE)) {
@@ -812,20 +827,19 @@ function openid_connect_complete_authorization($client, $tokens, &$destination) 
     }
     $account_is_new = FALSE;
   }
-  else {
-    // Check whether the e-mail address is valid.
-    if (!filter_var($userinfo['email'], FILTER_VALIDATE_EMAIL)) {
-      drupal_set_message(t('The e-mail address %mail is not valid.', array('%mail' => $userinfo['email'])), 'error');
-
-      return FALSE;
-    }
+  elseif ($account = user_load_by_mail($userinfo['email'])) {
     // Check whether there is an e-mail address conflict.
-    if (user_load_by_mail($userinfo['email'])) {
+    if (variable_get('openid_connect_connect_existing_users', FALSE)) {
+      openid_connect_connect_account($account, $client->getName(), $sub);
+      $account_is_new = FALSE;
+    }
+    else {
       drupal_set_message(t('The e-mail address %email is already taken.', array('%email' => $userinfo['email'])), 'error');
 
       return FALSE;
     }
-
+  }
+  else {
     // Create a new account.
     $account = openid_connect_create_user($sub, $userinfo, $client->getName());
     // Reload $account in case it has been altered in a user hook elsewhere.
@@ -877,6 +891,14 @@ function openid_connect_connect_current_user($client, $tokens) {
   }
 
   $account = openid_connect_user_load_by_sub($sub, $client->getName());
+  $results = module_invoke_all('openid_connect_pre_authorize', $tokens, $account, $userinfo, $client->getName());
+
+  // Deny access if any module returns FALSE.
+  if (in_array(FALSE, $results, TRUE)) {
+    watchdog('openid_connect', 'Login denied for @email via pre-authorize hook.', array('@email' => $userinfo['email']), WATCHDOG_ERROR);
+    return FALSE;
+  }
+
   if ($account && $account->uid !== $user->uid) {
     drupal_set_message(t('Another user is already connected to this @provider account.', $provider_param), 'error');
 
